@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css'; // Assuming you have an App.css file for styles
+import './App.css'; 
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://wjrqqfjolcpxmlzwxxbj.supabase.co';
