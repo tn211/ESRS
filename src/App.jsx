@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css'; 
+import './App.css';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://wjrqqfjolcpxmlzwxxbj.supabase.co';
@@ -8,65 +8,110 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 function App() {
+  const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState('');
-  const [expenses, setExpenses] = useState([]);
-
-  // Fetch expenses
-  const fetchExpenses = async () => {
-    const { data, error } = await supabase
-      .from('expenses')
-      .select('*');
-    
-    if (error) console.error(error);
-    else setExpenses(data);
-  };
+  const [instructions, setInstructions] = useState('');
+  const [ingredientName, setIngredientName] = useState('');
+  const [ingredientQuantity, setIngredientQuantity] = useState('');
+  const [recipes, setRecipes] = useState([]);
+  const [newRecipeId, setNewRecipeId] = useState(null);
+  const [updateCounter, setUpdateCounter] = useState(0);
 
   useEffect(() => {
-    fetchExpenses();
-  }, []);
+    fetchRecipes();
+  }, [updateCounter]);
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+  const fetchRecipes = async () => {
+    const { data, error } = await supabase.from('recipes').select('*');
+    if (error) console.error(error);
+    else setRecipes(data);
+  };
+
+  const handleSubmitRecipe = async (e) => {
+    e.preventDefault();
     const { data, error } = await supabase
-      .from('expenses')
-      .insert([
-        { description, amount: parseFloat(amount), expense_date: new Date().toISOString() }
-      ]);
-    
-    if (error) console.error('Error inserting data:', error);
-    else {
+      .from('recipes')
+      .insert([{ title, description, instructions, user_id: 1 }]);
+
+    if (error) {
+      console.error('Error inserting recipe:', error);
+    } else {
+      setTitle('');
       setDescription('');
-      setAmount('');
-      fetchExpenses(); // Refresh the list of expenses
+      setInstructions('');
+      setNewRecipeId(data ? data[0].recipe_id : null); // Update for successful insert
+      setUpdateCounter(prev => prev + 1); // Trigger re-fetch
+    }
+  };
+
+  const handleSubmitIngredient = async (e) => {
+    e.preventDefault();
+    const { data, error } = await supabase
+      .from('ingredients')
+      .insert([{ recipe_id: newRecipeId, name: ingredientName, quantity: ingredientQuantity }]);
+
+    if (error) {
+      console.error('Error inserting ingredient:', error);
+    } else {
+      setIngredientName('');
+      setIngredientQuantity('');
+      setUpdateCounter(prev => prev + 1); // Trigger re-fetch or UI update
     }
   };
 
   return (
     <div className="container">
       <h1>DishConnect</h1>
-      <p>Please enter Ingredient Names and Quantities:</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitRecipe}>
         <input
           className="input"
-          onChange={(e) => setDescription(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Recipe Title"
+          required
+        />
+        <textarea
+          className="input"
           value={description}
-          placeholder="Ingredient Name"
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Recipe Description"
+          required
         />
-        <input
+        <textarea
           className="input"
-          onChange={(e) => setAmount(e.target.value)}
-          value={amount}
-          placeholder="Quantity (grams)"
-          type="number"
+          value={instructions}
+          onChange={(e) => setInstructions(e.target.value)}
+          placeholder="Instructions"
+          required
         />
-        <button type="submit">Add Ingredient</button>
+        <button type="submit">Submit Recipe</button>
       </form>
-      <div className="scrollView">
-        {expenses.map((expense, index) => (
-          <div key={index} className="expenseItem">
-            {expense.description}: {expense.amount}
+      
+      {newRecipeId && (
+        <div>
+          <h2>Add Ingredients to Your Recipe</h2>
+          <form onSubmit={handleSubmitIngredient}>
+            <input
+              value={ingredientName}
+              onChange={(e) => setIngredientName(e.target.value)}
+              placeholder="Ingredient Name"
+              required
+            />
+            <input
+              value={ingredientQuantity}
+              onChange={(e) => setIngredientQuantity(e.target.value)}
+              placeholder="Quantity"
+              required
+            />
+            <button type="submit">Add Ingredient</button>
+          </form>
+        </div>
+      )}
+
+      <div className="recipesList">
+        {recipes.map((recipe, index) => (
+          <div key={index} className="recipeItem">
+            <strong>{recipe.title}</strong>: {recipe.description}
           </div>
         ))}
       </div>
