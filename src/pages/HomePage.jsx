@@ -5,7 +5,9 @@ const HomePage = () => {
   return (
     <div>
       <h1>DishConnect</h1>
-      <Link to="/add-recipe">Click here to add a New Recipe</Link>
+      <Link to="/add-recipe">Submit New Recipe</Link>
+        <br />
+      <Link to="/my-recipes">View My Recipes</Link>
       {/* You can add more content and styling as needed */}
     </div>
   );

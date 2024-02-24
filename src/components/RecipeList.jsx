@@ -1,15 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const RecipeList = ({ recipes }) => {
+const RecipesList = ({ supabase, userId }) => {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      const { data, error } = await supabase
+        .from('recipes')
+        .select('*')
+        .eq('user_id', userId);
+
+      if (error) {
+        console.error('Error fetching recipes', error);
+      } else {
+        setRecipes(data);
+      }
+    };
+
+    fetchRecipes();
+  }, [supabase, userId]);
+
   return (
-    <div className="recipesList">
-      {recipes.map((recipe, index) => (
-        <div key={index} className="recipeItem">
-          <strong>{recipe.title}</strong>: {recipe.description}
-        </div>
-      ))}
+    <div>
+      {recipes.length > 0 ? (
+        <ul>
+          {recipes.map((recipe) => (
+            <li key={recipe.recipe_id}>
+              <h2>{recipe.title}</h2>
+              <p>{recipe.description}</p>
+              {/* Add more details as needed */}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No recipes found</p>
+      )}
     </div>
   );
 };
 
-export default RecipeList;
+export default RecipesList;
