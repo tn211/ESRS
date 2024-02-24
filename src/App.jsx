@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
+import HomePage from './pages/HomePage';
 import RecipeEntryPage from './pages/RecipeEntryPage';
 
 const supabaseUrl = 'https://wjrqqfjolcpxmlzwxxbj.supabase.co';
@@ -11,10 +12,13 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<RecipeEntryPage supabase={supabase} />} />
-        {/* Add more routes as needed */}
-      </Routes>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} /> {/* Home/Splash Page */}
+          <Route path="/add-recipe" element={<RecipeEntryPage />} /> {/* Recipe Entry Page */}
+          {/* You can add more routes as your app grows */}
+        </Routes>
+      </div>
     </Router>
   );
 }

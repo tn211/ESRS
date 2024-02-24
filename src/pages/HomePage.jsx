@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
   return (
     <div>
-      <h1>Welcome to Our Recipe App</h1>
-      <Link to="/add-recipe">Add a New Recipe</Link>
+      <h1>DishConnect</h1>
+      <Link to="/add-recipe">Click here to add a New Recipe</Link>
       {/* You can add more content and styling as needed */}
     </div>
   );
