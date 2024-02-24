@@ -1,0 +1,13 @@
+These are the credentials for accessing our Supabase backe-end.
+
+# Database password (use this when running 'supabase db pull' or 'supabase link' etc. from the command line): 
+t0115749nic
+
+# Project URL:
+https://wjrqqfjolcpxmlzwxxbj.supabase.co
+
+# Anon (Public) API:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqcnFxZmpvbGNweG1send4eGJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDcwOTY1MDksImV4cCI6MjAyMjY3MjUwOX0.bCIIyngIq6xLTZxpMcutiSYkmCL7ldYxNYF5OF7Z-10
+
+# Service_Role (Secret) API:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqcnFxZmpvbGNweG1send4eGJqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwNzA5NjUwOSwiZXhwIjoyMDIyNjcyNTA5fQ.vhxiaF04-9Xxu63GSZxsBYal2d2l60bPnFLnTyo5blk
