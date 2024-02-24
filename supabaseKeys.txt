@@ -1,4 +1,4 @@
-These are the credentials for accessing our Supabase backe-end.
+These are the credentials for accessing our Supabase back-end.
 
 # Database password (use this when running 'supabase db pull' or 'supabase link' etc. from the command line): 
 t0115749nic
