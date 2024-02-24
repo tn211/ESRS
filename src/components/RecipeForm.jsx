@@ -1,44 +1,54 @@
 import React, { useState } from 'react';
 
-const RecipeForm = ({ onSubmitRecipe }) => {
+const RecipeForm = ({ supabase }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [instructions, setInstructions] = useState('');
 
-  const handleSubmit = (e) => {
+  // Hardcoded user_id for testing
+  const user_id = 1; // ID of the test user
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmitRecipe({ title, description, instructions });
-    setTitle('');
-    setDescription('');
-    setInstructions('');
+
+    const { data, error } = await supabase
+      .from('recipes')
+      .insert([
+        {
+          user_id, // Use the hardcoded test user's ID
+          title,
+          description,
+          instructions,
+        },
+      ]);
+
+    if (error) {
+      console.error(error.message);
+    } else {
+      alert('Recipe added successfully!');
+      // Optionally reset form fields or handle success (e.g., redirect)
+      setTitle('');
+      setDescription('');
+      setInstructions('');
+    }
   };
 
   return (
-<form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-  <input
-    className="input" // Ensure you have appropriate Tailwind CSS classes here
-    value={title}
-    onChange={(e) => setTitle(e.target.value)}
-    placeholder="Recipe Title"
-    required
-  />
-  <textarea
-    className="input" // Ensure you have appropriate Tailwind CSS classes here
-    value={description}
-    onChange={(e) => setDescription(e.target.value)}
-    placeholder="Recipe Description"
-    required
-  />
-  <textarea
-    className="input" // Ensure you have appropriate Tailwind CSS classes here
-    value={instructions}
-    onChange={(e) => setInstructions(e.target.value)}
-    placeholder="Instructions"
-    required
-  />
-  <button type="submit" className="btn">Submit Recipe</button>
-</form>
-
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="title">Title</label>
+        <input id="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="description">Description</label>
+        <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+      </div>
+      <div>
+        <label htmlFor="instructions">Instructions</label>
+        <textarea id="instructions" value={instructions} onChange={(e) => setInstructions(e.target.value)}></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
   );
 };
 
