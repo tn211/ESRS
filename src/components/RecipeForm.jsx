@@ -4,6 +4,7 @@ const RecipeForm = ({ supabase }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [instructions, setInstructions] = useState('');
+  const [image_url, setImageUrl] = useState('');
 
   // Hardcoded user_id for testing
   const user_id = 1; // ID of the test user
@@ -19,6 +20,7 @@ const RecipeForm = ({ supabase }) => {
           title,
           description,
           instructions,
+          image_url,
         },
       ]);
 
@@ -30,6 +32,7 @@ const RecipeForm = ({ supabase }) => {
       setTitle('');
       setDescription('');
       setInstructions('');
+      setImageUrl('');
     }
   };
 
@@ -46,6 +49,10 @@ const RecipeForm = ({ supabase }) => {
       <div>
         <label htmlFor="instructions">Instructions</label>
         <textarea id="instructions" value={instructions} onChange={(e) => setInstructions(e.target.value)}></textarea>
+      </div>
+      <div>
+        <label htmlFor="image_url">Image URL</label>
+        <input id="image_url" type="text" value={image_url} onChange={(e) => setImageUrl(e.target.value)} />
       </div>
       <button type="submit">Submit</button>
     </form>
