@@ -11,7 +11,7 @@ const RecipeForm = ({ supabase }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const { data, error } = await supabase
       .from('recipes')
       .insert([
@@ -23,11 +23,16 @@ const RecipeForm = ({ supabase }) => {
           image_url,
         },
       ]);
-
+  
     if (error) {
       console.error(error.message);
     } else {
       alert('Recipe added successfully!');
+      // Assuming `data` contains the inserted records and that the ID is accessible
+      // This might need to be adjusted based on your actual API response
+      if (data && data.length > 0) {
+        onRecipeSubmitted(data[0].id); // Call the callback function with the new recipe ID
+      }
       // Optionally reset form fields or handle success (e.g., redirect)
       setTitle('');
       setDescription('');
@@ -35,6 +40,7 @@ const RecipeForm = ({ supabase }) => {
       setImageUrl('');
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>

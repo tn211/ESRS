@@ -1,25 +1,42 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { createClient } from '@supabase/supabase-js';
-import HomePage from './pages/HomePage';
-import RecipeEntryPage from './pages/RecipeEntryPage';
-import UserRecipesPage from './pages/UserRecipesPage'; 
-
-const supabaseUrl = 'https://wjrqqfjolcpxmlzwxxbj.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqcnFxZmpvbGNweG1send4eGJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDcwOTY1MDksImV4cCI6MjAyMjY3MjUwOX0.bCIIyngIq6xLTZxpMcutiSYkmCL7ldYxNYF5OF7Z-10';
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+import './App.css'
+import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { supabase } from './supabaseClient'
+import Auth from './Auth'
+import Account from './Account'
+import HomePage from './pages/HomePage'
+import RecipeEntryPage from './pages/RecipeEntryPage'
+import UserRecipesPage from './pages/UserRecipesPage'
 
 function App() {
+  const [session, setSession] = useState(null)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/my-recipes" element={<UserRecipesPage supabase={supabase} />} />
-        <Route path="/add-recipe" element={<RecipeEntryPage supabase={supabase} />} />
-      </Routes>
-    </Router>
-  );
+    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+      {!session ? (
+        <Auth />
+      ) : (
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/my-recipes" element={<UserRecipesPage supabase={supabase} />} />
+            <Route path="/add-recipe" element={<RecipeEntryPage supabase={supabase} />} />
+            <Route path="/account" element={<Account key={session.user.id} session={session} />} />
+          </Routes>
+        </Router>
+      )}
+    </div>
+  )
 }
 
-export default App;
+export default App
