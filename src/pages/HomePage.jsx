@@ -8,7 +8,6 @@ const HomePage = () => {
       <Link to="/add-recipe">Submit New Recipe</Link>
         <br />
       <Link to="/my-recipes">View My Recipes</Link>
-      {/* You can add more content and styling as needed */}
     </div>
   );
 };
