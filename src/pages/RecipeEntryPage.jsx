@@ -12,12 +12,12 @@ const RecipeEntryPage = ({ supabase }) => {
 
   return (
     <div>
-      <Link to="/">Back to Home</Link>
       {!recipeId ? (
         <RecipeForm supabase={supabase} onRecipeSubmitted={handleRecipeSubmitted} />
       ) : (
         <IngredientsForm supabase={supabase} recipeId={recipeId} />
       )}
+      <Link to="/">Back to Home</Link>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const IngredientsForm = ({ supabase, recipeId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Example submission logic, adapt based on your actual ingredient schema
+  
     try {
       const { error } = await supabase
         .from('ingredients')

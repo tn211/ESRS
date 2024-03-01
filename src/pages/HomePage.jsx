@@ -8,6 +8,8 @@ const HomePage = () => {
       <h1>DishConnect</h1>
       <Link to="/add-recipe">Submit New Recipe</Link>
       <br />
+      <Link to="/add-ingredients">Submit Recipe Ingredients</Link>
+      <br />
       <Link to="/my-recipes">View My Recipes</Link>
       <br />
       <LogoutButton />
