@@ -17,14 +17,12 @@ const IngredientsForm = ({ supabase, recipeId }) => {
     event.preventDefault();
 
     try {
-      const { error } = await supabase
-        .from("ingredients")
-        .insert(
-          ingredients.map((ingredient) => ({
-            ...ingredient,
-            recipe_id: recipeId,
-          })),
-        );
+      const { error } = await supabase.from("ingredients").insert(
+        ingredients.map((ingredient) => ({
+          ...ingredient,
+          recipe_id: recipeId,
+        })),
+      );
 
       if (error) throw error;
 
