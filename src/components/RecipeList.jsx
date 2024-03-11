@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const RecipesList = ({ supabase, userId }) => {
   const [recipes, setRecipes] = useState([]);
@@ -6,12 +6,12 @@ const RecipesList = ({ supabase, userId }) => {
   useEffect(() => {
     const fetchRecipes = async () => {
       const { data, error } = await supabase
-        .from('recipes')
-        .select('*')
-        .eq('user_id', userId);
+        .from("recipes")
+        .select("*")
+        .eq("user_id", userId);
 
       if (error) {
-        console.error('Error fetching recipes', error);
+        console.error("Error fetching recipes", error);
       } else {
         setRecipes(data);
       }

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const IngredientsForm = ({ supabase, recipeId }) => {
-  const [ingredients, setIngredients] = useState([{ name: '', quantity: '' }]);
+  const [ingredients, setIngredients] = useState([{ name: "", quantity: "" }]);
 
   const addIngredient = () => {
-    setIngredients([...ingredients, { name: '', quantity: '' }]);
+    setIngredients([...ingredients, { name: "", quantity: "" }]);
   };
 
   const handleIngredientChange = (index, event) => {
@@ -15,18 +15,23 @@ const IngredientsForm = ({ supabase, recipeId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       const { error } = await supabase
-        .from('ingredients')
-        .insert(ingredients.map(ingredient => ({ ...ingredient, recipe_id: recipeId })));
-      
+        .from("ingredients")
+        .insert(
+          ingredients.map((ingredient) => ({
+            ...ingredient,
+            recipe_id: recipeId,
+          })),
+        );
+
       if (error) throw error;
 
-      alert('Ingredients added successfully!');
-      setIngredients([{ name: '', quantity: '' }]); // Reset after successful submission
+      alert("Ingredients added successfully!");
+      setIngredients([{ name: "", quantity: "" }]); // Reset after successful submission
     } catch (error) {
-      console.error('Error submitting ingredients:', error.message);
+      console.error("Error submitting ingredients:", error.message);
     }
   };
 
@@ -51,7 +56,9 @@ const IngredientsForm = ({ supabase, recipeId }) => {
           />
         </div>
       ))}
-      <button type="button" onClick={addIngredient}>Add Another Ingredient</button>
+      <button type="button" onClick={addIngredient}>
+        Add Another Ingredient
+      </button>
       <button type="submit">Submit Ingredients</button>
     </form>
   );

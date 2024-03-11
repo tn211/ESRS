@@ -1,44 +1,54 @@
-import './App.css'
-import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { supabase } from './supabaseClient'
-import Auth from './Auth'
-import Account from './Account'
-import HomePage from './pages/HomePage'
-import RecipeEntryPage from './pages/RecipeEntryPage'
-import UserRecipesPage from './pages/UserRecipesPage'
-import AddIngredientsPage from './pages/AddIngredientsPage' // new import
+import "./App.css";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { supabase } from "./supabaseClient";
+import Auth from "./Auth";
+import Account from "./Account";
+import HomePage from "./pages/HomePage";
+import RecipeEntryPage from "./pages/RecipeEntryPage";
+import UserRecipesPage from "./pages/UserRecipesPage";
+import AddIngredientsPage from "./pages/AddIngredientsPage"; // new import
 
 function App() {
-  const [session, setSession] = useState(null)
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
+      setSession(session);
+    });
 
     supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
+      setSession(session);
+    });
+  }, []);
 
   return (
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+    <div className="container" style={{ padding: "50px 0 100px 0" }}>
       {!session ? (
         <Auth />
       ) : (
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/my-recipes" element={<UserRecipesPage supabase={supabase} />} />
-            <Route path="/add-recipe" element={<RecipeEntryPage supabase={supabase} />} />
-            <Route path="/add-ingredients" element={<AddIngredientsPage />} /> {/* new route */}
-            <Route path="/account" element={<Account key={session.user.id} session={session} />} />
+            <Route
+              path="/my-recipes"
+              element={<UserRecipesPage supabase={supabase} />}
+            />
+            <Route
+              path="/add-recipe"
+              element={<RecipeEntryPage supabase={supabase} />}
+            />
+            <Route path="/add-ingredients" element={<AddIngredientsPage />} />{" "}
+            {/* new route */}
+            <Route
+              path="/account"
+              element={<Account key={session.user.id} session={session} />}
+            />
           </Routes>
         </Router>
       )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
