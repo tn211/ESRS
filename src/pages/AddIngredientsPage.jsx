@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // new import
-import { supabase } from '../supabaseClient';
-import IngredientsForm from '../components/IngredientsForm';
+import React from "react";
+import { Link } from "react-router-dom"; // new import
+import { supabase } from "../supabaseClient";
+import IngredientsForm from "../components/IngredientsForm";
 
 const AddIngredientsPage = () => {
   const recipeId = 36; // hardcoded recipe ID

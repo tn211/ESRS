@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import LogoutButton from '../components/LogoutButton'; // replace with the actual path to LogoutButton
+import React from "react";
+import { Link } from "react-router-dom";
+import LogoutButton from "../components/LogoutButton"; // replace with the actual path to LogoutButton
 
 const HomePage = () => {
   return (

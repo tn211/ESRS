@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const IngredientsForm = ({ supabase, recipeId }) => {
-  const [ingredients, setIngredients] = useState([{ name: '', quantity: '' }]);
+  const [ingredients, setIngredients] = useState([{ name: "", quantity: "" }]);
 
   const addIngredient = () => {
-    setIngredients([...ingredients, { name: '', quantity: '' }]);
+    setIngredients([...ingredients, { name: "", quantity: "" }]);
   };
 
   const handleIngredientChange = (index, event) => {
@@ -17,16 +17,25 @@ const IngredientsForm = ({ supabase, recipeId }) => {
     event.preventDefault();
 
     try {
+<<<<<<< HEAD
       const { error } = await supabase
         .from('ingredients')
         .insert(ingredients.map(ingredient => ({ ...ingredient, recipe_id: recipeId })));
+=======
+      const { error } = await supabase.from("ingredients").insert(
+        ingredients.map((ingredient) => ({
+          ...ingredient,
+          recipe_id: recipeId,
+        })),
+      );
+>>>>>>> 881b53333bde3e44b47a14a6fca377231d5c4ade
 
       if (error) throw error;
 
-      alert('Ingredients added successfully!');
-      setIngredients([{ name: '', quantity: '' }]); // Reset after successful submission
+      alert("Ingredients added successfully!");
+      setIngredients([{ name: "", quantity: "" }]); // Reset after successful submission
     } catch (error) {
-      console.error('Error submitting ingredients:', error.message);
+      console.error("Error submitting ingredients:", error.message);
     }
   };
 
@@ -51,7 +60,9 @@ const IngredientsForm = ({ supabase, recipeId }) => {
           />
         </div>
       ))}
-      <button type="button" onClick={addIngredient}>Add Another Ingredient</button>
+      <button type="button" onClick={addIngredient}>
+        Add Another Ingredient
+      </button>
       <button type="submit">Submit Ingredients</button>
     </form>
   );
