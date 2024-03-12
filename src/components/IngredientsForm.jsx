@@ -15,12 +15,12 @@ const IngredientsForm = ({ supabase, recipeId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       const { error } = await supabase
         .from('ingredients')
         .insert(ingredients.map(ingredient => ({ ...ingredient, recipe_id: recipeId })));
-      
+
       if (error) throw error;
 
       alert('Ingredients added successfully!');
