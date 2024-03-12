@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    /* Take up the full width of the viewport */
+    padding: 10px;
+    background: #333;
+    color: #fff;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    /* Allow the menu to grow and take remaining vertical space */
+}
+
+.logo {
+    margin-right: 20px;
+    /* Adjust spacing between logo and menu */
+}
+
+.logo img {
+    padding-left: 50px;
+    width: 150px;
+    /* Adjust logo width as needed */
+    height: 150px;
+    /* Adjust logo height as needed */
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-right: 100px;
+    /* Adjust spacing between menu items */
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+nav a:hover {
+    color: #ffcc00;
+    /* Adjust the color for the hover effect */
+}
+
+/* Add some padding to the body to account for the fixed header */
+body {
+    background-color: #ffcc00;
+    padding-top: 60px;
+    /* Adjust as needed based on the header height */
+}
