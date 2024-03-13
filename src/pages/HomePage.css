@@ -6,14 +6,29 @@ body {
 header {
     position: fixed;
     top: 0;
+    flex-direction: column;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     /* Take up the full width of the viewport */
     padding: 10px;
-    background: #333;
+    background: #86a595;
     color: #fff;
+
+}
+
+footer {
+    position: fixed;
+    flex-direction: column;
+    display: flex;
+    bottom: 0;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background: #86a595;
+    color: #fff;
+
+
 }
 
 nav {
@@ -21,19 +36,22 @@ nav {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    margin-top: 30px;
+
     /* Allow the menu to grow and take remaining vertical space */
 }
 
 .logo {
-    margin-right: 20px;
+    margin-top: 30px;
     /* Adjust spacing between logo and menu */
 }
 
 .logo img {
     padding-left: 50px;
-    width: 150px;
+
+    width: 500px;
     /* Adjust logo width as needed */
-    height: 150px;
+    height: 100px;
     /* Adjust logo height as needed */
 }
 
@@ -45,23 +63,24 @@ nav ul {
 }
 
 nav li {
-    margin-right: 100px;
+    margin-right: 200px;
     /* Adjust spacing between menu items */
 }
 
 nav a {
     text-decoration: none;
     color: #fff;
+    font-size: large;
 }
 
 nav a:hover {
-    color: #ffcc00;
+    color: #000000;
     /* Adjust the color for the hover effect */
 }
 
 /* Add some padding to the body to account for the fixed header */
 body {
-    background-color: #ffcc00;
+    background-color: #ffffff;
     padding-top: 60px;
     /* Adjust as needed based on the header height */
 }
