@@ -21,7 +21,7 @@ const HomePage = () => {
             <Link to="/my-recipes">Page 4</Link>
           </li>
           <li>
-            <Link to="/my-recipes">Page 5</Link>
+            <Link to="/account">Page 5</Link>
           </li>
         </ul>
       </nav>

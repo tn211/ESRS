@@ -1,0 +1,41 @@
+/* Account.css */
+.account-page {
+    background-color: #f0f0f0; /* Light grey background for the entire page */
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+    padding: 20px; /* Add some padding around the content */
+}
+
+.form-widget {
+    background-color: #000000; /* White background for the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333; /* Dark text for readability */
+}
+
+.form-widget label {
+    display: block;
+    margin-bottom: 8px;
+    color: #86a595; /* Green color for labels */
+}
+
+.form-widget input,
+.form-widget button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-widget button.primary {
+    background-color: #86a595; /* Green background for primary button */
+    color: white;
+    border: none;
+}
+
+.form-widget button.block {
+    display: block;
+}
+
+/* You can add more styles as needed */
