@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
-import Account from "./Account";
+import Account from "./pages/Account";
 import HomePage from "./pages/HomePage";
 import RecipeEntryPage from "./pages/RecipeEntryPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
