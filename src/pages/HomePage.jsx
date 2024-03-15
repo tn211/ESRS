@@ -9,19 +9,19 @@ const HomePage = () => {
       <nav>
         <ul className="menu">
           <li>
-            <Link to="/add-recipe">Page 1</Link>
+            <Link to="/add-recipe">Add Recipe</Link>
           </li>
           <li>
-            <Link to="/add-ingredients">Page 2</Link>
+            <Link to="/add-ingredients">Add Ingredients</Link>
           </li>
           <li>
-            <Link to="/my-recipes">Page 3</Link>
+            <Link to="/my-recipes">My Recipes</Link>
           </li>
           <li>
             <Link to="/my-recipes">Page 4</Link>
           </li>
           <li>
-            <Link to="/account">Page 5</Link>
+            <Link to="/account">Account</Link>
           </li>
         </ul>
       </nav>
