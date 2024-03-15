@@ -27,8 +27,29 @@ footer {
     padding: 10px;
     background: #86a595;
     color: #fff;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
 
 
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 100px;
+    /* Adjust the gap as needed */
+}
+
+.image-item {
+    text-align: center;
+}
+
+.image-item img {
+    width: 350px;
+    /* Adjust the width of images as needed */
+    height: auto;
+    /* Maintain aspect ratio */
 }
 
 nav {
@@ -63,14 +84,17 @@ nav ul {
 }
 
 nav li {
-    margin-right: 200px;
+    margin-left: 100px;
+    margin-right: 100px;
+    justify-content: center;
     /* Adjust spacing between menu items */
 }
 
 nav a {
     text-decoration: none;
     color: #fff;
-    font-size: large;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 nav a:hover {
@@ -83,4 +107,25 @@ body {
     background-color: #ffffff;
     padding-top: 60px;
     /* Adjust as needed based on the header height */
+}
+
+.icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    margin-right: 100px;
+    margin-top: 30px;
+}
+
+.icon {
+    width: 30px;
+    /* Adjust the width and height as needed */
+    height: 30px;
+    color: white;
+
+}
+
+.icon:hover {
+    color: #000000;
 }

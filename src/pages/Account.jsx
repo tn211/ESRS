@@ -61,17 +61,7 @@ export default function Account({ session }) {
     if (error) {
       alert(error.message);
     } else {
-      // Download the image and set the object URL
-      const { data, error } = await supabase.storage
-        .from("avatars")
-        .download(avatarUrl);
-      if (error) {
-        console.log("Error downloading image: ", error.message);
-      } else {
-        const blob = await data.blob(); // Get the Blob object
-        const url = URL.createObjectURL(blob);
-        setAvatarUrl(url);
-      }
+      setAvatarUrl(avatarUrl);
     }
     setLoading(false);
   }
@@ -88,11 +78,6 @@ export default function Account({ session }) {
             <li><Link to="/account">Account</Link></li>
           </ul>
         </nav>
-        <div className="logo-container">
-          <a href="/">
-            <img src="src/assets/Dishconnect.PNG" alt="Logo" className="logo" />
-          </a>
-        </div>
       </header>
       <form onSubmit={updateProfile} className="form-widget">
         <div>
