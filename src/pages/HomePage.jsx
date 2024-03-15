@@ -14,7 +14,7 @@ const HomePage = () => {
   return (
     <><header>
       <div className="icon-container">
-        <Link to="/add-recipe"> <HiUserCircle className="icon" /></Link>
+        <Link to="/account"> <HiUserCircle className="icon" /></Link>
       </div>
       <nav>
         <ul className="menu">
@@ -30,9 +30,7 @@ const HomePage = () => {
           <li>
             <Link to="/my-recipes">Page 4</Link>
           </li>
-          <li>
-            <Link to="/account">Account</Link>
-          </li>
+
         </ul>
       </nav>
       <div className="logo-container">
