@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import { Link } from "react-router-dom";
-import Avatar from "../Avatar";
+import Avatar from "../components/Avatar";
 import './Account.css';
 
 export default function Account({ session }) {
@@ -44,24 +44,34 @@ export default function Account({ session }) {
 
   async function updateProfile(event, avatarUrl) {
     event.preventDefault();
-
+  
     setLoading(true);
     const { user } = session;
-
+  
     const updates = {
       id: user.id,
       username,
       website,
-      avatar_url,
+      avatar_url: avatarUrl, // use the avatarUrl parameter
       updated_at: new Date(),
     };
-
+  
     const { error } = await supabase.from("profiles").upsert(updates);
-
+  
     if (error) {
       alert(error.message);
     } else {
-      setAvatarUrl(avatarUrl);
+      // Download the image and set the object URL
+      const { data, error } = await supabase.storage
+        .from("avatars")
+        .download(avatarUrl);
+      if (error) {
+        console.log("Error downloading image: ", error.message);
+      } else {
+        const blob = await data.blob(); // Get the Blob object
+        const url = URL.createObjectURL(blob);
+        setAvatarUrl(url);
+      }
     }
     setLoading(false);
   }
@@ -104,7 +114,7 @@ export default function Account({ session }) {
           <Avatar
             url={avatar_url}
             size={150}
-            onUpload={(url) => updateProfile(url)} // Adjusted for clarity
+            onUpload={(event, url) => updateProfile(url)} // Adjusted for clarity
           />
         </div>
         <div>
