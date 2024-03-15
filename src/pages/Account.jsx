@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
+import { Link } from "react-router-dom";
 import Avatar from "../Avatar";
 import './Account.css';
 
@@ -66,8 +67,23 @@ export default function Account({ session }) {
   }
 
   return (
-    // This div is the new wrapper that contains everything inside it
-    <div className="account-page"> {/* Correct placement of the comment */}
+    <div className="account-page">
+      <header>
+        <nav>
+          <ul className="menu">
+            <li><Link to="/add-recipe">Add Recipe</Link></li>
+            <li><Link to="/add-ingredients">Add Ingredients</Link></li>
+            <li><Link to="/my-recipes">My Recipes</Link></li>
+            <li><Link to="/">Page 4</Link></li> {/* Assuming you want to link to home for "Page 4" */}
+            <li><Link to="/account">Account</Link></li>
+          </ul>
+        </nav>
+        <div className="logo-container">
+          <a href="/">
+            <img src="src/assets/Dishconnect.PNG" alt="Logo" className="logo" />
+          </a>
+        </div>
+      </header>
       <form onSubmit={updateProfile} className="form-widget">
         <div>
           <label htmlFor="email">Email</label>

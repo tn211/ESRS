@@ -1,8 +1,20 @@
 /* Account.css */
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* ... other styles ... */
+  }
+  
 .account-page {
+    padding-top: 70px;
     background-color: #f0f0f0; /* Light grey background for the entire page */
     min-height: 100vh; /* Ensure it covers the full viewport height */
     padding: 20px; /* Add some padding around the content */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 .form-widget {
@@ -10,7 +22,9 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #333; /* Dark text for readability */
+    color: #333; 
+    max-width: 540px; 
+    margin: 0 auto; 
 }
 
 .form-widget label {
@@ -21,11 +35,12 @@
 
 .form-widget input,
 .form-widget button {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 .form-widget button.primary {
@@ -38,4 +53,63 @@
     display: block;
 }
 
-/* You can add more styles as needed */
+footer {
+    position: fixed;
+    flex-direction: column;
+    display: flex;
+    bottom: 0;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background: #86a595;
+    color: #fff;
+
+
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin-top: 30px;
+
+    /* Allow the menu to grow and take remaining vertical space */
+}
+
+.logo {
+    margin-top: 30px;
+    /* Adjust spacing between logo and menu */
+}
+
+.logo img {
+    padding-left: 50px;
+
+    width: 500px;
+    /* Adjust logo width as needed */
+    height: 100px;
+    /* Adjust logo height as needed */
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-right: 200px;
+    /* Adjust spacing between menu items */
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: large;
+}
+
+nav a:hover {
+    color: #000000;
+    /* Adjust the color for the hover effect */
+}
