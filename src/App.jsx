@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
-import Account from "./Account";
+import Account from "./pages/Account";
 import HomePage from "./pages/HomePage";
 import RecipeEntryPage from "./pages/RecipeEntryPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
-import AddIngredientsPage from "./pages/AddIngredientsPage"; // new import
+import AddIngredientsPage from "./pages/AddIngredientsPage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -30,20 +30,10 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route
-              path="/my-recipes"
-              element={<UserRecipesPage supabase={supabase} />}
-            />
-            <Route
-              path="/add-recipe"
-              element={<RecipeEntryPage supabase={supabase} />}
-            />
-            <Route path="/add-ingredients" element={<AddIngredientsPage />} />{" "}
-            {/* new route */}
-            <Route
-              path="/account"
-              element={<Account key={session.user.id} session={session} />}
-            />
+            <Route path="/my-recipes" element={<UserRecipesPage supabase={supabase} />} />
+            <Route path="/add-recipe" element={<RecipeEntryPage supabase={supabase} />} />
+            <Route path="/add-ingredients" element={<AddIngredientsPage />} />
+            <Route path="/account" element={<Account key={session.user.id} session={session} />} />
           </Routes>
         </Router>
       )}
