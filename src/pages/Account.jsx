@@ -3,6 +3,7 @@ import { supabase } from '../supabaseClient'
 import { Link } from "react-router-dom";
 import Avatar from '../components/Avatar'
 import './Account.css';
+import Layout from "./Layout";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
