@@ -1,7 +1,6 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    overflow: hidden;
     background-color: #ffffff;
     padding-top: 60px;
 }
@@ -108,4 +107,71 @@ nav a:hover {
 
 .icon:hover {
     color: #000000;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    margin-right: 50px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .icon-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+        margin-right: 30px;
+        margin-top: 80px;
+    }
+
+    /* Adjust menu for smaller screens */
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        /* Adjust this value based on your header height */
+        left: 0;
+        width: 100%;
+        background: #86a595;
+        padding: 20px;
+
+    }
+
+    .menu-open .menu {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 9999;
+    }
+
+    .header.menu-open {
+        padding-bottom: 50px;
+    }
 }
