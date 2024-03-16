@@ -6,7 +6,7 @@ const RecipeForm = ({ supabase }) => {
   const [instructions, setInstructions] = useState("");
   const [image_url, setImageUrl] = useState("");
 
-  // Hardcoded user_id for testing
+  // Hardcoded  for testing
   const user_id = 1; // ID of the test user
 
   const handleSubmit = async (e) => {

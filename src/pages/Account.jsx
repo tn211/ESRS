@@ -1,137 +1,118 @@
-import { useState, useEffect } from "react";
-import { supabase } from "../supabaseClient";
+import { useState, useEffect } from 'react'
+import { supabase } from '../supabaseClient'
 import { Link } from "react-router-dom";
-import Avatar from "../components/Avatar";
+import Avatar from '../components/Avatar'
 import './Account.css';
 
 export default function Account({ session }) {
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
+  const [loading, setLoading] = useState(true)
+  const [username, setUsername] = useState(null)
+  const [website, setWebsite] = useState(null)
+  const [avatar_url, setAvatarUrl] = useState(null)
 
   useEffect(() => {
-    let ignore = false;
+    let ignore = false
     async function getProfile() {
-      setLoading(true);
-      const { user } = session;
+      setLoading(true)
+      const { user } = session
 
       const { data, error } = await supabase
-        .from("profiles")
+        .from('profiles')
         .select(`username, website, avatar_url`)
-        .eq("id", user.id)
-        .single();
+        .eq('id', user.id)
+        .single()
 
       if (!ignore) {
         if (error) {
-          console.warn(error);
+          console.warn(error)
         } else if (data) {
-          setUsername(data.username);
-          setWebsite(data.website);
-          setAvatarUrl(data.avatar_url);
+          setUsername(data.username)
+          setWebsite(data.website)
+          setAvatarUrl(data.avatar_url)
         }
       }
 
-      setLoading(false);
+      setLoading(false)
     }
 
-    getProfile();
+    getProfile()
 
     return () => {
-      ignore = true;
-    };
-  }, [session]);
+      ignore = true
+    }
+  }, [session])
 
   async function updateProfile(event, avatarUrl) {
-    event.preventDefault();
-  
-    setLoading(true);
-    const { user } = session;
-  
+    event.preventDefault()
+
+    setLoading(true)
+    const { user } = session
+
     const updates = {
       id: user.id,
       username,
       website,
-      avatar_url: avatarUrl, // use the avatarUrl parameter
+      avatar_url: avatarUrl,
       updated_at: new Date(),
-    };
-  
-    const { error } = await supabase.from("profiles").upsert(updates);
-  
-    if (error) {
-      alert(error.message);
-    } else {
-      setAvatarUrl(avatarUrl);
     }
-    setLoading(false);
+
+    const { error } = await supabase.from('profiles').upsert(updates)
+
+    if (error) {
+      alert(error.message)
+    } else {
+      setAvatarUrl(avatarUrl)
+    }
+    setLoading(false)
   }
 
   return (
-    <div className="account-page">
-      <header>
-        <nav>
-          <ul className="menu">
-            <li><Link to="/add-recipe">Add Recipe</Link></li>
-            <li><Link to="/add-ingredients">Add Ingredients</Link></li>
-            <li><Link to="/my-recipes">My Recipes</Link></li>
-            <li><Link to="/">Page 4</Link></li> {/* Assuming you want to link to home for "Page 4" */}
-            <li><Link to="/account">Account</Link></li>
-          </ul>
-        </nav>
-      </header>
-      <form onSubmit={updateProfile} className="form-widget">
-        <div>
-          <label htmlFor="email">Email</label>
-          <input id="email" type="text" value={session.user.email} disabled />
-        </div>
-        <div>
-          <label htmlFor="username">Name</label>
-          <input
-            id="username"
-            type="text"
-            required
-            value={username || ""}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="avatar">Avatar</label>
-          <Avatar
+    <form onSubmit={updateProfile} className="form-widget">
+        <Avatar
             url={avatar_url}
             size={150}
-            onUpload={(event, url) => updateProfile(url)} // Adjusted for clarity
-          />
-        </div>
-        <div>
-          <label htmlFor="website">Website</label>
-          <input
-            id="website"
-            type="url"
-            value={website || ""}
-            onChange={(e) => setWebsite(e.target.value)}
-          />
-        </div>
+            onUpload={(event, url) => {
+                updateProfile(event, url)
+            }}
+        />
+      <div>
+        <label htmlFor="email">Email</label>
+        <input id="email" type="text" value={session.user.email} disabled />
+      </div>
+      <div>
+        <label htmlFor="username">Name</label>
+        <input
+          id="username"
+          type="text"
+          required
+          value={username || ''}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          type="url"
+          value={website || ''}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
 
-        <div>
-          <button
-            className="button block primary"
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? "Loading ..." : "Update"}
-          </button>
-        </div>
+      <div>
+        <button className="button block primary" type="submit" disabled={loading}>
+          {loading ? 'Loading ...' : 'Update'}
+        </button>
+      </div>
 
-        <div>
-          <button
-            className="button block"
-            type="button"
-            onClick={() => supabase.auth.signOut()}
-          >
-            Sign Out
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+      <div>
+        <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
+          Sign Out
+        </button>
+      </div>
+      <div>
+      <Link to="/">Back to Home</Link>
+      </div>
+    </form>
+  )
 }
