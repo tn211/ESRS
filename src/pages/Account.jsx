@@ -68,52 +68,54 @@ export default function Account({ session }) {
   }
 
   return (
-    <form onSubmit={updateProfile} className="form-widget">
-        <Avatar
-            url={avatar_url}
-            size={150}
-            onUpload={(event, url) => {
-                updateProfile(event, url)
-            }}
-        />
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
-      </div>
-      <div>
-        <label htmlFor="username">Name</label>
-        <input
-          id="username"
-          type="text"
-          required
-          value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          type="url"
-          value={website || ''}
-          onChange={(e) => setWebsite(e.target.value)}
-        />
-      </div>
+    <Layout>
+      <form onSubmit={updateProfile} className="form-widget">
+          <Avatar
+              url={avatar_url}
+              size={150}
+              onUpload={(event, url) => {
+                  updateProfile(event, url)
+              }}
+          />
+        <div>
+          <label htmlFor="email">Email</label>
+          <input id="email" type="text" value={session.user.email} disabled />
+        </div>
+        <div>
+          <label htmlFor="username">Name</label>
+          <input
+            id="username"
+            type="text"
+            required
+            value={username || ''}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="website">Website</label>
+          <input
+            id="website"
+            type="url"
+            value={website || ''}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+        </div>
 
-      <div>
-        <button className="button block primary" type="submit" disabled={loading}>
-          {loading ? 'Loading ...' : 'Update'}
-        </button>
-      </div>
+        <div>
+          <button className="button block primary" type="submit" disabled={loading}>
+            {loading ? 'Loading ...' : 'Update'}
+          </button>
+        </div>
 
-      <div>
-        <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
-          Sign Out
-        </button>
-      </div>
-      <div>
-      <Link to="/">Back to Home</Link>
-      </div>
-    </form>
+        <div>
+          <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
+            Sign Out
+          </button>
+        </div>
+        <div>
+        <Link to="/">Back to Home</Link>
+        </div>
+      </form>
+    </Layout>
   )
 }

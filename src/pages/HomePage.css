@@ -9,18 +9,17 @@ body {
 .image-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: row;
     gap: 100px;
-    /* Adjust the gap as needed */
+    width: 100%; /* Add this line */
 }
 
 .image-item {
     text-align: center;
+    width: calc(33.33% - 100px);
 }
 
 .image-item img {
-    width: 350px;
-    /* Adjust the width of images as needed */
+    width: 150%; /* Adjust this line */
     height: auto;
-    /* Maintain aspect ratio */
 }

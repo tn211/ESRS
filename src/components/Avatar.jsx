@@ -24,28 +24,30 @@ export default function Avatar({ url, size, onUpload }) {
 
   async function uploadAvatar(event) {
     try {
-      setUploading(true)
-
+      setUploading(true);
+  
       if (!event.target.files || event.target.files.length === 0) {
-        throw new Error('You must select an image to upload.')
+        throw new Error('You must select an image to upload.');
       }
-
-      const file = event.target.files[0]
-      const fileExt = file.name.split('.').pop()
-      const fileName = `${Math.random()}.${fileExt}`
-      const filePath = `${fileName}`
-
-      const { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file)
-
+  
+      const file = event.target.files[0];
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+  
+      console.log('Uploading file:', file); // Add this line
+      console.log('File path:', filePath); // Add this line
+  
+      const { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file);
+  
       if (uploadError) {
-        throw uploadError
+        throw uploadError;
       }
-
-      onUpload(event, filePath)
+  
+      onUpload(filePath);
     } catch (error) {
-      alert(error.message)
-    } finally {
-      setUploading(false)
+      console.error('Error uploading avatar:', error); // Add this line
+      setUploading(false);
     }
   }
 
