@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import RecipeEntryPage from "./pages/RecipeEntryPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
 import AddIngredientsPage from "./pages/AddIngredientsPage";
+import RecipePage from "./pages/RecipePage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -33,6 +34,7 @@ function App() {
             <Route path="/my-recipes" element={<UserRecipesPage supabase={supabase} />} />
             <Route path="/add-recipe" element={<RecipeEntryPage supabase={supabase} />} />
             <Route path="/add-ingredients" element={<AddIngredientsPage />} />
+            <Route path="/recipe" element={<RecipePage />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
           </Routes>
         </Router>

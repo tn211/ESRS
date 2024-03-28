@@ -16,7 +16,9 @@ const HomePage = () => {
     <Layout>
       <div className="image-grid">
         <div className="image-item">
-          <img src="src\assets\FOOD.jpg" alt="Image 1" />
+          <Link to="/recipe">
+            <img src="src\assets\FOOD.jpg" alt="Image 1" />
+          </Link>
           <p style={divStyle}>Text underneath image 1</p>
         </div>
         <div className="image-item">
