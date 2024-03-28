@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 100px;
+    gap: 10px;
     /* Adjust the gap as needed */
 }
 
@@ -28,7 +28,21 @@ body {
 @media only screen and (max-width: 1350px) {
     body {
         overflow: scroll;
-        padding-top: 200px;
+        /* padding-top: 200px; */
         width: 100%;
     }
+}
+
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    /* Adjust the gap as needed */
+}
+
+
+.recipe-card {
+    max-width: 350px;
 }

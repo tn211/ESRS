@@ -3,7 +3,7 @@
 import FOOD from '../assets/FOOD.jpg'
 import './RecipeCard.css';
 
-const recipeData = ["Dutch Cheesy Chicken", 20, 15, 4.6, 188]
+const recipeData = ["Spicy Tomato Pasta", 20, 15, 4.6, 188]
 
 function RecipeCard(){
     return(
@@ -13,7 +13,7 @@ function RecipeCard(){
                 <div className='img-wrapper'>
                     <img alt="recipe picture" src={FOOD}></img>
                 </div>
-                <h2>{recipeData[0]}</h2>
+                <h2 class="recipe-name">{recipeData[0]}</h2>
             </div>
             <div className='card-bits'>
                 <p>Cooking time: {recipeData[1]} minutes</p>

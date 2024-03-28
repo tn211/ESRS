@@ -26,25 +26,46 @@ function RecipePage() {
                         "Don't forget to keep stirring to prevent it going lumpy",
                         "etc"];
 
-    const recipeSpiel = ["This recipe always reminds me of my mum, who cooks it a lot. In my house there was nothing more summery than a smoky bowl of Dutch Cheesy chicken  etc"]
+    const recipeSpiel = ["This recipe always reminds me of my mum, who cooks it a lot. In my house there was nothing more summery than a smoky bowl of Spicy Tomato Pasta  etc"]
 
 
     return (
         <>
             <Layout>
-            {/* <RecipeCard /> */}
-                <div id="test">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                <h1>TESTING RECIPE PAGE</h1>
+            <RecipeCard />
 
-                </div>
+             <div className="recipe-ingredients">
+                 <h3>Ingredients</h3>
+                 <ul>
+                     {recipeIngredients.map((ingredient, index) => (
+                         <li key={index}>{ingredient[0]}: {ingredient[1]} {ingredient[2]}</li>
+                     ))}
+                 </ul>
+             </div>
+             <div className="recipe-method">
+                 <h3>Method</h3>
+                 <ol>
+                     {recipeMethod.map((step, index) => (
+                         <li key={index}>{step}</li>
+                     ))}
+                 </ol>
+             </div>
+             <div className="recipe-tips">
+                 <h3>Tips</h3>
+                 <ul>
+                     {recipeTips.map((tip, index) => (
+                         <li key={index}>{tip}</li>
+                     ))}
+                 </ul>
+             </div>
+             <div className="recipe-spiel">
+                 <h3>Story Behind the Recipe</h3>
+                 {recipeSpiel.map((paragraph, index) => (
+                     <p key={index}>{paragraph}</p>
+                 ))}
+             </div>
+
             </Layout>
             
         </>
