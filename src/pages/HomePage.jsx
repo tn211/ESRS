@@ -21,18 +21,18 @@ const HomePage = () => {
       {/* <Link to="/recipe"><RecipeCard /></Link>
       <Link to="/recipe"><RecipeCard /></Link>
       <Link to="/recipe"><RecipeCard /></Link> */}
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard class="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       </div>
 
 

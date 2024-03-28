@@ -7,6 +7,8 @@
     width: 80%;
     display: inline-block;
     background: #86a595;
+    font-family: 'Arial', sans-serif;
+    height: auto;
   }
 
 .recipe-card .img-wrapper {
@@ -40,4 +42,5 @@
     font-weight: bold;
     border-top: solid 1px black;
     margin: 0;
+    font-family: 'Arial', sans-serif;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './RecipePage.css';
 import RecipeCard from "../components/RecipeCard";
+import IngredientsCard from "../components/IngredientsCard";
 import Layout from "./Layout";
 
 
@@ -34,6 +35,10 @@ function RecipePage() {
             <Layout>
                 <h1>TESTING RECIPE PAGE</h1>
             <RecipeCard />
+
+            <div>
+            <IngredientsCard />
+            </div>
 
              <div className="recipe-ingredients">
                  <h3>Ingredients</h3>
