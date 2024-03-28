@@ -1,25 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './RecipePage.css';
+import RecipeCard from "../components/RecipeCard";
+import Layout from "./Layout";
 
 
 function RecipePage() {
 
+
+    /*dummy values provided in variables for rendering sample page */
+    /* recipeData to include: prep time, cook time, rating, likes/saves */
+    const recipeData = [20, 20, 4.5, 200]
+
+    const recipeIngredients = [["Chicken breast", 100, "grams"], 
+                                ["Double cream", 200, "ml"],
+                                ["Gouda", 50, "grams"],  
+                                ["Brown onions", 2, "unit"]];
+
+    const recipeMethod = ["Chop onions and fry in pan for 5 minutes",
+                        "While onions cook, chop chicken, then add to pan",
+                        "Cook until black and smoky",
+                        "etc"];
+
+    const recipeTips = ["try adding chocoloate for an unusual twist",
+                        "Don't forget to keep stirring to prevent it going lumpy",
+                        "etc"];
+
+    const recipeSpiel = ["This recipe always reminds me of my mum, who cooks it a lot. In my house there was nothing more summery than a smoky bowl of Dutch Cheesy chicken  etc"]
+
+
     return (
         <>
-            <Link to="/">Back to Home</Link>
-            <div className="recipe-data">
-                <h2>Recipe Details</h2>
-                <p>Prep Time: 20 minutes</p>
-                <p>Cook Time: 20 minutes</p>
-                <p>Rating: 4.5 stars</p>
-                <p>Likes/Saves: 200</p>
-            </div>
+            <Layout>
+            {/* <RecipeCard /> */}
+                <div id="test">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis quis sem fringilla condimentum eget eu lorem. Donec vitae ante pretium, laoreet elit egestas, fringilla enim. Nulla quis massa est. Nunc quis lectus ut turpis imperdiet blandit. Praesent dapibus elementum quam, porttitor convallis felis volutpat ut. Donec laoreet dignissim diam vitae semper. Donec eget nisl tristique nunc laoreet euismod eget sed justo. Nunc tempus rutrum gravida. Cras ac leo massa. Aliquam erat volutpat. Mauris rutrum bibendum dui, tempus congue metus auctor non. Morbi eu tristique arcu. In volutpat fermentum ligula eu maximus.</p>
+
+                </div>
+            </Layout>
+            
         </>
     );
 }
 
 export default RecipePage;
+
+
+
+
+
+
+
+
 
 
     /*dummy values provided in variables for rendering sample page */

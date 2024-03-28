@@ -1,0 +1,18 @@
+.recipe-card {
+    border: 5px solid #FAF1CB;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1); 
+    margin: 10px;
+    text-align: center;
+    width: 80%;
+    display: inline-block;
+  }
+
+  .recipe-card .img-wrapper {
+    width: 100%; /* Adjust this as needed to fit your design */
+    /* padding-top: 60%; /* Creates a square aspect ratio */  
+    position: relative; /* Enables absolute positioning for the child img */
+    overflow: hidden; /* Ensures the image doesn't overflow the circular shape */
+    margin: auto; /* Center the wrapper if needed */
+    margin-bottom: 10px; /* Space below the image */ 
+  }
