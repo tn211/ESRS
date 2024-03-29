@@ -1,0 +1,28 @@
+.tips-header {
+    text-align: left; 
+    text-indent: 40px;
+    border-bottom: solid black 1px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    font-family: 'Arial', sans-serif;
+    background-color: white;
+    color: black;
+}
+
+
+.tips-card {
+    border: 5px solid #86a595;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1); 
+    margin: 10px;
+    text-align: center;
+    width: 30%;
+    display: inline-block;
+    background: white;
+    font-family: 'Arial', sans-serif;
+  }
+
+.tips-card li {
+    text-align: left;
+    font-weight: bold;
+}
