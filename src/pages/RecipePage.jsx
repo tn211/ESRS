@@ -4,6 +4,7 @@ import './RecipePage.css';
 import RecipeCard from "../components/RecipeCard";
 import IngredientsCard from "../components/IngredientsCard";
 import Layout from "./Layout";
+import dummyData from "../data/dummy-data";
 
 
 function RecipePage() {
@@ -13,10 +14,10 @@ function RecipePage() {
     /* recipeData to include: prep time, cook time, rating, likes/saves */
     const recipeData = [20, 20, 4.5, 200]
 
-    const recipeIngredients = [["Chicken breast", 100, "grams"], 
-                                ["Double cream", 200, "ml"],
-                                ["Gouda", 50, "grams"],  
-                                ["Brown onions", 2, "unit"]];
+    // const recipeIngredients = [["Chicken breast", 100, "grams"], 
+    //                             ["Double cream", 200, "ml"],
+    //                             ["Gouda", 50, "grams"],  
+    //                             ["Brown onions", 2, "unit"]];
 
     const recipeMethod = ["Chop onions and fry in pan for 5 minutes",
                         "While onions cook, chop chicken, then add to pan",
@@ -43,7 +44,7 @@ function RecipePage() {
              <div className="recipe-ingredients">
                  <h3>Ingredients</h3>
                  <ul>
-                     {recipeIngredients.map((ingredient, index) => (
+                     {dummyData.recipeIngredients.map((ingredient, index) => (
                          <li key={index}>{ingredient[0]}: {ingredient[1]} {ingredient[2]}</li>
                      ))}
                  </ul>
