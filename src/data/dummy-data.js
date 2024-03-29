@@ -5,6 +5,16 @@
     /* recipeData to include: prep time, cook time, rating, likes/saves */
     const recipeData = [20, 20, 4.5, 200]
 
+
+    const recipeDataObject = {
+        name: "Spicy Tomato Pasta",
+        preptime: 20, 
+        cooktime: 15,
+        servings: 4, 
+        rating: 4.6,
+        likes: 188
+    };
+
     const recipeIngredients = [["Chicken breast", 100, "grams"], 
                                 ["Double cream", 200, "ml"],
                                 ["Gouda", 50, "grams"],
@@ -27,4 +37,4 @@
 
     const recipeSpiel = ["This recipe always reminds me of my mum, who cooks it a lot. In my house there was nothing more summery than a smoky bowl of Spicy Tomato Pasta  etc"]
 
-export default {recipeData, recipeIngredients, recipeMethod, recipeTips, recipeSpiel};
+export default {recipeData, recipeDataObject, recipeIngredients, recipeMethod, recipeTips, recipeSpiel};

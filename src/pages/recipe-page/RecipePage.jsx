@@ -24,22 +24,7 @@ function RecipePage() {
             <MethodCard />
             </div>
 
-             <div className="recipe-ingredients">
-                 <h3>Ingredients</h3>
-                 <ul>
-                     {dummyData.recipeIngredients.map((ingredient, index) => (
-                         <li key={index}>{ingredient[0]}: {ingredient[1]} {ingredient[2]}</li>
-                     ))}
-                 </ul>
-             </div>
-             <div className="recipe-method">
-                 <h3>Method</h3>
-                 <ol>
-                     {dummyData.recipeMethod.map((step, index) => (
-                         <li key={index}>{step}</li>
-                     ))}
-                 </ol>
-             </div>
+
              <div className="recipe-tips">
                  <h3>Tips</h3>
                  <ul>
