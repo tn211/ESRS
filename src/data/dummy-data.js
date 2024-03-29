@@ -7,11 +7,17 @@
 
     const recipeIngredients = [["Chicken breast", 100, "grams"], 
                                 ["Double cream", 200, "ml"],
-                                ["Gouda", 50, "grams"],  
+                                ["Gouda", 50, "grams"],
+                                ["Scotch Bonnett Chillis", 2, "unit"], 
+                                ["Baked Beans", 200, "grams"],
+                                ["Banana", 50, "grams"],   
                                 ["Brown onions", 2, "unit"]];
 
     const recipeMethod = ["Chop onions and fry in pan for 5 minutes",
                         "While onions cook, chop chicken, then add to pan",
+                        "Cook until black and smoky",
+                        "Chop bananas and fry in pan for 5 minutes",
+                        "While bananas cook, chop chillis, then add to pan",
                         "Cook until black and smoky",
                         "etc"];
 

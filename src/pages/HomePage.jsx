@@ -18,9 +18,6 @@ const HomePage = () => {
   return (
     <Layout>
       <div className="card-grid">
-      {/* <Link to="/recipe"><RecipeCard /></Link>
-      <Link to="/recipe"><RecipeCard /></Link>
-      <Link to="/recipe"><RecipeCard /></Link> */}
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>

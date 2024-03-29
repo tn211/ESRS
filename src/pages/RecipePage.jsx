@@ -2,34 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './RecipePage.css';
 import RecipeCard from "../components/RecipeCard";
-import IngredientsCard from "../components/IngredientsCard";
+import IngredientsCard from "../components/ingredients-card/IngredientsCard";
 import Layout from "./Layout";
 import dummyData from "../data/dummy-data";
 
 
 function RecipePage() {
-
-
-    /*dummy values provided in variables for rendering sample page */
-    /* recipeData to include: prep time, cook time, rating, likes/saves */
-    const recipeData = [20, 20, 4.5, 200]
-
-    // const recipeIngredients = [["Chicken breast", 100, "grams"], 
-    //                             ["Double cream", 200, "ml"],
-    //                             ["Gouda", 50, "grams"],  
-    //                             ["Brown onions", 2, "unit"]];
-
-    const recipeMethod = ["Chop onions and fry in pan for 5 minutes",
-                        "While onions cook, chop chicken, then add to pan",
-                        "Cook until black and smoky",
-                        "etc"];
-
-    const recipeTips = ["try adding chocoloate for an unusual twist",
-                        "Don't forget to keep stirring to prevent it going lumpy",
-                        "etc"];
-
-    const recipeSpiel = ["This recipe always reminds me of my mum, who cooks it a lot. In my house there was nothing more summery than a smoky bowl of Spicy Tomato Pasta  etc"]
-
 
     return (
         <>
@@ -52,7 +30,7 @@ function RecipePage() {
              <div className="recipe-method">
                  <h3>Method</h3>
                  <ol>
-                     {recipeMethod.map((step, index) => (
+                     {dummyData.recipeMethod.map((step, index) => (
                          <li key={index}>{step}</li>
                      ))}
                  </ol>
@@ -60,14 +38,14 @@ function RecipePage() {
              <div className="recipe-tips">
                  <h3>Tips</h3>
                  <ul>
-                     {recipeTips.map((tip, index) => (
+                     {dummyData.recipeTips.map((tip, index) => (
                          <li key={index}>{tip}</li>
                      ))}
                  </ul>
              </div>
              <div className="recipe-spiel">
                  <h3>Story Behind the Recipe</h3>
-                 {recipeSpiel.map((paragraph, index) => (
+                 {dummyData.recipeSpiel.map((paragraph, index) => (
                      <p key={index}>{paragraph}</p>
                  ))}
              </div>
