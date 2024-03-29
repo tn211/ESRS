@@ -1,6 +1,6 @@
 // import chicken1 from '../assets/chicken1.jpg'
 // <img src="src\assets\FOOD.jpg" alt="Image 1" />
-import FOOD from '../assets/FOOD.jpg'
+import FOOD from '../../assets/FOOD.jpg'
 import './RecipeCard.css';
 
 const recipeData = ["Spicy Tomato Pasta", 20, 15, 4.6, 188]

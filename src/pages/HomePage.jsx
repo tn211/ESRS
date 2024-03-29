@@ -4,7 +4,7 @@ import LogoutButton from "../components/LogoutButton"; // replace with the actua
 import './HomePage.css';
 import { HiUserCircle } from "react-icons/hi2";
 import Layout from "./Layout";
-import RecipeCard from "../components/RecipeCard";
+import RecipeCard from "../components/recipe-card/RecipeCard";
 
 
 const divStyle = {
