@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './RecipePage.css';
-import RecipeCard from "../components/recipe-card/RecipeCard";
-import IngredientsCard from "../components/ingredients-card/IngredientsCard";
-import Layout from "./Layout";
-import dummyData from "../data/dummy-data";
+import RecipeCard from "../../components/recipe-card/RecipeCard";
+import IngredientsCard from "../../components/ingredients-card/IngredientsCard";
+import Layout from "../Layout";
+import dummyData from "../../data/dummy-data";
 
 
 function RecipePage() {
