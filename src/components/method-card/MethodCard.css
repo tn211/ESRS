@@ -1,8 +1,4 @@
-h1 { 
-    color: red;
-}
-
-.ingredients-header {
+.method-header {
     text-align: left; 
     text-indent: 40px;
     border-bottom: solid black 1px;
@@ -14,7 +10,7 @@ h1 {
 }
 
 
-.ingredients-card {
+.method-card {
     border: 5px solid #86a595;
     border-radius: 10px;
     box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1); 
@@ -26,7 +22,7 @@ h1 {
     font-family: 'Arial', sans-serif;
   }
 
-.ingredients-card li {
+.method-card li {
     text-align: left;
     font-weight: bold;
 }

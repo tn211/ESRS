@@ -10,7 +10,7 @@ function IngredientsCard(){
             <div className="recipe-ingredients">
                  <ul>
                      {dummyData.recipeIngredients.map((ingredient, index) => (
-                         <li key={index}>{ingredient[0]}: {ingredient[1]} {ingredient[2]}</li>
+                         <li key={index}>{ingredient[1]} {ingredient[2]} {ingredient[0]}</li>
                      ))}
                  </ul>
              </div>

@@ -5,6 +5,7 @@ import RecipeCard from "../../components/recipe-card/RecipeCard";
 import IngredientsCard from "../../components/ingredients-card/IngredientsCard";
 import Layout from "../Layout";
 import dummyData from "../../data/dummy-data";
+import MethodCard from '../../components/method-card/MethodCard';
 
 
 function RecipePage() {
@@ -17,6 +18,10 @@ function RecipePage() {
 
             <div>
             <IngredientsCard />
+            </div>
+
+            <div>
+            <MethodCard />
             </div>
 
              <div className="recipe-ingredients">
