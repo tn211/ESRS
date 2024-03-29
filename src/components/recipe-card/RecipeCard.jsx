@@ -4,7 +4,6 @@ import FOOD from '../../assets/FOOD.jpg'
 import './RecipeCard.css';
 import dummyData from "../../data/dummy-data";
 
-const recipeData = ["Spicy Tomato Pasta", 20, 15, 4.6, 188]
 
 function RecipeCard(){
     return(
