@@ -6,13 +6,13 @@ function TipsCard(){
     return(
         <>
             <div className="tips-card">
-            <h2 className='tips-header'>Method</h2>
+            <h2 className='tips-header'>Tips</h2>
             <div className="recipe-tips">
-                 <ol>
+                 <ul>
                      {dummyData.recipeTips.map((tip, index) => (
                          <li key={index}>{tip}</li>
                      ))}
-                 </ol>
+                 </ul>
              </div>
             </div>
         </>

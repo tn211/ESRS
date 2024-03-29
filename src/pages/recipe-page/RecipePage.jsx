@@ -30,14 +30,6 @@ function RecipePage() {
             </div>
 
 
-             <div className="recipe-tips">
-                 <h3>Tips</h3>
-                 <ul>
-                     {dummyData.recipeTips.map((tip, index) => (
-                         <li key={index}>{tip}</li>
-                     ))}
-                 </ul>
-             </div>
              <div className="recipe-spiel">
                  <h3>Story Behind the Recipe</h3>
                  {dummyData.recipeSpiel.map((paragraph, index) => (
