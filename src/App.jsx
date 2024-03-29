@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage";
 import RecipeEntryPage from "./pages/RecipeEntryPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
 import AddIngredientsPage from "./pages/AddIngredientsPage";
-import RecipePage from "./pages/RecipePage";
+import RecipePage from "./pages/recipe-page/RecipePage";
 
 function App() {
   const [session, setSession] = useState(null);
