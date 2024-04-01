@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    padding-top: 60px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* Take up the full width of the viewport */
+    padding: 10px;
+    background: #86a595;
+    color: #fff;
+
+}
+
+footer {
+    position: fixed;
+    flex-direction: column;
+    display: flex;
+    bottom: 0;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background: #86a595;
+    color: #fff;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+
+
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin-top: 30px;
+
+    /* Allow the menu to grow and take remaining vertical space */
+}
+
+.logo {
+    margin-top: 30px;
+    /* Adjust spacing between logo and menu */
+}
+
+.logo img {
+    padding-left: 50px;
+
+    width: 500px;
+    /* Adjust logo width as needed */
+    height: 100px;
+    /* Adjust logo height as needed */
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-left: 100px;
+    margin-right: 100px;
+    justify-content: center;
+    /* Adjust spacing between menu items */
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+nav a:hover {
+    color: #000000;
+    /* Adjust the color for the hover effect */
+}
+
+/* Add some padding to the body to account for the fixed header */
+
+.icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    margin-right: 100px;
+    margin-top: 30px;
+}
+
+.icon {
+    width: 30px;
+    /* Adjust the width and height as needed */
+    height: 30px;
+    color: white;
+
+}
+
+.icon:hover {
+    color: #000000;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    margin-right: 50px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .icon-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+        margin-right: 30px;
+        margin-top: 80px;
+    }
+
+    /* Adjust menu for smaller screens */
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        /* Adjust this value based on your header height */
+        left: 0;
+        width: 100%;
+        background: #86a595;
+        padding: 20px;
+
+    }
+
+    .menu-open .menu {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 9999;
+    }
+
+    .header.menu-open {
+        padding-bottom: 50px;
+    }
+}

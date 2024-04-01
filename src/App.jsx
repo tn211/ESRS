@@ -31,7 +31,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/my-recipes" element={<UserRecipesPage supabase={supabase} />} />
+            <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/add-recipe" element={<RecipeEntryPage supabase={supabase} />} />
             <Route path="/add-ingredients" element={<AddIngredientsPage />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
