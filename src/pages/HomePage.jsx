@@ -40,7 +40,7 @@ const HomePage = () => {
           <p style={divStyle}>Text underneath image 6</p>
         </div>
       </div>
-
+      <Link to="/add-ingredient">Add Ingredient</Link>
 
     </Layout>
   );
