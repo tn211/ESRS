@@ -4,6 +4,9 @@ import LogoutButton from "../components/LogoutButton"; // replace with the actua
 import './HomePage.css';
 import { HiUserCircle } from "react-icons/hi2";
 import Layout from "./Layout";
+import RecipeCard from "../components/recipe-card/RecipeCard";
+
+
 const divStyle = {
 
   color: 'black',
@@ -14,10 +17,24 @@ const divStyle = {
 const HomePage = () => {
   return (
     <Layout>
+      <div className="card-grid">
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+      </div>
       <div className="image-grid">
         <div className="image-item">
           <img src="src\assets\FOOD.jpg" alt="Image 1" />
-          <p style={divStyle}>Text underneath image 1</p>
+          <p style={divStyle}>TESTING MERGE CHANGES: image 1</p>
         </div>
         <div className="image-item">
           <img src="src\assets\FOOD.jpg" alt="Image 2" />
