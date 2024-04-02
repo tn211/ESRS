@@ -1,0 +1,46 @@
+.recipe-card {
+    border: 5px solid #86a595;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1); 
+    margin: 10px;
+    text-align: center;
+    width: 80%;
+    display: inline-block;
+    background: #86a595;
+    font-family: 'Arial', sans-serif;
+    height: auto;
+  }
+
+.recipe-card .img-wrapper {
+    width: 100%; /* adjust this as needed to fit design */
+    /* padding-top: 60%; /* Creates a square aspect ratio */  
+    position: relative; /* enables absolute positioning for the child img */
+    overflow: hidden; /* ensures the image doesn't overflow the circular shape */
+    margin: auto; /* center the wrapper if needed */
+    margin-bottom: 10px; /* Space below the image */ 
+    border-radius: 5px;
+}
+
+.recipe-card .img-wrapper img {
+    width: 100%; /* Limits the image to not exceed the wrapper's width */
+    height: auto; /* Maintain aspect ratio */
+    height: 50%; /* Adjust this to set the maximum height you want */
+    object-fit: cover; /* This will cover the area, cropping the image if necessary */
+}
+
+.recipe-card .recipe-name {
+    color: black;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    border-top: solid 1px black;
+}
+
+
+.recipe-card  .card-bits {
+    font-weight: bold;
+    border-top: solid 1px black;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
