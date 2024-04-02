@@ -7,8 +7,8 @@ import Account from "./pages/Account";
 import HomePage from "./pages/HomePage";
 import RecipeEntryPage from "./pages/RecipeEntryPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
-import AddIngredientsPage from "./pages/AddIngredientsPage";
-import RecipePage from "./pages/recipe-page/RecipePage";
+import AvatarPage from './components/AvatarPage';
+import RecipePage from "./pages/RecipePage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -36,6 +36,8 @@ function App() {
             <Route path="/add-ingredients" element={<AddIngredientsPage />} />
             <Route path="/recipe" element={<RecipePage />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
+            <Route path="/recipe" element={<RecipePage />} />
+            <Route path="/avatar" element={<AvatarPage session={session} />} />
           </Routes>
         </Router>
       )}
