@@ -14,7 +14,7 @@ function RecipePage() {
     return (
         <>
             <Layout>
-                {/* <h1>TESTING RECIPE PAGE</h1> */}
+                <h1>TESTING RECIPE PAGE</h1>
             <RecipeCard />
 
             <div>
