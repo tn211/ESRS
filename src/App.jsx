@@ -7,7 +7,6 @@ import Account from "./pages/Account";
 import HomePage from "./pages/HomePage";
 import RecipeEntryPage from "./pages/RecipeEntryPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
-import AddIngredientsPage from "./pages/AddIngredientsPage";
 import AvatarPage from './components/AvatarPage';
 
 function App() {
@@ -32,8 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/add-recipe" element={<RecipeEntryPage supabase={supabase} />} />
-            <Route path="/add-ingredients" element={<AddIngredientsPage />} />
+            <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
             <Route path="/avatar" element={<AvatarPage session={session} />} />
           </Routes>

@@ -1,62 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
-import uploadImage from '../utils/uploadImage'; // Ensure this function is correctly set up for file uploads
+import uploadImage from '../utils/uploadImage';
 
-const RecipeEntryPage = () => {
+const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
   const [submitting, setSubmitting] = useState(false);
+  const [ingredients, setIngredients] = useState([{ name: '', quantity: '' }]);
 
-  // Register the file input for react-hook-form
-  React.useEffect(() => {
-    register('image'); // Manually register the file input
+  useEffect(() => {
+    register('image');
   }, [register]);
+
+  const addIngredientField = () => {
+    setIngredients(currentIngredients => [...currentIngredients, { name: '', quantity: '' }]);
+  };
+
+  const removeIngredientField = index => {
+    setIngredients(currentIngredients => currentIngredients.filter((_, i) => i !== index));
+  };
 
   const onSubmit = async (data) => {
     setSubmitting(true);
-    const { title, description, instructions, ingredients, image } = data; // Changed to 'image'
 
     try {
-      // Assuming 'image' is a File object
-      const uploadedImageUrl = await uploadImage(image[0]); // Pass the first file object
+      let uploadedImageUrl;
+      if (data.image && data.image.length) {
+        const filePath = await uploadImage(data.image[0], 'recipe-images');
+        uploadedImageUrl = filePath;
+      } else {
+        uploadedImageUrl = null; // Handle cases where no image is uploaded
+        }
 
-      // Create the recipe with the uploaded image URL
       const { data: recipeData, error: recipeError } = await supabase
         .from('recipes')
         .insert([
           {
-            title,
-            description,
-            instructions,
-            image_url: uploadedImageUrl, // Use the uploaded image URL
-            profile_id: supabase.auth.user().id,
-          },
-        ]);
-
+            title: data.title,
+            description: data.description,
+            instructions: data.instructions,
+            image_url: uploadedImageUrl,
+            profile_id: session.user.id,
+          }, 
+        ])
+          
       if (recipeError) {
-        console.error('Error inserting recipe:', recipeError);
+        console.error('Insert recipe error:', recipeError.message);
+        alert(`Submission error: ${recipeError.message}`);
         setSubmitting(false);
         return;
-      }
+       } // Exit the function early on error
 
-      // Assuming ingredients is an array of { name, quantity }
+      if (!recipeData) {
+        console.error('No recipe data returned from insert operation.');
+        alert('No recipe data returned from insert operation.');
+        setSubmitting(false);
+        return; // Exit the function early if no data is returned
+    }
+
+      console.log('Inserted recipe data:', recipeData);
+
+      const recipeId = recipeData[0].id;
       const ingredientsWithRecipeId = ingredients.map(ingredient => ({
         ...ingredient,
-        recipe_id: recipeData[0].id, // Assuming the key is 'id'
+        recipe_id: recipeId,
       }));
 
       const { error: ingredientsError } = await supabase
         .from('ingredients')
         .insert(ingredientsWithRecipeId);
 
-      if (ingredientsError) {
-        console.error('Error inserting ingredients:', ingredientsError);
-      }
+      if (ingredientsError) throw ingredientsError;
 
-      setSubmitting(false);
-      // Redirect or show success message
+      alert('Recipe added successfully!');
+      // Consider resetting form fields here
     } catch (error) {
+      alert(`Submission error: ${error.message}`);
       console.error('Submission error:', error);
+    } finally {
       setSubmitting(false);
     }
   };
@@ -80,20 +101,46 @@ const RecipeEntryPage = () => {
       </div>
       <div>
         <label>Ingredients</label>
-        <input {...register('ingredients', { required: true })} placeholder="Name, Quantity" />
-        {errors.ingredients && <span>This field is required</span>}
+        {ingredients.map((ingredient, index) => (
+          <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+            <input
+              {...register(`ingredients[${index}].name`, { required: true })}
+              placeholder="Ingredient Name"
+              defaultValue={ingredient.name}
+              style={{ marginRight: '5px' }}
+            />
+            <input
+              {...register(`ingredients[${index}].quantity`, { required: true })}
+              placeholder="Quantity"
+              defaultValue={ingredient.quantity}
+              style={{ marginRight: '5px' }}
+            />
+            <button 
+              type="button"
+              onClick={() => removeIngredientField(index)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'red', fontWeight: 'bold' }}
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+        <button type="button" onClick={addIngredientField} style={{ marginTop: '10px' }}>
+          Add Ingredient
+        </button>
       </div>
       <div>
         <label>Image</label>
         <input 
           type="file" 
-          onChange={(e) => setValue('image', e.target.files)} // Update for file input
+          {...register("image")}
+          onChange={(e) => setValue('image', e.target.files, { shouldValidate: true })}
           disabled={submitting}
         />
       </div>
-      <button type="submit" disabled={submitting}>Submit</button>
+      <button type="submit" disabled={submitting}>Submit Recipe</button>
     </form>
   );
+
 };
 
 export default RecipeEntryPage;
