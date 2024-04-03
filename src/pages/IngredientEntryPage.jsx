@@ -1,89 +1,66 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
 
-const IngredientEntryPage = ({ session }) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [submitting, setSubmitting] = useState(false);
-  const [recipeTitle, setRecipeTitle] = useState('');
-  const [recipeDescription, setRecipeDescription] = useState('');
-  const [recipeInstructions, setRecipeInstructions] = useState('');
-  const [recipeImageUrl, setRecipeImageUrl] = useState('');
+function IngredientEntryPage({ session }) {
+  const [name, setName] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [recipeId, setRecipeId] = useState('');
 
-  const onSubmit = async (data) => {
-    setSubmitting(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    try {
-      // Insert recipe details first
-      const { data: recipeData, error: recipeError } = await supabase
-        .from('recipes')
-        .insert([
-          {
-            title: recipeTitle,
-            description: recipeDescription,
-            instructions: recipeInstructions,
-            image_url: recipeImageUrl,
-            profile_id: session.user.id,
-          },
-        ])
-        .single();
+    const { error } = await supabase
+      .from('ingredients')
+      .insert([
+        { name, quantity, profile_id: session.user.id, recipe_id: recipeId },
+      ]);
 
-      if (recipeError) throw recipeError;
-
-      // Use the recipe_id from the inserted recipe for the ingredient
-      const recipeId = recipeData.id;
-      const { error: ingredientError } = await supabase
-        .from('ingredients')
-        .insert([
-          {
-            ...data, // Assuming data contains ingredient details
-            recipe_id: recipeId,
-            profile_id: session.user.id,
-          },
-        ]);
-
-      if (ingredientError) throw ingredientError;
-
-      alert('Recipe and ingredient added successfully!');
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert(`Submission error: ${error.message}`);
-    } finally {
-      setSubmitting(false);
+    if (error) {
+      alert(error.message);
+    } else {
+      alert('Ingredient added successfully!');
+      // Reset form
+      setName('');
+      setQuantity('');
+      setRecipeId('');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>Title</label>
-        <input value={recipeTitle} onChange={(e) => setRecipeTitle(e.target.value)} required />
-      </div>
-      <div>
-        <label>Description</label>
-        <textarea value={recipeDescription} onChange={(e) => setRecipeDescription(e.target.value)} required></textarea>
-      </div>
-      <div>
-        <label>Instructions</label>
-        <textarea value={recipeInstructions} onChange={(e) => setRecipeInstructions(e.target.value)} required></textarea>
-      </div>
-      <div>
-        <label>Image URL</label>
-        <input value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} />
-      </div>
-      <div>
-        <label>Name</label>
-        <input {...register('name', { required: true })} />
-        {errors.name && <span>This field is required</span>}
-      </div>
-      <div>
-        <label>Quantity</label>
-        <input {...register('quantity', { required: true })} />
-        {errors.quantity && <span>This field is required</span>}
-      </div>
-      <button type="submit" disabled={submitting}>Submit Ingredient</button>
-    </form>
+    <div>
+      <h2>Add Ingredient</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Ingredient Name:</label>
+          <input
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="quantity">Quantity:</label>
+          <input
+            id="quantity"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="recipeId">Recipe ID:</label>
+          <input
+            id="recipeId"
+            value={recipeId}
+            onChange={(e) => setRecipeId(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Add Ingredient</button>
+      </form>
+    </div>
   );
-};
+}
 
 export default IngredientEntryPage;
