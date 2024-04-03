@@ -28,7 +28,10 @@ const RecipeEntryPage = ({ session }) => {
           instructions: data.instructions,
           profile_id: session.user.id,
         })
+        .select()
         .single();
+
+      console.log('recipeData:', recipeData)
 
       if (recipeError) {
         console.error('Recipe insertion error:', recipeError);
@@ -36,11 +39,11 @@ const RecipeEntryPage = ({ session }) => {
       }
 
       // Check if recipeData is valid and has an id
-      if (!recipeData || typeof recipeData.id === 'undefined') {
+      if (!recipeData || typeof recipeData.recipe_id === 'undefined') {
         throw new Error('Failed to obtain recipe ID.');
       }
 
-      const recipeId = recipeData.id;
+      const recipeId = recipeData.recipe_id;
       console.log('Recipe inserted with ID:', recipeId);
 
       // Sequentially insert ingredients
