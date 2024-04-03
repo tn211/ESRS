@@ -33,47 +33,6 @@ const HomePage = () => {
       </div>
 
 
-      <div className="image-grid">
-        <div className="image-item">
-          <Link to="/recipe">
-            <img src="src\assets\FOOD.jpg" alt="Image 1" />
-          </Link>
-          <p style={divStyle}>Text underneath image 1</p>
-        </div>
-        <div className="image-item">
-          <Link to="/recipe">
-            <img src="src\assets\FOOD.jpg" alt="Image 2" />
-          </Link>
-          <p style={divStyle}>Text underneath image 2</p>
-        </div>
-        <div className="image-item">
-          <Link to="/recipe">
-            <img src="src\assets\FOOD.jpg" alt="Image 3" />
-          </Link>
-          <p style={divStyle}>Text underneath image 3</p>
-        </div>
-        <div className="image-item">
-        <Link to="/recipe">
-            <img src="src\assets\FOOD.jpg" alt="Image 4" />
-          </Link>
-          <p style={divStyle}>Text underneath image 4</p>
-        </div>
-        <div className="image-item">
-        <Link to="/recipe">
-            <img src="src\assets\FOOD.jpg" alt="Image 5" />
-          </Link>
-          <p style={divStyle}>Text underneath image 5</p>
-        </div>
-        <div className="image-item">
-        <Link to="/recipe">
-            <img src="src\assets\FOOD.jpg" alt="Image 6" />
-          </Link>
-          <p style={divStyle}>Text underneath image 6</p>
-        </div>
-      </div>
-
-
-
     </Layout>
   );
 
