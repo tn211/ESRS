@@ -1,9 +1,14 @@
+main {
+    padding-top: 60px; /* prevents the top of main being hidden behind top of nav bar */
+  }
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     background-color: #ffffff;
-    padding-top: 60px;
+    /* padding-top: 60px; */
 }
+
 
 header {
     position: fixed;
@@ -16,7 +21,8 @@ header {
     padding: 10px;
     background: #86a595;
     color: #fff;
-
+    z-index: 1000; /* ensure header is above other content */
+    border-bottom: solid 1px black;
 }
 
 footer {
@@ -30,9 +36,9 @@ footer {
     background: #86a595;
     color: #fff;
     font-size: larger;
-    font-family: 'Times New Roman', Times, serif;
-
-
+    font-family: 'Arial', sans-serif;
+    z-index: 1000; /* ensure header is above other content */
+    border-top: solid 1px black;
 }
 
 
@@ -78,7 +84,8 @@ nav a {
     text-decoration: none;
     color: #fff;
     font-size: larger;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
 }
 
 nav a:hover {
