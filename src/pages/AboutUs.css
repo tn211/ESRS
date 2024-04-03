@@ -1,0 +1,25 @@
+.about-us-page {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .header {
+    /* Your header styles */
+  }
+  
+  .main-content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2em;
+  }
+  
+  .main-content h1 {
+    font-size: 2.5em;
+    color: #444;
+  }
+  
+  .footer {
+    /* Your footer styles */
+  }
+  
