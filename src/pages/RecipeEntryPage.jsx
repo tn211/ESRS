@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
+import { Link } from "react-router-dom";
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -19,7 +20,7 @@ const RecipeEntryPage = ({ session }) => {
     setSubmitting(true);
 
     try {
-      // Insert the recipe
+      // Insert the recipe and retrieve the recipe ID
       const { data: recipeData, error: recipeError } = await supabase
         .from('recipes')
         .insert({
@@ -31,43 +32,30 @@ const RecipeEntryPage = ({ session }) => {
         .select()
         .single();
 
-      console.log('recipeData:', recipeData)
+      if (recipeError) throw recipeError;
 
-      if (recipeError) {
-        console.error('Recipe insertion error:', recipeError);
-        throw recipeError;
-      }
+      const recipeId = recipeData.recipe_id; // Assuming the ID field is 'id'
 
-      // Check if recipeData is valid and has an id
-      if (!recipeData || typeof recipeData.recipe_id === 'undefined') {
-        throw new Error('Failed to obtain recipe ID.');
-      }
+      console.log('recipeID', recipeId)
 
-      const recipeId = recipeData.recipe_id;
-      console.log('Recipe inserted with ID:', recipeId);
-
-      // Sequentially insert ingredients
-      for (const ingredient of ingredients) {
-        console.log('Inserting ingredient:', ingredient);
+      // Insert ingredients using the retrieved recipe ID
+      for (const ingredient of data.ingredients) {
         const { error: ingredientError } = await supabase
           .from('ingredients')
           .insert({
             name: ingredient.name,
             quantity: ingredient.quantity,
-            recipe_id: recipeId,
+            recipe_id: recipeId, // Use the retrieved recipe ID
             profile_id: session.user.id,
           });
 
-        if (ingredientError) {
-          console.error('Ingredient insertion error:', ingredientError);
-          throw ingredientError;
-        }
+        if (ingredientError) throw ingredientError;
       }
 
-      console.log('All ingredients inserted successfully.');
-      setIngredients([{ name: '', quantity: '' }]); // Reset for new entries
+      alert('Recipe and ingredients added successfully!');
     } catch (error) {
       console.error('Submission error:', error);
+      alert(`Submission error: ${error.message}`);
     } finally {
       setSubmitting(false);
     }
@@ -102,6 +90,9 @@ const RecipeEntryPage = ({ session }) => {
       ))}
       <button type="button" onClick={addIngredientField}>Add Ingredient</button>
       <button type="submit" disabled={submitting}>Submit Recipe</button>
+      <div>
+        <Link to="/">Back to Home</Link>
+        </div>
     </form>
   );
 };
