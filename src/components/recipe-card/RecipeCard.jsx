@@ -11,7 +11,7 @@ function RecipeCard(){
                 <div className='img-wrapper'>
                     <img alt="recipe picture" src={FOOD}></img>
                 </div>
-                <h2 class="recipe-name">{dummyData.recipeDataObject.name}</h2>
+                <h2 className="recipe-name">{dummyData.recipeDataObject.name}</h2>
             </div>
             <div className='card-bits'>
                 <p>Cooking time: {dummyData.recipeDataObject.cooktime} minutes</p>
