@@ -28,9 +28,6 @@ const Layout = ({ children }) => {
                         <Link to="/add-recipe">Add Recipe</Link>
                     </li>
                     <li>
-                        <Link to="/add-ingredient">Add Ingredients</Link>
-                    </li>
-                    <li>
                         <Link to="/my-recipes">My Recipes</Link>
                     </li>
                     <li>

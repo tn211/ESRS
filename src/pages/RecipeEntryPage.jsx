@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
+import { Link } from "react-router-dom";
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -89,6 +90,9 @@ const RecipeEntryPage = ({ session }) => {
       ))}
       <button type="button" onClick={addIngredientField}>Add Ingredient</button>
       <button type="submit" disabled={submitting}>Submit Recipe</button>
+      <div>
+        <Link to="/">Back to Home</Link>
+        </div>
     </form>
   );
 };
