@@ -93,7 +93,6 @@ const RecipeEntryPage = ({ session }) => {
             <option value="tsp">tsp</option>
             <option value="tbsp">tbsp</option>
             <option value="pinch">pinch</option>
-            <option value="to-taste">to taste</option>
             <option value="grams">grams</option>
             <option value="mL">mL</option>  
             <option value="L">L</option>
