@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
+import Dropdown from '../components/dropdown/Dropdown';
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -92,6 +93,13 @@ const RecipeEntryPage = ({ session }) => {
       <button type="button" onClick={addIngredientField}>Add Ingredient</button>
       <button type="submit" disabled={submitting}>Submit Recipe</button>
       <div>
+
+      <div className="dropdown">
+        <h1>React Dropdown Example</h1>
+        <Dropdown />
+      </div>
+
+
         <Link to="/">Back to Home</Link>
         </div>
     </form>
