@@ -28,6 +28,7 @@ const RecipeEntryPage = ({ session }) => {
           description: data.description,
           instructions: data.instructions,
           profile_id: session.user.id,
+          created_at: new Date().toISOString(),
         })
         .select()
         .single();

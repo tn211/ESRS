@@ -49,7 +49,9 @@ const RecipeDetail = ({ supabase }) => {
         </ul>
       </div>
       <div>
-        <Link to="/my-recipes">Back to Recipes</Link>
+        <Link to="/my-recipes">My Recipes</Link>
+        <br />
+        <Link to="/recent-recipes">Recently Added</Link>
         <br />
         <Link to="/">Back to Home</Link>
       </div>
