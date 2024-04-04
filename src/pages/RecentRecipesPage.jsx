@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import Layout from './Layout';
 import { Link } from 'react-router-dom'; // Import Link
+import './RecentRecipesPage.css';
 
 const RecentRecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
