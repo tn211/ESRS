@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 const RecipesList = ({ supabase, userId }) => {
   const [recipes, setRecipes] = useState([]);
@@ -8,7 +9,7 @@ const RecipesList = ({ supabase, userId }) => {
     const fetchRecipes = async () => {
       const { data, error } = await supabase
         .from("recipes")
-        .select("*")
+        .select("title, recipe_id")
         .eq("profile_id", userId);
 
       if (error) {
@@ -30,8 +31,7 @@ const RecipesList = ({ supabase, userId }) => {
         <ul>
           {recipes.map((recipe) => (
             <li key={recipe.recipe_id}>
-              <h2>{recipe.title}</h2>
-              <p>{recipe.description}</p>
+              <Link to={`/recipes/${recipe.recipe_id}`}>{recipe.title}</Link>
             </li>
           ))}
         </ul>
