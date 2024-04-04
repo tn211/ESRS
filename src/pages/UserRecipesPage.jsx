@@ -23,7 +23,15 @@ const UserRecipesPage = ({ session }) => {
 
       const { data, error } = await supabase
         .from('recipes')
-        .select('*')
+        .select(`
+          *,
+          ingredients (
+            ingredient_id,
+            name,
+            quantity,
+            recipe_id
+          )
+        `)
         .eq('profile_id', session.user.id);
 
       if (error) {
@@ -32,7 +40,7 @@ const UserRecipesPage = ({ session }) => {
         return;
       }
 
-      console.log("Recipes fetched successfully:", data);
+      console.log("Recipes and ingredients fetched successfully:", data);
       setRecipes(data);
       setLoading(false);
     };

@@ -8,7 +8,15 @@ const RecipesList = ({ supabase, userId }) => {
     const fetchRecipes = async () => {
       const { data, error } = await supabase
         .from("recipes")
-        .select("*")
+        .select(`
+          *,
+          ingredients (
+            ingredient_id,
+            name,
+            quantity,
+            recipe_id
+          )
+        `)
         .eq("profile_id", userId);
 
       if (error) {
@@ -32,6 +40,13 @@ const RecipesList = ({ supabase, userId }) => {
             <li key={recipe.recipe_id}>
               <h2>{recipe.title}</h2>
               <p>{recipe.description}</p>
+              <p><strong>Instructions:</strong> {recipe.instructions}</p>
+              <h3>Ingredients:</h3>
+              <ul>
+                {recipe.ingredients.map((ingredient) => (
+                  <li key={ingredient.ingredient_id}>{ingredient.name} - {ingredient.quantity}</li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
