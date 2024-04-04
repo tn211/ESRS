@@ -14,7 +14,8 @@ const RecipeDetail = ({ supabase }) => {
           ingredients (
             ingredient_id,
             name,
-            quantity
+            quantity,
+            unit
           )
         `)
         .eq('recipe_id', recipeId)
@@ -44,7 +45,7 @@ const RecipeDetail = ({ supabase }) => {
         <h3>Ingredients:</h3>
         <ul>
           {recipe.ingredients.map((ingredient) => (
-            <li key={ingredient.ingredient_id}>{ingredient.name} - {ingredient.quantity}</li>
+            <li key={ingredient.ingredient_id}>{ingredient.name} - {ingredient.quantity} {ingredient.unit}</li>
           ))}
         </ul>
       </div>
