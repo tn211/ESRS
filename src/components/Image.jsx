@@ -50,7 +50,6 @@ export default function RecipeImageUpload({ url, size, onUpload }) {
     } catch (error) {
       console.error('Error uploading image:', error); 
     } finally {
-      // Ensure setUploading(false) is called regardless of success or failure
       setUploading(false);
     }
   }

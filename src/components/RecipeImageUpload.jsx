@@ -22,10 +22,7 @@ export default function RecipeImageUpload({ onUploadComplete }) {
       if (uploadError) {
         throw uploadError;
       }
-
-      // This part deviates from the original intent to directly construct a URL
-      // Instead, consider invoking onUploadComplete with filePath if needed,
-      // similar to how Avatar.jsx might handle it after a successful upload.
+      
       onUploadComplete?.(filePath);
 
     } catch (error) {

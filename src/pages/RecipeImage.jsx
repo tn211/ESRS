@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
-import RecipeImageUpload from '../components/RecipeImageUpload';
+import Image from '../components/Image';
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [submitting, setSubmitting] = useState(false);
-  const [recipeImageUrl, setRecipeImageUrl] = useState('');
+  const [recipeURL, setRecipeURL] = useState(null);
+  const [loading, setLoading] = useState(true)
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
 
   const addIngredientField = () => {
@@ -19,7 +20,7 @@ const RecipeEntryPage = ({ session }) => {
   };
 
   const handleImageUpload = (filePath) => { 
-    setRecipeImageUrl(filePath);
+    setRecipeURL(filePath);
   };
 
   const onSubmit = async (data) => {
@@ -33,20 +34,48 @@ const RecipeEntryPage = ({ session }) => {
           title: data.title,
           description: data.description,
           instructions: data.instructions,
-          image_url: recipeImageUrl, // Recipe's image URL
+          image_url: data.image_url,
           profile_id: session.user.id,
           created_at: new Date().toISOString(),
         })
         .select()
         .single();
 
-      if (recipeError) throw recipeError;
+        if (!ignore) {
+            if (recipeError) {
+              console.warn(recipeError)
+            } else if (data) {
+              setRecipeURL(data.image_url)
+            }
+          }    
 
       const recipeId = recipeData.recipe_id; 
+      const imageURL = recipeData.image_url;
 
       console.log('recipeID', recipeId)
+      console.log('imageURL', imageURL)
 
-      // Insert ingredients using the retrieved recipe ID
+      async function updateImage(event, imageUrl) {
+        event.preventDefault()
+    
+        setLoading(true)
+        const { recipeData } = recipeData
+    
+        const updates = {
+          id: recipeData.recipe.id,
+          image_url: imageUrl,
+        }
+    
+        const { error } = await supabase.from('recipes').upsert(updates)
+    
+        if (error) {
+          alert(error.message)
+        } else {
+          setRecipeURL(imageUrl)
+        }
+        setLoading(false)
+      }
+
       for (const ingredient of data.ingredients) {
         const { error: ingredientError } = await supabase
           .from('ingredients')
@@ -54,7 +83,7 @@ const RecipeEntryPage = ({ session }) => {
             name: ingredient.name,
             quantity: ingredient.quantity,
             unit: ingredient.unit, 
-            recipe_id: recipeId, // Use the retrieved recipe ID
+            recipe_id: recipeId,
             profile_id: session.user.id,
           });
 
@@ -72,6 +101,13 @@ const RecipeEntryPage = ({ session }) => {
   
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+        <Image
+              url={recipeURL}
+              size={150}
+              onUpload={(event, url) => {
+                  updateImage(event, url)
+              }}
+          />
       <div>
         <label>Title</label>
         <input {...register('title', { required: true })} />
@@ -84,7 +120,6 @@ const RecipeEntryPage = ({ session }) => {
         <label>Instructions</label>
         <textarea {...register('instructions', { required: true })} />
       </div>
-      <RecipeImageUpload onUpload={setRecipeImageUrl} />
       {ingredients.map((ingredient, index) => (
         <div key={index}>
           <input
