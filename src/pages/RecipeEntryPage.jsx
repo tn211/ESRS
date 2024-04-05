@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
-import Dropdown from '../components/dropdown/Dropdown';
+import RecipeImageUpload from '../components/RecipeImageUpload';
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [submitting, setSubmitting] = useState(false);
+  const [recipeImageUrl, setRecipeImageUrl] = useState('');
+
+  // Initialize the ingredients state here
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
 
   const addIngredientField = () => {
@@ -15,6 +18,10 @@ const RecipeEntryPage = ({ session }) => {
 
   const removeIngredientField = (index) => {
     setIngredients(ingredients.filter((_, i) => i !== index));
+  };
+
+  const handleImageUpload = (filePath) => { // Adjusted to directly use filePath
+    setRecipeImageUrl(filePath);
   };
 
   const onSubmit = async (data) => {
@@ -28,6 +35,7 @@ const RecipeEntryPage = ({ session }) => {
           title: data.title,
           description: data.description,
           instructions: data.instructions,
+          image_url: recipeImageUrl, // Include the image URL in the insertion data
           profile_id: session.user.id,
           created_at: new Date().toISOString(),
         })
@@ -78,6 +86,7 @@ const RecipeEntryPage = ({ session }) => {
         <label>Instructions</label>
         <textarea {...register('instructions', { required: true })} />
       </div>
+      <RecipeImageUpload onUpload={setRecipeImageUrl} />
       {ingredients.map((ingredient, index) => (
         <div key={index}>
           <input
