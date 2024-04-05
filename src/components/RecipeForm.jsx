@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import 'C:/Users/yunus/ESRS/src/pages/RecipeForm.css';
 
 const RecipeForm = ({ supabase }) => {
   const [title, setTitle] = useState("");
+  const [servings, setServings] = useState("");
   const [description, setDescription] = useState("");
   const [instructions, setInstructions] = useState("");
   const [image_url, setImageUrl] = useState("");
@@ -10,12 +12,16 @@ const RecipeForm = ({ supabase }) => {
   const user_id = 1; // ID of the test user
 
   const handleSubmit = async (e) => {
+    console.log('Form submitted', { title, description, instructions, image_url});
     e.preventDefault();
 
     const { data, error } = await supabase.from("recipes").insert([
       {
-        user_id, // Use the hardcoded test user's ID
+        //user_id, // Use the hardcoded test user's ID
+        //yz note: order of entry in supabase column. Cut out user_id
+        // as this is not first column in table
         title,
+        servings,
         description,
         instructions,
         image_url,
@@ -33,6 +39,7 @@ const RecipeForm = ({ supabase }) => {
       }
       // Optionally reset form fields or handle success (e.g., redirect)
       setTitle("");
+      setServings("");
       setDescription("");
       setInstructions("");
       setImageUrl("");
@@ -40,42 +47,63 @@ const RecipeForm = ({ supabase }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title</label>
+    <form onSubmit={handleSubmit} className="form">
+      <div className="form-group">
+        <label htmlFor="title" className="label"> Recipe Title</label>
         <input
           id="title"
           type="text"
           value={title}
+          placeholder="Name of Recipe"
+          className="input"
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="description">Description</label>
+        <div className="form-group">
+        <label htmlFor="servings" className="label" >Number of Servings</label>
+        <input
+        id="servings"
+        type="number" // Number Input
+        value={servings}
+        placeholder="Number of Servings"
+        onChange={(e) => setServings(e.target.Value)}
+        className="input"
+        />
+        </div>
+      <div className="form-group">
+        <label htmlFor="description" className = "label" >Description</label>
         <textarea
           id="description"
           value={description}
+          placeholder="Description"
           onChange={(e) => setDescription(e.target.value)}
+          className="input"
         ></textarea>
       </div>
-      <div>
-        <label htmlFor="instructions">Instructions</label>
+      <div className="form-group">
+        <label htmlFor="instructions" className="label" >Instructions</label>
         <textarea
           id="instructions"
           value={instructions}
+          placeholder="Instructions"
           onChange={(e) => setInstructions(e.target.value)}
+          className="input"
         ></textarea>
       </div>
-      <div>
-        <label htmlFor="image_url">Image URL</label>
+      <div className="form-group">
+        <label htmlFor="image_url" className="label" >Image URL</label>
         <input
           id="image_url"
           type="text"
           value={image_url}
+          placeholder="Image URL"
           onChange={(e) => setImageUrl(e.target.value)}
+          className="input"
         />
       </div>
-      <button type="submit">Submit</button>
+      <div className="form-group">
+        <button type="submit" className="button"> Submit</button>
+      </div>
     </form>
   );
 };
