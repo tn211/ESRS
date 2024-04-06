@@ -18,7 +18,9 @@ const divStyle = {
 const HomePage = () => {
   return (
     <Layout>
-      <div className="card-grid">
+      {
+        
+     /* <div className="card-grid">
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
@@ -32,7 +34,7 @@ const HomePage = () => {
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       </div>
-      <Link to="/recipe-image-upload">Image Upload</Link>
+      <Link to="/recipe-image-upload">Image Upload</Link>*/}
 
     </Layout>
   );
