@@ -1,10 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 
-export default function RecipeImageUpload({ onUploadComplete }) {
+export default function RecipeImageUploader({ url, size, onUpload = (filePath) => console.log("Uploaded file path:", filePath) }) {
+  const [recipeImageUrl, setRecipeImageUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
 
-  async function uploadImage(event) {
+  useEffect(() => {
+    if (url) downloadRecipeImage(url);
+  }, [url]);
+
+  async function downloadRecipeImage(path) {
+    try {
+      const { data, error } = await supabase.storage.from('recipe-images').download(path);
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      setRecipeImageUrl(url);
+    } catch (error) {
+      console.log('Error downloading recipe image: ', error.message);
+    }
+  }
+
+  async function uploadRecipeImage(event) {
     try {
       setUploading(true);
 
@@ -17,33 +35,48 @@ export default function RecipeImageUpload({ onUploadComplete }) {
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
+      console.log('Uploading file:', file);
+      console.log('File path:', filePath);
+
       const { error: uploadError } = await supabase.storage.from('recipe-images').upload(filePath, file);
 
       if (uploadError) {
         throw uploadError;
       }
-      
-      onUploadComplete?.(filePath);
 
+      onUpload(filePath);
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error('Error uploading recipe image:', error);
     } finally {
-      setUploading(false);
+      setUploading(false); // Ensure setUploading is set to false in both success and error cases
     }
   }
 
   return (
     <div>
-      <div>
-        <label className="button primary block" htmlFor="recipe-image-upload">
+      {recipeImageUrl ? (
+        <img
+          src={recipeImageUrl}
+          alt="Recipe Image"
+          className="recipe-image"
+          style={{ height: size, width: size }}
+        />
+      ) : (
+        <div className="recipe-image no-image" style={{ height: size, width: size }} />
+      )}
+      <div style={{ width: size }}>
+        <label className="button primary block" htmlFor="single">
           {uploading ? 'Uploading ...' : 'Upload Image'}
         </label>
         <input
-          style={{ visibility: 'hidden', position: 'absolute' }}
+          style={{
+            visibility: 'hidden',
+            position: 'absolute',
+          }}
           type="file"
-          id="recipe-image-upload"
+          id="single"
           accept="image/*"
-          onChange={uploadImage}
+          onChange={uploadRecipeImage}
           disabled={uploading}
         />
       </div>
