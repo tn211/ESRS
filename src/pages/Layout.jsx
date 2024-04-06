@@ -13,6 +13,31 @@ const Layout = ({ children }) => {
     return (
 
         <><header className={`header ${menuOpen ? "menu-open" : ""}`}>
+            <div className="logo-container">
+                <a href="/">
+                    <img src="src\assets\Dishconnect2.PNG" alt="Logo" className="logo" />
+                </a>
+            </div>
+            <nav>
+                <ul className={`menu ${menuOpen ? "open" : ""}`}>
+                    <li>
+                        <Link to="/add-recipe">Recipes</Link>
+                    </li>
+                    <li>
+                        <Link to="/my-recipes">Favourites</Link>
+                    </li>
+                    <li>
+                        <Link to="/recent-recipes">Community</Link>
+                    </li>
+                    <li>
+                        <Link to="/">About us</Link>
+                    </li>
+                    <li>
+                        <Link to="/">Upload</Link>
+                    </li>
+
+                </ul>
+            </nav>
             <div className="icon-container">
                 <Link to="/account"> <HiUserCircle className="icon" /></Link>
             </div>
@@ -20,28 +45,6 @@ const Layout = ({ children }) => {
                 <div className="bar"></div>
                 <div className="bar"></div>
                 <div className="bar"></div>
-            </div>
-            <nav>
-                <ul className={`menu ${menuOpen ? "open" : ""}`}>
-                    <li>
-                        <Link to="/add-recipe">Add Recipe</Link>
-                    </li>
-                    <li>
-                        <Link to="/my-recipes">My Recipes</Link>
-                    </li>
-                    <li>
-                        <Link to="/recent-recipes">Recently Added</Link>
-                    </li>
-                    <li>
-                        <Link to="/account">Account</Link>
-                    </li>
-
-                </ul>
-            </nav>
-            <div className="logo-container">
-                <a href="/">
-                    <img src="src\assets\Dishconnect.PNG" alt="Logo" className="logo" />
-                </a>
             </div>
         </header>
             <main>{children}</main> {/* Render children */}
