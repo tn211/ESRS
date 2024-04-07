@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
             <nav>
                 <ul className={`menu ${menuOpen ? "open" : ""}`}>
                     <li>
-                        <Link to="/add-recipe">Recipes</Link>
+                        <Link to="/recent-recipes">Recipes</Link>
                     </li>
                     <li>
                         <Link to="/my-recipes">Favourites</Link>
