@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // useNavigate for navigation
+import { useLocation, useNavigate, Link } from 'react-router-dom'; // Import Link here
 import { supabase } from '../../supabaseClient';
+import Layout from '../Layout';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -8,9 +9,9 @@ function useQuery() {
 
 const SearchPage = () => {
   const [results, setResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(''); // Local state to store the search term
+  const [searchTerm, setSearchTerm] = useState('');
   const query = useQuery().get('query');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,43 +32,46 @@ const SearchPage = () => {
     fetchData();
   }, [query]);
 
-  // Function to handle search input changes
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value); // Update searchTerm with input
+    setSearchTerm(event.target.value);
   };
 
-  // Function to execute search
   const executeSearch = () => {
-    // Update the URL, which will trigger re-fetching of data based on the new query
     navigate(`?query=${searchTerm}`);
   };
 
   return (
+    <>
+    <Layout>
     <div>
-      {/* Search Input */}
       <input
         type="text"
         placeholder="Search recipes..."
         onChange={handleInputChange}
         defaultValue={query}
       />
-      {/* Search Button */}
       <button onClick={executeSearch}>Search</button>
       {results.length > 0 ? (
         results.map((recipe) => (
-          <div key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            {/* Render more recipe details here as needed */}
+          <div key={recipe.recipe_id}>
+            <Link to={`/recipes/${recipe.recipe_id}`}>
+              <h3>{recipe.title}</h3>
+            </Link>
+            <p>{recipe.description}</p>
           </div>
         ))
       ) : (
-        <p>No results found for "{query}"</p>
+        query && <p>No results found for "{query}"</p> // Only show this message if `query` is not empty
       )}
     </div>
+    </Layout>
+    </>
   );
+  
 };
 
 export default SearchPage;
+
 
 
 
