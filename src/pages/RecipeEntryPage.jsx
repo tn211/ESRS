@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
 import Dropdown from '../components/dropdown/Dropdown';
+import Layout from './Layout';
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -65,6 +66,8 @@ const RecipeEntryPage = ({ session }) => {
   };
   
   return (
+    <>
+    <Layout>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label>Title</label>
@@ -115,6 +118,8 @@ const RecipeEntryPage = ({ session }) => {
         <Link to="/">Back to Home</Link>
         </div>
     </form>
+    </Layout>
+    </>
   );
 };
 
