@@ -20,7 +20,7 @@ function ImageUpload() {
       const file = event.target.files[0];
       const fileExt = file.name.split('.').pop();
       const fileName = `${Date.now()}.${fileExt}`;
-      const filePath = `recipe-images/${fileName}`;
+      const filePath = `${fileName}`;
 
       let { error: uploadError } = await supabase.storage.from('recipe-images').upload(filePath, file);
       if (uploadError) throw uploadError;
