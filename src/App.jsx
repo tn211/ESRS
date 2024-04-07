@@ -10,6 +10,7 @@ import UserRecipesPage from "./pages/UserRecipesPage";
 import RecipeDetail from "./pages/RecipeDetail";
 import RecentRecipesPage from "./pages/RecentRecipesPage";
 import RecipeImageUpload from './components/RecipeImageUpload';
+import SearchPage from "./pages/search-page/SearchPage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -38,6 +39,7 @@ function App() {
             <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recipe-image-upload" element={<RecipeImageUpload key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
+            <Route path="/search" element={<SearchPage key={session.user.id} session={session} />} />
           </Routes>
         </Router>
       )}
