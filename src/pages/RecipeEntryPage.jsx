@@ -88,9 +88,17 @@ const RecipeEntryPage = ({ session }) => {
             placeholder="Ingredient Name"
           />
           <input
-            {...register(`ingredients[${index}].quantity`, { required: true })}
-            placeholder="Quantity"
-          />
+          {...register(`ingredients[${index}].quantity`, {
+            required: "Quantity is required",
+            valueAsNumber: true,
+            validate: {
+              isFloat: value => !isNaN(value) && Number(value) == value && (!/\.\d{3,}/.test(value) || "Please limit to 2 decimal places"),
+            }
+          })}
+          type="number"
+          step="0.01" // Allow decimal values up to 2 decimal places
+          placeholder="Quantity"
+        />
           <select {...register(`ingredients[${index}].unit`, { required: true })}>
             <option value="">Select Unit</option>
             <option value="tsp">tsp</option>
