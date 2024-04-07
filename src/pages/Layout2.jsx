@@ -2,23 +2,23 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi2";
-import './Layout.css';
+import './Layout2.css';
 
-const Layout = ({ children }) => {
+const Layout2 = ({ children }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
     return (
-        
-        <><header className={`header1 ${menuOpen ? "menu-open" : ""}`}>
-            <div className="logo-container">
+
+        <><header className={`header2 ${menuOpen ? "menu-open" : ""}`}>
+            <div className="logo-container2">
                 <a href="/">
-                    <img src="src\assets\Dishconnect2.PNG" alt="Logo" className="logo" />
+                    <img src="src\assets\Dishconnect3.PNG" alt="Logo" className="logo2" />
                 </a>
             </div>
-            <nav className="nav1">
+            <nav className="nav2">
                 <ul className={`menu ${menuOpen ? "open" : ""}`}>
                     <li>
                         <Link to="/add-recipe">Recipes</Link>
@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
 
                 </ul>
             </nav>
-            <div className="icon-container">
+            <div className="icon-container2">
                 <Link to="/account"> <HiUserCircle className="icon" /></Link>
             </div>
             <div className="menu-toggle" onClick={toggleMenu}>
@@ -48,10 +48,10 @@ const Layout = ({ children }) => {
             </div>
         </header>
             <main>{children}</main> {/* Render children */}
-            <footer className="footer1">
+            <footer className="footer2">
                 <p>DishConnect © 2024. All rights reserved</p>
             </footer></>
     );
 };
 
-export default Layout;
+export default Layout2;

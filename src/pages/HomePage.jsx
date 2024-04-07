@@ -18,9 +18,21 @@ const divStyle = {
 const HomePage = () => {
   return (
     <Layout>
-      {
-        
-     /* <div className="card-grid">
+    <div className="home-page-container">
+      
+      
+    </div>
+
+    </Layout>
+  );
+
+
+
+};
+
+export default HomePage;
+
+ /* <div className="card-grid">
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
@@ -34,13 +46,4 @@ const HomePage = () => {
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
       </div>
-      <Link to="/recipe-image-upload">Image Upload</Link>*/}
-
-    </Layout>
-  );
-
-
-
-};
-
-export default HomePage;
+      <Link to="/recipe-image-upload">Image Upload</Link>*/

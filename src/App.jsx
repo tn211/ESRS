@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import RecipeEntryPage from "./pages/RecipeEntryPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
 import RecipeDetail from "./pages/RecipeDetail";
+import AboutUs from "./pages/AboutUs";
 import RecentRecipesPage from "./pages/RecentRecipesPage";
 import RecipeImageUpload from './components/RecipeImageUpload';
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recipe-image-upload" element={<RecipeImageUpload key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
+            <Route path="/AboutUs" element={<AboutUs key={session.user.id} session={session} />} />
           </Routes>
         </Router>
       )}
