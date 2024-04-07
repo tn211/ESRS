@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         <><header className={`header ${menuOpen ? "menu-open" : ""}`}>
             <div className="logo-container">
                 <a href="/">
-                    <img src="src\assets\Dishconnect2.PNG" alt="Logo" className="logo" />
+                    <img src="/src/assets/Dishconnect2.PNG" alt="Logo" className="logo" />
                 </a>
             </div>
             <nav>
