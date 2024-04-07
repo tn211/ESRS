@@ -30,10 +30,10 @@ const Layout = ({ children }) => {
                         <Link to="/recent-recipes">Community</Link>
                     </li>
                     <li>
-                        <Link to="/">About us</Link>
+                        <Link to="/about">About</Link>
                     </li>
                     <li>
-                        <Link to="/">Upload</Link>
+                        <Link to="/image-upload">Upload</Link>
                     </li>
 
                 </ul>

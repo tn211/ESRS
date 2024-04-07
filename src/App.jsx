@@ -10,6 +10,8 @@ import UserRecipesPage from "./pages/UserRecipesPage";
 import RecipeDetail from "./pages/RecipeDetail";
 import RecentRecipesPage from "./pages/RecentRecipesPage";
 import RecipeImageUpload from './components/RecipeImageUpload';
+import About from './pages/About';
+import ImageUpload from './pages/ImageUpload';
 
 function App() {
   const [session, setSession] = useState(null);
@@ -37,7 +39,9 @@ function App() {
             <Route path="/recent-recipes" element={<RecentRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recipe-image-upload" element={<RecipeImageUpload key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/image-upload" element={<ImageUpload key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </Router>
       )}
