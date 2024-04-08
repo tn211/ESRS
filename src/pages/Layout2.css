@@ -2,7 +2,7 @@ main {
     padding-top: 60px; /* prevents the top of main being hidden behind top of nav bar */
   }
 
-.header1 {
+.header2 {
     position: fixed;
     top: 0;
     flex-direction: column;
@@ -10,14 +10,14 @@ main {
     align-items: center;
     width: 100%;
     /* Take up the full width of the viewport */
-    padding: 10px;
-   
+    padding: 50px;
     color: #fff;
+    background-color: #F5F5F5;
     z-index: 1000; /* ensure header is above other content */
     
 }
 
-.footer1 {
+.footer2 {
     position: fixed;
     flex-direction: column;
     display: flex;
@@ -25,7 +25,6 @@ main {
     align-items: center;
     width: 100%;
     padding: 10px;
-    
     color: #fff;
     font-size: larger;
     font-family: 'Arial', sans-serif;
@@ -34,27 +33,26 @@ main {
 }
 
 
-.nav1 {
-    position: absolute;
-    top: 130px; /* Adjust top position to move the menu below the logo */
-    right: 60px; /* Adjust right position to move the menu to the right */
+.nav2 {
+    position: fixed;
+    top: 30px; /* Adjust the top position as needed */
+    left: 500px; /* Adjust the left position to position the menu to the right of the logo */
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    margin-top: 30px;
+    justify-content: flex-end; /* Align menu items to the right */
 }
 
-.logo {
-    margin-top: 30px;
-    /* Adjust spacing between logo and menu */
+.logo2 {
+    width: 400px;
+    height: auto;
 }
-.logo-container{
-    position: absolute;
-    right: 130px;
+.logo-container2{
+     position: fixed;
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
 }
 
-.logo img {
+.logo2 img {
     padding-left: 50px;
 
     width: 500px;
@@ -63,29 +61,29 @@ main {
     /* Adjust logo height as needed */
 }
 
-.nav1 ul {
+.nav2 ul {
     list-style-type: none;
     display: flex;
     padding: 0;
     margin: 0;
 }
 
-.nav1 li {
-    margin-left: 20px;
-    margin-right: 20px;
+.nav2 li {
+    margin-left: 40px;
+    margin-right: 40px;
     justify-content: center;
     /* Adjust spacing between menu items */
 }
 
-.nav1 a {
+.nav2 a {
     text-decoration: none;
     color: black;
-    font-size: larger;
+    font-size: xx-large;
     font-family: 'Josefin Sans', sans-serif;
     
 }
 
-.nav1 a:hover {
+.nav2 a:hover {
     color: #000000;
     font-weight: bolder;
     text-decoration: underline;
@@ -94,10 +92,10 @@ main {
 
 /* Add some padding to the body to account for the fixed header */
 
-.icon-container {
+.icon-container2 {
     position: absolute;
-    top: 80px;
-    right: 80px; /* Adjust right position to move the icon to the right */
+    top: 40px;
+    right: 40px; /* Adjust right position to move the icon to the right */
     z-index: 999;
 }
 
