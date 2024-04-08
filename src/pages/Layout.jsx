@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LogoutButton from "../components/LogoutButton"; // replace with the actual path to LogoutButton
 import { HiUserCircle } from "react-icons/hi2";
 import './Layout.css';
 
@@ -28,10 +27,10 @@ const Layout = ({ children }) => {
                         <Link to="/add-recipe">Add Recipe</Link>
                     </li>
                     <li>
-                        <Link to="/add-ingredients">Add Ingredients</Link>
+                        <Link to="/my-recipes">My Recipes</Link>
                     </li>
                     <li>
-                        <Link to="/my-recipes">My Recipes</Link>
+                        <Link to="/recent-recipes">Recently Added</Link>
                     </li>
                     <li>
                         <Link to="/account">Account</Link>

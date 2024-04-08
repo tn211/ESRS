@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
+import { Link } from "react-router-dom";
+import Dropdown from '../components/dropdown/Dropdown';
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [submitting, setSubmitting] = useState(false);
-  const [ingredients, setIngredients] = useState([{ name: '', quantity: '' }]);
+  const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
 
   const addIngredientField = () => {
-    setIngredients([...ingredients, { name: '', quantity: '' }]);
+    setIngredients([...ingredients, { name: '', quantity: '', unit: '' }]);
   };
 
   const removeIngredientField = (index) => {
@@ -19,7 +21,7 @@ const RecipeEntryPage = ({ session }) => {
     setSubmitting(true);
 
     try {
-      // Insert the recipe
+      // Insert the recipe and retrieve the recipe ID
       const { data: recipeData, error: recipeError } = await supabase
         .from('recipes')
         .insert({
@@ -27,44 +29,36 @@ const RecipeEntryPage = ({ session }) => {
           description: data.description,
           instructions: data.instructions,
           profile_id: session.user.id,
+          created_at: new Date().toISOString(),
         })
+        .select()
         .single();
 
-      if (recipeError) {
-        console.error('Recipe insertion error:', recipeError);
-        throw recipeError;
-      }
+      if (recipeError) throw recipeError;
 
-      // Check if recipeData is valid and has an id
-      if (!recipeData || typeof recipeData.id === 'undefined') {
-        throw new Error('Failed to obtain recipe ID.');
-      }
+      const recipeId = recipeData.recipe_id; // Assuming the ID field is 'id'
 
-      const recipeId = recipeData.id;
-      console.log('Recipe inserted with ID:', recipeId);
+      console.log('recipeID', recipeId)
 
-      // Sequentially insert ingredients
-      for (const ingredient of ingredients) {
-        console.log('Inserting ingredient:', ingredient);
+      // Insert ingredients using the retrieved recipe ID
+      for (const ingredient of data.ingredients) {
         const { error: ingredientError } = await supabase
           .from('ingredients')
           .insert({
             name: ingredient.name,
             quantity: ingredient.quantity,
-            recipe_id: recipeId,
+            unit: ingredient.unit, // Include the unit in the insertion data
+            recipe_id: recipeId, // Use the retrieved recipe ID
             profile_id: session.user.id,
           });
 
-        if (ingredientError) {
-          console.error('Ingredient insertion error:', ingredientError);
-          throw ingredientError;
-        }
+        if (ingredientError) throw ingredientError;
       }
 
-      console.log('All ingredients inserted successfully.');
-      setIngredients([{ name: '', quantity: '' }]); // Reset for new entries
+      alert('Recipe and ingredients added successfully!');
     } catch (error) {
       console.error('Submission error:', error);
+      alert(`Submission error: ${error.message}`);
     } finally {
       setSubmitting(false);
     }
@@ -94,11 +88,32 @@ const RecipeEntryPage = ({ session }) => {
             {...register(`ingredients[${index}].quantity`, { required: true })}
             placeholder="Quantity"
           />
+          <select {...register(`ingredients[${index}].unit`, { required: true })}>
+            <option value="">Select Unit</option>
+            <option value="tsp">tsp</option>
+            <option value="tbsp">tbsp</option>
+            <option value="pinch">pinch</option>
+            <option value="g">g</option>
+            <option value="mL">mL</option>  
+            <option value="L">L</option>
+            <option value="oz">oz</option>
+            <option value="lb">lb</option>
+            <option value="cups">cups</option>
+            <option value="pints">pints</option>
+            <option value="quarts">quarts</option>
+            <option value="gallons">gallons</option>
+
+            {/* Add more units as needed */}
+          </select>
           <button type="button" onClick={() => removeIngredientField(index)}>Remove</button>
         </div>
       ))}
       <button type="button" onClick={addIngredientField}>Add Ingredient</button>
       <button type="submit" disabled={submitting}>Submit Recipe</button>
+      <div>
+
+        <Link to="/">Back to Home</Link>
+        </div>
     </form>
   );
 };
