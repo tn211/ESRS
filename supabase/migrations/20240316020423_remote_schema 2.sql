@@ -1,5 +1,3 @@
-alter table "public"."comments" drop constraint "comments_user_id_fkey";
-
 alter table "public"."follows" drop constraint "follows_follower_id_fkey";
 
 alter table "public"."follows" drop constraint "follows_following_id_fkey";
@@ -7,10 +5,6 @@ alter table "public"."follows" drop constraint "follows_following_id_fkey";
 alter table "public"."likes" drop constraint "likes_user_id_fkey";
 
 alter table "public"."recipes" drop constraint "recipes_user_id_fkey";
-
-alter table "public"."users" drop constraint "users_pkey";
-
-drop index if exists "public"."users_pkey";
 
 create table "public"."profiles" (
     "id" uuid not null,
@@ -38,45 +32,17 @@ alter table "public"."recipes" add column "uuid" integer not null;
 
 alter table "public"."users" drop column "user_id";
 
-alter table "public"."users" add column "uuid" integer not null default nextval('users_user_id_seq'::regclass);
-
-alter sequence "public"."users_user_id_seq" owned by "public"."users"."uuid";
-
 CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id);
 
 CREATE UNIQUE INDEX profiles_username_key ON public.profiles USING btree (username);
 
-CREATE UNIQUE INDEX users_pkey ON public.users USING btree (uuid);
-
 alter table "public"."profiles" add constraint "profiles_pkey" PRIMARY KEY using index "profiles_pkey";
-
-alter table "public"."users" add constraint "users_pkey" PRIMARY KEY using index "users_pkey";
 
 alter table "public"."profiles" add constraint "profiles_id_fkey" FOREIGN KEY (id) REFERENCES auth.users(id) not valid;
 
 alter table "public"."profiles" validate constraint "profiles_id_fkey";
 
 alter table "public"."profiles" add constraint "profiles_username_key" UNIQUE using index "profiles_username_key";
-
-alter table "public"."comments" add constraint "comments_user_id_fkey" FOREIGN KEY (uuid) REFERENCES users(uuid) ON DELETE CASCADE not valid;
-
-alter table "public"."comments" validate constraint "comments_user_id_fkey";
-
-alter table "public"."follows" add constraint "follows_follower_id_fkey" FOREIGN KEY (follower_id) REFERENCES users(uuid) ON DELETE CASCADE not valid;
-
-alter table "public"."follows" validate constraint "follows_follower_id_fkey";
-
-alter table "public"."follows" add constraint "follows_following_id_fkey" FOREIGN KEY (following_id) REFERENCES users(uuid) ON DELETE CASCADE not valid;
-
-alter table "public"."follows" validate constraint "follows_following_id_fkey";
-
-alter table "public"."likes" add constraint "likes_user_id_fkey" FOREIGN KEY (uuid) REFERENCES users(uuid) ON DELETE CASCADE not valid;
-
-alter table "public"."likes" validate constraint "likes_user_id_fkey";
-
-alter table "public"."recipes" add constraint "recipes_user_id_fkey" FOREIGN KEY (uuid) REFERENCES users(uuid) ON DELETE CASCADE not valid;
-
-alter table "public"."recipes" validate constraint "recipes_user_id_fkey";
 
 set check_function_bodies = off;
 
