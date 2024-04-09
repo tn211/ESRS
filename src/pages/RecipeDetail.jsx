@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import Layout from './Layout';
 
 const RecipeDetail = ({ supabase }) => {
   const { recipeId } = useParams();
@@ -38,6 +39,7 @@ const RecipeDetail = ({ supabase }) => {
 
   return (
     <>
+    <Layout>
       <div>
         <h2>{recipe.title}</h2>
         <p>{recipe.description}</p>
@@ -56,7 +58,8 @@ const RecipeDetail = ({ supabase }) => {
         <br />
         <Link to="/">Back to Home</Link>
       </div>
-    </>
+      </Layout>
+      </>
   );
 };
 

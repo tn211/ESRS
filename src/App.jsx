@@ -10,7 +10,6 @@ import UserRecipesPage from "./pages/UserRecipesPage";
 import RecipeDetail from "./pages/RecipeDetail";
 import AboutUs from "./pages/AboutUs";
 import RecentRecipesPage from "./pages/RecentRecipesPage";
-import RecipeImageUpload from './components/RecipeImageUpload';
 
 function App() {
   const [session, setSession] = useState(null);

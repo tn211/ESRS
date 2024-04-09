@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
 import Dropdown from '../components/dropdown/Dropdown';
+import Layout from './Layout';
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -65,6 +66,8 @@ const RecipeEntryPage = ({ session }) => {
   };
   
   return (
+    <>
+    <Layout>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label>Title</label>
@@ -85,9 +88,17 @@ const RecipeEntryPage = ({ session }) => {
             placeholder="Ingredient Name"
           />
           <input
-            {...register(`ingredients[${index}].quantity`, { required: true })}
-            placeholder="Quantity"
-          />
+          {...register(`ingredients[${index}].quantity`, {
+            required: "Quantity is required",
+            valueAsNumber: true,
+            validate: {
+              isFloat: value => !isNaN(value) && Number(value) == value && (!/\.\d{3,}/.test(value) || "Please limit to 2 decimal places"),
+            }
+          })}
+          type="number"
+          step="0.01" // Allow decimal values up to 2 decimal places
+          placeholder="Quantity"
+        />
           <select {...register(`ingredients[${index}].unit`, { required: true })}>
             <option value="">Select Unit</option>
             <option value="tsp">tsp</option>
@@ -115,6 +126,8 @@ const RecipeEntryPage = ({ session }) => {
         <Link to="/">Back to Home</Link>
         </div>
     </form>
+    </Layout>
+    </>
   );
 };
 
