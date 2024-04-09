@@ -78,7 +78,7 @@ main {
 .nav2 a {
     text-decoration: none;
     color: black;
-    font-size: xx-large;
+    font-size: x-large;
     font-family: 'Josefin Sans', sans-serif;
     
 }
@@ -94,7 +94,7 @@ main {
 
 .icon-container2 {
     position: absolute;
-    top: 40px;
+    top: 35px;
     right: 40px; /* Adjust right position to move the icon to the right */
     z-index: 999;
 }

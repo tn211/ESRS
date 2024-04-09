@@ -33,7 +33,7 @@ const Layout2 = ({ children }) => {
                         <Link to="/AboutUs">About us</Link>
                     </li>
                     <li>
-                        <Link to="/">Upload</Link>
+                        <Link to="/">Upload Recipe</Link>
                     </li>
 
                 </ul>
