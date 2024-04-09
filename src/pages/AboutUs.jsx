@@ -1,35 +1,27 @@
-import React from 'react';
+import React from "react";
 import './AboutUs.css';
+import Layout2 from "./Layout2";
+
+
 
 const AboutUs = () => {
-  return (
-    <div className="about-us-page">
-      <header className="header">
-        {/* You can reuse the header component if you have one */}
-      </header>
-      
-      <main className="main-content">
-        <h1>About Us</h1>
-        <p>
-          Welcome to DishConnect! We are a passionate team of food enthusiasts 
-          dedicated to connecting home cooks with the world of culinary arts. 
-          Our platform is a place to discover, share, and grow your love for cooking.
-        </p>
-        <p>
-          At DishConnect, we believe in the power of community and the joy that 
-          comes from the simple act of creating and enjoying food. Whether you're 
-          here to find your next favorite recipe or to share your own culinary creations, 
-          we're glad you're part of our journey.
-        </p>
+    return (
+       
+        <Layout2>
+        <div>
+            <div>
+            <h1>About Us</h1>
+            <p>We are a team passionate about cooking and all the cultural diversity that it can provide and be expressed through it. This love for sharing our experiences led us to create DishConnect, a great community for every person, with or without experience, to explore and contribute to this wonderful world of gastronomy.</p>
+            </div>
+            <img src="src\assets\istockphoto-1253249134-612x612.jpg" alt="img1" className="image1" />
+        </div>
+            
+        </Layout2>
         
-        {/* Add more content about your mission, your team, and the story of your company */}
-      </main>
-      
-      <footer className="footer">
-        {/* You can reuse the footer component if you have one */}
-      </footer>
-    </div>
-  );
+     );
+     
+
+
 };
 
 export default AboutUs;
