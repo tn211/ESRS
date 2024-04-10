@@ -21,7 +21,7 @@ const AboutUs = () => {
                 <div className="text-container2">
                     <p style={{ fontFamily: 'Josefin Sans', fontSize: '50px' }}>Our Mission</p>
                     <p className="stretch">
-                    Our mission is to create the most diverse and friendly culinary community, empowering people from all over the world to share, explore and enjoy recipes from every corner of the planet, promoting the excange of knowledge and experiences.
+                    Our mission is to create the most diverse and friendly culinary community, empowering people from all over the world to share, explore and enjoy recipes from every corner of the planet, promoting the exchange of knowledge and experiences.
                     </p>
                 </div>
                 
