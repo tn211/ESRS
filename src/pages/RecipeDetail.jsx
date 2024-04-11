@@ -35,9 +35,12 @@ const RecipeDetail = ({ session }) => {
 
       // Fetch comments related to the recipe
       const { data: commentsData, error: commentsError } = await supabase
-        .from('comments')
-        .select('*')
-        .eq('slug', recipeId);
+      .from('comments')
+      .select(`
+        *,
+        user_id!inner ( username ) // Replace 'username' with the actual column name for the user's name
+      `)
+      .eq('slug', recipeId);
 
       if (commentsError) {
         console.error('Error fetching comments:', commentsError);
@@ -118,6 +121,7 @@ const RecipeDetail = ({ session }) => {
             {comments.map((comment, index) => (
               <li key={index}>
                 <p>{comment.body}</p>
+                <small>Commented by: {comment.user_id.username}</small> {/* Access the user's name here */}
                 <small>Commented on: {new Date(comment.created_at).toLocaleString()}</small>
               </li>
             ))}
