@@ -121,8 +121,8 @@ const RecipeDetail = ({ session }) => {
             {comments.map((comment, index) => (
               <li key={index}>
                 <p>{comment.body}</p>
-                <small>Commented by: {comment.user_id.username}</small> {/* Access the user's name here */}
-                <small>Commented on: {new Date(comment.created_at).toLocaleString()}</small>
+                <small>{comment.user_id.username}</small> {/* Access the user's name here */}
+                <small>{new Date(comment.created_at).toLocaleString()}</small>
               </li>
             ))}
           </ul>
