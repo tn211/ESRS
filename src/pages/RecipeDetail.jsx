@@ -162,7 +162,7 @@ const RecipeDetail = ({ session }) => {
         
           <div>
             <button onClick={toggleFavorite}>
-              {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              {isFavorite ? 'Remove from Favourites' : 'Add to Favourites'}
             </button>
           </div>
         
