@@ -8,6 +8,7 @@ const RecipeDetail = ({ session }) => {
   const [recipe, setRecipe] = useState(null);
   const [comments, setComments] = useState([]);
   const [newCommentBody, setNewCommentBody] = useState('');
+  const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,12 +36,12 @@ const RecipeDetail = ({ session }) => {
 
       // Fetch comments related to the recipe
       const { data: commentsData, error: commentsError } = await supabase
-      .from('comments')
-      .select(`
-        *,
-        user_id!inner ( username ) // Replace 'username' with the actual column name for the user's name
-      `)
-      .eq('slug', recipeId);
+        .from('comments')
+        .select(`
+          *,
+          user_id!inner ( username ) // Replace 'username' with the actual column name for the user's name
+        `)
+        .eq('slug', recipeId);
 
       if (commentsError) {
         console.error('Error fetching comments:', commentsError);
@@ -50,8 +51,60 @@ const RecipeDetail = ({ session }) => {
       setLoading(false);
     };
 
+    const checkFavorite = async () => {
+      if (session && session.user) {
+        const { data, error } = await supabase
+          .from('likes')
+          .select('*')
+          .eq('recipe_id', recipeId)
+          .eq('profile_id', session.user.id);
+
+        if (error) {
+          console.error('Error checking favorite status:', error);
+        } else {
+          setIsFavorite(data.length > 0);
+        }
+      }
+    };
+
     fetchRecipeAndComments();
+    checkFavorite();
   }, [recipeId, session]);
+
+  const toggleFavorite = async () => {
+    if (!session || !session.user) {
+      alert("You must be logged in to use favorites.");
+      return;
+    }
+
+    if (isFavorite) {
+      // Remove from favorites
+      const { error } = await supabase
+        .from('likes')
+        .delete()
+        .eq('recipe_id', recipeId)
+        .eq('profile_id', session.user.id);
+
+      if (error) {
+        console.error('Error removing from favorites:', error);
+      } else {
+        setIsFavorite(false);
+      }
+    } else {
+      // Add to favorites
+      const { error } = await supabase
+        .from('likes')
+        .insert([
+          { recipe_id: recipeId, profile_id: session.user.id }
+        ]);
+
+      if (error) {
+        console.error('Error adding to favorites:', error);
+      } else {
+        setIsFavorite(true);
+      }
+    }
+  };
 
   const handleCommentChange = (e) => {
     setNewCommentBody(e.target.value);
@@ -97,6 +150,7 @@ const RecipeDetail = ({ session }) => {
       <Layout>
         <div>
           <h2>{recipe.title}</h2>
+
           <p>{recipe.description}</p>
           <p><strong>Instructions:</strong> {recipe.instructions}</p>
           <h3>Ingredients:</h3>
@@ -105,6 +159,13 @@ const RecipeDetail = ({ session }) => {
               <li key={ingredient.ingredient_id}>{ingredient.name} - {ingredient.quantity} {ingredient.unit}</li>
             ))}
           </ul>
+        
+          <div>
+            <button onClick={toggleFavorite}>
+              {isFavorite ? 'Remove from Favourites' : 'Add to Favourites'}
+            </button>
+          </div>
+        
         </div>
 
         <div>
@@ -145,23 +206,3 @@ export default RecipeDetail;
 
 
 
-
-
-
-{/* <section id="comment-section">
-<div class="comment">
-<h3>User Name</h3>
-<p>This is a comment...</p>
-</div>
-
-  
-<form id="comment-form">
-<label for="username">Name:</label>
-<input type="text" id="username" name="username" required></input>
-<label for="comment">Comment:</label>
-<textarea id="comment" name="comment" required></textarea>
-<button type="submit">Submit Comment</button>
-</form>
-
-
-</section> */}
