@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
-import Dropdown from '../components/dropdown/Dropdown';
 import Layout from './Layout';
 
 const RecipeEntryPage = ({ session }) => {
@@ -34,7 +33,10 @@ const RecipeEntryPage = ({ session }) => {
         })
         .select()
         .single();
-
+      
+      console.log('Recipe data:', recipeData);
+      console.log('Recipe error:', recipeError);
+      
       if (recipeError) throw recipeError;
 
       const recipeId = recipeData.recipe_id; // Assuming the ID field is 'id'
@@ -53,6 +55,8 @@ const RecipeEntryPage = ({ session }) => {
             profile_id: session.user.id,
           });
 
+        console.log('Ingredient insert error:', ingredientError);
+        
         if (ingredientError) throw ingredientError;
       }
 
