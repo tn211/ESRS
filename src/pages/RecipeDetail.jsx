@@ -10,17 +10,17 @@ const RecipeDetail = ({ session }) => {
   const [newCommentBody, setNewCommentBody] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [ratings, setRatings] = useState([]);
+  const [averageRating, setAverageRating] = useState('Not yet rated');
 
   useEffect(() => {
     const fetchRecipeAndComments = async () => {
-      // If no user is found in the session, exit early
       if (!session || !session.user) {
         console.error("User is not logged in");
         setLoading(false);
         return;
       }
 
-      // Fetch recipe details
       const { data: recipeData, error: recipeError } = await supabase
         .from('recipes')
         .select('*, ingredients(ingredient_id, name, quantity, unit)')
@@ -34,13 +34,9 @@ const RecipeDetail = ({ session }) => {
       }
       setRecipe(recipeData);
 
-      // Fetch comments related to the recipe
       const { data: commentsData, error: commentsError } = await supabase
         .from('comments')
-        .select(`
-          *,
-          user_id!inner ( username ) // Replace 'username' with the actual column name for the user's name
-        `)
+        .select('*, user_id!inner(username)')
         .eq('slug', recipeId);
 
       if (commentsError) {
@@ -48,6 +44,7 @@ const RecipeDetail = ({ session }) => {
       } else {
         setComments(commentsData);
       }
+
       setLoading(false);
     };
 
@@ -67,8 +64,25 @@ const RecipeDetail = ({ session }) => {
       }
     };
 
+    const fetchRatings = async () => {
+      const { data: ratingsData, error: ratingsError } = await supabase
+        .from('ratings')
+        .select('*')
+        .eq('recipe_id', recipeId);
+
+      if (ratingsError) {
+        console.error('Error fetching ratings:', ratingsError);
+      } else if (ratingsData.length > 0) {
+        const total = ratingsData.reduce((acc, cur) => acc + cur.rating, 0);
+        const average = total / ratingsData.length;
+        setAverageRating(average.toFixed(1));
+      }
+      setRatings(ratingsData);
+    };
+
     fetchRecipeAndComments();
     checkFavorite();
+    fetchRatings();
   }, [recipeId, session]);
 
   const toggleFavorite = async () => {
@@ -78,7 +92,6 @@ const RecipeDetail = ({ session }) => {
     }
 
     if (isFavorite) {
-      // Remove from favorites
       const { error } = await supabase
         .from('likes')
         .delete()
@@ -91,17 +104,45 @@ const RecipeDetail = ({ session }) => {
         setIsFavorite(false);
       }
     } else {
-      // Add to favorites
       const { error } = await supabase
         .from('likes')
-        .insert([
-          { recipe_id: recipeId, profile_id: session.user.id }
-        ]);
+        .insert([{ recipe_id: recipeId, profile_id: session.user.id }]);
 
       if (error) {
         console.error('Error adding to favorites:', error);
       } else {
         setIsFavorite(true);
+      }
+    }
+  };
+
+  const handleRating = async (rating) => {
+    if (!session || !session.user) {
+      alert("You must be logged in to rate recipes.");
+      return;
+    }
+
+    const existingRating = ratings.find(r => r.profile_id === session.user.id);
+    
+    if (existingRating) {
+      const { error } = await supabase
+        .from('ratings')
+        .update({ rating })
+        .match({ recipe_id: recipeId, profile_id: session.user.id });
+      if (error) {
+        console.error('Error updating rating:', error);
+      } else {
+        setRatings(ratings.map(r => r.profile_id === session.user.id ? { ...r, rating } : r));
+        fetchRatings(); // Recalculate average
+      }
+    } else {
+      const { error } = await supabase
+        .from('ratings')
+        .insert([{ recipe_id: recipeId, profile_id: session.user.id, rating }]);
+      if (error) {
+        console.error('Error inserting rating:', error);
+      } else {
+        fetchRatings(); // Recalculate average
       }
     }
   };
@@ -112,8 +153,6 @@ const RecipeDetail = ({ session }) => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-
-    // Ensure there's a session and a user before proceeding
     if (!session || !session.user) {
       alert("You must be logged in to post a comment.");
       return;
@@ -121,13 +160,7 @@ const RecipeDetail = ({ session }) => {
 
     const { data, error } = await supabase
       .from('comments')
-      .insert([
-        {
-          slug: recipeId,
-          body: newCommentBody,
-          user_id: session.user.id
-        }
-      ]);
+      .insert([{ slug: recipeId, body: newCommentBody, user_id: session.user.id }]);
 
     if (error) {
       console.error('Error posting comment:', error);
@@ -150,22 +183,26 @@ const RecipeDetail = ({ session }) => {
       <Layout>
         <div>
           <h2>{recipe.title}</h2>
-
           <p>{recipe.description}</p>
           <p><strong>Instructions:</strong> {recipe.instructions}</p>
           <h3>Ingredients:</h3>
           <ul>
-            {recipe.ingredients.map((ingredient) => (
+            {recipe.ingredients.map(ingredient => (
               <li key={ingredient.ingredient_id}>{ingredient.name} - {ingredient.quantity} {ingredient.unit}</li>
             ))}
           </ul>
-        
+
           <div>
             <button onClick={toggleFavorite}>
               {isFavorite ? 'Remove from Favourites' : 'Add to Favourites'}
             </button>
+            <div>
+            {[1, 2, 3, 4, 5].map(value => (
+              <button key={value} onClick={() => handleRating(value)}>{value}</button>
+            ))}
+            <p>Current Rating: {averageRating}</p>
+            </div>
           </div>
-        
         </div>
 
         <div>
@@ -182,7 +219,7 @@ const RecipeDetail = ({ session }) => {
             {comments.map((comment, index) => (
               <li key={index}>
                 <p>{comment.body}</p>
-                <small>{comment.user_id.username}</small> {/* Access the user's name here */}
+                <small>{comment.user_id.username}</small>
                 <small>{new Date(comment.created_at).toLocaleString()}</small>
               </li>
             ))}
@@ -203,6 +240,3 @@ const RecipeDetail = ({ session }) => {
 };
 
 export default RecipeDetail;
-
-
-
