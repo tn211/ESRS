@@ -20,6 +20,8 @@ const RecipeDetail = ({ session }) => {
   }, [recipeId, session]);
 
   const fetchRecipeAndComments = async () => {
+    setLoading(true);
+
     if (!session || !session.user) {
       console.error("User is not logged in");
       setLoading(false);
@@ -34,21 +36,23 @@ const RecipeDetail = ({ session }) => {
 
     if (recipeError) {
       console.error('Error fetching recipe details:', recipeError);
-      setLoading(false);
-      return;
+    } else {
+      setRecipe(recipeData);
     }
-    setRecipe(recipeData);
 
     const { data: commentsData, error: commentsError } = await supabase
-    .from('comments')
-    .select('*, profiles:user_id(username)')  // Changed to correctly fetch username
-    .eq('slug', recipeId);
-  
-  if (commentsError) {
-    console.error('Error fetching comments:', commentsError);
-  } else {
-    setComments(commentsData);
-  }
+      .from('comments')
+      .select(`
+        *,
+        user_id!inner(username)
+      `)
+      .eq('slug', recipeId);
+
+    if (commentsError) {
+      console.error('Error fetching comments:', commentsError);
+    } else {
+      setComments(commentsData);
+    }
 
     setLoading(false);
   };
@@ -165,29 +169,25 @@ const RecipeDetail = ({ session }) => {
       alert("You must be logged in to post a comment.");
       return;
     }
-  
-    const commentToInsert = {
-      slug: recipeId, 
-      body: newCommentBody, 
-      user_id: session.user.id,
-      created_at: new Date().toISOString()  // Generate a timestamp for the current time
-    };
 
-    const { data, error } = await supabase
-    .from('comments')
-    .insert([{ slug: recipeId, body: newCommentBody, user_id: session.user.id }])
-    .select("*, profiles:user_id(username)");  // Fetch username upon insert
-  
-  if (error) {
-    console.error('Error posting comment:', error);
-  } else {
-    setComments([...comments, ...data]);  // Assuming 'data' includes username
-    setNewCommentBody('');
-  }
-  
-};
+    const { error } = await supabase
+      .from('comments')
+      .insert([
+        {
+          slug: recipeId,
+          body: newCommentBody,
+          user_id: session.user.id,
+          created_at: new Date().toISOString()
+        }
+      ]);
 
-  
+    if (error) {
+      console.error('Error posting comment:', error);
+    } else {
+      await fetchRecipeAndComments();
+      setNewCommentBody('');
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -196,7 +196,7 @@ const RecipeDetail = ({ session }) => {
   if (!recipe) {
     return <div>Recipe not found.</div>;
   }
-
+  
   return (
     <>
       <Layout>
