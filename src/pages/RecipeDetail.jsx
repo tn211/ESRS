@@ -165,18 +165,20 @@ const RecipeDetail = ({ session }) => {
       alert("You must be logged in to post a comment.");
       return;
     }
-
+  
     const { data, error } = await supabase
       .from('comments')
-      .insert([{ slug: recipeId, body: newCommentBody, user_id: session.user.id }]);
-
+      .insert([{ slug: recipeId, body: newCommentBody, user_id: session.user.id }])
+      .select("*, user_id!inner(username)");  // Include this line to fetch all necessary fields, including username from the related users table
+  
     if (error) {
       console.error('Error posting comment:', error);
     } else {
-      setComments([...comments, ...data]);
+      setComments([...comments, ...data]);  // Assuming 'data' now includes all required fields such as username
       setNewCommentBody('');
     }
   };
+  
 
   if (loading) {
     return <div>Loading...</div>;
