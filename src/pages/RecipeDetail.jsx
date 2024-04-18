@@ -40,15 +40,15 @@ const RecipeDetail = ({ session }) => {
     setRecipe(recipeData);
 
     const { data: commentsData, error: commentsError } = await supabase
-      .from('comments')
-      .select('*, user_id!inner(username)')
-      .eq('slug', recipeId);
-
-    if (commentsError) {
-      console.error('Error fetching comments:', commentsError);
-    } else {
-      setComments(commentsData);
-    }
+    .from('comments')
+    .select('*, profiles:user_id(username)')  // Changed to correctly fetch username
+    .eq('slug', recipeId);
+  
+  if (commentsError) {
+    console.error('Error fetching comments:', commentsError);
+  } else {
+    setComments(commentsData);
+  }
 
     setLoading(false);
   };
@@ -166,18 +166,27 @@ const RecipeDetail = ({ session }) => {
       return;
     }
   
+    const commentToInsert = {
+      slug: recipeId, 
+      body: newCommentBody, 
+      user_id: session.user.id,
+      created_at: new Date().toISOString()  // Generate a timestamp for the current time
+    };
+
     const { data, error } = await supabase
-      .from('comments')
-      .insert([{ slug: recipeId, body: newCommentBody, user_id: session.user.id }])
-      .select("*, user_id!inner(username)");  // Include this line to fetch all necessary fields, including username from the related users table
+    .from('comments')
+    .insert([{ slug: recipeId, body: newCommentBody, user_id: session.user.id }])
+    .select("*, profiles:user_id(username)");  // Fetch username upon insert
   
-    if (error) {
-      console.error('Error posting comment:', error);
-    } else {
-      setComments([...comments, ...data]);  // Assuming 'data' now includes all required fields such as username
-      setNewCommentBody('');
-    }
-  };
+  if (error) {
+    console.error('Error posting comment:', error);
+  } else {
+    setComments([...comments, ...data]);  // Assuming 'data' includes username
+    setNewCommentBody('');
+  }
+  
+};
+
   
 
   if (loading) {
