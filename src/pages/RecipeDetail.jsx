@@ -14,76 +14,74 @@ const RecipeDetail = ({ session }) => {
   const [averageRating, setAverageRating] = useState('Not yet rated');
 
   useEffect(() => {
-    const fetchRecipeAndComments = async () => {
-      if (!session || !session.user) {
-        console.error("User is not logged in");
-        setLoading(false);
-        return;
-      }
-
-      const { data: recipeData, error: recipeError } = await supabase
-        .from('recipes')
-        .select('*, ingredients(ingredient_id, name, quantity, unit)')
-        .eq('recipe_id', recipeId)
-        .single();
-
-      if (recipeError) {
-        console.error('Error fetching recipe details:', recipeError);
-        setLoading(false);
-        return;
-      }
-      setRecipe(recipeData);
-
-      const { data: commentsData, error: commentsError } = await supabase
-        .from('comments')
-        .select('*, user_id!inner(username)')
-        .eq('slug', recipeId);
-
-      if (commentsError) {
-        console.error('Error fetching comments:', commentsError);
-      } else {
-        setComments(commentsData);
-      }
-
-      setLoading(false);
-    };
-
-    const checkFavorite = async () => {
-      if (session && session.user) {
-        const { data, error } = await supabase
-          .from('likes')
-          .select('*')
-          .eq('recipe_id', recipeId)
-          .eq('profile_id', session.user.id);
-
-        if (error) {
-          console.error('Error checking favorite status:', error);
-        } else {
-          setIsFavorite(data.length > 0);
-        }
-      }
-    };
-
-    const fetchRatings = async () => {
-      const { data: ratingsData, error: ratingsError } = await supabase
-        .from('ratings')
-        .select('*')
-        .eq('recipe_id', recipeId);
-
-      if (ratingsError) {
-        console.error('Error fetching ratings:', ratingsError);
-      } else if (ratingsData.length > 0) {
-        const total = ratingsData.reduce((acc, cur) => acc + cur.rating, 0);
-        const average = total / ratingsData.length;
-        setAverageRating(average.toFixed(1));
-      }
-      setRatings(ratingsData);
-    };
-
     fetchRecipeAndComments();
     checkFavorite();
     fetchRatings();
   }, [recipeId, session]);
+
+  const fetchRecipeAndComments = async () => {
+    if (!session || !session.user) {
+      console.error("User is not logged in");
+      setLoading(false);
+      return;
+    }
+
+    const { data: recipeData, error: recipeError } = await supabase
+      .from('recipes')
+      .select('*, ingredients(ingredient_id, name, quantity, unit)')
+      .eq('recipe_id', recipeId)
+      .single();
+
+    if (recipeError) {
+      console.error('Error fetching recipe details:', recipeError);
+      setLoading(false);
+      return;
+    }
+    setRecipe(recipeData);
+
+    const { data: commentsData, error: commentsError } = await supabase
+      .from('comments')
+      .select('*, user_id!inner(username)')
+      .eq('slug', recipeId);
+
+    if (commentsError) {
+      console.error('Error fetching comments:', commentsError);
+    } else {
+      setComments(commentsData);
+    }
+
+    setLoading(false);
+  };
+
+  const checkFavorite = async () => {
+    if (session && session.user) {
+      const { data, error } = await supabase
+        .from('likes')
+        .select('*')
+        .eq('recipe_id', recipeId)
+        .eq('profile_id', session.user.id);
+
+      if (error) {
+        console.error('Error checking favorite status:', error);
+      } else {
+        setIsFavorite(data.length > 0);
+      }
+    }
+  };
+
+  const fetchRatings = async () => {
+    const { data: ratingsData, error: ratingsError } = await supabase
+      .from('ratings')
+      .select('*')
+      .eq('recipe_id', recipeId);
+
+    if (ratingsError) {
+      console.error('Error fetching ratings:', ratingsError);
+    } else {
+      setRatings(ratingsData);
+      updateAverageRating(ratingsData);
+    }
+  };
 
   const toggleFavorite = async () => {
     if (!session || !session.user) {
@@ -123,7 +121,8 @@ const RecipeDetail = ({ session }) => {
     }
 
     const existingRating = ratings.find(r => r.profile_id === session.user.id);
-    
+    const updatedRating = { recipe_id: recipeId, profile_id: session.user.id, rating };
+
     if (existingRating) {
       const { error } = await supabase
         .from('ratings')
@@ -132,19 +131,28 @@ const RecipeDetail = ({ session }) => {
       if (error) {
         console.error('Error updating rating:', error);
       } else {
-        setRatings(ratings.map(r => r.profile_id === session.user.id ? { ...r, rating } : r));
-        fetchRatings(); // Recalculate average
+        const newRatings = ratings.map(r => r.profile_id === session.user.id ? updatedRating : r);
+        setRatings(newRatings);
+        updateAverageRating(newRatings);
       }
     } else {
       const { error } = await supabase
         .from('ratings')
-        .insert([{ recipe_id: recipeId, profile_id: session.user.id, rating }]);
+        .insert([updatedRating]);
       if (error) {
         console.error('Error inserting rating:', error);
       } else {
-        fetchRatings(); // Recalculate average
+        const newRatings = [...ratings, updatedRating];
+        setRatings(newRatings);
+        updateAverageRating(newRatings);
       }
     }
+  };
+
+  const updateAverageRating = (ratings) => {
+    const total = ratings.reduce((acc, cur) => acc + cur.rating, 0);
+    const average = total / ratings.length;
+    setAverageRating(average.toFixed(1));
   };
 
   const handleCommentChange = (e) => {
@@ -166,7 +174,7 @@ const RecipeDetail = ({ session }) => {
       console.error('Error posting comment:', error);
     } else {
       setComments([...comments, ...data]);
-      setNewCommentBody(''); // Clear the input box after submission
+      setNewCommentBody('');
     }
   };
 
