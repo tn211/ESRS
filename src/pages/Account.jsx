@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
-import { Link, useNavigate } from "react-router-dom"; // Modified to include useNavigate
+import { useNavigate } from "react-router-dom"; 
 import Avatar from '../components/Avatar'
 import './Account.css';
-import Layout2 from "./Layout2"; // Changed from Layout to Layout2
+import Layout2 from "./Layout2"; 
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)
   const [avatar_url, setAvatarUrl] = useState(null)
-  const navigate = useNavigate(); // Added useNavigate hook
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     async function getProfile() {
@@ -62,7 +62,7 @@ export default function Account({ session }) {
   }
 
   return (
-    <Layout2> {/* Wrapped content with Layout2 */}
+    <Layout2> 
       <form onSubmit={updateProfile} className="form-widget">
         <Avatar
           url={avatar_url}
