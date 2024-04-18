@@ -3,11 +3,15 @@ import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
 import { Link } from "react-router-dom";
 import Layout from './Layout';
+import { useNavigate } from 'react-router-dom';
+
 
 const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [submitting, setSubmitting] = useState(false);
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
+  const navigate = useNavigate();
+
 
   const addIngredientField = () => {
     setIngredients([...ingredients, { name: '', quantity: '', unit: '' }]);
@@ -38,11 +42,11 @@ const RecipeEntryPage = ({ session }) => {
       console.log('Recipe error:', recipeError);
       
       if (recipeError) throw recipeError;
-
-      const recipeId = recipeData.recipe_id; // Assuming the ID field is 'id'
-
+    
+      const recipeId = recipeData.recipe_id; 
+      
       console.log('recipeID', recipeId)
-
+    
       // Insert ingredients using the retrieved recipe ID
       for (const ingredient of data.ingredients) {
         const { error: ingredientError } = await supabase
@@ -50,8 +54,8 @@ const RecipeEntryPage = ({ session }) => {
           .insert({
             name: ingredient.name,
             quantity: ingredient.quantity,
-            unit: ingredient.unit, // Include the unit in the insertion data
-            recipe_id: recipeId, // Use the retrieved recipe ID
+            unit: ingredient.unit,
+            recipe_id: recipeId,
             profile_id: session.user.id,
           });
 
@@ -59,8 +63,9 @@ const RecipeEntryPage = ({ session }) => {
         
         if (ingredientError) throw ingredientError;
       }
-
-      alert('Recipe and ingredients added successfully!');
+    
+      // Redirect to the RecipeDetail page for the newly added recipe
+      navigate(`/recipes/${recipeId}`);
     } catch (error) {
       console.error('Submission error:', error);
       alert(`Submission error: ${error.message}`);
