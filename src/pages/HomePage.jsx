@@ -14,16 +14,16 @@ import Dropdown from '../components/dropdown/Dropdown';
 //   color: 'black',
 
 
- 
+
 // };
 const HomePage = () => {
   return (
     <Layout>
-    <div>
+      <div>
 
-      
-      
-    </div>
+
+
+      </div>
 
     </Layout>
   );
@@ -34,18 +34,18 @@ const HomePage = () => {
 
 export default HomePage;
 
- /* <div className="card-grid">
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-      </div>
-      <Link to="/recipe-image-upload">Image Upload</Link>*/
+/* <div className="card-grid">
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
+     </div>
+     <Link to="/recipe-image-upload">Image Upload</Link>*/
