@@ -12,6 +12,7 @@ const RecipeDetail = ({ session }) => {
   const [loading, setLoading] = useState(true);
   const [ratings, setRatings] = useState([]);
   const [averageRating, setAverageRating] = useState('Not yet rated');
+  const [submitter, setSubmitter] = useState('');
 
   useEffect(() => {
     fetchRecipeAndComments();
@@ -21,25 +22,35 @@ const RecipeDetail = ({ session }) => {
 
   const fetchRecipeAndComments = async () => {
     setLoading(true);
-
+  
     if (!session || !session.user) {
       console.error("User is not logged in");
       setLoading(false);
       return;
     }
-
+  
     const { data: recipeData, error: recipeError } = await supabase
       .from('recipes')
-      .select('*, ingredients(ingredient_id, name, quantity, unit)')
+      .select(`
+        *,
+        ingredients(ingredient_id, name, quantity, unit),
+        profiles(username)  
+      `)
       .eq('recipe_id', recipeId)
       .single();
-
+  
     if (recipeError) {
       console.error('Error fetching recipe details:', recipeError);
     } else {
       setRecipe(recipeData);
+      if (recipeData.profiles) {  // Check if profiles data is available
+        setSubmitter(recipeData.profiles.username);
+      } else {
+        console.log('No profile data available for this recipe');
+        setSubmitter('Unknown');  // Fallback if no username data is available
+      }
     }
-
+  
     const { data: commentsData, error: commentsError } = await supabase
       .from('comments')
       .select(`
@@ -47,15 +58,18 @@ const RecipeDetail = ({ session }) => {
         user_id!inner(username)
       `)
       .eq('slug', recipeId);
-
+  
     if (commentsError) {
       console.error('Error fetching comments:', commentsError);
     } else {
       setComments(commentsData);
     }
-
+  
     setLoading(false);
   };
+  
+
+
 
   const checkFavorite = async () => {
     if (session && session.user) {
@@ -202,12 +216,15 @@ const RecipeDetail = ({ session }) => {
       <Layout>
         <div>
           <h2>{recipe.title}</h2>
+          <small>Submitted by: {submitter}</small>
           <p>{recipe.description}</p>
           <p><strong>Instructions:</strong> {recipe.instructions}</p>
           <h3>Ingredients:</h3>
           <ul>
             {recipe.ingredients.map(ingredient => (
-              <li key={ingredient.ingredient_id}>{ingredient.name} - {ingredient.quantity} {ingredient.unit}</li>
+              <li key={ingredient.ingredient_id}>
+                {ingredient.quantity} {ingredient.unit !== 'unit' ? ingredient.unit + ' ' : ''}{ingredient.name}
+              </li>
             ))}
           </ul>
 
