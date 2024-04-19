@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
-import { Link } from "react-router-dom";
 import Layout from './Layout';
 import { useNavigate } from 'react-router-dom';
 
@@ -51,8 +50,7 @@ const RecipeEntryPage = ({ session }) => {
       if (recipeError) throw recipeError;
     
       const recipeId = recipeData.recipe_id; 
-      
-      console.log('recipeID', recipeId)
+      console.log('recipeID', recipeId);
     
       // Insert ingredients using the retrieved recipe ID
       for (const ingredient of data.ingredients) {
@@ -72,12 +70,15 @@ const RecipeEntryPage = ({ session }) => {
       }
 
       // Insert steps using the retrieved recipe ID
+      // Dynamically calculate step_number for each step
+      let stepNumber = 1;
       for (const step of data.steps) {
         const { error: stepError } = await supabase
           .from('steps')
           .insert({
             instruction: step.instruction,
             recipe_id: recipeId,
+            step_number: stepNumber++  // Increment step_number for each step
           });
 
         if (stepError) throw stepError;
@@ -91,7 +92,8 @@ const RecipeEntryPage = ({ session }) => {
     } finally {
       setSubmitting(false);
     }
-  };
+};
+
   
   return (
     <>
