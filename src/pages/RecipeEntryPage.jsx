@@ -10,8 +10,8 @@ const RecipeEntryPage = ({ session }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [submitting, setSubmitting] = useState(false);
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
+  const [steps, setSteps] = useState([{ instruction: '' }]);
   const navigate = useNavigate();
-
 
   const addIngredientField = () => {
     setIngredients([...ingredients, { name: '', quantity: '', unit: '' }]);
@@ -19,6 +19,14 @@ const RecipeEntryPage = ({ session }) => {
 
   const removeIngredientField = (index) => {
     setIngredients(ingredients.filter((_, i) => i !== index));
+  };
+
+  const addStepField = () => {
+    setSteps([...steps, { instruction: '' }]);
+  };
+
+  const removeStepField = (index) => {
+    setSteps(steps.filter((_, i) => i !== index));
   };
 
   const onSubmit = async (data) => {
@@ -31,7 +39,6 @@ const RecipeEntryPage = ({ session }) => {
         .insert({
           title: data.title,
           description: data.description,
-          instructions: data.instructions,
           profile_id: session.user.id,
           created_at: new Date().toISOString(),
         })
@@ -63,6 +70,18 @@ const RecipeEntryPage = ({ session }) => {
         
         if (ingredientError) throw ingredientError;
       }
+
+      // Insert steps using the retrieved recipe ID
+      for (const step of data.steps) {
+        const { error: stepError } = await supabase
+          .from('steps')
+          .insert({
+            instruction: step.instruction,
+            recipe_id: recipeId,
+          });
+
+        if (stepError) throw stepError;
+      }
     
       // Redirect to the RecipeDetail page for the newly added recipe
       navigate(`/recipes/${recipeId}`);
@@ -86,10 +105,16 @@ const RecipeEntryPage = ({ session }) => {
         <label>Description</label>
         <textarea {...register('description', { required: true })} />
       </div>
-      <div>
-        <label>Instructions</label>
-        <textarea {...register('instructions', { required: true })} />
-      </div>
+      {steps.map((step, index) => (
+        <div key={index}>
+          <textarea
+            {...register(`steps[${index}].instruction`, { required: true })}
+            placeholder="Step Instruction"
+          />
+          <button type="button" onClick={() => removeStepField(index)}>Remove Step</button>
+        </div>
+      ))}
+      <button type="button" onClick={addStepField}>Add Step</button>
       {ingredients.map((ingredient, index) => (
         <div key={index}>
           <input

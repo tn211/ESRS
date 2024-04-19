@@ -1,0 +1,122 @@
+[
+    {
+      "table_name": "profiles",
+      "column_name": "avatar_url",
+      "data_type": "text",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "full_name",
+      "data_type": "text",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "id",
+      "data_type": "uuid",
+      "key_type": "Primary Key"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "id",
+      "data_type": "uuid",
+      "key_type": "Foreign Key"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "username",
+      "data_type": "text",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "website",
+      "data_type": "text",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "recipes",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "recipes",
+      "column_name": "description",
+      "data_type": "text",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "recipes",
+      "column_name": "image_url",
+      "data_type": "text",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "recipes",
+      "column_name": "instructions",
+      "data_type": "text",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "recipes",
+      "column_name": "profile_id",
+      "data_type": "uuid",
+      "key_type": "Foreign Key"
+    },
+    {
+      "table_name": "recipes",
+      "column_name": "recipe_id",
+      "data_type": "integer",
+      "key_type": "Primary Key"
+    },
+    {
+      "table_name": "recipes",
+      "column_name": "title",
+      "data_type": "character varying",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "recipes",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "steps",
+      "column_name": "duration",
+      "data_type": "integer",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "steps",
+      "column_name": "instruction",
+      "data_type": "text",
+      "key_type": "Neither"
+    },
+    {
+      "table_name": "steps",
+      "column_name": "recipe_id",
+      "data_type": "integer",
+      "key_type": "Foreign Key"
+    },
+    {
+      "table_name": "steps",
+      "column_name": "step_id",
+      "data_type": "integer",
+      "key_type": "Primary Key"
+    },
+    {
+      "table_name": "steps",
+      "column_name": "step_number",
+      "data_type": "integer",
+      "key_type": "Neither"
+    }
+  ]
