@@ -34,7 +34,8 @@ const RecipeDetail = ({ session }) => {
       .select(`
         *,
         ingredients(ingredient_id, name, quantity, unit),
-        profiles(username)  
+        profiles(username),
+        steps(step_id, instruction, step_number)  // Fetch steps with step_number and instruction
       `)
       .eq('recipe_id', recipeId)
       .single();
@@ -218,7 +219,14 @@ const RecipeDetail = ({ session }) => {
           <h2>{recipe.title}</h2>
           <small>Submitted by: {submitter}</small>
           <p>{recipe.description}</p>
-          <p><strong>Instructions:</strong> {recipe.instructions}</p>
+          <h3>Instructions:</h3>
+          <ol>
+            {recipe.steps && recipe.steps.sort((a, b) => a.step_number - b.step_number).map(step => (
+              <li key={step.step_id}>
+                {step.instruction}
+              </li>
+            ))}
+          </ol>
           <h3>Ingredients:</h3>
           <ul>
             {recipe.ingredients.map(ingredient => (
