@@ -155,10 +155,6 @@ const RecipeEntryPage = ({ session }) => {
       ))}
       <button type="button" onClick={addIngredientField}>Add Ingredient</button>
       <button type="submit" disabled={submitting}>Submit Recipe</button>
-      <div>
-
-        <Link to="/">Back to Home</Link>
-        </div>
     </form>
     </Layout>
     </>
