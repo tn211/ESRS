@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabaseClient'
 
-export default function DisplayImage({ url, size }) {
+export default function DisplayImage({ initialUrl, size }) {
     const [recipeImageUrl, setRecipeImageUrl] = useState(null)
-  
+
     useEffect(() => {
-      if (url) downloadImage(url)
-    }, [url])
+      if (initialUrl) downloadImage(initialUrl)
+    }, [initialUrl])
   
     async function downloadImage(path) {
       try {
@@ -14,8 +14,8 @@ export default function DisplayImage({ url, size }) {
         if (error) {
           throw error
         }
-        const url = URL.createObjectURL(data)
-        setRecipeImageUrl(url)
+        const blobUrl = URL.createObjectURL(data)
+        setRecipeImageUrl(blobUrl)
       } catch (error) {
         console.log('Error downloading image: ', error.message)
       }
@@ -36,5 +36,3 @@ export default function DisplayImage({ url, size }) {
         </div>
       )
 }
-
-

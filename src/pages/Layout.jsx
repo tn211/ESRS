@@ -41,6 +41,9 @@ const Layout = ({ children }) => {
                     <li>
                         <Link to="/recipe-image-upload">Images</Link>
                     </li>
+                    <li>
+                        <Link to="/display-image">Display Image</Link>
+                    </li>
 
                 </ul>
             </nav>
