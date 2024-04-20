@@ -15,26 +15,30 @@ const Layout = ({ children }) => {
         <><header className={`header1 ${menuOpen ? "menu-open" : ""}`}>
             <div className="logo-container">
                 <a href="/">
-                    <img src="src\assets\Dishconnect2.PNG" alt="Logo" className="logo" />
+                    <img src="/src/assets/Dishconnect2.PNG" alt="Logo" className="logo" />
                 </a>
             </div>
             <nav className="nav1">
                 <ul className={`menu ${menuOpen ? "open" : ""}`}>
                     <li>
-                        <Link to="/add-recipe">Recipes</Link>
-                    </li>
-                    <li>
-                        <Link to="/my-recipes">Favourites</Link>
+                        <Link to="/search">Search</Link>
                     </li>
                     <li>
                         <Link to="/recent-recipes">Community</Link>
                     </li>
                     <li>
+                        <Link to="/my-recipes">My Recipes</Link>
+                    </li>
+                    <li>
+                        <Link to="/favourites">Favourites</Link>
+                    </li>
+                    <li>
                         <Link to="/AboutUs">About us</Link>
                     </li>
                     <li>
-                        <Link to="/image-upload">Upload</Link>
+                        <Link to="/add-recipe">Upload</Link>
                     </li>
+                    
 
                 </ul>
             </nav>

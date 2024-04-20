@@ -74,11 +74,14 @@ main {
     justify-content: center;
     /* Adjust spacing between menu items */
 }
+.nav2 li:active{
+    text-decoration: underline;
+}
 
 .nav2 a {
     text-decoration: none;
     color: black;
-    font-size: xx-large;
+    font-size: x-large;
     font-family: 'Josefin Sans', sans-serif;
     
 }
@@ -90,11 +93,9 @@ main {
     /* Adjust the color for the hover effect */
 }
 
-/* Add some padding to the body to account for the fixed header */
-
 .icon-container2 {
     position: absolute;
-    top: 40px;
+    top: 35px;
     right: 40px; /* Adjust right position to move the icon to the right */
     z-index: 999;
 }
@@ -136,6 +137,7 @@ main {
 
 .menu li {
     margin-left: 20px;
+    
 }
 
 @media only screen and (max-width: 768px) {

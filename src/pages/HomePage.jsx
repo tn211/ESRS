@@ -8,17 +8,19 @@ import RecipeCard from "../components/recipe-card/RecipeCard";
 import Dropdown from '../components/dropdown/Dropdown';
 
 
-const divStyle = {
 
-  color: 'black',
+// const divStyle = {
+
+//   color: 'black',
 
 
-
-};
+ 
+// };
 const HomePage = () => {
   return (
     <Layout>
-    <div className="home-page-container">
+    <div>
+
       
       
     </div>

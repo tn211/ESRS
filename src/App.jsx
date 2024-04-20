@@ -10,9 +10,8 @@ import UserRecipesPage from "./pages/UserRecipesPage";
 import RecipeDetail from "./pages/RecipeDetail";
 import AboutUs from "./pages/AboutUs";
 import RecentRecipesPage from "./pages/RecentRecipesPage";
-import RecipeImageUpload from './components/RecipeImageUpload';
-import About from './pages/About';
-import ImageUpload from './pages/ImageUpload';
+import SearchPage from "./pages/search-page/SearchPage";
+import UserFavouritesPage from "./pages/UserFavourites";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -34,13 +33,14 @@ function App() {
       ) : (
         <Router>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            {/* <Route path="/" element={<HomePage />} /> */}
+            <Route path="/" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/favourites" element={<UserFavouritesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recipes/:recipeId" element={<RecipeDetail key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recent-recipes" element={<RecentRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/recipe-image-upload" element={<RecipeImageUpload key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/image-upload" element={<ImageUpload key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/search" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
             <Route path="/AboutUs" element={<AboutUs key={session.user.id} session={session} />} />
           </Routes>

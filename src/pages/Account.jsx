@@ -1,46 +1,40 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 import Avatar from '../components/Avatar'
 import './Account.css';
-import Layout from "./Layout";
+import Layout2 from "./Layout2"; 
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)
   const [avatar_url, setAvatarUrl] = useState(null)
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    let ignore = false
     async function getProfile() {
       setLoading(true)
       const { user } = session
 
-      const { data, error } = await supabase
+      let { data, error } = await supabase
         .from('profiles')
         .select(`username, website, avatar_url`)
         .eq('id', user.id)
         .single()
 
-      if (!ignore) {
-        if (error) {
-          console.warn(error)
-        } else if (data) {
-          setUsername(data.username)
-          setWebsite(data.website)
-          setAvatarUrl(data.avatar_url)
-        }
+      if (error) {
+        console.warn(error)
+      } else if (data) {
+        setUsername(data.username)
+        setWebsite(data.website)
+        setAvatarUrl(data.avatar_url)
       }
 
       setLoading(false)
     }
 
     getProfile()
-
-    return () => {
-      ignore = true
-    }
   }, [session])
 
   async function updateProfile(event, avatarUrl) {
@@ -57,7 +51,7 @@ export default function Account({ session }) {
       updated_at: new Date(),
     }
 
-    const { error } = await supabase.from('profiles').upsert(updates)
+    let { error } = await supabase.from('profiles').upsert(updates)
 
     if (error) {
       alert(error.message)
@@ -68,15 +62,15 @@ export default function Account({ session }) {
   }
 
   return (
-    <Layout>
+    <Layout2> 
       <form onSubmit={updateProfile} className="form-widget">
-          <Avatar
-              url={avatar_url}
-              size={150}
-              onUpload={(event, url) => {
-                  updateProfile(event, url)
-              }}
-          />
+        <Avatar
+          url={avatar_url}
+          size={150}
+          onUpload={(event, url) => {
+            updateProfile(event, url)
+          }}
+        />
         <div>
           <label htmlFor="email">Email</label>
           <input id="email" type="text" value={session.user.email} disabled />
@@ -112,10 +106,13 @@ export default function Account({ session }) {
             Sign Out
           </button>
         </div>
+
         <div>
-        <Link to="/">Back to Home</Link>
+          <button className="button block" type="button" onClick={() => navigate("/") }>
+            Back To Home
+          </button>
         </div>
       </form>
-    </Layout>
+    </Layout2>
   )
 }
