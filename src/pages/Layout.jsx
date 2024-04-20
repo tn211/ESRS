@@ -38,7 +38,9 @@ const Layout = ({ children }) => {
                     <li>
                         <Link to="/add-recipe">Upload</Link>
                     </li>
-                    
+                    <li>
+                        <Link to="/recipe-image-upload">Images</Link>
+                    </li>
 
                 </ul>
             </nav>

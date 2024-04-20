@@ -12,6 +12,7 @@ import AboutUs from "./pages/AboutUs";
 import RecentRecipesPage from "./pages/RecentRecipesPage";
 import SearchPage from "./pages/search-page/SearchPage";
 import UserFavouritesPage from "./pages/UserFavourites";
+import RecipeImageUpload from "./pages/RecipeImageUpload";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -33,7 +34,6 @@ function App() {
       ) : (
         <Router>
           <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
             <Route path="/" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/favourites" element={<UserFavouritesPage key={session.user.id} session={session} supabase={supabase} />} />
@@ -43,6 +43,7 @@ function App() {
             <Route path="/search" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
             <Route path="/AboutUs" element={<AboutUs key={session.user.id} session={session} />} />
+            <Route path="/recipe-image-upload" element={<RecipeImageUpload key={session.user.id} session={session} supabase={supabase} />} />
           </Routes>
         </Router>
       )}
