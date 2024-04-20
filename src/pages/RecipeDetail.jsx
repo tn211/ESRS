@@ -221,7 +221,13 @@ const RecipeDetail = ({ session }) => {
   //   console.log('Full image URL:', url);
   //   return url;
   // };
+  
+
   const getFullImageUrl = (imagePath) => {
+    // const url = supabase.storage.from('recipe-images').getPublicUrl(imagePath).publicURL;
+    // console.log('Full image URL:', url);
+    // console.log('imagePath', imagePath);
+
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/';
     const bucketName = 'recipe-images';
     return `${baseUrl}${bucketName}/${imagePath}`;
@@ -236,10 +242,13 @@ const RecipeDetail = ({ session }) => {
           <h2>{recipe.title}</h2>
           <small>Submitted by: {submitter}</small>
           <p>{recipe.description}</p>
-          {recipe.image_url && (
+          {recipe.image_url ? (
               <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} style={{ maxWidth: '100%' }} />
-              // <img src='https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images/0.4056265433959503.jpg' alt={recipe.title} style={{ maxWidth: '100%' }} />
-          )}
+            ) : (
+              <img src="/src/assets/placeholder.png" alt="No image available" style={{ maxWidth: '100%' }} />
+            )}
+              {/* // <img src='https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images/0.4056265433959503.jpg' alt={recipe.title} style={{ maxWidth: '100%' }} /> */}
+  
 
           <h3>Instructions:</h3>
           <ol>
