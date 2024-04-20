@@ -4,12 +4,12 @@ import { supabase } from '../supabaseClient';
 import Layout from './Layout';
 import { useNavigate } from 'react-router-dom';
 
-
 const RecipeEntryPage = ({ session }) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [submitting, setSubmitting] = useState(false);
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
   const [steps, setSteps] = useState([{ instruction: '' }]);
+  const [imageUrl, setImageUrl] = useState(null);
   const navigate = useNavigate();
 
   const addIngredientField = () => {
@@ -28,10 +28,38 @@ const RecipeEntryPage = ({ session }) => {
     setSteps(steps.filter((_, i) => i !== index));
   };
 
+  const handleImageChange = event => {
+    if (event.target.files.length > 0) {
+      const fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        setImageUrl(e.target.result);
+      };
+      fileReader.readAsDataURL(event.target.files[0]);
+    }
+  };
+
   const onSubmit = async (data) => {
     setSubmitting(true);
 
     try {
+      // Handle image upload
+      if (data.image.length > 0) {
+        const file = data.image[0];
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from('recipe-images')
+          .upload(filePath, file);
+
+        if (uploadError) {
+          throw uploadError;
+        }
+
+        data.image_url = filePath; // Save image path for further reference in the recipe
+      }
+
       // Insert the recipe and retrieve the recipe ID
       const { data: recipeData, error: recipeError } = await supabase
         .from('recipes')
@@ -40,18 +68,15 @@ const RecipeEntryPage = ({ session }) => {
           description: data.description,
           profile_id: session.user.id,
           created_at: new Date().toISOString(),
+          image_url: data.image_url,
         })
         .select()
         .single();
-      
-      console.log('Recipe data:', recipeData);
-      console.log('Recipe error:', recipeError);
-      
+
       if (recipeError) throw recipeError;
-    
-      const recipeId = recipeData.recipe_id; 
-      console.log('recipeID', recipeId);
-    
+
+      const recipeId = recipeData.recipe_id;
+
       // Insert ingredients using the retrieved recipe ID
       for (const ingredient of data.ingredients) {
         const { error: ingredientError } = await supabase
@@ -64,13 +89,10 @@ const RecipeEntryPage = ({ session }) => {
             profile_id: session.user.id,
           });
 
-        console.log('Ingredient insert error:', ingredientError);
-        
         if (ingredientError) throw ingredientError;
       }
 
       // Insert steps using the retrieved recipe ID
-      // Dynamically calculate step_number for each step
       let stepNumber = 1;
       for (const step of data.steps) {
         const { error: stepError } = await supabase
@@ -83,7 +105,7 @@ const RecipeEntryPage = ({ session }) => {
 
         if (stepError) throw stepError;
       }
-    
+
       // Redirect to the RecipeDetail page for the newly added recipe
       navigate(`/recipes/${recipeId}`);
     } catch (error) {
@@ -92,7 +114,7 @@ const RecipeEntryPage = ({ session }) => {
     } finally {
       setSubmitting(false);
     }
-};
+  };
 
   
   return (
@@ -102,6 +124,10 @@ const RecipeEntryPage = ({ session }) => {
       <div>
         <label>Title</label>
         <input {...register('title', { required: true })} />
+      </div>
+      <div>
+        <label htmlFor="image">Recipe Image</label>
+        <input type="file" {...register('image', { required: true })} id="image" />
       </div>
       <div>
         <label>Description</label>

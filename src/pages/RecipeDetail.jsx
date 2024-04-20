@@ -33,12 +33,16 @@ const RecipeDetail = ({ session }) => {
       .from('recipes')
       .select(`
         *,
+        image_url,
         ingredients(ingredient_id, name, quantity, unit),
         profiles(username),
-        steps(step_id, instruction, step_number)  // Fetch steps with step_number and instruction
+        steps(step_id, instruction, step_number)
       `)
       .eq('recipe_id', recipeId)
       .single();
+
+      console.log(recipeData.image_url);
+
   
     if (recipeError) {
       console.error('Error fetching recipe details:', recipeError);
@@ -212,6 +216,19 @@ const RecipeDetail = ({ session }) => {
     return <div>Recipe not found.</div>;
   }
   
+  // const getFullImageUrl = (imagePath) => {
+  //   const url = supabase.storage.from('recipe-images').getPublicUrl(imagePath).publicURL;
+  //   console.log('Full image URL:', url);
+  //   return url;
+  // };
+  const getFullImageUrl = (imagePath) => {
+    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/';
+    const bucketName = 'recipe-images';
+    return `${baseUrl}${bucketName}/${imagePath}`;
+  };
+
+
+  
   return (
     <>
       <Layout>
@@ -219,6 +236,11 @@ const RecipeDetail = ({ session }) => {
           <h2>{recipe.title}</h2>
           <small>Submitted by: {submitter}</small>
           <p>{recipe.description}</p>
+          {recipe.image_url && (
+              <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} style={{ maxWidth: '100%' }} />
+              // <img src='https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images/0.4056265433959503.jpg' alt={recipe.title} style={{ maxWidth: '100%' }} />
+          )}
+
           <h3>Instructions:</h3>
           <ol>
             {recipe.steps && recipe.steps.sort((a, b) => a.step_number - b.step_number).map(step => (
@@ -276,3 +298,6 @@ const RecipeDetail = ({ session }) => {
 };
 
 export default RecipeDetail;
+
+
+
