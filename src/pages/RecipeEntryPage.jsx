@@ -137,6 +137,7 @@ const RecipeEntryPage = ({ session }) => {
         />
           <select {...register(`ingredients[${index}].unit`, { required: true })}>
             <option value="">Select Unit</option>
+            <option value="whole">whole</option>
             <option value="tsp">tsp</option>
             <option value="tbsp">tbsp</option>
             <option value="pinch">pinch</option>

@@ -231,7 +231,7 @@ const RecipeDetail = ({ session }) => {
           <ul>
             {recipe.ingredients.map(ingredient => (
               <li key={ingredient.ingredient_id}>
-                {ingredient.quantity} {ingredient.unit !== 'unit' ? ingredient.unit + ' ' : ''}{ingredient.name}
+                {ingredient.quantity} {ingredient.unit !== 'whole' ? ingredient.unit + ' ' : ''}{ingredient.name}
               </li>
             ))}
           </ul>
