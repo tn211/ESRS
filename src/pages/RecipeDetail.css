@@ -1,5 +1,10 @@
+.recipe-page {
+    padding-top: 300px;
+}
+
 .recipe-page .img-wrapper {
-    width: 100%; /* adjust this as needed to fit design */
+    /* width: 100%; /* adjust this as needed to fit design */
+    width: 300px;
     /* padding-top: 60%; /* Creates a square aspect ratio */  
     position: relative; /* enables absolute positioning for the child img */
     overflow: hidden; /* ensures the image doesn't overflow the circular shape */
