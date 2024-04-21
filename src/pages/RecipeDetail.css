@@ -5,7 +5,7 @@
     overflow: hidden; /* ensures the image doesn't overflow the circular shape */
     margin: auto; /* center the wrapper if needed */
     margin-bottom: 10px; /* Space below the image */ 
-    border-radius: 5px;
+    border-radius: 50px;
 }
 
 .recipe-page .img-wrapper img {
