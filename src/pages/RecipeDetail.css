@@ -1,0 +1,16 @@
+.recipe-card .img-wrapper {
+    width: 100%; /* adjust this as needed to fit design */
+    /* padding-top: 60%; /* Creates a square aspect ratio */  
+    position: relative; /* enables absolute positioning for the child img */
+    overflow: hidden; /* ensures the image doesn't overflow the circular shape */
+    margin: auto; /* center the wrapper if needed */
+    margin-bottom: 10px; /* Space below the image */ 
+    border-radius: 5px;
+}
+
+.recipe-card .img-wrapper img {
+    width: 100%; /* Limits the image to not exceed the wrapper's width */
+    height: auto; /* Maintain aspect ratio */
+    height: 50%; /* Adjust this to set the maximum height you want */
+    object-fit: cover; /* This will cover the area, cropping the image if necessary */
+}
