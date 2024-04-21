@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from './Layout';
 import { supabase } from '../supabaseClient';
+import './RecipeDetail.css';
 
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();
@@ -238,17 +239,20 @@ const RecipeDetail = ({ session }) => {
   return (
     <>
       <Layout>
-        <div>
+        <div className="recipe-page">
           <h2>{recipe.title}</h2>
           <small>Submitted by: {submitter}</small>
           <p>{recipe.description}</p>
-          {recipe.image_url ? (
-              <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} style={{ maxWidth: '100%' }} />
-            ) : (
-              <img src="/src/assets/placeholder.png" alt="No image available" style={{ maxWidth: '100%' }} />
-            )}
-              {/* // <img src='https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images/0.4056265433959503.jpg' alt={recipe.title} style={{ maxWidth: '100%' }} /> */}
-  
+
+
+          <div className='img-wrapper'>
+            {recipe.image_url ? (
+                <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} style={{ maxWidth: '100%' }} />
+              ) : (
+                <img src="/src/assets/placeholder.png" alt="No image available" style={{ maxWidth: '100%' }} />
+              )}
+                {/* // <img src='https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images/0.4056265433959503.jpg' alt={recipe.title} style={{ maxWidth: '100%' }} /> */}
+          </div>
 
           <h3>Instructions:</h3>
           <ol>

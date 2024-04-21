@@ -1,4 +1,4 @@
-.recipe-card .img-wrapper {
+.recipe-page .img-wrapper {
     width: 100%; /* adjust this as needed to fit design */
     /* padding-top: 60%; /* Creates a square aspect ratio */  
     position: relative; /* enables absolute positioning for the child img */
@@ -8,7 +8,7 @@
     border-radius: 5px;
 }
 
-.recipe-card .img-wrapper img {
+.recipe-page .img-wrapper img {
     width: 100%; /* Limits the image to not exceed the wrapper's width */
     height: auto; /* Maintain aspect ratio */
     height: 50%; /* Adjust this to set the maximum height you want */
