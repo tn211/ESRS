@@ -38,6 +38,7 @@ function App() {
             <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/favourites" element={<UserFavouritesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recipes/:recipeId" element={<RecipeDetail key={session.user.id} session={session} supabase={supabase} />} />
+            {/* <Route path="/chefs/:profile_id" element={< key={session.user.id} session={session} supabase={supabase} />} /> */}
             <Route path="/recent-recipes" element={<RecentRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/search" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
