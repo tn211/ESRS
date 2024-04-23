@@ -37,10 +37,12 @@ const RecipesList = ({ supabase, userId }) => {
         <ul>
           {recipes.map((recipe) => (
             <li key={recipe.recipe_id}>
+              <Link to={`/recipes/${recipe.recipe_id}`}>
               <div className='img-wrapper'>
                 <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} />
               </div>    
-              <Link to={`/recipes/${recipe.recipe_id}`}>{recipe.title}</Link>
+              <h3>{recipe.title}</h3>
+              </Link>
             </li>
           ))}
         </ul>
