@@ -170,10 +170,14 @@ const RecipeDetail = ({ session }) => {
   };
 
   const updateAverageRating = (ratings) => {
-    const total = ratings.reduce((acc, cur) => acc + cur.rating, 0);
-    const average = total / ratings.length;
-    setAverageRating(average.toFixed(1));
-  };
+    if (ratings.length === 0) {
+        setAverageRating("No ratings yet!");
+    } else {
+        const total = ratings.reduce((acc, cur) => acc + cur.rating, 0);
+        const average = total / ratings.length;
+        setAverageRating(average.toFixed(1));
+    }
+};
 
   const handleCommentChange = (e) => {
     setNewCommentBody(e.target.value);
