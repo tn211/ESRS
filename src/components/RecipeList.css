@@ -4,13 +4,13 @@
 
 .recipe-list .img-wrapper {
     /* width: 100%; /* adjust this as needed to fit design */
-    width: 300px;
+    width: 100px;
     /* padding-top: 60%; /* Creates a square aspect ratio */  
     position: relative; /* enables absolute positioning for the child img */
     overflow: hidden; /* ensures the image doesn't overflow the circular shape */
     margin: auto; /* center the wrapper if needed */
     margin-bottom: 10px; /* Space below the image */ 
-    border-radius: 50px;
+    border-radius: 10px;
 }
 
 .recipe-list .img-wrapper img {
