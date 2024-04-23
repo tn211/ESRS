@@ -42,18 +42,14 @@ const RecipeDetail = ({ session }) => {
       .eq('recipe_id', recipeId)
       .single();
 
-      console.log(recipeData.image_url);
-
-  
     if (recipeError) {
       console.error('Error fetching recipe details:', recipeError);
     } else {
       setRecipe(recipeData);
-      if (recipeData.profiles) {  // Check if profiles data is available
+      if (recipeData.profiles) {
         setSubmitter(recipeData.profiles.username);
       } else {
-        console.log('No profile data available for this recipe');
-        setSubmitter('Unknown');  // Fallback if no username data is available
+        setSubmitter('Unknown');
       }
     }
   
@@ -209,6 +205,12 @@ const RecipeDetail = ({ session }) => {
     }
   };
 
+  const formatTime = (totalMinutes) => {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return `${hours > 0 ? `${hours} hour${hours > 1 ? 's' : ''} ` : ''}${minutes} minute${minutes !== 1 ? 's' : ''}`;
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -242,6 +244,15 @@ const RecipeDetail = ({ session }) => {
         <div className="recipe-page">
           <h2>{recipe.title}</h2>
           <small>Submitted by: {submitter}</small>
+
+          <div>
+            <label>Prep Time: </label>
+            <span>{formatTime(recipe.prep_time)}</span>
+            <br />
+            <label>Cook Time: </label>
+            <span>{formatTime(recipe.cook_time)}</span>
+          </div>
+
           <p>{recipe.description}</p>
 
 
