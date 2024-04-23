@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import { supabase } from '../supabaseClient';
 import './RecipeDetail.css';
@@ -13,7 +14,8 @@ const RecipeDetail = ({ session }) => {
   const [loading, setLoading] = useState(true);
   const [ratings, setRatings] = useState([]);
   const [averageRating, setAverageRating] = useState('Not yet rated');
-  const [submitter, setSubmitter] = useState('');
+  const [submitter, setSubmitter] = useState('Unknown');
+  const [submitterId, setSubmitterId] = useState(null);
 
   useEffect(() => {
     fetchRecipeAndComments();
@@ -30,58 +32,50 @@ const RecipeDetail = ({ session }) => {
       return;
     }
   
-    const { data: recipeData, error: recipeError } = await supabase
-      .from('recipes')
-      .select(`
-        *,
-        image_url,
-        ingredients(ingredient_id, name, quantity, unit),
-        profiles(username),
-        steps(step_id, instruction, step_number)
-      `)
-      .eq('recipe_id', recipeId)
-      .single();
-  
-    if (recipeError) {
-      console.error('Error fetching recipe details:', recipeError);
-      setLoading(false);
-      return;  // Ensure the function exits here
-    }
-  
-    // Check for null values in cook time and prep time and replace with '--'
-    if (recipeData && recipeData.cook_time === null) {
-      recipeData.cook_time = '--';
-    }
-    if (recipeData && recipeData.prep_time === null) {
-      recipeData.prep_time = '--';
-    }
-  
-    setRecipe(recipeData);
-    if (recipeData && recipeData.profiles) {
-      setSubmitter(recipeData.profiles.username);
-    } else {
-      setSubmitter('Unknown');
-    }
-  
-    const { data: commentsData, error: commentsError } = await supabase
-      .from('comments')
-      .select(`
-        *,
-        user_id!inner(username)
-      `)
-      .eq('slug', recipeId);
-  
-    if (commentsError) {
-      console.error('Error fetching comments:', commentsError);
-    } else {
+    try {
+      const { data: recipeData, error: recipeError } = await supabase
+        .from('recipes')
+        .select(`
+          *,
+          image_url,
+          ingredients(ingredient_id, name, quantity, unit),
+          profile_id,
+          steps(step_id, instruction, step_number)
+        `)
+        .eq('recipe_id', recipeId)
+        .single();
+
+      if (recipeError) throw recipeError;
+
+      setRecipe(recipeData);
+      setSubmitterId(recipeData.profile_id);
+
+      const { data: profileData, error: profileError } = await supabase
+        .from('profiles')
+        .select('username')
+        .eq('id', recipeData.profile_id)
+        .single();
+
+      if (profileError) throw profileError;
+      setSubmitter(profileData.username);
+
+      const { data: commentsData, error: commentsError } = await supabase
+        .from('comments')
+        .select(`
+          *,
+          user_id!inner(username)
+        `)
+        .eq('slug', recipeId);
+
+      if (commentsError) throw commentsError;
       setComments(commentsData);
+
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+    } finally {
+      setLoading(false);
     }
-  
-    setLoading(false);  // Ensure to set loading to false after all operations
   };
-  
-
-
 
   const checkFavorite = async () => {
     if (session && session.user) {
@@ -113,81 +107,32 @@ const RecipeDetail = ({ session }) => {
     }
   };
 
+  const updateAverageRating = (ratings) => {
+    if (ratings.length === 0) {
+      setAverageRating("No ratings yet!");
+    } else {
+      const total = ratings.reduce((acc, cur) => acc + cur.rating, 0);
+      const average = total / ratings.length;
+      setAverageRating(average.toFixed(1));
+    }
+  };
+
   const toggleFavorite = async () => {
     if (!session || !session.user) {
       alert("You must be logged in to use favorites.");
       return;
     }
 
-    if (isFavorite) {
-      const { error } = await supabase
-        .from('likes')
-        .delete()
-        .eq('recipe_id', recipeId)
-        .eq('profile_id', session.user.id);
+    const { error } = isFavorite ? 
+      await supabase.from('likes').delete().eq('recipe_id', recipeId).eq('profile_id', session.user.id) :
+      await supabase.from('likes').insert([{ recipe_id: recipeId, profile_id: session.user.id }]);
 
-      if (error) {
-        console.error('Error removing from favorites:', error);
-      } else {
-        setIsFavorite(false);
-      }
+    if (error) {
+      console.error('Error updating favorites:', error);
     } else {
-      const { error } = await supabase
-        .from('likes')
-        .insert([{ recipe_id: recipeId, profile_id: session.user.id }]);
-
-      if (error) {
-        console.error('Error adding to favorites:', error);
-      } else {
-        setIsFavorite(true);
-      }
+      setIsFavorite(!isFavorite);
     }
   };
-
-  const handleRating = async (rating) => {
-    if (!session || !session.user) {
-      alert("You must be logged in to rate recipes.");
-      return;
-    }
-
-    const existingRating = ratings.find(r => r.profile_id === session.user.id);
-    const updatedRating = { recipe_id: recipeId, profile_id: session.user.id, rating };
-
-    if (existingRating) {
-      const { error } = await supabase
-        .from('ratings')
-        .update({ rating })
-        .match({ recipe_id: recipeId, profile_id: session.user.id });
-      if (error) {
-        console.error('Error updating rating:', error);
-      } else {
-        const newRatings = ratings.map(r => r.profile_id === session.user.id ? updatedRating : r);
-        setRatings(newRatings);
-        updateAverageRating(newRatings);
-      }
-    } else {
-      const { error } = await supabase
-        .from('ratings')
-        .insert([updatedRating]);
-      if (error) {
-        console.error('Error inserting rating:', error);
-      } else {
-        const newRatings = [...ratings, updatedRating];
-        setRatings(newRatings);
-        updateAverageRating(newRatings);
-      }
-    }
-  };
-
-  const updateAverageRating = (ratings) => {
-    if (ratings.length === 0) {
-        setAverageRating("No ratings yet!");
-    } else {
-        const total = ratings.reduce((acc, cur) => acc + cur.rating, 0);
-        const average = total / ratings.length;
-        setAverageRating(average.toFixed(1));
-    }
-};
 
   const handleCommentChange = (e) => {
     setNewCommentBody(e.target.value);
@@ -203,12 +148,7 @@ const RecipeDetail = ({ session }) => {
     const { error } = await supabase
       .from('comments')
       .insert([
-        {
-          slug: recipeId,
-          body: newCommentBody,
-          user_id: session.user.id,
-          created_at: new Date().toISOString()
-        }
+        { slug: recipeId, body: newCommentBody, user_id: session.user.id, created_at: new Date().toISOString() }
       ]);
 
     if (error) {
@@ -219,9 +159,13 @@ const RecipeDetail = ({ session }) => {
     }
   };
 
+  const getFullImageUrl = (imagePath) => {
+    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
+    return `${baseUrl}/${imagePath}`;
+  };
+
   const formatTime = (totalMinutes) => {
-    if (totalMinutes === '--') return '--'; // Skip formatting for '--'
-    
+    if (totalMinutes === '--') return '--';
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
     return `${hours > 0 ? `${hours} hour${hours > 1 ? 's' : ''} ` : ''}${minutes} minute${minutes !== 1 ? 's' : ''}`;
@@ -235,32 +179,12 @@ const RecipeDetail = ({ session }) => {
     return <div>Recipe not found.</div>;
   }
   
-  // const getFullImageUrl = (imagePath) => {
-  //   const url = supabase.storage.from('recipe-images').getPublicUrl(imagePath).publicURL;
-  //   console.log('Full image URL:', url);
-  //   return url;
-  // };
-  
-
-  const getFullImageUrl = (imagePath) => {
-    // const url = supabase.storage.from('recipe-images').getPublicUrl(imagePath).publicURL;
-    // console.log('Full image URL:', url);
-    // console.log('imagePath', imagePath);
-
-    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/';
-    const bucketName = 'recipe-images';
-    return `${baseUrl}${bucketName}/${imagePath}`;
-  };
-
-
-  
   return (
     <>
       <Layout>
         <div className="recipe-page">
           <h2>{recipe.title}</h2>
-          <small>Submitted by: {submitter}</small>
-
+          <small>Submitted by: {submitterId ? <Link to={`/chefs/${submitterId}`}>{submitter}</Link> : 'Unknown'}</small>
           <div>
             <label>Prep Time: </label>
             <span>{formatTime(recipe.prep_time)}</span>
@@ -268,25 +192,14 @@ const RecipeDetail = ({ session }) => {
             <label>Cook Time: </label>
             <span>{formatTime(recipe.cook_time)}</span>
           </div>
-
           <p>{recipe.description}</p>
-
-
           <div className='img-wrapper'>
-            {recipe.image_url ? (
-                <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} style={{ maxWidth: '100%' }} />
-              ) : (
-                <img src="/src/assets/placeholder.png" alt="No image available" style={{ maxWidth: '100%' }} />
-              )}
-                {/* // <img src='https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images/0.4056265433959503.jpg' alt={recipe.title} style={{ maxWidth: '100%' }} /> */}
+            <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} style={{ maxWidth: '100%' }} />
           </div>
-
           <h3>Instructions:</h3>
           <ol>
             {recipe.steps && recipe.steps.sort((a, b) => a.step_number - b.step_number).map(step => (
-              <li key={step.step_id}>
-                {step.instruction}
-              </li>
+              <li key={step.step_id}>{step.instruction}</li>
             ))}
           </ol>
           <h3>Ingredients:</h3>
@@ -297,20 +210,18 @@ const RecipeDetail = ({ session }) => {
               </li>
             ))}
           </ul>
-
           <div>
             <button onClick={toggleFavorite}>
               {isFavorite ? 'Remove from Favourites' : 'Add to Favourites'}
             </button>
             <div>
-            {[1, 2, 3, 4, 5].map(value => (
-              <button key={value} onClick={() => handleRating(value)}>{value}</button>
-            ))}
-            <p>Current Rating: {averageRating}</p>
+              {[1, 2, 3, 4, 5].map(value => (
+                <button key={value} onClick={() => handleRating(value)}>{value}</button>
+              ))}
+              <p>Current Rating: {averageRating}</p>
             </div>
           </div>
         </div>
-        
         <div>
           <h3>Comments:</h3>
           <ul>
@@ -323,12 +234,7 @@ const RecipeDetail = ({ session }) => {
             ))}
           </ul>
           <form onSubmit={handleCommentSubmit}>
-            <textarea
-              value={newCommentBody}
-              onChange={handleCommentChange}
-              placeholder="Write a comment..."
-              required
-            />
+            <textarea value={newCommentBody} onChange={handleCommentChange} placeholder="Write a comment..." required />
             <button type="submit">Post Comment</button>
           </form>
         </div>
