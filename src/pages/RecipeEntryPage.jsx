@@ -5,11 +5,13 @@ import Layout from './Layout';
 import { useNavigate } from 'react-router-dom';
 
 const RecipeEntryPage = ({ session }) => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [submitting, setSubmitting] = useState(false);
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
   const [steps, setSteps] = useState([{ instruction: '' }]);
   const [imageUrl, setImageUrl] = useState(null);
+  const [prepTime, setPrepTime] = useState({ hours: 0, minutes: 0 });
+  const [cookTime, setCookTime] = useState({ hours: 0, minutes: 0 });
   const navigate = useNavigate();
 
   const addIngredientField = () => {
@@ -41,6 +43,9 @@ const RecipeEntryPage = ({ session }) => {
   const onSubmit = async (data) => {
     setSubmitting(true);
 
+    const totalPrepTime = parseInt(prepTime.hours) * 60 + parseInt(prepTime.minutes);
+    const totalCookTime = parseInt(cookTime.hours) * 60 + parseInt(cookTime.minutes);
+
     try {
       // Handle image upload
       if (data.image.length > 0) {
@@ -66,6 +71,8 @@ const RecipeEntryPage = ({ session }) => {
         .insert({
           title: data.title,
           description: data.description,
+          prep_time: totalPrepTime, 
+          cook_time: totalCookTime,  
           profile_id: session.user.id,
           created_at: new Date().toISOString(),
           image_url: data.image_url,
@@ -129,6 +136,18 @@ const RecipeEntryPage = ({ session }) => {
         <label htmlFor="image">Recipe Image</label>
         <input type="file" {...register('image', { required: true })} id="image" />
       </div>
+      <div>
+          <label>Prep Time (Hours)</label>
+          <input type="number" value={prepTime.hours} onChange={e => setPrepTime({ ...prepTime, hours: e.target.value })} />
+          <label>Prep Time (Minutes)</label>
+          <input type="number" value={prepTime.minutes} onChange={e => setPrepTime({ ...prepTime, minutes: e.target.value })} />
+        </div>
+        <div>
+          <label>Cook Time (Hours)</label>
+          <input type="number" value={cookTime.hours} onChange={e => setCookTime({ ...cookTime, hours: e.target.value })} />
+          <label>Cook Time (Minutes)</label>
+          <input type="number" value={cookTime.minutes} onChange={e => setCookTime({ ...cookTime, minutes: e.target.value })} />
+        </div>
       <div>
         <label>Description</label>
         <textarea {...register('description', { required: true })} />
