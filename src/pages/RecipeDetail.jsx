@@ -41,16 +41,26 @@ const RecipeDetail = ({ session }) => {
       `)
       .eq('recipe_id', recipeId)
       .single();
-
+  
     if (recipeError) {
       console.error('Error fetching recipe details:', recipeError);
+      setLoading(false);
+      return;  // Ensure the function exits here
+    }
+  
+    // Check for null values in cook time and prep time and replace with '--'
+    if (recipeData && recipeData.cook_time === null) {
+      recipeData.cook_time = '--';
+    }
+    if (recipeData && recipeData.prep_time === null) {
+      recipeData.prep_time = '--';
+    }
+  
+    setRecipe(recipeData);
+    if (recipeData && recipeData.profiles) {
+      setSubmitter(recipeData.profiles.username);
     } else {
-      setRecipe(recipeData);
-      if (recipeData.profiles) {
-        setSubmitter(recipeData.profiles.username);
-      } else {
-        setSubmitter('Unknown');
-      }
+      setSubmitter('Unknown');
     }
   
     const { data: commentsData, error: commentsError } = await supabase
@@ -67,7 +77,7 @@ const RecipeDetail = ({ session }) => {
       setComments(commentsData);
     }
   
-    setLoading(false);
+    setLoading(false);  // Ensure to set loading to false after all operations
   };
   
 
@@ -210,6 +220,8 @@ const RecipeDetail = ({ session }) => {
   };
 
   const formatTime = (totalMinutes) => {
+    if (totalMinutes === '--') return '--'; // Skip formatting for '--'
+    
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
     return `${hours > 0 ? `${hours} hour${hours > 1 ? 's' : ''} ` : ''}${minutes} minute${minutes !== 1 ? 's' : ''}`;
