@@ -215,6 +215,7 @@ const RecipeDetail = ({ session }) => {
               {isFavorite ? 'Remove from Favourites' : 'Add to Favourites'}
             </button>
             <div>
+              <h3>Rate:</h3>
               {[1, 2, 3, 4, 5].map(value => (
                 <button key={value} onClick={() => handleRating(value)}>{value}</button>
               ))}
