@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import Layout from './Layout';
 import RecipesList from '../components/RecipeList';
+import './PublicProfilePage.css'; 
 
 const PublicProfilePage = () => {
   const { id } = useParams(); // This is the profile_id from the URL
@@ -34,7 +35,7 @@ const PublicProfilePage = () => {
 
   return (
     <Layout>
-      <div>
+      <div className='public-profile-page'>
         <h1>{user ? `${user.username}'s Recipes` : "Loading user..."}</h1>
         {!loading ? (
           <RecipesList supabase={supabase} userId={id} /> // Pass userId to RecipesList
