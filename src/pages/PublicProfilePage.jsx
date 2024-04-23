@@ -38,7 +38,6 @@ const PublicProfilePage = () => {
         <h1>{user ? `${user.username}'s Recipes` : "Loading user..."}</h1>
         {!loading ? (
           <RecipesList supabase={supabase} userId={id} /> // Pass userId to RecipesList
-
         ) : (
           <p>Loading recipes...</p>
         )}

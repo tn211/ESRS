@@ -9,7 +9,7 @@ const RecipesList = ({ supabase, userId }) => {
     const fetchRecipes = async () => {
       const { data, error } = await supabase
         .from("recipes")
-        .select("title, recipe_id")
+        .select("title, recipe_id, image_url")
         .eq("profile_id", userId);
 
       if (error) {
@@ -23,14 +23,22 @@ const RecipesList = ({ supabase, userId }) => {
     fetchRecipes();
   }, [supabase, userId]);
 
+  const getFullImageUrl = (imagePath) => {
+    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
+    return `${baseUrl}/${imagePath}`;
+  };
+
   console.log("Rendering, recipes count:", recipes.length);
 
   return (
-    <div>
+    <div className="recipe-list">
       {recipes.length > 0 ? (
         <ul>
           {recipes.map((recipe) => (
             <li key={recipe.recipe_id}>
+              <div className='img-wrapper'>
+                <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} style={{ maxWidth: '100%' }} />
+              </div>    
               <Link to={`/recipes/${recipe.recipe_id}`}>{recipe.title}</Link>
             </li>
           ))}
