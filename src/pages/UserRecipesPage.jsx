@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import RecipeList from '../components/RecipeList';
 import Layout from './Layout';
+import './UserRecipesPage.css';
 
 const UserRecipesPage = ({ session }) => {
   const [recipes, setRecipes] = useState([]);
@@ -52,7 +53,7 @@ const UserRecipesPage = ({ session }) => {
 
   return (
     <Layout>
-      <div>
+      <div className='user-recipes-page'>
         <h1>My Recipes</h1>
         {session && supabase ? ( // Check that session and supabase are not null
           <RecipeList supabase={supabase} userId={session.user.id} />

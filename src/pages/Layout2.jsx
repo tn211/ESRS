@@ -20,6 +20,25 @@ const Layout2 = ({ children }) => {
             </div>
             <nav className="nav2">
                 <ul className={`menu ${menuOpen ? "open" : ""}`}>
+                <li>
+                        <Link to="/search">Search</Link>
+                    </li>
+                    <li>
+                        <Link to="/recent-recipes">Community</Link>
+                    </li>
+                    <li>
+                        <Link to="/my-recipes">My Recipes</Link>
+                    </li>
+                    <li>
+                        <Link to="/favourites">Favourites</Link>
+                    </li>
+                    <li>
+                        <Link to="/AboutUs">About us</Link>
+                    </li>
+                    <li>
+                        <Link to="/add-recipe">Upload</Link>
+                    </li>
+                    {/* OLD NAV BAR
                     <li>
                         <Link to="/add-recipe">Recipes</Link>
                     </li>
@@ -34,7 +53,7 @@ const Layout2 = ({ children }) => {
                     </li>
                     <li>
                         <Link to="/add-recipe">Upload Recipe</Link>
-                    </li>
+                    </li> */}
 
                 </ul>
             </nav>
