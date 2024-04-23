@@ -18,6 +18,7 @@ const RecentRecipesPage = () => {
         .from('recipes')
         .select(`
           *,
+          image_url,
           ingredients (
             ingredient_id,
             name,
@@ -42,11 +43,16 @@ const RecentRecipesPage = () => {
     fetchRecentRecipes();
   }, []); // Empty dependency array means this effect runs once on mount
 
+  const getFullImageUrl = (imagePath) => {
+    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
+    return `${baseUrl}/${imagePath}`;
+  };
+
   console.log(`Rendering RecentRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`);
 
   return (
     <Layout>
-      <div>
+      <div className='recent-recipe-page'>
         <h1>Recent Recipes</h1>
         {loading ? (
           <p>Loading...</p>
@@ -54,6 +60,9 @@ const RecentRecipesPage = () => {
           <div>
             {recipes.map((recipe, index) => (
             <div key={`${recipe.recipe_id}-${index}`}>
+                <div className='img-wrapper'>
+                <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} />
+                </div> 
                 <Link to={`/recipes/${recipe.recipe_id}`}>
                   <h2>{recipe.title}</h2>
                 </Link>
