@@ -93,22 +93,38 @@ const RecipeDetail = ({ session }) => {
     }
   };
 
-  const handleRating = async (value) => {
+  const handleRating = async (rating) => {
     if (!session || !session.user) {
-      alert("You must be logged in to rate.");
+      alert("You must be logged in to rate recipes.");
       return;
     }
-  
-    // Insert new rating into the database
-    const { error } = await supabase.from('ratings').insert([
-      { recipe_id: recipeId, rating: value, user_id: session.user.id }
-    ]);
-  
-    if (error) {
-      console.error('Error submitting rating:', error);
+
+    const existingRating = ratings.find(r => r.profile_id === session.user.id);
+    const updatedRating = { recipe_id: recipeId, profile_id: session.user.id, rating };
+
+    if (existingRating) {
+      const { error } = await supabase
+        .from('ratings')
+        .update({ rating })
+        .match({ recipe_id: recipeId, profile_id: session.user.id });
+      if (error) {
+        console.error('Error updating rating:', error);
+      } else {
+        const newRatings = ratings.map(r => r.profile_id === session.user.id ? updatedRating : r);
+        setRatings(newRatings);
+        updateAverageRating(newRatings);
+      }
     } else {
-      // Fetch updated ratings from the database after successful insert
-      fetchRatings();
+      const { error } = await supabase
+        .from('ratings')
+        .insert([updatedRating]);
+      if (error) {
+        console.error('Error inserting rating:', error);
+      } else {
+        const newRatings = [...ratings, updatedRating];
+        setRatings(newRatings);
+        updateAverageRating(newRatings);
+      }
     }
   };
   
