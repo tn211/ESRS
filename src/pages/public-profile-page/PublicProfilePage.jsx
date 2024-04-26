@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { supabase } from '../supabaseClient';
-import Layout from './Layout';
-import RecipesList from '../components/RecipeList';
+import { supabase } from '../../supabaseClient';
+import Layout from '../Layout';
+import RecipesList from '../../components/RecipeList';
 import './PublicProfilePage.css';
 
 const PublicProfilePage = ({ session }) => {
