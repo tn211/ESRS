@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../supabaseClient'
+import { supabase } from '../../supabaseClient'
 import { useNavigate } from "react-router-dom"; 
-import Avatar from '../components/Avatar'
+import Avatar from '../../components/Avatar'
 import './Account.css';
-import Layout2 from "./Layout2"; 
-import Layout from "./Layout"; 
+import Layout2 from "../Layout2"; 
+import Layout from "../Layout"; 
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
