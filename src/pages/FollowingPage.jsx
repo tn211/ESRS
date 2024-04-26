@@ -67,16 +67,18 @@ const FollowingPage = ({ session }) => {
           <p>Loading profiles...</p>
         ) : (
           followingProfiles.length > 0 ? (
+            <div className='following-list'>
             <ul>
               {followingProfiles.map((profile) => (
                 <li key={profile.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
                   <Link to={`/chefs/${profile.id}`} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-                    <img src={getFullImageUrl(profile.avatar_url)} alt={`${profile.username}'s profile`} style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }} />
+                    <div className='.profile-img-wrapper'><img src={getFullImageUrl(profile.avatar_url)} alt={`${profile.username}'s profile`}/></div>
                     <span>{profile.username}</span>
                   </Link>
                 </li>
               ))}
             </ul>
+            </div>
           ) : (
             <p>You are not following anyone.</p>
           )

@@ -80,7 +80,7 @@ const PublicProfilePage = ({ session }) => {
           <>
             <h1>{`${user.username}'s Recipes`}</h1>
             <div className='profile-img-wrapper'>
-              <img src={avatarUrl ? getFullImageUrl(avatarUrl) : "/src/assets/placeholder.png"} alt={`${user.username}'s profile`} style={{ maxWidth: '100%' }} />
+              <img src={avatarUrl ? getFullImageUrl(avatarUrl) : "/src/assets/profile-placeholder.png"} alt={`${user.username}'s profile`} style={{ maxWidth: '100%' }} />
             </div>
             <button onClick={toggleFollow}>
               {isFollowing ? 'Unfollow' : 'Follow'}
