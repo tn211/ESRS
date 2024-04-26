@@ -11,11 +11,8 @@ import Comments from '../components/comments/Comments';
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
-  const [comments, setComments] = useState([]);
-  const [newCommentBody, setNewCommentBody] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [ratings, setRatings] = useState([]);
   const [averageRating, setAverageRating] = useState('Not yet rated');
   const [submitter, setSubmitter] = useState('Unknown');
   const [submitterId, setSubmitterId] = useState(null);
