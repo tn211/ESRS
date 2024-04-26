@@ -12,6 +12,8 @@ import AboutUs from "./pages/AboutUs";
 import RecentRecipesPage from "./pages/RecentRecipesPage";
 import SearchPage from "./pages/search-page/SearchPage";
 import UserFavouritesPage from "./pages/UserFavourites";
+import PublicProfilePage from "./pages/PublicProfilePage";
+import FollowingPage from "./pages/FollowingPage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -38,11 +40,13 @@ function App() {
             <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/favourites" element={<UserFavouritesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recipes/:recipeId" element={<RecipeDetail key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/chefs/:id" element={<PublicProfilePage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recent-recipes" element={<RecentRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/search" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/following" element={<FollowingPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
-            <Route path="/AboutUs" element={<AboutUs key={session.user.id} session={session} />} />
+            <Route path="/about-us" element={<AboutUs key={session.user.id} session={session} />} />
           </Routes>
         </Router>
       )}
