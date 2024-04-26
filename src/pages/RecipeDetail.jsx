@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import { supabase } from '../supabaseClient';
 import './RecipeDetail.css';
+import FavoriteButton from '../components/FavoriteButton';
 
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
-  const [comments, setComments] = useState([]);
-  const [newCommentBody, setNewCommentBody] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [ratings, setRatings] = useState([]);
-  const [averageRating, setAverageRating] = useState('Not yet rated');
-  const [submitter, setSubmitter] = useState('Unknown');
-  const [submitterId, setSubmitterId] = useState(null);
 
   useEffect(() => {
-    fetchRecipeAndComments();
+    fetchRecipe();
     checkFavorite();
-    fetchRatings();
   }, [recipeId, session]);
 
   const fetchRecipeAndComments = async () => {
@@ -247,9 +240,8 @@ const RecipeDetail = ({ session }) => {
             ))}
           </ul>
           <div>
-            <button onClick={toggleFavorite}>
-              {isFavorite ? 'Remove from Favourites' : 'Add to Favourites'}
-            </button>
+          <FavoriteButton recipeId={recipeId} isFavorite={isFavorite} setIsFavorite={setIsFavorite} session={session} />
+
             <div>
               <h3>Rate:</h3>
               {[1, 2, 3, 4, 5].map(value => (
