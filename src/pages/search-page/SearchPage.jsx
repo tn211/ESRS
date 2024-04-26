@@ -50,6 +50,7 @@ const SearchPage = () => {
     <>
       <Layout>
         <div>
+          <h1>Search Recipes</h1>
           <input
             type="text"
             placeholder="Search recipes..."
