@@ -6,6 +6,7 @@ import { supabase } from '../supabaseClient';
 import './RecipeDetail.css';
 import FavoriteButton from '../components/favorite-button/FavoriteButton';
 import RatingButtons from '../components/rating-buttons/RatingButtons';
+import Comments from '../components/comments/Comments';
 
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();
@@ -95,7 +96,6 @@ const RecipeDetail = ({ session }) => {
     }
   };
 
-
   const fetchRatings = async () => {
     const { data: ratingsData, error: ratingsError } = await supabase
       .from('ratings')
@@ -110,31 +110,6 @@ const RecipeDetail = ({ session }) => {
     }
   };
   
-
-  const handleCommentChange = (e) => {
-    setNewCommentBody(e.target.value);
-  };
-
-  const handleCommentSubmit = async (e) => {
-    e.preventDefault();
-    if (!session || !session.user) {
-      alert("You must be logged in to post a comment.");
-      return;
-    }
-
-    const { error } = await supabase
-      .from('comments')
-      .insert([
-        { slug: recipeId, body: newCommentBody, user_id: session.user.id, created_at: new Date().toISOString() }
-      ]);
-
-    if (error) {
-      console.error('Error posting comment:', error);
-    } else {
-      await fetchRecipeAndComments();
-      setNewCommentBody('');
-    }
-  };
 
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
@@ -201,22 +176,14 @@ const RecipeDetail = ({ session }) => {
           </div>
           
         </div>
+
         <div>
-          <h3>Comments:</h3>
-          <ul>
-            {comments.map((comment, index) => (
-              <li key={index}>
-                <p>{comment.body}</p>
-                <small>{comment.user_id.username}</small>
-                <small>{new Date(comment.created_at).toLocaleString()}</small>
-              </li>
-            ))}
-          </ul>
-          <form onSubmit={handleCommentSubmit}>
-            <textarea value={newCommentBody} onChange={handleCommentChange} placeholder="Write a comment..." required />
-            <button type="submit">Post Comment</button>
-          </form>
+        <Comments
+          recipeId={recipeId}
+          session={session}
+        />
         </div>
+
       </Layout>
     </>
   );
