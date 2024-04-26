@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import { supabase } from '../supabaseClient';
 import './RecipeDetail.css';
@@ -8,13 +9,20 @@ import FavoriteButton from '../components/FavoriteButton';
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [newCommentBody, setNewCommentBody] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [ratings, setRatings] = useState([]);
+  const [averageRating, setAverageRating] = useState('Not yet rated');
+  const [submitter, setSubmitter] = useState('Unknown');
+  const [submitterId, setSubmitterId] = useState(null);
 
   useEffect(() => {
-    fetchRecipe();
-    checkFavorite();
-  }, [recipeId, session]);
+    fetchRecipeAndComments();
+    fetchRatings();
+    checkFavorite(); 
+}, [recipeId, session]);
 
   const fetchRecipeAndComments = async () => {
     setLoading(true);
