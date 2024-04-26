@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogoutButton from "../components/LogoutButton"; // replace with the actual path to LogoutButton
+import LogoutButton from "../../components/LogoutButton"; // replace with the actual path to LogoutButton
 import './HomePage.css';
 import { HiUserCircle } from "react-icons/hi2";
-import Layout from "./Layout";
-import RecipeCard from "../components/recipe-card/RecipeCard";
-import Dropdown from '../components/dropdown/Dropdown';
+import Layout from "../Layout";
+import RecipeCard from "../../components/recipe-card/RecipeCard";
+import Dropdown from '../../components/dropdown/Dropdown';
 
 
 
