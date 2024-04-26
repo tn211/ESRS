@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabaseClient';
-import RecipeList from '../../components/RecipeList';
+import RecipeList from '../../components/recipe-list/RecipeList';
 import Layout from './Layout';
 import './UserRecipesPage.css';
 

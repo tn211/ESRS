@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../supabaseClient';
+import { supabase } from '../../supabaseClient';
 
 export default function RecipeImageUploader({ url, size, onUpload = (filePath) => console.log("Uploaded file path:", filePath) }) {
   const [recipeImageUrl, setRecipeImageUrl] = useState(null);
