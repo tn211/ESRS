@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Avatar from '../components/Avatar'
 import './Account.css';
 import Layout2 from "./Layout2"; 
+import Layout from "./Layout"; 
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
@@ -39,10 +40,30 @@ export default function Account({ session }) {
 
   async function updateProfile(event, avatarUrl) {
     event.preventDefault()
-
+  
     setLoading(true)
     const { user } = session
-
+  
+    // Check if the username is taken by someone else
+    let { data: usernameData, error: usernameError } = await supabase
+      .from('profiles')
+      .select('id')
+      .eq('username', username)
+      .not('id', 'eq', user.id) // Exclude the current user's profile from the check
+  
+    if (usernameError) {
+      alert(usernameError.message)
+      setLoading(false)
+      return
+    }
+  
+    // If usernameData is not empty, the username is taken
+    if (usernameData.length > 0) {
+      alert('Username is taken. Please choose another one.')
+      setLoading(false)
+      return
+    }
+  
     const updates = {
       id: user.id,
       username,
@@ -50,9 +71,9 @@ export default function Account({ session }) {
       avatar_url: avatarUrl,
       updated_at: new Date(),
     }
-
+  
     let { error } = await supabase.from('profiles').upsert(updates)
-
+  
     if (error) {
       alert(error.message)
     } else {
@@ -62,7 +83,7 @@ export default function Account({ session }) {
   }
 
   return (
-    <Layout2> 
+    <Layout> 
       <form onSubmit={updateProfile} className="form-widget">
         <Avatar
           url={avatar_url}
@@ -113,6 +134,6 @@ export default function Account({ session }) {
           </button>
         </div>
       </form>
-    </Layout2>
+    </Layout>
   )
 }
