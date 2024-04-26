@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import Layout from '../Layout';
-import RecipesList from '../../components/RecipeList';
+import Layout from '../../components/layout-components/Layout';
 import './PublicProfilePage.css';
+import RecipesList from '../../components/recipe-list/RecipeList';
 
 const PublicProfilePage = ({ session }) => {
   const { id } = useParams(); // This is the profile_id from the URL

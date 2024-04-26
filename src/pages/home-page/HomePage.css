@@ -3,7 +3,7 @@ body{
     font-family: 'Arial', sans-serif;
     overflow: hidden;
     padding-top: 160px;
-     background-image: url('./src/assets/pexels-photo-1660030.jpeg');
+    background-image: url('../../assets/pexels-photo-1660030.jpeg');
     background-repeat: no-repeat;
     height: 100vh;
     background-size: 100% auto;   

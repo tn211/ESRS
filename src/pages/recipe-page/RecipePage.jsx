@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import './RecipePage.css';
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import IngredientsCard from "../../components/ingredients-card/IngredientsCard";
-import Layout from "../Layout";
 import dummyData from "../../data/dummy-data";
 import MethodCard from '../../components/method-card/MethodCard';
 import TipsCard from '../../components/tips-card/TipsCard';
+import Layout from '../../components/layout-components/Layout';
 
 
 function RecipePage() {

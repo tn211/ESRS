@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import Layout from '../Layout';
+import Layout from '../../components/layout-components/Layout';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);

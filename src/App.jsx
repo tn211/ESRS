@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
 import Account from "./pages/account-page/Account";
-import HomePage from "./pages/home-page/HomePage";
 import RecipeEntryPage from "./pages/recipe-entry-page/RecipeEntryPage";
 import UserRecipesPage from "./pages/my-recipes-page/UserRecipesPage";
 import RecipeDetail from "./pages/recipe-detail-page/RecipeDetail";

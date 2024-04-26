@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabaseClient';
-import Layout from './Layout';
+import Layout from '../../components/layout-components/Layout';
 import { Link } from 'react-router-dom'; // Import Link
 import './RecentRecipesPage.css';
 

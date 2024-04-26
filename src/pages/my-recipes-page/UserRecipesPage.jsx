@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabaseClient';
 import RecipeList from '../../components/recipe-list/RecipeList';
-import Layout from './Layout';
+import Layout from '../../components/layout-components/Layout';
 import './UserRecipesPage.css';
 
 const UserRecipesPage = ({ session }) => {

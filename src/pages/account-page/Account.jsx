@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../../supabaseClient'
 import { useNavigate } from "react-router-dom"; 
-import Avatar from '../../components/Avatar'
 import './Account.css';
-import Layout2 from "../Layout2"; 
-import Layout from "../Layout"; 
+import Layout from '../../components/layout-components/Layout';
+import Avatar from '../../components/avatar/Avatar';
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
@@ -83,7 +82,7 @@ export default function Account({ session }) {
   }
 
   return (
-    <Layout> 
+    <Layout>
       <form onSubmit={updateProfile} className="form-widget">
         <Avatar
           url={avatar_url}
