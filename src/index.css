@@ -13,6 +13,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    padding-top: 160px;
+    background-image: url('./assets/pexels-photo-1660030.jpeg');
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: 100% auto;   
+     /*background-color: #d9d9d9; */
+}
+
+
+
 html, body {
   overflow: auto;
 }
