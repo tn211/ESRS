@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import { supabase } from '../supabaseClient';
 import './RecipeDetail.css';
-import FavoriteButton from '../components/FavoriteButton';
+import FavoriteButton from '../components/favorite-button/FavoriteButton';
 
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();

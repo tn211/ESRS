@@ -1,5 +1,5 @@
 import React from 'react';
-import { supabase } from '../supabaseClient';
+import { supabase } from '../../supabaseClient';
 
 const FavoriteButton = ({ recipeId, isFavorite, setIsFavorite, session }) => {
   const toggleFavorite = async () => {
