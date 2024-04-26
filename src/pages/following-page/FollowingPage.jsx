@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../supabaseClient';
-import Layout from './Layout';
+import { supabase } from '../../supabaseClient';
+import Layout from '../Layout';
 import './FollowingPage.css';
 
 const FollowingPage = ({ session }) => {
