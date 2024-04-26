@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Ensure you import Link from react-router-dom
 import { supabase } from '../../supabaseClient';
-import Layout from './Layout';
+import Layout from '../../components/layout-components/Layout';
 
 const UserFavouritesPage = ({ session }) => {
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);

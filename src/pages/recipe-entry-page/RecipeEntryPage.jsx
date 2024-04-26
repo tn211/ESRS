@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../../supabaseClient';
-import Layout from './Layout';
+import Layout from '../../components/layout-components/Layout';
 import { useNavigate } from 'react-router-dom';
 
 const RecipeEntryPage = ({ session }) => {
