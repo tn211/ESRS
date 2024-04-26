@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { supabase } from '../supabaseClient';
+import { supabase } from '../../supabaseClient';
 import Layout from './Layout';
 import { useNavigate } from 'react-router-dom';
 
