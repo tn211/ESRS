@@ -5,6 +5,7 @@ import Layout from './Layout';
 import { supabase } from '../supabaseClient';
 import './RecipeDetail.css';
 import FavoriteButton from '../components/favorite-button/FavoriteButton';
+import RatingButtons from '../components/rating-buttons/RatingButtons';
 
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();
@@ -94,41 +95,7 @@ const RecipeDetail = ({ session }) => {
     }
   };
 
-  const handleRating = async (rating) => {
-    if (!session || !session.user) {
-      alert("You must be logged in to rate recipes.");
-      return;
-    }
 
-    const existingRating = ratings.find(r => r.profile_id === session.user.id);
-    const updatedRating = { recipe_id: recipeId, profile_id: session.user.id, rating };
-
-    if (existingRating) {
-      const { error } = await supabase
-        .from('ratings')
-        .update({ rating })
-        .match({ recipe_id: recipeId, profile_id: session.user.id });
-      if (error) {
-        console.error('Error updating rating:', error);
-      } else {
-        const newRatings = ratings.map(r => r.profile_id === session.user.id ? updatedRating : r);
-        setRatings(newRatings);
-        updateAverageRating(newRatings);
-      }
-    } else {
-      const { error } = await supabase
-        .from('ratings')
-        .insert([updatedRating]);
-      if (error) {
-        console.error('Error inserting rating:', error);
-      } else {
-        const newRatings = [...ratings, updatedRating];
-        setRatings(newRatings);
-        updateAverageRating(newRatings);
-      }
-    }
-  };
-  
   const fetchRatings = async () => {
     const { data: ratingsData, error: ratingsError } = await supabase
       .from('ratings')
@@ -143,33 +110,6 @@ const RecipeDetail = ({ session }) => {
     }
   };
   
-
-  const updateAverageRating = (ratings) => {
-    if (ratings.length === 0) {
-      setAverageRating("No ratings yet!");
-    } else {
-      const total = ratings.reduce((acc, cur) => acc + cur.rating, 0);
-      const average = total / ratings.length;
-      setAverageRating(average.toFixed(1));
-    }
-  };
-
-  const toggleFavorite = async () => {
-    if (!session || !session.user) {
-      alert("You must be logged in to use favorites.");
-      return;
-    }
-
-    const { error } = isFavorite ? 
-      await supabase.from('likes').delete().eq('recipe_id', recipeId).eq('profile_id', session.user.id) :
-      await supabase.from('likes').insert([{ recipe_id: recipeId, profile_id: session.user.id }]);
-
-    if (error) {
-      console.error('Error updating favorites:', error);
-    } else {
-      setIsFavorite(!isFavorite);
-    }
-  };
 
   const handleCommentChange = (e) => {
     setNewCommentBody(e.target.value);
@@ -247,17 +187,19 @@ const RecipeDetail = ({ session }) => {
               </li>
             ))}
           </ul>
+
           <div>
           <FavoriteButton recipeId={recipeId} isFavorite={isFavorite} setIsFavorite={setIsFavorite} session={session} />
-
-            <div>
-              <h3>Rate:</h3>
-              {[1, 2, 3, 4, 5].map(value => (
-                <button key={value} onClick={() => handleRating(value)}>{value}</button>
-              ))}
-              <p>Current Rating: {averageRating}</p>
-            </div>
           </div>
+
+          <div>
+            <RatingButtons
+              recipeId={recipeId}
+              session={session}
+            />
+            <p>Current Rating: {averageRating}</p>
+          </div>
+          
         </div>
         <div>
           <h3>Comments:</h3>
