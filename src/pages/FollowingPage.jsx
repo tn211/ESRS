@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import Layout from './Layout';
+import './FollowingPage.css';
 
 const FollowingPage = ({ session }) => {
   const [followingProfiles, setFollowingProfiles] = useState([]);
@@ -61,24 +62,22 @@ const FollowingPage = ({ session }) => {
 
   return (
     <Layout>
-      <div>
+      <div className='following-page'>
         <h1>People I'm Following</h1>
         {loading ? (
           <p>Loading profiles...</p>
         ) : (
           followingProfiles.length > 0 ? (
-            <div className='following-list'>
             <ul>
               {followingProfiles.map((profile) => (
-                <li key={profile.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-                  <Link to={`/chefs/${profile.id}`} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-                    <div className='.profile-img-wrapper'><img src={getFullImageUrl(profile.avatar_url)} alt={`${profile.username}'s profile`}/></div>
+                <li key={profile.id}>
+                  <Link to={`/chefs/${profile.id}`}>
+                    <div className='following-img-wrapper'><img src={getFullImageUrl(profile.avatar_url)} alt={`${profile.username}'s profile`}/></div>
                     <span>{profile.username}</span>
                   </Link>
                 </li>
               ))}
             </ul>
-            </div>
           ) : (
             <p>You are not following anyone.</p>
           )

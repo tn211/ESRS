@@ -1,5 +1,5 @@
 
-.following-list .profile-img-wrapper {
+.following-page .following-img-wrapper {
     width: 100px; /* fixed width */
     height: 100px; /* fixed height to maintain uniformity */
     position: relative;
@@ -8,7 +8,7 @@
     border-radius: 50%; /* subtle rounded corners */
 }
 
-.following-list .profile-img-wrapper img {
+.following-page .following-img-wrapper img {
     width: 100%; /* ensures the image at least fills the width */
     height: 100%; /* ensures the image at least fills the height */
     object-fit: cover; /* covers the area, maintaining aspect ratio, cropping as necessary */
