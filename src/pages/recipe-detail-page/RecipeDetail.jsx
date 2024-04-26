@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Layout from './Layout';
-import { supabase } from '../supabaseClient';
+import Layout from '../Layout';
+import { supabase } from '../../supabaseClient';
 import './RecipeDetail.css';
-import FavoriteButton from '../components/favorite-button/FavoriteButton';
-import RatingButtons from '../components/rating-buttons/RatingButtons';
-import Comments from '../components/comments/Comments';
+import FavoriteButton from '../../components/favorite-button/FavoriteButton';
+import RatingButtons from '../../components/rating-buttons/RatingButtons';
+import Comments from '../../components/comments/Comments';
 
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();
