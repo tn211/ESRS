@@ -46,7 +46,7 @@ function App() {
             <Route path="/search" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/following" element={<FollowingPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
-            <Route path="/AboutUs" element={<AboutUs key={session.user.id} session={session} />} />
+            <Route path="/about-us" element={<AboutUs key={session.user.id} session={session} />} />
           </Routes>
         </Router>
       )}

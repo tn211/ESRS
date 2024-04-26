@@ -33,7 +33,10 @@ const Layout = ({ children }) => {
                         <Link to="/favourites">Favourites</Link>
                     </li>
                     <li>
-                        <Link to="/AboutUs">About us</Link>
+                        <Link to="/following">Following</Link>
+                    </li>
+                    <li>
+                        <Link to="/about-us">About us</Link>
                     </li>
                     <li>
                         <Link to="/add-recipe">Upload</Link>

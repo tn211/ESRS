@@ -52,6 +52,13 @@ const FollowingPage = ({ session }) => {
     fetchFollowingProfiles();
   }, [session]);
 
+
+  const getFullImageUrl = (imagePath) => {
+    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars';
+    return imagePath ? `${baseUrl}/${imagePath}` : "/src/assets/placeholder.png";
+  };
+
+
   return (
     <Layout>
       <div>
@@ -62,8 +69,11 @@ const FollowingPage = ({ session }) => {
           followingProfiles.length > 0 ? (
             <ul>
               {followingProfiles.map((profile) => (
-                <li key={profile.id}>
-                  <Link to={`/chefs/${profile.id}`}>{profile.username}</Link>
+                <li key={profile.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                  <Link to={`/chefs/${profile.id}`} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
+                    <img src={getFullImageUrl(profile.avatar_url)} alt={`${profile.username}'s profile`} style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }} />
+                    <span>{profile.username}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
