@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import { supabase } from '../../supabaseClient';
 import Layout from '../../components/layout-components/Layout';
+import './UserFavourites.css'
 
 const UserFavouritesPage = ({ session }) => {
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
@@ -59,7 +60,7 @@ const UserFavouritesPage = ({ session }) => {
 
   return (
     <Layout>
-      <div>
+      <div className='favourites-page'>
         <h1>My Favourites</h1>
         {loading ? (
           <p>Loading your favourite recipes...</p>
@@ -69,7 +70,9 @@ const UserFavouritesPage = ({ session }) => {
               {favouriteRecipes.map((recipe) => (
                 <li key={recipe.recipe_id}>
                   <Link to={`/recipes/${recipe.recipe_id}`}>
-                    <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} style={{ width: '100px', height: '100px' }} />
+                    <div className='img-wrapper'>
+                    <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title}/>
+                    </div>
                     {recipe.title}
                   </Link>
                 </li>
