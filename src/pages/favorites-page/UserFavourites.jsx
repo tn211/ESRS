@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Ensure you import Link from react-router-dom
+import { Link } from 'react-router-dom'; 
 import { supabase } from '../../supabaseClient';
 import Layout from '../../components/layout-components/Layout';
 
@@ -36,7 +36,7 @@ const UserFavouritesPage = ({ session }) => {
 
       const { data: recipesData, error: recipesError } = await supabase
         .from('recipes')
-        .select('*')
+        .select('recipe_id, title, image_url')  // Select image_url along with other fields
         .in('recipe_id', recipeIds);
 
       if (recipesError) {
@@ -52,6 +52,11 @@ const UserFavouritesPage = ({ session }) => {
     fetchFavouriteRecipes();
   }, [session]);
 
+  const getFullImageUrl = (imagePath) => {
+    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
+    return imagePath ? `${baseUrl}/${imagePath}` : "/src/assets/placeholder.png";
+  };
+
   return (
     <Layout>
       <div>
@@ -63,7 +68,10 @@ const UserFavouritesPage = ({ session }) => {
             <ul>
               {favouriteRecipes.map((recipe) => (
                 <li key={recipe.recipe_id}>
-                  <Link to={`/recipes/${recipe.recipe_id}`}>{recipe.title}</Link>
+                  <Link to={`/recipes/${recipe.recipe_id}`}>
+                    <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} style={{ width: '100px', height: '100px' }} />
+                    {recipe.title}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -79,12 +87,10 @@ const UserFavouritesPage = ({ session }) => {
 export default UserFavouritesPage;
 
 
-
-
 // import React, { useEffect, useState } from 'react';
-// import { supabase } from '../supabaseClient';
-// import RecipeList from '../components/RecipeList';
-// import Layout from './Layout';
+// import { Link } from 'react-router-dom'; 
+// import { supabase } from '../../supabaseClient';
+// import Layout from '../../components/layout-components/Layout';
 
 // const UserFavouritesPage = ({ session }) => {
 //   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
@@ -98,11 +104,7 @@ export default UserFavouritesPage;
 //         return;
 //       }
 
-//       console.log("Session is available, proceeding to fetch favourite recipes");
-
-//       // Step 1: Fetch the IDs of favourite recipes for the user
 //       const profileId = session.user.id;
-//       console.log(`Profile ID: ${profileId}`);
 //       const { data: likesData, error: likesError } = await supabase
 //         .from('likes')
 //         .select('recipe_id')
@@ -115,34 +117,22 @@ export default UserFavouritesPage;
 //       }
 
 //       if (likesData.length === 0) {
-//         console.log("No favourite recipes found for the user.");
 //         setLoading(false);
 //         return;
 //       }
 
 //       const recipeIds = likesData.map(like => like.recipe_id);
 
-//       // Step 2: Fetch the full details for each favourite recipe including ingredients
 //       const { data: recipesData, error: recipesError } = await supabase
 //         .from('recipes')
-//         .select(`
-//           *,
-//           ingredients (
-//             ingredient_id,
-//             name,
-//             quantity,
-//             recipe_id
-//           )
-//         `)
-//         .in('recipe_id', recipeIds); // Use the 'in' filter to fetch all recipes with the IDs we found
+//         .select('*')
+//         .in('recipe_id', recipeIds);
 
 //       if (recipesError) {
 //         console.error('Error fetching recipes based on likes:', recipesError);
 //         setLoading(false);
 //         return;
 //       }
-
-//       console.log("Fetched favourite recipes based on likes:", recipesData);
 
 //       setFavouriteRecipes(recipesData);
 //       setLoading(false);
@@ -159,7 +149,13 @@ export default UserFavouritesPage;
 //           <p>Loading your favourite recipes...</p>
 //         ) : (
 //           favouriteRecipes.length > 0 ? (
-//             <RecipeList recipes={favouriteRecipes} />
+//             <ul>
+//               {favouriteRecipes.map((recipe) => (
+//                 <li key={recipe.recipe_id}>
+//                   <Link to={`/recipes/${recipe.recipe_id}`}>{recipe.title}</Link>
+//                 </li>
+//               ))}
+//             </ul>
 //           ) : (
 //             <p>You have no favourite recipes.</p>
 //           )
@@ -170,5 +166,3 @@ export default UserFavouritesPage;
 // };
 
 // export default UserFavouritesPage;
-
-

@@ -1,4 +1,3 @@
-// import necessary modules and components
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
@@ -99,5 +98,4 @@ const FollowingPage = ({ session }) => {
   );
 };
 
-// export the component for use in other parts of the app
 export default FollowingPage;

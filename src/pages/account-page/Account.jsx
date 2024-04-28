@@ -43,12 +43,12 @@ export default function Account({ session }) {
     setLoading(true)
     const { user } = session
   
-    // Check if the username is taken by someone else
+    // check if the username is taken by someone else
     let { data: usernameData, error: usernameError } = await supabase
       .from('profiles')
       .select('id')
       .eq('username', username)
-      .not('id', 'eq', user.id) // Exclude the current user's profile from the check
+      .not('id', 'eq', user.id) // exclude the current user's profile from the check
   
     if (usernameError) {
       alert(usernameError.message)
@@ -56,7 +56,7 @@ export default function Account({ session }) {
       return
     }
   
-    // If usernameData is not empty, the username is taken
+    // if usernameData is not empty, the username is taken
     if (usernameData.length > 0) {
       alert('Username is taken. Please choose another one.')
       setLoading(false)
