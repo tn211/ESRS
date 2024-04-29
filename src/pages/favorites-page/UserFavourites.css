@@ -1,7 +1,7 @@
 
 .favourites-page .img-wrapper {
-    width: 100px; /* fixed width */
-    height: 100px; /* fixed height to maintain uniformity */
+    width: 200px; /* fixed width */
+    height: 200px; /* fixed height to maintain uniformity */
     position: relative;
     overflow: hidden; /* ensures excess parts of the image are not visible */
     margin: auto;
