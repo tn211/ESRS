@@ -1,4 +1,3 @@
-// import necessary modules and components
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
@@ -75,7 +74,7 @@ const FollowingPage = ({ session }) => {
   return (
     <Layout>
       <div className='following-page'>
-        <h1>People I'm Following</h1>
+        <h1>Following:</h1>
         {loading ? (
           <p>Loading profiles...</p>
         ) : (
@@ -99,5 +98,4 @@ const FollowingPage = ({ session }) => {
   );
 };
 
-// export the component for use in other parts of the app
 export default FollowingPage;

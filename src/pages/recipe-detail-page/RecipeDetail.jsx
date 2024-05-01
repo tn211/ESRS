@@ -169,7 +169,6 @@ const RecipeDetail = ({ session }) => {
               recipeId={recipeId}
               session={session}
             />
-            <p>Current Rating: {averageRating}</p>
           </div>
           
         </div>

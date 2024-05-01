@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabaseClient';
 import Layout from '../../components/layout-components/Layout';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom'; 
 import './RecentRecipesPage.css';
 
 const RecentRecipesPage = () => {
@@ -43,6 +43,7 @@ const RecentRecipesPage = () => {
     fetchRecentRecipes();
   }, []); // Empty dependency array means this effect runs once on mount
 
+  // function to construct full image URL
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
     return `${baseUrl}/${imagePath}`;
