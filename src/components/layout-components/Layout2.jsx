@@ -20,7 +20,7 @@ const Layout2 = ({ children }) => {
             </div>
             <nav className="nav2">
                 <ul className={`menu ${menuOpen ? "open" : ""}`}>
-                <li>
+                    <li>
                         <Link to="/search">Search</Link>
                     </li>
                     <li>

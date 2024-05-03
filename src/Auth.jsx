@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
+import './Auth.css';
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
@@ -22,7 +23,9 @@ export default function Auth() {
   return (
     <div className="row flex flex-center">
       <div className="col-6 form-widget">
-        <h1 className="header">DishConnect</h1>
+        <div className="logo-container2">
+          <img src="/src/assets/Dishconnect2.PNG" alt="Logo2" className="logo2" />
+        </div>
         <p className="description">
           Sign in via magic link with your email below
         </p>
@@ -38,7 +41,7 @@ export default function Auth() {
             />
           </div>
           <div>
-            <button className={"button block"} disabled={loading}>
+            <button className="button-block" disabled={loading}>
               {loading ? <span>Loading</span> : <span>Send magic link</span>}
             </button>
           </div>
