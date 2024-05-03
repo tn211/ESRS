@@ -1,5 +1,10 @@
 /* RecipeEntryPage.css */
 
+.recipe-entry-page {
+    position: relative;
+    top: 200px; 
+}
+
 form {
     background: white;
     max-width: 600px;

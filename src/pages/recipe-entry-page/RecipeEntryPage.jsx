@@ -129,6 +129,7 @@ const RecipeEntryPage = ({ session }) => {
   return (
     <>
       <Layout2>
+        <div className='recipe-entry-page'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label>Title</label>
@@ -206,6 +207,7 @@ const RecipeEntryPage = ({ session }) => {
           <button type="button" onClick={addIngredientField}>Add Ingredient</button>
           <button type="submit" disabled={submitting}>Submit Recipe</button>
         </form>
+        </div>
       </Layout2>
     </>
   );
