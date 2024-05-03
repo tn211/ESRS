@@ -13,6 +13,7 @@ import SearchPage from "./pages/search-page/SearchPage";
 import UserFavouritesPage from "./pages/favorites-page/UserFavourites";
 import PublicProfilePage from "./pages/public-profile-page/PublicProfilePage";
 import FollowingPage from "./pages/following-page/FollowingPage";
+import HomePage from "./pages/home-page/HomePage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -34,8 +35,7 @@ function App() {
       ) : (
         <Router>
           <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
-            <Route path="/" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/" element={<HomePage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/favourites" element={<UserFavouritesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/recipes/:recipeId" element={<RecipeDetail key={session.user.id} session={session} supabase={supabase} />} />

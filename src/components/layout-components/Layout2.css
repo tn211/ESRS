@@ -1,6 +1,7 @@
 main {
-    padding-top: 60px; /* prevents the top of main being hidden behind top of nav bar */
-  }
+    padding-top: 60px;
+    /* prevents the top of main being hidden behind top of nav bar */
+}
 
 .header2 {
     position: fixed;
@@ -13,8 +14,9 @@ main {
     padding: 50px;
     color: #fff;
     background-color: #F5F5F5;
-    z-index: 1000; /* ensure header is above other content */
-    
+    z-index: 1000;
+    /* ensure header is above other content */
+
 }
 
 .footer2 {
@@ -28,28 +30,37 @@ main {
     color: #fff;
     font-size: larger;
     font-family: 'Arial', sans-serif;
-    z-index: 1000; /* ensure header is above other content */
-    
+    z-index: 1000;
+    /* ensure header is above other content */
+    background: white;
+    opacity: 0.95;
+
 }
 
 
 .nav2 {
     position: fixed;
-    top: 30px; /* Adjust the top position as needed */
-    left: 500px; /* Adjust the left position to position the menu to the right of the logo */
+    top: 30px;
+    /* Adjust the top position as needed */
+    left: 500px;
+    /* Adjust the left position to position the menu to the right of the logo */
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Align menu items to the right */
+    justify-content: flex-end;
+    /* Align menu items to the right */
 }
 
 .logo2 {
     width: 400px;
     height: auto;
 }
-.logo-container2{
-     position: fixed;
-    top: 10px; /* Adjust the top position as needed */
-    left: 10px; /* Adjust the left position as needed */
+
+.logo-container2 {
+    position: fixed;
+    top: 10px;
+    /* Adjust the top position as needed */
+    left: 10px;
+    /* Adjust the left position as needed */
 }
 
 .logo2 img {
@@ -74,7 +85,8 @@ main {
     justify-content: center;
     /* Adjust spacing between menu items */
 }
-.nav2 li:active{
+
+.nav2 li:active {
     text-decoration: underline;
 }
 
@@ -83,7 +95,7 @@ main {
     color: black;
     font-size: x-large;
     font-family: 'Josefin Sans', sans-serif;
-    
+
 }
 
 .nav2 a:hover {
@@ -96,7 +108,8 @@ main {
 .icon-container2 {
     position: absolute;
     top: 35px;
-    right: 40px; /* Adjust right position to move the icon to the right */
+    right: 40px;
+    /* Adjust right position to move the icon to the right */
     z-index: 999;
 }
 
@@ -137,7 +150,7 @@ main {
 
 .menu li {
     margin-left: 20px;
-    
+
 }
 
 @media only screen and (max-width: 768px) {
