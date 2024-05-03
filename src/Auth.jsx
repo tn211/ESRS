@@ -23,8 +23,8 @@ export default function Auth() {
   return (
     <div className="row flex flex-center">
       <div className="col-6 form-widget">
-        <div className="logo-container2">
-          <img src="/src/assets/Dishconnect2.PNG" alt="Logo2" className="logo2" />
+        <div className="logo-container3">
+          <img src="/src/assets/Dishconnect2.PNG" alt="Logo3" className="logo3" />
         </div>
         <p className="description">
           Sign in via magic link with your email below
