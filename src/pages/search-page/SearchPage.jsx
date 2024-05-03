@@ -56,7 +56,7 @@ const SearchPage = () => {
     <>
       <Layout>
         <div className='search-page'>
-          <h1>Search Recipes</h1>
+          <h1>Search Recipes TEST</h1>
           <input
             type="text"
             placeholder="Search recipes..."
