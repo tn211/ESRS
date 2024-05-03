@@ -2,7 +2,8 @@
 
 .recipe-entry-page {
     position: relative;
-    top: 200px; 
+    top: 350px; 
+    margin-bottom: 350px
 }
 
 form {
