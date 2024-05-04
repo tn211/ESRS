@@ -1,0 +1,24 @@
+.
+├── Account.jsx
+├── App.css
+├── App.jsx
+├── Auth.jsx
+├── Avatar.jsx
+├── assets
+│   └── react.svg
+├── components
+│   ├── IngredientsForm.jsx
+│   ├── LogoutButton.jsx
+│   ├── RecipeForm.jsx
+│   └── RecipeList.jsx
+├── directory_structure.txt
+├── index.css
+├── index.js
+├── main.jsx
+├── pages
+│   ├── HomePage.jsx
+│   ├── RecipeEntryPage.jsx
+│   └── UserRecipesPage.jsx
+└── supabaseClient.js
+
+4 directories, 18 files

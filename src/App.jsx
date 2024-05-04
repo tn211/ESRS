@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
 import Account from "./pages/account-page/Account";
@@ -29,26 +29,30 @@ function App() {
 
   return (
     <div className="container" style={{ padding: "50px 0 100px 0" }}>
-      {!session ? (
-        <Auth />
-      ) : (
-        <Router>
-          <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
-            <Route path="/" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/favourites" element={<UserFavouritesPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/recipes/:recipeId" element={<RecipeDetail key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/chefs/:id" element={<PublicProfilePage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/recent-recipes" element={<RecentRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/search" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/following" element={<FollowingPage key={session.user.id} session={session} supabase={supabase} />} />
-            <Route path="/account" element={<Account key={session.user.id} session={session} />} />
-            <Route path="/about-us" element={<AboutUs key={session.user.id} session={session} />} />
-          </Routes>
-        </Router>
-      )}
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/recent-recipes" element={<RecentRecipesPage />} />
+
+          {/* Protected Routes - Only accessible when there is a session */}
+          {session ? (
+            <>
+              <Route path="/" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
+              <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
+              <Route path="/favourites" element={<UserFavouritesPage key={session.user.id} session={session} supabase={supabase} />} />
+              <Route path="/recipes/:recipeId" element={<RecipeDetail key={session.user.id} session={session} supabase={supabase} />} />
+              <Route path="/chefs/:id" element={<PublicProfilePage key={session.user.id} session={session} supabase={supabase} />} />
+              <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
+              <Route path="/following" element={<FollowingPage key={session.user.id} session={session} supabase={supabase} />} />
+              <Route path="/account" element={<Account key={session.user.id} session={session} />} />
+            </>
+          ) : (
+            <Route path="*" element={<Auth />} />
+          )}
+        </Routes>
+      </Router>
     </div>
   );
 }
