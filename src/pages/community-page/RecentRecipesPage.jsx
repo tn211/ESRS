@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabaseClient';
-import Layout from '../../components/layout-components/Layout';
-import { Link } from 'react-router-dom'; 
+import Layout2 from '../../components/layout-components/Layout2';
+import { Link } from 'react-router-dom';
 import './RecentRecipesPage.css';
 
 const RecentRecipesPage = () => {
@@ -52,7 +52,7 @@ const RecentRecipesPage = () => {
   console.log(`Rendering RecentRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`);
 
   return (
-    <Layout>
+    <Layout2>
       <div className='recent-recipe-page'>
         <h1>Recent Recipes</h1>
         {loading ? (
@@ -60,16 +60,17 @@ const RecentRecipesPage = () => {
         ) : (
           <div>
             {recipes.map((recipe, index) => (
-            <div key={`${recipe.recipe_id}-${index}`}>
-            <Link to={`/recipes/${recipe.recipe_id}`}>
-              <div className='img-wrapper'>
-                <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} />
-              </div> 
-              <h2>{recipe.title}</h2>
-            </Link>
-                <p>{recipe.description}</p>
+              <div key={`${recipe.recipe_id}-${index}`} className="card">
+                <Link to={`/recipes/${recipe.recipe_id}`}>
+                  <div className='img-wrapper'>
+                    <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} />
+                  </div>
+                  <h2>{recipe.title}</h2>
+
+                  <p>{recipe.description}</p>
+                </Link>
                 {/* Display other recipe details as needed */}
-            </div>
+              </div>
             ))}
           </div>
         )}
@@ -78,7 +79,7 @@ const RecentRecipesPage = () => {
           <Link to="/">Back to Home</Link>
         </div>
       </div>
-    </Layout>
+    </Layout2>
   );
 };
 

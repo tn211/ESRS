@@ -1,24 +1,75 @@
 * {
+    box-sizing: border-box;
+    /* Ensures padding and borders are included in the total width and height */
     color: black;
 }
 
-.recent-recipe-page {
-    margin-top: 2600px; /* Adjust this value as needed */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
+.recent-recipe-page {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Ensures columns fill the space optimally */
+    gap: 20px;
+    /* Spacing between grid items */
+    padding: 20px;
+    /* Padding around the grid */
+    margin-top: 40px;
+    /* Top margin for the grid */
+}
 
 .recent-recipe-page .img-wrapper {
-    width: 200px; /* fixed width */
-    height: 200px; /* fixed height to maintain uniformity */
-    position: relative;
-    overflow: hidden; /* ensures excess parts of the image are not visible */
-    margin: auto;
-    border-radius: 15px; /* subtle rounded corners */
+    width: 100%;
+    /* Ensures image wrapper takes full width of the grid item */
+    height: 200px;
+    /* Fixed height for images */
+    overflow: hidden;
+    border-radius: 15px;
+    /* Rounded corners */
 }
 
 .recent-recipe-page .img-wrapper img {
-    width: 100%; /* ensures the image at least fills the width */
-    height: 100%; /* ensures the image at least fills the height */
-    object-fit: cover; /* covers the area, maintaining aspect ratio, cropping as necessary */
-    object-position: center; /* centers the image in the container */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.recent-recipe-page .card {
+    background: #fff;
+    /* White background */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    transition: transform 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.recent-recipe-page .card:hover {
+    transform: translateY(-5px);
+    /* Lift effect on hover */
+}
+
+.recent-recipe-page h2,
+.recent-recipe-page p {
+    padding: 0 15px;
+    /* Padding for text inside cards */
+}
+
+.recent-recipe-page h2 {
+    margin-top: 10px;
+    font-size: 1.25rem;
+    /* Title font size */
+}
+
+.recent-recipe-page p {
+    font-size: 0.9rem;
+    color: #666;
+    /* Lighter text color */
 }
