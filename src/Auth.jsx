@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
 
-export default function Auth() {
+export default function Auth({ signInAnonymously }) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
 
@@ -24,7 +24,7 @@ export default function Auth() {
       <div className="col-6 form-widget">
         <h1 className="header">DishConnect</h1>
         <p className="description">
-          Sign in via magic link with your email below
+          Sign in via magic link with your email below or continue anonymously
         </p>
         <form className="form-widget" onSubmit={handleLogin}>
           <div>
@@ -43,6 +43,15 @@ export default function Auth() {
             </button>
           </div>
         </form>
+        <div>
+          <button
+            className="button block"
+            onClick={signInAnonymously}
+            disabled={loading}
+          >
+            {loading ? <span>Loading</span> : <span>Continue Anonymously</span>}
+          </button>
+        </div>
       </div>
     </div>
   );
