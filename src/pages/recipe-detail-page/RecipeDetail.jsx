@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Layout from '../../components/layout-components/Layout';
+import Layout2 from '../../components/layout-components/Layout2';
 import { supabase } from '../../supabaseClient';
 import './RecipeDetail.css';
 import FavoriteButton from '../../components/favorite-button/FavoriteButton';
@@ -20,18 +20,18 @@ const RecipeDetail = ({ session }) => {
   useEffect(() => {
     fetchRecipeAndComments();
     fetchRatings();
-    checkFavorite(); 
-}, [recipeId, session]);
+    checkFavorite();
+  }, [recipeId, session]);
 
   const fetchRecipeAndComments = async () => {
     setLoading(true);
-  
+
     if (!session || !session.user) {
       console.error("User is not logged in");
       setLoading(false);
       return;
     }
-  
+
     try {
       const { data: recipeData, error: recipeError } = await supabase
         .from('recipes')
@@ -98,7 +98,7 @@ const RecipeDetail = ({ session }) => {
       .from('ratings')
       .select('*')
       .eq('recipe_id', recipeId);
-  
+
     if (ratingsError) {
       console.error('Error fetching ratings:', ratingsError);
     } else {
@@ -106,7 +106,7 @@ const RecipeDetail = ({ session }) => {
       updateAverageRating(ratingsData);
     }
   };
-  
+
 
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
@@ -127,10 +127,10 @@ const RecipeDetail = ({ session }) => {
   if (!recipe) {
     return <div>Recipe not found.</div>;
   }
-  
+
   return (
     <>
-      <Layout>
+      <Layout2>
         <div className="recipe-page">
           <h2>{recipe.title}</h2>
           <small>Submitted by: {submitterId ? <Link to={`/chefs/${submitterId}`}>{submitter}</Link> : 'Unknown'}</small>
@@ -161,7 +161,7 @@ const RecipeDetail = ({ session }) => {
           </ul>
 
           <div>
-          <FavoriteButton recipeId={recipeId} isFavorite={isFavorite} setIsFavorite={setIsFavorite} session={session} />
+            <FavoriteButton recipeId={recipeId} isFavorite={isFavorite} setIsFavorite={setIsFavorite} session={session} />
           </div>
 
           <div>
@@ -170,17 +170,17 @@ const RecipeDetail = ({ session }) => {
               session={session}
             />
           </div>
-          
-        </div>
 
-        <div>
-        <Comments
-          recipeId={recipeId}
-          session={session}
-        />
-        </div>
 
-      </Layout>
+
+          <div>
+            <Comments
+              recipeId={recipeId}
+              session={session}
+            />
+          </div>
+        </div>
+      </Layout2>
     </>
   );
 };

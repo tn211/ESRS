@@ -1,15 +1,29 @@
 .search-page .search-img-wrapper {
-    width: 100px; /* fixed width */
-    height: 100px; /* fixed height to maintain uniformity */
+    width: 100px;
+    /* fixed width */
+    height: 100px;
+    /* fixed height to maintain uniformity */
     position: relative;
-    overflow: hidden; /* ensures excess parts of the image are not visible */
+    overflow: hidden;
+    /* ensures excess parts of the image are not visible */
     margin: auto;
-    border-radius: 50%; /* subtle rounded corners */
+    border-radius: 50%;
+    /* subtle rounded corners */
 }
 
 .search-page .search-img-wrapper img {
-    width: 100%; /* ensures the image at least fills the width */
-    height: 100%; /* ensures the image at least fills the height */
-    object-fit: cover; /* covers the area, maintaining aspect ratio, cropping as necessary */
-    object-position: center; /* centers the image in the container */
+    width: 100%;
+    /* ensures the image at least fills the width */
+    height: 100%;
+    /* ensures the image at least fills the height */
+    object-fit: cover;
+    /* covers the area, maintaining aspect ratio, cropping as necessary */
+    object-position: center;
+    /* centers the image in the container */
+}
+
+.search-page {
+    margin-left: 400px;
+    margin-top: -150px;
+    width: 100%;
 }

@@ -1,9 +1,7 @@
 /* RecipeEntryPage.css */
 
 .recipe-entry-page {
-    position: relative;
-    top: 350px; 
-    margin-bottom: 350px
+    margin-top: -200px;
 }
 
 form {

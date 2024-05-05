@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import Layout from '../../components/layout-components/Layout';
+import Layout2 from '../../components/layout-components/Layout2';
 import './UserFavourites.css'
 
 const UserFavouritesPage = ({ session }) => {
@@ -59,7 +59,7 @@ const UserFavouritesPage = ({ session }) => {
   };
 
   return (
-    <Layout>
+    <Layout2>
       <div className='favourites-page'>
         <h1>My Favourites</h1>
         {loading ? (
@@ -71,7 +71,7 @@ const UserFavouritesPage = ({ session }) => {
                 <li key={recipe.recipe_id}>
                   <Link to={`/recipes/${recipe.recipe_id}`}>
                     <div className='img-wrapper'>
-                    <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title}/>
+                      <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} />
                     </div>
                     {recipe.title}
                   </Link>
@@ -83,7 +83,7 @@ const UserFavouritesPage = ({ session }) => {
           )
         )}
       </div>
-    </Layout>
+    </Layout2>
   );
 };
 
@@ -91,7 +91,7 @@ export default UserFavouritesPage;
 
 
 // import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom'; 
+// import { Link } from 'react-router-dom';
 // import { supabase } from '../../supabaseClient';
 // import Layout from '../../components/layout-components/Layout';
 

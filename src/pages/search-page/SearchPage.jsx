@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import Layout from '../../components/layout-components/Layout';
+import Layout2 from '../../components/layout-components/Layout2';
 import './SearchPage.css'
 
 function useQuery() {
@@ -54,9 +54,9 @@ const SearchPage = () => {
 
   return (
     <>
-      <Layout>
+      <Layout2>
         <div className='search-page'>
-          <h1>Search Recipes TEST</h1>
+          <h1>Search Recipes </h1>
           <input
             type="text"
             placeholder="Search recipes..."
@@ -70,7 +70,7 @@ const SearchPage = () => {
               <div key={recipe.recipe_id}>
                 <Link to={`/recipes/${recipe.recipe_id}`}>
                   <div className='search-img-wrapper'>
-                    <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title}/>
+                    <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} />
                   </div>
                   <h3>{recipe.title}</h3>
                 </Link>
@@ -81,7 +81,7 @@ const SearchPage = () => {
             query && <p>No results found for "{query}"</p>
           )}
         </div>
-      </Layout>
+      </Layout2>
     </>
   );
 };

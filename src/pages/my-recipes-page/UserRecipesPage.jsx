@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabaseClient';
 import RecipeList from '../../components/recipe-list/RecipeList';
-import Layout from '../../components/layout-components/Layout';
+import Layout2 from '../../components/layout-components/Layout2';
 import './UserRecipesPage.css';
 
 const UserRecipesPage = ({ session }) => {
@@ -52,7 +52,7 @@ const UserRecipesPage = ({ session }) => {
   console.log(`Rendering UserRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`);
 
   return (
-    <Layout>
+    <Layout2>
       <div className='user-recipes-page'>
         <h1>My Recipes</h1>
         {session && supabase ? ( // Check that session and supabase are not null
@@ -61,7 +61,7 @@ const UserRecipesPage = ({ session }) => {
           <p>Loading or not authenticated...</p> // Fallback message
         )}
       </div>
-    </Layout>
+    </Layout2>
   );
 };
 

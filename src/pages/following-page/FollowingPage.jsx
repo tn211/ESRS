@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import Layout from '../../components/layout-components/Layout';
+import Layout2 from '../../components/layout-components/Layout2';
 import './FollowingPage.css';
 
 // define component to display followed users
@@ -72,7 +72,7 @@ const FollowingPage = ({ session }) => {
 
   // render the component with conditionally displayed content
   return (
-    <Layout>
+    <Layout2>
       <div className='following-page'>
         <h1>Following:</h1>
         {loading ? (
@@ -83,7 +83,7 @@ const FollowingPage = ({ session }) => {
               {followingProfiles.map((profile) => (
                 <li key={profile.id}>
                   <Link to={`/chefs/${profile.id}`}>
-                    <div className='following-img-wrapper'><img src={getFullImageUrl(profile.avatar_url)} alt={`${profile.username}'s profile`}/></div>
+                    <div className='following-img-wrapper'><img src={getFullImageUrl(profile.avatar_url)} alt={`${profile.username}'s profile`} /></div>
                     <span>{profile.username}</span>
                   </Link>
                 </li>
@@ -94,7 +94,7 @@ const FollowingPage = ({ session }) => {
           )
         )}
       </div>
-    </Layout>
+    </Layout2>
   );
 };
 
