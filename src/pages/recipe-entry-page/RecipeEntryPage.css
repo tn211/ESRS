@@ -1,0 +1,85 @@
+/* RecipeEntryPage.css */
+
+.recipe-entry-page {
+    position: relative;
+    top: 350px; 
+    margin-bottom: 350px
+}
+
+form {
+    background: white;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    border-radius: 50px;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+    font-size: x-large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+input[type="text"],
+input[type="title"],
+input[type="number"],
+input[type="file"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #d9d9d9;
+    color: black;
+}
+
+input[type="file"] {
+    border: none;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: grey;
+}
+
+button:disabled {
+    background-color: #ccc;
+}
+
+button[type="button"] {
+    background-color: black;
+    margin-right: 10px;
+}
+
+button[type="button"]:hover {
+    background-color: grey;
+}
+
+textarea {
+    height: 80px;
+}
+
+.error {
+    color: red;
+    font-size: 0.8em;
+}

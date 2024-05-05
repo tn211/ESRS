@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
         setMenuOpen(!menuOpen);
     };
     return (
-        
+
         <><header className={`header1 ${menuOpen ? "menu-open" : ""}`}>
             <div className="logo-container">
                 <a href="/">
@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
                     <li>
                         <Link to="/add-recipe">Upload</Link>
                     </li>
-                    
+
 
                 </ul>
             </nav>

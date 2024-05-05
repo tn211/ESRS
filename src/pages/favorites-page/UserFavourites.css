@@ -1,4 +1,9 @@
 
+.favourites-page {
+    position: relative;
+    top: 250px; 
+}
+
 .favourites-page .img-wrapper {
     width: 200px; /* fixed width */
     height: 200px; /* fixed height to maintain uniformity */
