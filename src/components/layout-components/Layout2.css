@@ -4,6 +4,7 @@ main {
 }
 
 .header2 {
+    overflow: hidden;
     position: fixed;
     top: 0;
     flex-direction: column;

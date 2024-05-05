@@ -12,15 +12,12 @@ html {
 }
 
 .recent-recipe-page {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    /* Ensures columns fill the space optimally */
-    gap: 20px;
-    /* Spacing between grid items */
+    margin-left: 700px;
+    margin-top: -150px;
+    width: 50%;
     padding: 20px;
     /* Padding around the grid */
-    margin-top: 40px;
-    /* Top margin for the grid */
+
 }
 
 .recent-recipe-page .img-wrapper {
@@ -42,6 +39,7 @@ html {
 
 .recent-recipe-page .card {
     background: #fff;
+    margin: 10px;
     /* White background */
     border-radius: 15px;
     /* Rounded corners */

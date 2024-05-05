@@ -54,7 +54,7 @@ const RecentRecipesPage = () => {
   return (
     <Layout2>
       <div className='recent-recipe-page'>
-        <h1>Recent Recipes</h1>
+        <h1>Community</h1>
         {loading ? (
           <p>Loading...</p>
         ) : (

@@ -56,7 +56,9 @@ const UserRecipesPage = ({ session }) => {
       <div className='user-recipes-page'>
         <h1>My Recipes</h1>
         {session && supabase ? ( // Check that session and supabase are not null
-          <RecipeList supabase={supabase} userId={session.user.id} />
+          <div className="card1">
+            <RecipeList supabase={supabase} userId={session.user.id} />
+          </div>
         ) : (
           <p>Loading or not authenticated...</p> // Fallback message
         )}

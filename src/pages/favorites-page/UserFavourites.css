@@ -23,3 +23,10 @@
     object-position: center;
     /* centers the image in the container */
 }
+
+.favourites-page {
+    margin-left: 700px;
+    margin-top: -150px;
+    width: 50%;
+    padding: 20px;
+}

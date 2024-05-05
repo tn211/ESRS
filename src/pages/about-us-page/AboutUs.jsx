@@ -5,7 +5,7 @@ import Layout2 from "../../components/layout-components/Layout2";
 const AboutUs = () => {
     return (
         <Layout2>
-        
+
             <div className="sora1">
                 <div className="text-container">
                     <p style={{ fontFamily: 'Josefin Sans', fontSize: '50px' }}>About us</p>
@@ -16,21 +16,27 @@ const AboutUs = () => {
                 <img src="src\assets\istockphoto-1253249134-612x612.jpg" alt="img1" className="image1" />
             </div>
             <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <div className="sora1">
-            <img src="src\assets\istockphoto-1199670834-1024x1024 1.png" alt="img2" className="image2" />
+                <img src="src\assets\istockphoto-1199670834-1024x1024 1.png" alt="img2" className="image2" />
                 <div className="text-container2">
                     <p style={{ fontFamily: 'Josefin Sans', fontSize: '50px' }}>Our Mission</p>
                     <p className="stretch">
-                    Our mission is to create the most diverse and friendly culinary community, empowering people from all over the world to share, explore and enjoy recipes from every corner of the planet, promoting the exchange of knowledge and experiences.
+                        Our mission is to create the most diverse and friendly culinary community, empowering people from all over the world to share, explore and enjoy recipes from every corner of the planet, promoting the exchange of knowledge and experiences.
                     </p>
                 </div>
-                
+
             </div>
             <br></br>
             <div className="sora1h">
-            <img src="src\assets\hide.png" alt="img3" className="image3" />
-               
-                
+                <img src="src\assets\hide.png" alt="img3" className="image3" />
+
+
             </div>
         </Layout2>
     );
