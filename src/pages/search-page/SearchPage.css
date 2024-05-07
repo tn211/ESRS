@@ -27,3 +27,8 @@
     margin-top: -150px;
     width: 100%;
 }
+
+.search-page {
+    padding-top: 160px; /* Adjust as needed based on the navbar height */
+  }
+  
