@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Layout2 from '../../components/layout-components/Layout2';
+import Layout3 from '../../components/layout-components/Layout3';
 import { supabase } from '../../supabaseClient';
 import './RecipeDetail.css';
 import FavoriteButton from '../../components/favorite-button/FavoriteButton';
@@ -130,7 +130,7 @@ const RecipeDetail = ({ session }) => {
 
   return (
     <>
-      <Layout2>
+      <Layout3>
         <div className="recipe-page">
           <h2>{recipe.title}</h2>
           <small>Submitted by: {submitterId ? <Link to={`/chefs/${submitterId}`}>{submitter}</Link> : 'Unknown'}</small>
@@ -180,7 +180,7 @@ const RecipeDetail = ({ session }) => {
             />
           </div>
         </div>
-      </Layout2>
+      </Layout3>
     </>
   );
 };

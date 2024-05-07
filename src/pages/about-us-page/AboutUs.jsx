@@ -1,10 +1,10 @@
 import React from "react";
 import './AboutUs.css';
-import Layout2 from "../../components/layout-components/Layout2";
+import Layout3 from "../../components/layout-components/Layout3";
 
 const AboutUs = () => {
     return (
-        <Layout2>
+        <Layout3>
 
             <div className="sora1">
                 <div className="text-container">
@@ -38,7 +38,7 @@ const AboutUs = () => {
 
 
             </div>
-        </Layout2>
+        </Layout3>
     );
 };
 

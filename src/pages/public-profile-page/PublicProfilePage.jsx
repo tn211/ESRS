@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import Layout2 from '../../components/layout-components/Layout2';
+import Layout3 from '../../components/layout-components/Layout3';
 import './PublicProfilePage.css';
 import RecipesList from '../../components/recipe-list/RecipeList';
 
@@ -74,7 +74,7 @@ const PublicProfilePage = ({ session }) => {
   };
 
   return (
-    <Layout2>
+    <Layout3>
       <div className='public-profile-page'>
         {user && (
           <>
@@ -94,7 +94,7 @@ const PublicProfilePage = ({ session }) => {
         )}
         {loading && <p>Loading user...</p>}
       </div>
-    </Layout2>
+    </Layout3>
   );
 };
 

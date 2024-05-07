@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './HomePage.css';
 import { HiUserCircle } from "react-icons/hi2";
-import Layout from '../../components/layout-components/Layout';
+import Layout3 from '../../components/layout-components/Layout3';
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import Dropdown from '../../components/dropdown/Dropdown';
 
@@ -17,14 +17,14 @@ import Dropdown from '../../components/dropdown/Dropdown';
 // };
 const HomePage = () => {
   return (
-    <Layout>
+    <Layout3>
       <div>
 
 
 
       </div>
 
-    </Layout>
+    </Layout3>
   );
 
 

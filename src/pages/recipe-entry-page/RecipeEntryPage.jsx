@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../../supabaseClient';
-import Layout2 from "../../components/layout-components/Layout2";
+import Layout3 from "../../components/layout-components/Layout3";
 import { useNavigate } from 'react-router-dom';
 import './RecipeEntryPage.css';
 
@@ -128,7 +128,7 @@ const RecipeEntryPage = ({ session }) => {
 
   return (
     <>
-      <Layout2>
+      <Layout3>
         <div className='recipe-entry-page'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
@@ -208,7 +208,7 @@ const RecipeEntryPage = ({ session }) => {
           <button type="submit" disabled={submitting}>Submit Recipe</button>
         </form>
         </div>
-      </Layout2>
+      </Layout3>
     </>
   );
 };

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../../supabaseClient'
 import { useNavigate } from "react-router-dom";
 import './Account.css';
-import Layout2 from '../../components/layout-components/Layout2';
+import Layout3 from '../../components/layout-components/Layout3';
 import Avatar from '../../components/avatar/Avatar';
 
 export default function Account({ session }) {
@@ -82,7 +82,7 @@ export default function Account({ session }) {
   }
 
   return (
-    <Layout2>
+    <Layout3>
       <form onSubmit={updateProfile} className="form-widget">
         <Avatar
           url={avatar_url}
@@ -133,6 +133,6 @@ export default function Account({ session }) {
           </button>
         </div>
       </form>
-    </Layout2>
+    </Layout3>
   )
 }

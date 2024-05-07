@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabaseClient';
-import Layout2 from '../../components/layout-components/Layout2';
+import Layout3 from '../../components/layout-components/Layout3';
 import { Link } from 'react-router-dom';
 import './RecentRecipesPage.css';
 
@@ -52,7 +52,7 @@ const RecentRecipesPage = () => {
   console.log(`Rendering RecentRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`);
 
   return (
-    <Layout2>
+    <Layout3>
       <div className='recent-recipe-page'>
         <h1>Community</h1>
         {loading ? (
@@ -79,7 +79,7 @@ const RecentRecipesPage = () => {
           <Link to="/">Back to Home</Link>
         </div>
       </div>
-    </Layout2>
+    </Layout3>
   );
 };
 

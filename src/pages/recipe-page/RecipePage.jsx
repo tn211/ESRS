@@ -6,14 +6,14 @@ import IngredientsCard from "../../components/ingredients-card/IngredientsCard";
 import dummyData from "../../data/dummy-data";
 import MethodCard from '../../components/method-card/MethodCard';
 import TipsCard from '../../components/tips-card/TipsCard';
-import Layout from '../../components/layout-components/Layout';
+import Layout3 from '../../components/layout-components/Layout3';
 
 
 function RecipePage() {
 
     return (
         <>
-            <Layout>
+            <Layout3>
                 <h1>TESTING RECIPE PAGE</h1>
             <RecipeCard />
 
@@ -37,7 +37,7 @@ function RecipePage() {
                  ))}
              </div>
 
-            </Layout>
+            </Layout3>
             
         </>
     );

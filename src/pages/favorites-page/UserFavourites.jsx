@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import Layout2 from '../../components/layout-components/Layout2';
+import Layout3 from '../../components/layout-components/Layout3';
 import './UserFavourites.css'
 
 const UserFavouritesPage = ({ session }) => {
@@ -59,7 +59,7 @@ const UserFavouritesPage = ({ session }) => {
   };
 
   return (
-    <Layout2>
+    <Layout3>
       <div className='favourites-page'>
         <h1>My Favourites</h1>
         {loading ? (
@@ -83,7 +83,7 @@ const UserFavouritesPage = ({ session }) => {
           )
         )}
       </div>
-    </Layout2>
+    </Layout3>
   );
 };
 
