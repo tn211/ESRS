@@ -3,11 +3,17 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
-import Account from "./pages/Account";
-import HomePage from "./pages/HomePage";
-import RecipeEntryPage from "./pages/RecipeEntryPage";
-import UserRecipesPage from "./pages/UserRecipesPage";
-import AddIngredientsPage from "./pages/AddIngredientsPage";
+import Account from "./pages/account-page/Account";
+import RecipeEntryPage from "./pages/recipe-entry-page/RecipeEntryPage";
+import UserRecipesPage from "./pages/my-recipes-page/UserRecipesPage";
+import RecipeDetail from "./pages/recipe-detail-page/RecipeDetail";
+import AboutUs from "./pages/about-us-page/AboutUs";
+import RecentRecipesPage from "./pages/community-page/RecentRecipesPage";
+import SearchPage from "./pages/search-page/SearchPage";
+import UserFavouritesPage from "./pages/favorites-page/UserFavourites";
+import PublicProfilePage from "./pages/public-profile-page/PublicProfilePage";
+import FollowingPage from "./pages/following-page/FollowingPage";
+import HomePage from "./pages/home-page/HomePage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -29,11 +35,17 @@ function App() {
       ) : (
         <Router>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/my-recipes" element={<UserRecipesPage supabase={supabase} />} />
-            <Route path="/add-recipe" element={<RecipeEntryPage supabase={supabase} />} />
-            <Route path="/add-ingredients" element={<AddIngredientsPage />} />
+            <Route path="/" element={<HomePage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/my-recipes" element={<UserRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/favourites" element={<UserFavouritesPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/recipes/:recipeId" element={<RecipeDetail key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/chefs/:id" element={<PublicProfilePage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/recent-recipes" element={<RecentRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/search" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/following" element={<FollowingPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
+            <Route path="/about-us" element={<AboutUs key={session.user.id} session={session} />} />
           </Routes>
         </Router>
       )}

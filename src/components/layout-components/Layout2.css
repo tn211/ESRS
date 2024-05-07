@@ -1,0 +1,196 @@
+main {
+    padding-top: 60px;
+    /* prevents the top of main being hidden behind top of nav bar */
+}
+
+.header2 {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* Take up the full width of the viewport */
+    padding: 50px;
+    color: #fff;
+    background-color: #F5F5F5;
+    z-index: 1000;
+    /* ensure header is above other content */
+
+}
+
+.footer2 {
+    position: fixed;
+    flex-direction: column;
+    display: flex;
+    bottom: 0;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    font-size: larger;
+    font-family: 'Arial', sans-serif;
+    z-index: 1000;
+    /* ensure header is above other content */
+    background: white;
+    opacity: 0.95;
+
+}
+
+
+.nav2 {
+    position: fixed;
+    top: 30px;
+    /* Adjust the top position as needed */
+    left: 500px;
+    /* Adjust the left position to position the menu to the right of the logo */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Align menu items to the right */
+}
+
+.logo2 {
+    width: 400px;
+    height: auto;
+}
+
+.logo-container2 {
+    position: fixed;
+    top: 10px;
+    /* Adjust the top position as needed */
+    left: 10px;
+    /* Adjust the left position as needed */
+}
+
+.logo2 img {
+    padding-left: 50px;
+
+    width: 500px;
+    /* Adjust logo width as needed */
+    height: 100px;
+    /* Adjust logo height as needed */
+}
+
+.nav2 ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav2 li {
+    margin-left: 40px;
+    margin-right: 40px;
+    justify-content: center;
+    /* Adjust spacing between menu items */
+}
+
+.nav2 li:active {
+    text-decoration: underline;
+}
+
+.nav2 a {
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.nav2 a:hover {
+    color: #000000;
+    font-weight: bolder;
+    text-decoration: underline;
+    /* Adjust the color for the hover effect */
+}
+
+.icon-container2 {
+    position: absolute;
+    top: 35px;
+    right: 40px;
+    /* Adjust right position to move the icon to the right */
+    z-index: 999;
+}
+
+
+.icon {
+    width: 30px;
+    /* Adjust the width and height as needed */
+    height: 30px;
+    color: white;
+
+}
+
+.icon:hover {
+    color: #000000;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px 0;
+    margin-right: 50px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-left: 20px;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .icon-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+        margin-right: 30px;
+        margin-top: 80px;
+    }
+
+    /* Adjust menu for smaller screens */
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        /* Adjust this value based on your header height */
+        left: 0;
+        width: 100%;
+        background: #86a595;
+        padding: 20px;
+
+    }
+
+    .menu-open .menu {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 9999;
+    }
+
+    .header.menu-open {
+        padding-bottom: 50px;
+    }
+}

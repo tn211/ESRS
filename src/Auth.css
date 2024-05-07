@@ -1,0 +1,36 @@
+.logo-container3 {
+    top: 0;
+    right: 0;
+    margin-left: 830px;
+    margin-top: 270px;
+}
+
+.logo3 img {
+    padding-left: 50px;
+
+    width: 500px;
+    /* Adjust logo width as needed */
+    height: 100px;
+    /* Adjust logo height as needed */
+}
+
+.description {
+
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+    margin-left: 420px;
+}
+
+.inputField {
+    background-color: white;
+    color: black;
+}
+
+.button-block {
+    background-color: gray;
+}
+
+.form-widget {
+    margin-left: 300px;
+}

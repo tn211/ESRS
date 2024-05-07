@@ -1,0 +1,32 @@
+.favourites-page {}
+
+.favourites-page .img-wrapper {
+    width: 200px;
+    /* fixed width */
+    height: 200px;
+    /* fixed height to maintain uniformity */
+    position: relative;
+    overflow: hidden;
+    /* ensures excess parts of the image are not visible */
+    margin: auto;
+    border-radius: 15px;
+    /* subtle rounded corners */
+}
+
+.favourites-page .img-wrapper img {
+    width: 100%;
+    /* ensures the image at least fills the width */
+    height: 100%;
+    /* ensures the image at least fills the height */
+    object-fit: cover;
+    /* covers the area, maintaining aspect ratio, cropping as necessary */
+    object-position: center;
+    /* centers the image in the container */
+}
+
+.favourites-page {
+    margin-left: 700px;
+    margin-top: -150px;
+    width: 50%;
+    padding: 20px;
+}
