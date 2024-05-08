@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
 import Layout2 from '../../components/layout-components/Layout2';
 import { Link } from 'react-router-dom';
+import './SearchResultsPage.css'
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -39,13 +40,13 @@ const SearchResultsPage = () => {
 
   return (
     <Layout2>
-      <div className='search-page'>
+      <div className='search-page-results'>
         <h1>Search Results</h1>
         {results.length > 0 ? (
           results.map((recipe) => (
-            <div key={recipe.recipe_id}>
+            <div key={recipe.recipe_id} className="search-results-card">
               <Link to={`/recipes/${recipe.recipe_id}`}>
-                <div className='search-img-wrapper'>
+                <div className='search-results-img-wrapper'>
                   <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} />
                 </div>
                 <h3>{recipe.title}</h3>
@@ -56,7 +57,7 @@ const SearchResultsPage = () => {
         ) : (
           query && <p>No results found for "{query}"</p>
         )}
-      <Link to={'/search'}>Back to Search</Link>
+        <Link to={'/search'} className='ssss'>Back to Search</Link>
       </div>
     </Layout2>
   );
