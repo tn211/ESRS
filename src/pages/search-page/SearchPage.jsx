@@ -44,8 +44,9 @@ const SearchPage = () => {
   };
 
   const executeSearch = () => {
-    navigate(`?query=${searchTerm}`);
+    navigate(`/search-results?query=${searchTerm}`);
   };
+  
 
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
