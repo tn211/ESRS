@@ -74,7 +74,7 @@ const FollowingPage = ({ session }) => {
   return (
     <Layout2>
       <div className='following-page'>
-        <h1>Following:</h1>
+        <h1>Following</h1>
         {loading ? (
           <p>Loading profiles...</p>
         ) : (

@@ -16,14 +16,17 @@
     /* ensures the image at least fills the width */
     height: 100%;
     /* ensures the image at least fills the height */
-    object-fit: cover;
+    object-fit: contain;
     /* covers the area, maintaining aspect ratio, cropping as necessary */
     object-position: center;
     /* centers the image in the container */
 }
 
 .recipe-page {
-    margin-left: 400px;
-    margin-top: -150px;
+    background-color: white;
+
+    margin-top: -160px;
     width: 100%;
+    padding: 50px;
+    border-radius: 50px;
 }

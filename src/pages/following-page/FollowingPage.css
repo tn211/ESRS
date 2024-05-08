@@ -1,7 +1,7 @@
 .following-page .following-img-wrapper {
-    width: 100px;
+    width: 200px;
     /* fixed width */
-    height: 100px;
+    height: 200px;
     /* fixed height to maintain uniformity */
     position: relative;
     overflow: hidden;
@@ -24,7 +24,11 @@
 
 .following-page {
 
-    margin-left: 400px;
+    background-color: white;
     margin-top: -150px;
     width: 100%;
+    padding: 50px;
+    padding-right: 60px;
+    border-radius: 70px;
+
 }
