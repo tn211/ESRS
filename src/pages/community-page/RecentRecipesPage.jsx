@@ -60,9 +60,9 @@ const RecentRecipesPage = () => {
         ) : (
           <div>
             {recipes.map((recipe, index) => (
-              <div key={`${recipe.recipe_id}-${index}`} className="card">
+              <div key={`${recipe.recipe_id}-${index}`} className="cardrrp">
                 <Link to={`/recipes/${recipe.recipe_id}`}>
-                  <div className='img-wrapper'>
+                  <div className='img-wrapperrrp'>
                     <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} />
                   </div>
                   <h2>{recipe.title}</h2>
