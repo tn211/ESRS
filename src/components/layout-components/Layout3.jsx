@@ -8,7 +8,7 @@ import brandImage from '../../assets/DishConnect3.PNG';
 function Layout3({ children }) {
     return (
       <>
-        <Navbar fixed="top" expand="lg" className="bg-body-tertiary py-0">
+        <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
           <Container>
           <Navbar.Brand href="/">
             <img
