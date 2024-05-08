@@ -56,6 +56,7 @@ const SearchResultsPage = () => {
         ) : (
           query && <p>No results found for "{query}"</p>
         )}
+      <Link to={'/search'}>Back to Search</Link>
       </div>
     </Layout2>
   );
