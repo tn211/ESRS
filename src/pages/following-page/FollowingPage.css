@@ -1,3 +1,18 @@
+.following-page ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Removes default margin */
+}
+
+.following-page li {
+    flex: 1 0 50%; /* Ensure each item takes up 50% of the container's width */
+    box-sizing: border-box;
+    padding: 10px; /* Provides spacing between items */
+}
+
+
 .following-page .following-img-wrapper {
     width: 200px;
     /* fixed width */

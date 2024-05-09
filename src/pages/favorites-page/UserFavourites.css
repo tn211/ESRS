@@ -1,3 +1,18 @@
+.favourites-page ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Removes default margin */
+}
+
+.favourites-page li {
+    flex: 1 0 50%; /* Ensure each item takes up 50% of the container's width */
+    box-sizing: border-box;
+    padding: 10px; /* Provides spacing between items */
+}
+
+
 .favourites-page .img-wrapper {
     width: 200px;
     /* fixed width */
@@ -16,7 +31,7 @@
     /* ensures the image at least fills the width */
     height: 100%;
     /* ensures the image at least fills the height */
-    object-fit: contain;
+    object-fit: cover;
     /* covers the area, maintaining aspect ratio, cropping as necessary */
     object-position: center;
     /* centers the image in the container */
