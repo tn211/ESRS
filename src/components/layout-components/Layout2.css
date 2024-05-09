@@ -10,23 +10,25 @@ main {
     flex-direction: column;
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 99.16%;
     /* Take up the full width of the viewport */
     padding: 50px;
     color: #fff;
     background-color: #F5F5F5;
     z-index: 1000;
+    opacity: 0.95;
     /* ensure header is above other content */
 
 }
 
 .footer2 {
     position: fixed;
+    overflow: hidden;
     flex-direction: column;
     display: flex;
     bottom: 0;
     align-items: center;
-    width: 100%;
+    width: 99.16%;
     padding: 10px;
     color: #fff;
     font-size: larger;
@@ -65,11 +67,9 @@ main {
 }
 
 .logo2 img {
-    padding-left: 50px;
-
-    width: 500px;
+    width: 100%;
     /* Adjust logo width as needed */
-    height: 100px;
+    height: auto;
     /* Adjust logo height as needed */
 }
 

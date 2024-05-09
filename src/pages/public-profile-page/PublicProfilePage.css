@@ -23,6 +23,7 @@
 }
 
 .public-profile-page {
+    opacity: 0.95;
     background-color: white;
     margin-top: -150px;
     width: 100%;

@@ -16,7 +16,7 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  overflow: hidden;
+  overflow: scroll;
   padding-top: 160px;
   background-image: url('./assets/pexels-photo-1660030.jpeg');
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@ body {
 
 html,
 body {
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 a {

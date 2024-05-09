@@ -24,7 +24,7 @@
 
 .recipe-page {
     background-color: white;
-
+    opacity: 0.95;
     margin-top: -160px;
     width: 100%;
     padding: 50px;

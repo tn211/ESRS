@@ -37,20 +37,27 @@ html {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    opacity: 0.95;
     /* Space below each card */
 }
 
 .img-wrapperrrp {
-    width: 100%; /* Keep the width flexible to the container's size */
-    height: 0; /* Set height to 0 initially */
-    padding-top: 100%; /* Equal to the width of the container, creates a square */
-    position: relative; /* Necessary for absolute positioning of the image inside */
+    width: 100%;
+    /* Keep the width flexible to the container's size */
+    height: 0;
+    /* Set height to 0 initially */
+    padding-top: 100%;
+    /* Equal to the width of the container, creates a square */
+    position: relative;
+    /* Necessary for absolute positioning of the image inside */
     overflow: hidden;
-    border-radius: 15px; /* Maintain rounded corners */
+    border-radius: 15px;
+    /* Maintain rounded corners */
 }
 
 .img-wrapperrrp img {
-    position: absolute; /* Absolute positioning relative to its parent */
+    position: absolute;
+    /* Absolute positioning relative to its parent */
     top: 0;
     left: 0;
     width: 100%;
