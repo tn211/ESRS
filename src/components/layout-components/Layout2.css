@@ -16,7 +16,7 @@ main {
     color: #fff;
     background-color: #F5F5F5;
     z-index: 1000;
-    opacity: 0.95;
+    /* opacity: 0.95; */
     /* ensure header is above other content */
 
 }
@@ -26,17 +26,18 @@ main {
     overflow: hidden;
     flex-direction: column;
     display: flex;
+    justify-content: center;
     bottom: 0;
     align-items: center;
     width: 99.16%;
-    padding: 10px;
+    height: 30px;
     color: #fff;
-    font-size: larger;
+    font-size: small;
     font-family: 'Arial', sans-serif;
     z-index: 1000;
     /* ensure header is above other content */
-    background: white;
-    opacity: 0.95;
+    background-color: #F5F5F5;
+    /* opacity: 0.95; */
 
 }
 
