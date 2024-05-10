@@ -10,9 +10,11 @@ main {
     flex-direction: column;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 99.16%;
     /* Take up the full width of the viewport */
     padding: 50px;
+    /* height: 100px; */
     color: #fff;
     background-color: #F5F5F5;
     z-index: 1000;
@@ -44,7 +46,7 @@ main {
 
 .nav2 {
     position: fixed;
-    top: 30px;
+    /* top: 30px; */
     /* Adjust the top position as needed */
     left: 500px;
     /* Adjust the left position to position the menu to the right of the logo */
@@ -95,7 +97,7 @@ main {
 .nav2 a {
     text-decoration: none;
     color: black;
-    font-size: x-large;
+    font-size: large;
     font-family: 'Josefin Sans', sans-serif;
 
 }
