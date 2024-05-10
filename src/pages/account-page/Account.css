@@ -35,7 +35,7 @@ body,
 /* Grid */
 
 .container {
-  width: 90%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -319,7 +319,6 @@ button.primary,
 
 .form-widget {
   margin-top: -150px;
-  margin-right: 250px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -355,4 +354,13 @@ button.primary,
   width: 1px;
 }
 
-@media only screen and (max-width: 768px) {}
+@media only screen and (max-width: 768px) {
+  .form-widget {
+    margin-top: -150px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 70px;
+  }
+
+}
