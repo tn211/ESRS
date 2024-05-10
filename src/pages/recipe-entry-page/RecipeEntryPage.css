@@ -82,3 +82,9 @@ textarea {
     color: red;
     font-size: 0.8em;
 }
+
+@media only screen and (max-width: 768px) {
+    form {
+        width: 100%;
+    }
+}

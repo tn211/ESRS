@@ -147,11 +147,15 @@ main {
 @media only screen and (max-width: 768px) {
     .icon-container {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: -70px;
+        left: -200px;
         z-index: 999;
-        margin-right: 30px;
-        margin-top: 80px;
+
+    }
+
+    .logo-container {
+        position: absolute;
+        right: -10px;
     }
 
     /* Adjust menu for smaller screens */
@@ -175,8 +179,8 @@ main {
     .menu-toggle {
         display: block;
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 120px;
+        right: -40px;
         z-index: 9999;
     }
 

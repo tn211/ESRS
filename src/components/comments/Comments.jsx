@@ -64,7 +64,7 @@ const Comments = ({ recipeId, session }) => {
                     </li>
                 ))}
             </ul>
-            <form onSubmit={handleCommentSubmit}>
+            <form className='rsc' onSubmit={handleCommentSubmit}>
                 <textarea value={newCommentBody} onChange={handleCommentChange} placeholder="Write a comment..." required />
                 <button type="submit">Post Comment</button>
             </form>

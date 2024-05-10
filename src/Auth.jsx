@@ -27,7 +27,7 @@ export default function Auth() {
           <img src="/src/assets/Dishconnect2.PNG" alt="Logo3" className="logo3" />
         </div>
         <p className="description">
-          Sign in via magic link with your email below
+
         </p>
         <form className="form-widget" onSubmit={handleLogin}>
           <div>

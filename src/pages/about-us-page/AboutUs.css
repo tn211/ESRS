@@ -44,3 +44,15 @@
     align-self: flex-start;
     margin-right: 700px;
 }
+
+@media only screen and (max-width: 768px) {
+
+    .sora1 {
+        margin-top: -150px;
+        background-color: white;
+        opacity: 0.95;
+        display: flex;
+        width: 100%;
+
+    }
+}

@@ -49,3 +49,16 @@
     padding-right: 80px;
     border-radius: 70px;
 }
+
+@media only screen and (max-width: 768px) {
+    .favourites-page {
+        opacity: 0.95;
+        background-color: white;
+        margin-top: -150px;
+        width: 100%;
+        padding: 50px;
+        padding-right: 50px;
+        border-radius: 70px;
+    }
+
+}

@@ -46,7 +46,7 @@ const SearchPage = () => {
   const executeSearch = () => {
     navigate(`/search-results?query=${searchTerm}`);
   };
-  
+
 
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
@@ -57,7 +57,7 @@ const SearchPage = () => {
     <>
       <Layout2>
         <div className='search-page'>
-          <h1>Search Recipes </h1>
+          <h1 className='resh'>Search Recipes </h1>
           <input
             type="text"
             placeholder="Search recipes..."

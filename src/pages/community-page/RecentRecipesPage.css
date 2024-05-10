@@ -91,3 +91,30 @@ html {
     color: #666;
     /* Lighter text color */
 }
+
+@media only screen and (max-width: 768px) {
+    .recent-recipe-page>div {
+        /* Assuming this is the direct parent div of .card elements */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        /* Adjusts the alignment of items */
+        padding: 20px;
+        gap: 30px;
+        width: 100%;
+        /* Increases spacing between cards */
+    }
+
+    .cardrrp {
+        flex: 1 1 calc(50% - 10px);
+        /* Adjusting width for wider cards and increased space between them */
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        opacity: 0.95;
+        width: 100%;
+        /* Space below each card */
+    }
+
+}
