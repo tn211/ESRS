@@ -54,6 +54,8 @@ main {
 
 .logo {
     margin-top: 30px;
+    width: 400px;
+    height: auto;
     /* Adjust spacing between logo and menu */
 }
 
@@ -62,14 +64,7 @@ main {
     right: 130px;
 }
 
-.logo img {
-    padding-left: 50px;
 
-    width: 500px;
-    /* Adjust logo width as needed */
-    height: 100px;
-    /* Adjust logo height as needed */
-}
 
 .nav1 ul {
     list-style-type: none;
@@ -160,7 +155,7 @@ main {
     }
 
     /* Adjust menu for smaller screens */
-    .menu {
+    header.header1 ul.menu {
         display: none;
         flex-direction: column;
         position: fixed;
@@ -173,7 +168,7 @@ main {
 
     }
 
-    .menu-open .menu {
+    header.header1.menu-open .menu {
         display: flex;
     }
 
