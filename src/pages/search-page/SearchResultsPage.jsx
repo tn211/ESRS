@@ -4,6 +4,7 @@ import { supabase } from '../../supabaseClient';
 import Layout2 from '../../components/layout-components/Layout2';
 import { Link } from 'react-router-dom';
 import './SearchResultsPage.css'
+import foodplaceholder from '../../assets/placeholder.png'; 
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -35,7 +36,7 @@ const SearchResultsPage = () => {
 
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
-    return imagePath ? `${baseUrl}/${imagePath}` : "/src/assets/placeholder.png";
+    return imagePath ? `${baseUrl}/${imagePath}` : foodplaceholder;
   };
 
   return (

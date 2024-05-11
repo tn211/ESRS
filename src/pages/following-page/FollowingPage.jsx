@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
 import Layout2 from '../../components/layout-components/Layout2';
 import './FollowingPage.css';
+import profileplaceholder from '../../assets/profile-placeholder.png'; 
 
 // define component to display followed users
 const FollowingPage = ({ session }) => {
@@ -67,7 +68,7 @@ const FollowingPage = ({ session }) => {
   // function to construct full image URL
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars';
-    return imagePath ? `${baseUrl}/${imagePath}` : "/src/assets/placeholder.png";
+    return imagePath ? `${baseUrl}/${imagePath}` : profileplaceholder;
   };
 
   // render the component with conditionally displayed content

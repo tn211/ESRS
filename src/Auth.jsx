@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
 import './Auth.css';
+// import logo2 from '../../assets/DishConnect2.png';
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);

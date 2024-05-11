@@ -4,6 +4,7 @@ import { supabase } from '../../supabaseClient';
 import Layout2 from '../../components/layout-components/Layout2';
 import './PublicProfilePage.css';
 import RecipesList from '../../components/recipe-list/RecipeList';
+import profileplaceholder from '../../assets/profile-placeholder.png'; 
 
 const PublicProfilePage = ({ session }) => {
   const { id } = useParams(); // This is the profile_id from the URL
@@ -80,7 +81,7 @@ const PublicProfilePage = ({ session }) => {
           <>
             <h1>{`${user.username}'s Recipes`}</h1>
             <div className='profile-img-wrapper'>
-              <img src={avatarUrl ? getFullImageUrl(avatarUrl) : "/src/assets/profile-placeholder.png"} alt={`${user.username}'s profile`} style={{ maxWidth: '100%' }} />
+              <img src={avatarUrl ? getFullImageUrl(avatarUrl) : profileplaceholder} alt={`${user.username}'s profile`} style={{ maxWidth: '100%' }} />
             </div>
             <button onClick={toggleFollow}>
               {isFollowing ? 'Unfollow' : 'Follow'}
