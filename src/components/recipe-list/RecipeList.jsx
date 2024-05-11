@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import './RecipeList.css'; 
+import foodplaceholder from '../../assets/placeholder.png';
 
 const RecipesList = ({ supabase, userId }) => {
   const [recipes, setRecipes] = useState([]);
@@ -39,7 +40,7 @@ const RecipesList = ({ supabase, userId }) => {
             <li key={recipe.recipe_id}>
               <Link to={`/recipes/${recipe.recipe_id}`}>
               <div className='img-wrapper'>
-                <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} />
+                <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : foodplaceholder} alt={recipe.title} />
               </div>    
               <h3>{recipe.title}</h3>
               </Link>
