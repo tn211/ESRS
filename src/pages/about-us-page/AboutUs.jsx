@@ -3,7 +3,7 @@ import './AboutUs.css';
 import Layout2 from "../../components/layout-components/Layout2";
 import stock1 from "../../assets/istockphoto-1253249134-612x612.jpg";
 import stock2 from "../../assets/istockphoto-1199670834-1024x1024 1.png";
-import stock3 from "../../assets/hide.png";
+// import stock3 from "../../assets/hide.png";
 
 const AboutUs = () => {
     return (
@@ -37,7 +37,7 @@ const AboutUs = () => {
             </div>
             <br></br>
             <div className="sora1h">
-                <img src={stock3} alt="img3" className="image3" />
+                <img src={stock2} alt="img3" className="image3" />
             </div>
         </Layout2>
     );
