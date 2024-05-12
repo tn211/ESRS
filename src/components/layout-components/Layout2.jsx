@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi2";
 import './Layout2.css';
-// import logo3 from '../../assets/DishConnect3.png';
 import logo3 from '../../assets/DishConnectLogo3.png';
 
 const Layout2 = ({ children }) => {
@@ -43,23 +42,6 @@ const Layout2 = ({ children }) => {
                     <li>
                         <Link to="/add-recipe">Upload</Link>
                     </li>
-                    {/* OLD NAV BAR
-                    <li>
-                        <Link to="/add-recipe">Recipes</Link>
-                    </li>
-                    <li>
-                        <Link to="/my-recipes">Favourites</Link>
-                    </li>
-                    <li>
-                        <Link to="/recent-recipes">Community</Link>
-                    </li>
-                    <li>
-                        <Link to="/AboutUs">About us</Link>
-                    </li>
-                    <li>
-                        <Link to="/add-recipe">Upload Recipe</Link>
-                    </li> */}
-
                 </ul>
             </nav>
             <div className="icon-container2">

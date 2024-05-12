@@ -4,8 +4,6 @@
 }
 
 .search-page-results>div {
-    /* Assuming this is the direct parent div of .card elements */
-
     flex-wrap: wrap;
     justify-content: space-around;
     /* Adjusts the alignment of items */

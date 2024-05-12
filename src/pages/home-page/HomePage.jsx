@@ -9,13 +9,6 @@ import Layout2 from "../../components/layout-components/Layout2";
 
 
 
-// const divStyle = {
-
-//   color: 'black',
-
-
-
-// };
 const HomePage = () => {
   return (
     <Layout2>

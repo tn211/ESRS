@@ -62,7 +62,7 @@ const UserRecipesPage = ({ session }) => {
         ) : (
           <p>Loading or not authenticated...</p> // Fallback message
         )}
-      </div>
+        </div>
     </Layout2>
   );
 };
