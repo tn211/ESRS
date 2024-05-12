@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
 import './Auth.css';
-// import logo2 from '../../assets/DishConnect2.png';
+import logo2 from './assets/DishConnectLogo2.png';
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ export default function Auth() {
     <div className="row flex flex-center">
       <div className="col-6 form-widget">
         <div className="logo-container3">
-          <img src="/src/assets/Dishconnect2.PNG" alt="Logo3" className="logo3" />
+          <img src={logo2} alt="Logo" className="logo3" />
         </div>
         <p className="description">
 
