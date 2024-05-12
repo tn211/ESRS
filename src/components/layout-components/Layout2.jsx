@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi2";
 import './Layout2.css';
 // import logo3 from '../../assets/DishConnect3.png';
-import logo3 from '../../assets/shelllogo.png';
+import logo3 from '../../assets/DishConnectLogo3.png';
 
 const Layout2 = ({ children }) => {
     const [menuOpen, setMenuOpen] = useState(false);
