@@ -16,7 +16,7 @@
     /* ensures the image at least fills the width */
     height: 100%;
     /* ensures the image at least fills the height */
-    object-fit: contain;
+    object-fit: cover;
     /* covers the area, maintaining aspect ratio, cropping as necessary */
     object-position: center;
     /* centers the image in the container */
