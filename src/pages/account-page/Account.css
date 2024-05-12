@@ -355,7 +355,7 @@ button.primary,
 }
 
 @media only screen and (max-width: 768px) {
-  .form-widget {
+  .form-widgettt {
     margin-top: -150px;
     display: flex;
     flex-direction: column;
