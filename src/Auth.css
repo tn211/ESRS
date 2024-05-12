@@ -27,13 +27,19 @@
     background-color: gray;
 }
 
-.form-widget {}
+.form-widgett {
+    margin-top: -150px;
+}
 
 @media only screen and (max-width: 768px) {
-    .form-widget {
-        margin-left: 0px;
+    .form-widgett {
+        margin-top: -150px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
         width: 100%;
     }
+
 
     .logo3 {
         margin-top: 30px;
@@ -42,7 +48,8 @@
         /* Adjust spacing between logo and menu */
     }
 
-    .logo-container3 {}
+
+
 
 
 }

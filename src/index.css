@@ -85,4 +85,9 @@ button:focus-visible {
   }
 }
 
-@media only screen and (max-width: 768px) {}
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    line-height: 1.1;
+  }
+}

@@ -23,7 +23,6 @@
 }
 
 .search-page {
-    margin-left: 400px;
     margin-top: -150px;
     width: 100%;
 }
@@ -35,7 +34,6 @@
 
 @media only screen and (max-width: 768px) {
     .search-page {
-        margin-left: 0px;
         margin-top: -150px;
         width: 100%;
     }

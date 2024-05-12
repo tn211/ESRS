@@ -30,7 +30,7 @@ export default function Auth() {
         <p className="description">
 
         </p>
-        <form className="form-widget" onSubmit={handleLogin}>
+        <form className="form-widgett" onSubmit={handleLogin}>
           <div>
             <input
               className="inputField"
