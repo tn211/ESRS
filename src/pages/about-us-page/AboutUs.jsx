@@ -2,7 +2,7 @@ import React from "react";
 import './AboutUs.css';
 import Layout2 from "../../components/layout-components/Layout2";
 import stock1 from "../../assets/stock1istockphoto-1253249134-612x612.jpg";
-import stock2 from "../../assets/istockphoto-1199670834-1024x1024 1.png";
+import stock2 from "../../assets/stock2istockphoto-1199670834-1024x1024 1.png";
 // import stock3 from "../../assets/hide.png";
 
 const AboutUs = () => {
