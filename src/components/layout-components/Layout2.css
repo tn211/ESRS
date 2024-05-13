@@ -1,50 +1,51 @@
+/* Styling for main content */
 main {
     padding-top: 60px; /* prevents the top of main being hidden behind top of nav bar */
   }
-
+/* Styling for header */
 .header2 {
-    position: fixed;
-    top: 0;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
+    position: fixed; /* Fixing the header position */
+    top: 0; /* Placing the header at the top */
+    flex-direction: column; /* Setting flex direction to column */
+    display: flex; /* Displaying as flex container */
+    align-items: center; /* Aligning items to the center */
     width: 100%;
     /* Take up the full width of the viewport */
-    padding: 50px;
-    color: #fff;
-    background-color: #F5F5F5;
+    padding: 50px; /* Adding padding */
+    color: #fff; /* Setting text color */
+    background-color: #F5F5F5; /* Setting background color */
     z-index: 1000; /* ensure header is above other content */
     
 }
-
+/* Styling for footer */
 .footer2 {
-    position: fixed;
-    flex-direction: column;
-    display: flex;
-    bottom: 0;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-    color: #fff;
-    font-size: larger;
-    font-family: 'Arial', sans-serif;
+    position: fixed; /* Fixing the footer position */
+    flex-direction: column; /* Setting flex direction to column */
+    display: flex; /* Displaying as flex container */
+    bottom: 0; /* Placing the footer at the bottom */
+    align-items: center; /* Aligning items to the center */
+    width: 100%; /* Taking up the full width of the viewport */
+    padding: 10px; /* Adding padding */
+    color: #fff; /* Setting text color */
+    font-size: larger; /* Setting font size */
+    font-family: 'Arial', sans-serif; /* Setting font family */
     z-index: 1000; /* ensure header is above other content */
     
 }
 
-
+/* Styling for navigation menu */
 .nav2 {
-    position: fixed;
+    position: fixed; /* Fixing the menu position */
     top: 30px; /* Adjust the top position as needed */
     left: 500px; /* Adjust the left position to position the menu to the right of the logo */
-    display: flex;
-    align-items: center;
+    display: flex; /* Displaying as flex container */
+    align-items: center; /* Aligning items to the center */
     justify-content: flex-end; /* Align menu items to the right */
 }
-
+/* Styling for logo */
 .logo2 {
-    width: 400px;
-    height: auto;
+    width: 400px; /* Setting width */
+    height: auto; /* Setting height to auto */
 }
 .logo-container2{
      position: fixed;
@@ -60,123 +61,122 @@ main {
     height: 100px;
     /* Adjust logo height as needed */
 }
-
+/* Styling for menu items */
 .nav2 ul {
-    list-style-type: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
+    list-style-type: none; /* Removing default list style */
+    display: flex; /* Displaying as flex container */
+    padding: 0; /* Removing padding */
+    margin: 0; /* Removing margin */
 }
 
 .nav2 li {
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 40px; /* Adding margin to the left */
+    margin-right: 40px; /* Adding margin to the right */
     justify-content: center;
     /* Adjust spacing between menu items */
 }
 .nav2 li:active{
     text-decoration: underline;
 }
-
+/* Styling for menu links */
 .nav2 a {
-    text-decoration: none;
-    color: black;
-    font-size: x-large;
-    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none; /* Removing underline */
+    color: black; /* Setting text color */
+    font-size: x-large; /* Setting font size */
+    font-family: 'Josefin Sans', sans-serif; /* Setting font family */
     
 }
 
 .nav2 a:hover {
-    color: #000000;
-    font-weight: bolder;
+    color: #000000; /* Changing text color on hover */
+    font-weight: bolder; /* Adding font weight on hover */
     text-decoration: underline;
     /* Adjust the color for the hover effect */
 }
-
+/* Styling for user icon */
 .icon-container2 {
-    position: absolute;
-    top: 35px;
+    position: absolute; /* Positioning the icon container absolutely */
+    top: 35px; /* Adjusting the top position */
     right: 40px; /* Adjust right position to move the icon to the right */
-    z-index: 999;
+    z-index: 999; /* Setting z-index */
 }
 
 
 .icon {
-    width: 30px;
-    /* Adjust the width and height as needed */
-    height: 30px;
-    color: white;
+    width: 30px; /* Setting width */
+    height: 30px; /* Setting height */
+    color: white; /* Setting colour */
 
 }
 
 .icon:hover {
-    color: #000000;
+    color: #000000; /* Changing text color on hover */
 }
-
+/* Styling for menu toggle button */
 .menu-toggle {
-    display: none;
-    cursor: pointer;
+    display: none; /* Hiding the menu toggle button by default */
+    cursor: pointer; /* Setting cursor to pointer */
 }
-
+/* Styling for menu bars */
 .bar {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    margin: 5px 0;
-    margin-right: 50px;
+    width: 25px; /* Setting width */
+    height: 3px; /* Setting length */
+    background-color: black; /* Setting colour */
+    margin: 5px 0; /* Adding margin */
+    margin-right: 50px; /* Adding margin to the right */
 }
-
+/* Styling for menu */
 .menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    display: flex; /* Displaying as flex container */
+    align-items: center; /* Aligning items to the center */
+    justify-content: center; /* Justifying content to the center */
+    list-style-type: none; /* Removing default list style */
+    margin: 0; /* Removing margin */
+    padding: 0; /* Removing padding */
 }
 
 .menu li {
-    margin-left: 20px;
+    margin-left: 20px; /* Adding margin to the left */
     
 }
-
-@media only screen and (max-width: 768px) {
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) { /* Adding underline on active */
     .icon-container {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 999;
-        margin-right: 30px;
-        margin-top: 80px;
+        position: absolute; /* Positioning the icon container absolutely */
+        top: 10px; /* Adjusting the top position */
+        right: 10px; /* Adjusting the right position */
+        z-index: 999; /* Setting z-index */
+        margin-right: 30px; /* Adding margin to the right */
+        margin-top: 80px; /* Adding margin to the top */
     }
 
     /* Adjust menu for smaller screens */
     .menu {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 60px;
+        display: none; /* Hiding the menu by default */
+        flex-direction: column; /* Setting flex direction to column */
+        position: fixed; 
+        top: 60px;/* Adjusting the top position */ 
         /* Adjust this value based on your header height */
         left: 0;
-        width: 100%;
-        background: #86a595;
-        padding: 20px;
+        width: 100%; /* Taking up the full width of the viewport */
+        background: #86a595; /* Setting background color */
+        padding: 20px; /* Adding padding */
 
     }
-
+/* Styling for open menu */
     .menu-open .menu {
-        display: flex;
+        display: flex; /* Displaying the menu when open */
     }
-
+/* Styling for menu toggle button on smaller screens */
     .menu-toggle {
-        display: block;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 9999;
+        display: block; /* Displaying the menu toggle button */
+        position: absolute; /* Positioning the button absolutely */
+        top: 10px; /* Adjusting the top position */
+        right: 10px; /* Adjusting the right position */
+        z-index: 9999; /* Setting z-index */
     }
-
+/* Styling for header when menu is open on smaller screens */
     .header.menu-open {
-        padding-bottom: 50px;
+        padding-bottom: 50px; /* Adding padding at the bottom */
     }
 }
