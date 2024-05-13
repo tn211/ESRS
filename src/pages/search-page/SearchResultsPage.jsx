@@ -44,6 +44,7 @@ const SearchResultsPage = () => {
     <Layout2>
       <div className="search-page-results">
         <h1>Search Results</h1>
+        <div className="search-res">
         {results.length > 0
           ? results.map((recipe) => (
               <div key={recipe.recipe_id} className="search-results-card">
@@ -60,6 +61,7 @@ const SearchResultsPage = () => {
               </div>
             ))
           : query && <p>No results found for "{query}"</p>}
+          </div>
         <Link to={"/search"} className="ssss">
           Back to Search
         </Link>
