@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { supabase } from "../../supabaseClient";
 
 const Comments = ({ recipeId, session }) => {
@@ -7,10 +7,10 @@ const Comments = ({ recipeId, session }) => {
 
   useEffect(() => {
     fetchComments();
-  }, [recipeId]);
+}, [fetchComments]);
 
-  const fetchComments = async () => {
-    const { data: commentsData, error } = await supabase
+const fetchComments = useCallback(async () => {
+  const { data: commentsData, error } = await supabase
       .from("comments")
       .select(
         `
@@ -26,7 +26,7 @@ const Comments = ({ recipeId, session }) => {
     }
 
     setComments(commentsData);
-  };
+}, [recipeId]);
 
   const handleCommentChange = (e) => {
     setNewCommentBody(e.target.value);
