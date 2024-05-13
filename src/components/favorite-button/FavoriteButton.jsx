@@ -1,5 +1,5 @@
-import React from 'react';
-import { supabase } from '../../supabaseClient';
+import React from "react";
+import { supabase } from "../../supabaseClient";
 
 const FavoriteButton = ({ recipeId, isFavorite, setIsFavorite, session }) => {
   const toggleFavorite = async () => {
@@ -8,12 +8,18 @@ const FavoriteButton = ({ recipeId, isFavorite, setIsFavorite, session }) => {
       return;
     }
 
-    const { error } = isFavorite ? 
-      await supabase.from('likes').delete().eq('recipe_id', recipeId).eq('profile_id', session.user.id) :
-      await supabase.from('likes').insert([{ recipe_id: recipeId, profile_id: session.user.id }]);
+    const { error } = isFavorite
+      ? await supabase
+          .from("likes")
+          .delete()
+          .eq("recipe_id", recipeId)
+          .eq("profile_id", session.user.id)
+      : await supabase
+          .from("likes")
+          .insert([{ recipe_id: recipeId, profile_id: session.user.id }]);
 
     if (error) {
-      console.error('Error updating favorites:', error);
+      console.error("Error updating favorites:", error);
     } else {
       setIsFavorite(!isFavorite);
     }
@@ -21,7 +27,7 @@ const FavoriteButton = ({ recipeId, isFavorite, setIsFavorite, session }) => {
 
   return (
     <button onClick={toggleFavorite}>
-      {isFavorite ? 'Remove from Favourites' : 'Add to Favourites'}
+      {isFavorite ? "Remove from Favourites" : "Add to Favourites"}
     </button>
   );
 };

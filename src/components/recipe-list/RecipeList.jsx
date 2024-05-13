@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
-import './RecipeList.css'; 
-import foodplaceholder from '../../assets/placeholder.png';
+import { Link } from "react-router-dom";
+import "./RecipeList.css";
+import foodplaceholder from "../../assets/placeholder.png";
 
 const RecipesList = ({ supabase, userId }) => {
   const [recipes, setRecipes] = useState([]);
@@ -26,7 +26,8 @@ const RecipesList = ({ supabase, userId }) => {
   }, [supabase, userId]);
 
   const getFullImageUrl = (imagePath) => {
-    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
+    const baseUrl =
+      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
     return `${baseUrl}/${imagePath}`;
   };
 
@@ -39,10 +40,17 @@ const RecipesList = ({ supabase, userId }) => {
           {recipes.map((recipe) => (
             <li key={recipe.recipe_id}>
               <Link to={`/recipes/${recipe.recipe_id}`}>
-              <div className='img-wrapper'>
-                <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : foodplaceholder} alt={recipe.title} />
-              </div>    
-              <h3>{recipe.title}</h3>
+                <div className="img-wrapper">
+                  <img
+                    src={
+                      recipe.image_url
+                        ? getFullImageUrl(recipe.image_url)
+                        : foodplaceholder
+                    }
+                    alt={recipe.title}
+                  />
+                </div>
+                <h3>{recipe.title}</h3>
               </Link>
             </li>
           ))}

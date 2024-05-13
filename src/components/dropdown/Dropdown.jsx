@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import './Dropdown.css';
+import React, { useState } from "react";
+import "./Dropdown.css";
 
 function Dropdown() {
-
-  const [selectedOption, setSelectedOption] = useState('');
-
+  const [selectedOption, setSelectedOption] = useState("");
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);

@@ -1,199 +1,191 @@
 main {
-    padding-top: 60px;
-    /* prevents the top of main being hidden behind top of nav bar */
+  padding-top: 60px;
+  /* prevents the top of main being hidden behind top of nav bar */
 }
 
 .header2 {
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 99.16%;
-    /* Take up the full width of the viewport */
-    padding: 50px;
-    /* height: 100px; */
-    color: #fff;
-    background-color: #F5F5F5;
-    z-index: 1000;
-    /* opacity: 0.95; */
-    /* ensure header is above other content */
-
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 99.16%;
+  /* Take up the full width of the viewport */
+  padding: 50px;
+  /* height: 100px; */
+  color: #fff;
+  background-color: #f5f5f5;
+  z-index: 1000;
+  /* opacity: 0.95; */
+  /* ensure header is above other content */
 }
 
 .footer2 {
-    position: fixed;
-    overflow: hidden;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    bottom: 0;
-    align-items: center;
-    width: 99.16%;
-    height: 30px;
-    color: #fff;
-    font-size: small;
-    font-family: 'Arial', sans-serif;
-    z-index: 1000;
-    /* ensure header is above other content */
-    background-color: #F5F5F5;
-    /* opacity: 0.95; */
-
+  position: fixed;
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  align-items: center;
+  width: 99.16%;
+  height: 30px;
+  color: #fff;
+  font-size: small;
+  font-family: "Arial", sans-serif;
+  z-index: 1000;
+  /* ensure header is above other content */
+  background-color: #f5f5f5;
+  /* opacity: 0.95; */
 }
 
-
 .nav2 {
-    position: fixed;
-    /* top: 30px; */
-    /* Adjust the top position as needed */
-    left: 500px;
-    /* Adjust the left position to position the menu to the right of the logo */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /* Align menu items to the right */
+  position: fixed;
+  /* top: 30px; */
+  /* Adjust the top position as needed */
+  left: 500px;
+  /* Adjust the left position to position the menu to the right of the logo */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* Align menu items to the right */
 }
 
 .logo2 {
-    width: 400px;
-    height: auto;
+  width: 400px;
+  height: auto;
 }
 
 .logo-container2 {
-    position: fixed;
-    top: 10px;
-    /* Adjust the top position as needed */
-    left: 10px;
-    /* Adjust the left position as needed */
+  position: fixed;
+  top: 10px;
+  /* Adjust the top position as needed */
+  left: 10px;
+  /* Adjust the left position as needed */
 }
 
 .logo2 img {
-    width: 100%;
-    /* Adjust logo width as needed */
-    height: auto;
-    /* Adjust logo height as needed */
+  width: 100%;
+  /* Adjust logo width as needed */
+  height: auto;
+  /* Adjust logo height as needed */
 }
 
 .nav2 ul {
-    list-style-type: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
 }
 
 .nav2 li {
-    margin-left: 40px;
-    margin-right: 40px;
-    justify-content: center;
-    /* Adjust spacing between menu items */
+  margin-left: 40px;
+  margin-right: 40px;
+  justify-content: center;
+  /* Adjust spacing between menu items */
 }
 
 .nav2 li:active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .nav2 a {
-    text-decoration: none;
-    color: black;
-    font-size: large;
-    font-family: 'Josefin Sans', sans-serif;
-
+  text-decoration: none;
+  color: black;
+  font-size: large;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .nav2 a:hover {
-    color: #000000;
-    font-weight: bolder;
-    text-decoration: underline;
-    /* Adjust the color for the hover effect */
+  color: #000000;
+  font-weight: bolder;
+  text-decoration: underline;
+  /* Adjust the color for the hover effect */
 }
 
 .icon-container2 {
-    position: absolute;
-    top: 35px;
-    right: 40px;
-    /* Adjust right position to move the icon to the right */
-    z-index: 999;
+  position: absolute;
+  top: 35px;
+  right: 40px;
+  /* Adjust right position to move the icon to the right */
+  z-index: 999;
 }
 
-
 .icon {
-    width: 30px;
-    /* Adjust the width and height as needed */
-    height: 30px;
-    color: white;
-
+  width: 30px;
+  /* Adjust the width and height as needed */
+  height: 30px;
+  color: white;
 }
 
 .icon:hover {
-    color: #000000;
+  color: #000000;
 }
 
 .menu-toggle {
-    display: none;
-    cursor: pointer;
+  display: none;
+  cursor: pointer;
 }
 
 .bar {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    margin: 5px 0;
-    margin-right: 50px;
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin: 5px 0;
+  margin-right: 50px;
 }
 
 .menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .menu li {
-    margin-left: 20px;
-
+  margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-    .icon-container {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 999;
-        margin-right: 30px;
-        margin-top: 80px;
-    }
+  .icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    margin-right: 30px;
+    margin-top: 80px;
+  }
 
-    /* Adjust menu for smaller screens */
-    header.header2 ul.menu {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 60px;
-        /* Adjust this value based on your header height */
-        left: 0;
-        width: 100%;
-        background: w;
-        padding: 20px;
+  /* Adjust menu for smaller screens */
+  header.header2 ul.menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    /* Adjust this value based on your header height */
+    left: 0;
+    width: 100%;
+    background: w;
+    padding: 20px;
+  }
 
-    }
+  header.header2.menu-open .menu {
+    display: flex;
+  }
 
-    header.header2.menu-open .menu {
-        display: flex;
-    }
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+  }
 
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 9999;
-    }
-
-    .header.menu-open {
-        padding-bottom: 50px;
-    }
+  .header.menu-open {
+    padding-bottom: 50px;
+  }
 }

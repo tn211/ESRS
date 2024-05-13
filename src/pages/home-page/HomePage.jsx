@@ -1,28 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './HomePage.css';
+import "./HomePage.css";
 import { HiUserCircle } from "react-icons/hi2";
-import Layout from '../../components/layout-components/Layout';
+import Layout from "../../components/layout-components/Layout";
 import RecipeCard from "../../components/recipe-card/RecipeCard";
-import Dropdown from '../../components/dropdown/Dropdown';
+import Dropdown from "../../components/dropdown/Dropdown";
 import Layout2 from "../../components/layout-components/Layout2";
-
-
 
 const HomePage = () => {
   return (
     <Layout2>
-      <div>
-
-
-
-      </div>
-
+      <div></div>
     </Layout2>
   );
-
-
-
 };
 
 export default HomePage;

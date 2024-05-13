@@ -1,55 +1,46 @@
 .logo3 {
-    margin-top: 30px;
-    width: 400px;
-    height: auto;
-    /* Adjust spacing between logo and menu */
+  margin-top: 30px;
+  width: 400px;
+  height: auto;
+  /* Adjust spacing between logo and menu */
 }
 
-.logo-container3 {}
+.logo-container3 {
+}
 
 .description {
-
-    font-size: xx-large;
-    font-family: 'Times New Roman', Times, serif;
-    width: 100%;
-    margin-top: 100px;
-
+  font-size: xx-large;
+  font-family: "Times New Roman", Times, serif;
+  width: 100%;
+  margin-top: 100px;
 }
 
-
-
 .inputField {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
 .button-block {
-    background-color: gray;
+  background-color: gray;
 }
 
 .form-widgett {
-    margin-top: -100px;
+  margin-top: -100px;
 }
 
 @media only screen and (max-width: 768px) {
-    .form-widgett {
-        margin-top: -100px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-    }
+  .form-widgett {
+    margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
 
-
-    .logo3 {
-        margin-top: 30px;
-        width: 300px;
-        height: auto;
-        /* Adjust spacing between logo and menu */
-    }
-
-
-
-
-
+  .logo3 {
+    margin-top: 30px;
+    width: 300px;
+    height: auto;
+    /* Adjust spacing between logo and menu */
+  }
 }

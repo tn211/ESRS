@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { supabase } from '../../supabaseClient';
-import Layout2 from '../../components/layout-components/Layout2';
-import './UserFavourites.css'
-import foodplaceholder from '../../assets/placeholder.png'; 
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
+import Layout2 from "../../components/layout-components/Layout2";
+import "./UserFavourites.css";
+import foodplaceholder from "../../assets/placeholder.png";
 
 const UserFavouritesPage = ({ session }) => {
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
@@ -19,12 +19,12 @@ const UserFavouritesPage = ({ session }) => {
 
       const profileId = session.user.id;
       const { data: likesData, error: likesError } = await supabase
-        .from('likes')
-        .select('recipe_id')
-        .eq('profile_id', profileId);
+        .from("likes")
+        .select("recipe_id")
+        .eq("profile_id", profileId);
 
       if (likesError) {
-        console.error('Error fetching favourite recipes:', likesError);
+        console.error("Error fetching favourite recipes:", likesError);
         setLoading(false);
         return;
       }
@@ -34,15 +34,15 @@ const UserFavouritesPage = ({ session }) => {
         return;
       }
 
-      const recipeIds = likesData.map(like => like.recipe_id);
+      const recipeIds = likesData.map((like) => like.recipe_id);
 
       const { data: recipesData, error: recipesError } = await supabase
-        .from('recipes')
-        .select('recipe_id, title, image_url')  // Select image_url along with other fields
-        .in('recipe_id', recipeIds);
+        .from("recipes")
+        .select("recipe_id, title, image_url") // Select image_url along with other fields
+        .in("recipe_id", recipeIds);
 
       if (recipesError) {
-        console.error('Error fetching recipes based on likes:', recipesError);
+        console.error("Error fetching recipes based on likes:", recipesError);
         setLoading(false);
         return;
       }
@@ -55,33 +55,35 @@ const UserFavouritesPage = ({ session }) => {
   }, [session]);
 
   const getFullImageUrl = (imagePath) => {
-    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
+    const baseUrl =
+      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
     return imagePath ? `${baseUrl}/${imagePath}` : foodplaceholder;
   };
 
   return (
     <Layout2>
-      <div className='favourites-page'>
+      <div className="favourites-page">
         <h1>My Favourites</h1>
         {loading ? (
           <p>Loading your favourite recipes...</p>
+        ) : favouriteRecipes.length > 0 ? (
+          <ul>
+            {favouriteRecipes.map((recipe) => (
+              <li key={recipe.recipe_id}>
+                <Link to={`/recipes/${recipe.recipe_id}`}>
+                  <div className="img-wrapper">
+                    <img
+                      src={getFullImageUrl(recipe.image_url)}
+                      alt={recipe.title}
+                    />
+                  </div>
+                  {recipe.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
         ) : (
-          favouriteRecipes.length > 0 ? (
-            <ul>
-              {favouriteRecipes.map((recipe) => (
-                <li key={recipe.recipe_id}>
-                  <Link to={`/recipes/${recipe.recipe_id}`}>
-                    <div className='img-wrapper'>
-                      <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title} />
-                    </div>
-                    {recipe.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>You have no favourite recipes.</p>
-          )
+          <p>You have no favourite recipes.</p>
         )}
       </div>
     </Layout2>
@@ -89,7 +91,6 @@ const UserFavouritesPage = ({ session }) => {
 };
 
 export default UserFavouritesPage;
-
 
 // import React, { useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';

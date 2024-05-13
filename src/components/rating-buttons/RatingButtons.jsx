@@ -1,101 +1,103 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from '../../supabaseClient';
-import './RatingButtons.css'
+import React, { useState, useEffect } from "react";
+import { supabase } from "../../supabaseClient";
+import "./RatingButtons.css";
 
 const RatingButtons = ({ recipeId, session }) => {
-    const [ratings, setRatings] = useState([]);
-    const [averageRating, setAverageRating] = useState('Not yet rated');
-    const [userRating, setUserRating] = useState(null);
+  const [ratings, setRatings] = useState([]);
+  const [averageRating, setAverageRating] = useState("Not yet rated");
+  const [userRating, setUserRating] = useState(null);
 
-    useEffect(() => {
-        fetchRatings();
-    }, [recipeId]);
+  useEffect(() => {
+    fetchRatings();
+  }, [recipeId]);
 
-    const fetchRatings = async () => {
-        const { data, error } = await supabase
-            .from('ratings')
-            .select('*')
-            .eq('recipe_id', recipeId);
-      
-        if (error) {
-            console.error('Error fetching ratings:', error);
-            return;
-        }
+  const fetchRatings = async () => {
+    const { data, error } = await supabase
+      .from("ratings")
+      .select("*")
+      .eq("recipe_id", recipeId);
 
-        setRatings(data);
-        updateAverageRating(data);
-        updateUserRating(data);
-    };
+    if (error) {
+      console.error("Error fetching ratings:", error);
+      return;
+    }
 
-    const updateUserRating = (data) => {
-        const ratingFromUser = data.find(r => r.profile_id === session.user.id);
-        if (ratingFromUser) {
-            setUserRating(ratingFromUser.rating);
-        } else {
-            setUserRating(null);
-        }
-    };
+    setRatings(data);
+    updateAverageRating(data);
+    updateUserRating(data);
+  };
 
-    const handleRating = async (rating) => {
-        if (!session || !session.user) {
-            alert("You must be logged in to rate recipes.");
-            return;
-        }
+  const updateUserRating = (data) => {
+    const ratingFromUser = data.find((r) => r.profile_id === session.user.id);
+    if (ratingFromUser) {
+      setUserRating(ratingFromUser.rating);
+    } else {
+      setUserRating(null);
+    }
+  };
 
-        const existingRating = ratings.find(r => r.profile_id === session.user.id);
-        const updatedRating = { recipe_id: recipeId, profile_id: session.user.id, rating };
+  const handleRating = async (rating) => {
+    if (!session || !session.user) {
+      alert("You must be logged in to rate recipes.");
+      return;
+    }
 
-        let error;
-        if (existingRating) {
-            ({ error } = await supabase
-                .from('ratings')
-                .update({ rating })
-                .match({ recipe_id: recipeId, profile_id: session.user.id }));
-        } else {
-            ({ error } = await supabase
-                .from('ratings')
-                .insert([updatedRating]));
-        }
-
-        if (error) {
-            console.error('Error updating rating:', error);
-            return;
-        }
-
-        fetchRatings();
-    };
-
-    const updateAverageRating = (ratings) => {
-        if (ratings.length === 0) {
-            setAverageRating("No ratings yet!");
-            return;
-        }
-
-        const total = ratings.reduce((sum, record) => sum + record.rating, 0);
-        const average = total / ratings.length;
-        setAverageRating(average.toFixed(1));
-    };
-
-    return (
-        <div>
-            <h3>Rate:</h3>
-            {[1, 2, 3, 4, 5].map(value => (
-                <button
-                    key={value}
-                    onClick={() => handleRating(value)}
-                    className={userRating === value ? 'highlighted' : ''}
-                >
-                    {value}
-                </button>
-            ))}
-            <p>Current Rating: {averageRating}</p>
-        </div>
+    const existingRating = ratings.find(
+      (r) => r.profile_id === session.user.id,
     );
+    const updatedRating = {
+      recipe_id: recipeId,
+      profile_id: session.user.id,
+      rating,
+    };
+
+    let error;
+    if (existingRating) {
+      ({ error } = await supabase
+        .from("ratings")
+        .update({ rating })
+        .match({ recipe_id: recipeId, profile_id: session.user.id }));
+    } else {
+      ({ error } = await supabase.from("ratings").insert([updatedRating]));
+    }
+
+    if (error) {
+      console.error("Error updating rating:", error);
+      return;
+    }
+
+    fetchRatings();
+  };
+
+  const updateAverageRating = (ratings) => {
+    if (ratings.length === 0) {
+      setAverageRating("No ratings yet!");
+      return;
+    }
+
+    const total = ratings.reduce((sum, record) => sum + record.rating, 0);
+    const average = total / ratings.length;
+    setAverageRating(average.toFixed(1));
+  };
+
+  return (
+    <div>
+      <h3>Rate:</h3>
+      {[1, 2, 3, 4, 5].map((value) => (
+        <button
+          key={value}
+          onClick={() => handleRating(value)}
+          className={userRating === value ? "highlighted" : ""}
+        >
+          {value}
+        </button>
+      ))}
+      <p>Current Rating: {averageRating}</p>
+    </div>
+  );
 };
 
 export default RatingButtons;
-
-
 
 // import React, { useState, useEffect } from 'react';
 // import { supabase } from '../../supabaseClient';
@@ -113,7 +115,7 @@ export default RatingButtons;
 //             .from('ratings')
 //             .select('*')
 //             .eq('recipe_id', recipeId);
-      
+
 //         if (error) {
 //             console.error('Error fetching ratings:', error);
 //             return;
@@ -175,4 +177,3 @@ export default RatingButtons;
 // };
 
 // export default RatingButtons;
-

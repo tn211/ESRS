@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
-import './Auth.css';
-import logo2 from './assets/DishConnectLogo2.png';
+import "./Auth.css";
+import logo2 from "./assets/DishConnectLogo2.png";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
@@ -27,9 +27,7 @@ export default function Auth() {
         <div className="logo-container3">
           <img src={logo2} alt="Logo" className="logo3" />
         </div>
-        <p className="description">
-
-        </p>
+        <p className="description"></p>
         <form className="form-widgett" onSubmit={handleLogin}>
           <div>
             <input

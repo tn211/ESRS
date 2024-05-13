@@ -1,29 +1,100 @@
 * {
-    box-sizing: border-box;
-    /* Ensures padding and borders are included in the total width and height */
-    color: black;
+  box-sizing: border-box;
+  /* Ensures padding and borders are included in the total width and height */
+  color: black;
 }
 
 body,
 html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .rrrr {
-    display: flex;
+  display: flex;
 }
 
 .recent-recipe-page {
-    margin-top: -160px;
-    background-color: #F5F5F5;
-    opacity: 0.95;
-    border-radius: 50px;
-    padding-top: 5px;
+  margin-top: -160px;
+  background-color: #f5f5f5;
+  opacity: 0.95;
+  border-radius: 50px;
+  padding-top: 5px;
 }
 
-.recent-recipe-page>div {
+.recent-recipe-page > div {
+  /* Assuming this is the direct parent div of .card elements */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* Adjusts the alignment of items */
+  padding: 20px;
+  gap: 30px;
+  /* Increases spacing between cards */
+}
+
+.cardrrp {
+  flex: 1 1 calc(50% - 40px);
+  /* Adjusting width for wider cards and increased space between them */
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  opacity: 0.95;
+  /* Space below each card */
+}
+
+.img-wrapperrrp {
+  width: 100%;
+  /* Keep the width flexible to the container's size */
+  height: 0;
+  /* Set height to 0 initially */
+  padding-top: 100%;
+  /* Equal to the width of the container, creates a square */
+  position: relative;
+  /* Necessary for absolute positioning of the image inside */
+  overflow: hidden;
+  border-radius: 15px;
+  /* Maintain rounded corners */
+}
+
+.img-wrapperrrp img {
+  position: absolute;
+  /* Absolute positioning relative to its parent */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.recent-recipe-page .card:hover {
+  transform: translateY(-5px);
+  /* Lift effect on hover */
+}
+
+.recent-recipe-page h2,
+.recent-recipe-page p {
+  padding: 0 15px;
+  /* Padding for text inside cards */
+}
+
+.recent-recipe-page h2 {
+  margin-top: 10px;
+  font-size: 1.25rem;
+  /* Title font size */
+}
+
+.recent-recipe-page p {
+  font-size: 0.9rem;
+  color: #666;
+  /* Lighter text color */
+}
+
+@media only screen and (max-width: 768px) {
+  .recent-recipe-page > div {
     /* Assuming this is the direct parent div of .card elements */
     display: flex;
     flex-wrap: wrap;
@@ -31,94 +102,19 @@ html {
     /* Adjusts the alignment of items */
     padding: 20px;
     gap: 30px;
+    width: 100%;
     /* Increases spacing between cards */
-}
+  }
 
-.cardrrp {
-    flex: 1 1 calc(50% - 40px);
+  .cardrrp {
+    flex: 1 1 calc(50% - 10px);
     /* Adjusting width for wider cards and increased space between them */
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     opacity: 0.95;
+    width: 100%;
     /* Space below each card */
-}
-
-.img-wrapperrrp {
-    width: 100%;
-    /* Keep the width flexible to the container's size */
-    height: 0;
-    /* Set height to 0 initially */
-    padding-top: 100%;
-    /* Equal to the width of the container, creates a square */
-    position: relative;
-    /* Necessary for absolute positioning of the image inside */
-    overflow: hidden;
-    border-radius: 15px;
-    /* Maintain rounded corners */
-}
-
-.img-wrapperrrp img {
-    position: absolute;
-    /* Absolute positioning relative to its parent */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-
-
-
-.recent-recipe-page .card:hover {
-    transform: translateY(-5px);
-    /* Lift effect on hover */
-}
-
-.recent-recipe-page h2,
-.recent-recipe-page p {
-    padding: 0 15px;
-    /* Padding for text inside cards */
-}
-
-.recent-recipe-page h2 {
-    margin-top: 10px;
-    font-size: 1.25rem;
-    /* Title font size */
-}
-
-.recent-recipe-page p {
-    font-size: 0.9rem;
-    color: #666;
-    /* Lighter text color */
-}
-
-@media only screen and (max-width: 768px) {
-    .recent-recipe-page>div {
-        /* Assuming this is the direct parent div of .card elements */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        /* Adjusts the alignment of items */
-        padding: 20px;
-        gap: 30px;
-        width: 100%;
-        /* Increases spacing between cards */
-    }
-
-    .cardrrp {
-        flex: 1 1 calc(50% - 10px);
-        /* Adjusting width for wider cards and increased space between them */
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        opacity: 0.95;
-        width: 100%;
-        /* Space below each card */
-    }
-
+  }
 }
