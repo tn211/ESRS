@@ -11,7 +11,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 99.16%;
+  width: 100%;
   /* Take up the full width of the viewport */
   padding: 50px;
   /* height: 100px; */
@@ -22,6 +22,7 @@ main {
   /* ensure header is above other content */
 }
 
+
 .footer2 {
   position: fixed;
   overflow: hidden;
@@ -30,7 +31,7 @@ main {
   justify-content: center;
   bottom: 0;
   align-items: center;
-  width: 99.16%;
+  width: 100%;
   height: 30px;
   color: #fff;
   font-size: small;
