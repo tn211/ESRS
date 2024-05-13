@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import './Dropdown.css';
+import React, { useState } from 'react'; // Importing React and useState hook from React
+import './Dropdown.css'; // Importing CSS file for styling
 
 function Dropdown() {
 
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState(''); // Initializing state for selected option using useState hook
 
-
+// Function to handle changes in dropdown selection
   const handleChange = (event) => {
-    setSelectedOption(event.target.value);
+    setSelectedOption(event.target.value); // Updating selectedOption state with the value of the selected option
   };
 
   return (
@@ -22,5 +22,5 @@ function Dropdown() {
     </div>
   );
 }
-
+// Updating selectedOption state with the value of the selected option
 export default Dropdown;
