@@ -1,28 +1,28 @@
-.method-header {
-    text-align: left; 
-    text-indent: 40px;
-    border-bottom: solid black 1px;
-    padding-bottom: 5px;
-    margin-top: 5px;
-    font-family: 'Arial', sans-serif;
-    background-color: white;
-    color: black;
+.method-header { /* Styling for method header */
+    text-align: left; /* Aligning text to the left */
+    text-indent: 40px; /* Adding indentation */
+    border-bottom: solid black 1px; /* Adding border bottom */
+    padding-bottom: 5px; /* Adding padding bottom */
+    margin-top: 5px; /* Adding margin top */
+    font-family: 'Arial', sans-serif; /* Setting font family */
+    background-color: white; /* Setting background color */
+    color: black;/* Setting text color */
 }
 
-
+/* Styling for method card container */
 .method-card {
-    border: 5px solid #86a595;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1); 
-    margin: 10px;
-    text-align: center;
-    width: 30%;
-    display: inline-block;
-    background: white;
-    font-family: 'Arial', sans-serif;
+    border: 5px solid #86a595; /* Adding border */
+    border-radius: 10px; /* Adding border radius */
+    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);  /* Adding box shadow */
+    margin: 10px; /* Adding margin */
+    text-align: center; /* Aligning text to the center */
+    width: 30%; /* Setting width */
+    display: inline-block; /* Displaying as inline-block */
+    background: white; /* Setting background color */
+    font-family: 'Arial', sans-serif; /* Setting font family */
   }
-
+/* Styling for method list items */
 .method-card li {
-    text-align: left;
-    font-weight: bold;
+    text-align: left; /* Aligning text to the left */
+    font-weight: bold; /* Setting font weight to bold */
 }

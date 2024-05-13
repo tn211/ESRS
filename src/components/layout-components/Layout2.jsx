@@ -1,24 +1,24 @@
-import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { HiUserCircle } from "react-icons/hi2";
-import './Layout2.css';
-
+import React from "react"; // Importing React library
+import { useState } from "react"; // Importing useState hook from React
+import { Link } from "react-router-dom"; // Importing Link component from React Router
+import { HiUserCircle } from "react-icons/hi2"; // Importing HiUserCircle icon from react-icons
+import './Layout2.css'; // Importing CSS file for styling
+// Functional component for Layout2
 const Layout2 = ({ children }) => {
-    const [menuOpen, setMenuOpen] = useState(false);
-
+    const [menuOpen, setMenuOpen] = useState(false); // State for controlling menu open/close
+    // Function to toggle menu open/close state
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
     return (
 
-        <><header className={`header2 ${menuOpen ? "menu-open" : ""}`}>
+        <><header className={`header2 ${menuOpen ? "menu-open" : ""}`}> {/* Header section */}
             <div className="logo-container2">
                 <a href="/">
                     <img src="src\assets\Dishconnect3.PNG" alt="Logo" className="logo2" />
                 </a>
             </div>
-            <nav className="nav2">
+            <nav className="nav2"> {/* Navigation menu */}
                 <ul className={`menu ${menuOpen ? "open" : ""}`}>
                 <li>
                         <Link to="/search">Search</Link>
@@ -60,10 +60,10 @@ const Layout2 = ({ children }) => {
 
                 </ul>
             </nav>
-            <div className="icon-container2">
+            <div className="icon-container2"> {/* User icon */}
                 <Link to="/account"> <HiUserCircle className="icon" /></Link>
             </div>
-            <div className="menu-toggle" onClick={toggleMenu}>
+            <div className="menu-toggle" onClick={toggleMenu}> {/* Menu toggle button */}
                 <div className="bar"></div>
                 <div className="bar"></div>
                 <div className="bar"></div>
@@ -75,5 +75,5 @@ const Layout2 = ({ children }) => {
             </footer></>
     );
 };
-
+// Exporting Layout2 component
 export default Layout2;

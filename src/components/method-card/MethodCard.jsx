@@ -1,8 +1,8 @@
-import './MethodCard.css';
-import dummyData from "../../data/dummy-data";
+import './MethodCard.css'; // Importing CSS file for styling
+import dummyData from "../../data/dummy-data"; // Importing dummy data
 
-
-function MethodCard(){
+// Functional component for MethodCard
+function MethodCard(){ 
     return(
         <>
             <div className="method-card">
@@ -10,7 +10,7 @@ function MethodCard(){
             <div className="recipe-method">
                  <ol>
                      {dummyData.recipeMethod.map((step, index) => (
-                         <li key={index}>{step}</li>
+                         <li key={index}>{step}</li> 
                      ))}
                  </ol>
              </div>
@@ -18,5 +18,5 @@ function MethodCard(){
         </>
     );
 }
-
+// Exporting MethodCard component
 export default MethodCard
