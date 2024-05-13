@@ -1,6 +1,7 @@
 .sora1 {
     margin-top: -150px;
-    background-color: white;
+    background-color: #F5F5F5;
+    opacity: 0.95;
     display: flex;
 }
 
@@ -42,4 +43,38 @@
     height: 1px;
     align-self: flex-start;
     margin-right: 700px;
+    opacity: 0;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .sora1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image1,
+    .image2 {
+        width: 100%;
+        object-fit: contain;
+        /* Adjust the width as necessary */
+        padding: 0;
+        /* Remove left or right padding if any */
+    }
+
+    .text-container,
+    .text-container2 {
+        text-align: center;
+        padding-left: 450px;
+        padding-right: 450px;
+        /* Add some padding around the text */
+        order: 2;
+        /* Ensure text comes after the image */
+    }
+
+    .stretch {
+        font-size: 18px;
+        /* Adjust font size for smaller screens */
+    }
+
 }

@@ -3,6 +3,7 @@ import { supabase } from '../../supabaseClient';
 import Layout3 from '../../components/layout-components/Layout3';
 import { Link } from 'react-router-dom';
 import './RecentRecipesPage.css';
+import foodplaceholder from '../../assets/placeholder.png'; 
 
 const RecentRecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -60,16 +61,14 @@ const RecentRecipesPage = () => {
         ) : (
           <div>
             {recipes.map((recipe, index) => (
-              <div key={`${recipe.recipe_id}-${index}`} className="card">
+              <div key={`${recipe.recipe_id}-${index}`} className="cardrrp">
                 <Link to={`/recipes/${recipe.recipe_id}`}>
-                  <div className='img-wrapper'>
-                    <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} />
+                  <div className='img-wrapperrrp'>
+                    <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : foodplaceholder} alt={recipe.title} />
                   </div>
                   <h2>{recipe.title}</h2>
-
                   <p>{recipe.description}</p>
                 </Link>
-                {/* Display other recipe details as needed */}
               </div>
             ))}
           </div>

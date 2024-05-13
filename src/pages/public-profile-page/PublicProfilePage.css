@@ -23,7 +23,29 @@
 }
 
 .public-profile-page {
-    margin-left: 400px;
+    opacity: 0.95;
+    background-color: white;
     margin-top: -150px;
     width: 100%;
+    padding: 50px;
+    padding-right: 60px;
+    border-radius: 70px;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .public-profile-page {
+        opacity: 0.95;
+        background-color: white;
+        margin-top: -150px;
+        width: 100%;
+        padding: 50px;
+        padding-right: 50px;
+        border-radius: 70px;
+
+    }
+
+    .pppname {
+        font-size: large;
+    }
 }

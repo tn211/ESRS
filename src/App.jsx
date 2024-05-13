@@ -14,7 +14,7 @@ import UserFavouritesPage from "./pages/favorites-page/UserFavourites";
 import PublicProfilePage from "./pages/public-profile-page/PublicProfilePage";
 import FollowingPage from "./pages/following-page/FollowingPage";
 import HomePage from "./pages/home-page/HomePage";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import SearchResultsPage from "./pages/search-page/SearchResultsPage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -44,6 +44,7 @@ function App() {
             <Route path="/recent-recipes" element={<RecentRecipesPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/add-recipe" element={<RecipeEntryPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/search" element={<SearchPage key={session.user.id} session={session} supabase={supabase} />} />
+            <Route path="/search-results" element={<SearchResultsPage />} />
             <Route path="/following" element={<FollowingPage key={session.user.id} session={session} supabase={supabase} />} />
             <Route path="/account" element={<Account key={session.user.id} session={session} />} />
             <Route path="/about-us" element={<AboutUs key={session.user.id} session={session} />} />

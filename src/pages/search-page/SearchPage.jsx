@@ -3,6 +3,7 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
 import Layout3 from '../../components/layout-components/Layout3';
 import './SearchPage.css'
+import foodplaceholder from '../../assets/placeholder.png'; 
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -44,19 +45,20 @@ const SearchPage = () => {
   };
 
   const executeSearch = () => {
-    navigate(`?query=${searchTerm}`);
+    navigate(`/search-results?query=${searchTerm}`);
   };
+
 
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
-    return imagePath ? `${baseUrl}/${imagePath}` : "/src/assets/placeholder.png";
+    return imagePath ? `${baseUrl}/${imagePath}` : foodplaceholder;
   };
 
   return (
     <>
       <Layout3>
         <div className='search-page'>
-          <h1>Search Recipes </h1>
+          <h1 className='resh'>Search Recipes </h1>
           <input
             type="text"
             placeholder="Search recipes..."

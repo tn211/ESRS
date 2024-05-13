@@ -35,7 +35,7 @@ body,
 /* Grid */
 
 .container {
-  width: 90%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   
@@ -125,78 +125,7 @@ body,
   display: none;
 }
 
-@media only screen and (min-width: 33.75em) {
 
-  /* 540px */
-  .container {
-    width: 80%;
-  }
-}
-
-@media only screen and (min-width: 45em) {
-
-  /* 720px */
-  .col-1 {
-    width: 4.33%;
-  }
-
-  .col-2 {
-    width: 12.66%;
-  }
-
-  .col-3 {
-    width: 21%;
-  }
-
-  .col-4 {
-    width: 29.33%;
-  }
-
-  .col-5 {
-    width: 37.66%;
-  }
-
-  .col-6 {
-    width: 46%;
-  }
-
-  .col-7 {
-    width: 54.33%;
-  }
-
-  .col-8 {
-    width: 62.66%;
-  }
-
-  .col-9 {
-    width: 71%;
-  }
-
-  .col-10 {
-    width: 79.33%;
-  }
-
-  .col-11 {
-    width: 87.66%;
-  }
-
-  .col-12 {
-    width: 96%;
-  }
-
-  .hidden-sm {
-    display: block;
-  }
-}
-
-@media only screen and (min-width: 60em) {
-
-  /* 960px */
-  .container {
-    width: 75%;
-    max-width: 60rem;
-  }
-}
 
 /* Forms */
 
@@ -360,17 +289,7 @@ button.primary,
   justify-content: left;
 }
 
-@media only screen and (min-width: 60em) {
 
-  /* 960px */
-  .footer>div:first-child {
-    display: flex;
-  }
-
-  .footer>div:nth-child(2) {
-    justify-content: center;
-  }
-}
 
 @keyframes spin {
   from {
@@ -399,15 +318,14 @@ button.primary,
   justify-content: center;
 }
 
-.form-widget {
+.form-widgettt {
   margin-top: -150px;
-  margin-right: 250px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.form-widget>.button {
+.form-widgettt>.button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,11 +335,11 @@ button.primary,
   transition: all 0.2s ease;
 }
 
-.form-widget .button:hover {
+.form-widgettt .button:hover {
   background-color: #2a2a2a;
 }
 
-.form-widget .button>.loader {
+.form-widgettt .button>.loader {
   width: 17px;
   animation: spin 1s linear infinite;
   filter: invert(1);
@@ -435,4 +353,18 @@ button.primary,
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+@media only screen and (max-width: 768px) {
+  .form-widgettt {
+    margin-top: -150px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 70px;
+  }
+
+
+
+
 }

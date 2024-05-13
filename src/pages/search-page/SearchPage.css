@@ -23,12 +23,22 @@
 }
 
 .search-page {
-    margin-left: 500px;
     margin-top: -150px;
     width: 100%;
 }
 
-.search-page {
-    padding-top: 260px; /* Adjust as needed based on the navbar height */
-  }
-  
+.search-page input {
+    background-color: white;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .search-page {
+        margin-top: -150px;
+        width: 100%;
+    }
+
+    .resh {
+        color: black;
+    }
+}

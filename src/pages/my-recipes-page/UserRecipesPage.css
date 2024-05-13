@@ -1,6 +1,12 @@
 .user-recipes-page {
-    margin-left: 400px;
-    margin-top: -150px;
+    margin-top: -160px;
     width: 100%;
+    background-color: #F5F5F5;
+    opacity: 0.95;
+    padding: 50px;
+    border-radius: 50px;
+}
 
+.card1 {
+    object-fit: cover;
 }

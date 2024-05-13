@@ -198,8 +198,6 @@ const RecipeEntryPage = ({ session }) => {
                 <option value="pints">pints</option>
                 <option value="quarts">quarts</option>
                 <option value="gallons">gallons</option>
-
-                {/* Add more units as needed */}
               </select>
               <button type="button" onClick={() => removeIngredientField(index)}>Remove</button>
             </div>

@@ -7,6 +7,7 @@ import './RecipeDetail.css';
 import FavoriteButton from '../../components/favorite-button/FavoriteButton';
 import RatingButtons from '../../components/rating-buttons/RatingButtons';
 import Comments from '../../components/comments/Comments';
+import foodplaceholder from '../../assets/placeholder.png'; 
 
 const RecipeDetail = ({ session }) => {
   const { recipeId } = useParams();
@@ -143,7 +144,7 @@ const RecipeDetail = ({ session }) => {
           </div>
           <p>{recipe.description}</p>
           <div className='img-wrapper'>
-            <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : "/src/assets/placeholder.png"} alt={recipe.title} style={{ maxWidth: '100%' }} />
+            <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : foodplaceholder} alt={recipe.title} style={{ maxWidth: '100%' }} />
           </div>
           <h3>Instructions:</h3>
           <ol>

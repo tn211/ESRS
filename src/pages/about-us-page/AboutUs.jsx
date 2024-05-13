@@ -1,6 +1,9 @@
 import React from "react";
 import './AboutUs.css';
-import Layout3 from "../../components/layout-components/Layout3";
+import Layout2 from "../../components/layout-components/Layout2";
+import stock1 from "../../assets/stock1istockphoto-1253249134-612x612.jpg";
+import stock2 from "../../assets/stock2istockphoto-1199670834-1024x1024 1.png";
+// import stock3 from "../../assets/hide.png";
 
 const AboutUs = () => {
     return (
@@ -13,7 +16,7 @@ const AboutUs = () => {
                         We are a team passionate about cooking and all the cultural diversity that it can provide and be expressed through it. This love for sharing our experiences led us to create DishConnect, a great community for every person, with or without experience, to explore and contribute to this wonderful world of gastronomy.
                     </p>
                 </div>
-                <img src="src\assets\istockphoto-1253249134-612x612.jpg" alt="img1" className="image1" />
+                <img src={stock1} alt="img1" className="image1" />
             </div>
             <br></br>
             <br></br>
@@ -23,7 +26,7 @@ const AboutUs = () => {
             <br></br>
             <br></br>
             <div className="sora1">
-                <img src="src\assets\istockphoto-1199670834-1024x1024 1.png" alt="img2" className="image2" />
+                <img src={stock2} alt="img2" className="image2" />
                 <div className="text-container2">
                     <p style={{ fontFamily: 'Josefin Sans', fontSize: '50px' }}>Our Mission</p>
                     <p className="stretch">
@@ -34,9 +37,7 @@ const AboutUs = () => {
             </div>
             <br></br>
             <div className="sora1h">
-                <img src="src\assets\hide.png" alt="img3" className="image3" />
-
-
+                <img src={stock2} alt="img3" className="image3" />
             </div>
         </Layout3>
     );

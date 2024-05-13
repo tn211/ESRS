@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi2";
 import './Layout2.css';
+import logo3 from '../../assets/DishConnectLogo3.png';
 
 const Layout2 = ({ children }) => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ const Layout2 = ({ children }) => {
         <><header className={`header2 ${menuOpen ? "menu-open" : ""}`}>
             <div className="logo-container2">
                 <a href="/">
-                    <img src="src\assets\Dishconnect3.PNG" alt="Logo" className="logo2" />
+                    <img src={logo3} alt="Logo" className="logo2" />
                 </a>
             </div>
             <nav className="nav2">
@@ -41,23 +42,6 @@ const Layout2 = ({ children }) => {
                     <li>
                         <Link to="/add-recipe">Upload</Link>
                     </li>
-                    {/* OLD NAV BAR
-                    <li>
-                        <Link to="/add-recipe">Recipes</Link>
-                    </li>
-                    <li>
-                        <Link to="/my-recipes">Favourites</Link>
-                    </li>
-                    <li>
-                        <Link to="/recent-recipes">Community</Link>
-                    </li>
-                    <li>
-                        <Link to="/AboutUs">About us</Link>
-                    </li>
-                    <li>
-                        <Link to="/add-recipe">Upload Recipe</Link>
-                    </li> */}
-
                 </ul>
             </nav>
             <div className="icon-container2">

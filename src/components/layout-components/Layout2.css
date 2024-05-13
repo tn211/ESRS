@@ -10,38 +10,43 @@ main {
     flex-direction: column;
     display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    width: 99.16%;
     /* Take up the full width of the viewport */
     padding: 50px;
+    /* height: 100px; */
     color: #fff;
     background-color: #F5F5F5;
     z-index: 1000;
+    /* opacity: 0.95; */
     /* ensure header is above other content */
 
 }
 
 .footer2 {
     position: fixed;
+    overflow: hidden;
     flex-direction: column;
     display: flex;
+    justify-content: center;
     bottom: 0;
     align-items: center;
-    width: 100%;
-    padding: 10px;
+    width: 99.16%;
+    height: 30px;
     color: #fff;
-    font-size: larger;
+    font-size: small;
     font-family: 'Arial', sans-serif;
     z-index: 1000;
     /* ensure header is above other content */
-    background: white;
-    opacity: 0.95;
+    background-color: #F5F5F5;
+    /* opacity: 0.95; */
 
 }
 
 
 .nav2 {
     position: fixed;
-    top: 30px;
+    /* top: 30px; */
     /* Adjust the top position as needed */
     left: 500px;
     /* Adjust the left position to position the menu to the right of the logo */
@@ -65,11 +70,9 @@ main {
 }
 
 .logo2 img {
-    padding-left: 50px;
-
-    width: 500px;
+    width: 100%;
     /* Adjust logo width as needed */
-    height: 100px;
+    height: auto;
     /* Adjust logo height as needed */
 }
 
@@ -94,7 +97,7 @@ main {
 .nav2 a {
     text-decoration: none;
     color: black;
-    font-size: x-large;
+    font-size: large;
     font-family: 'Josefin Sans', sans-serif;
 
 }
@@ -165,7 +168,7 @@ main {
     }
 
     /* Adjust menu for smaller screens */
-    .menu {
+    header.header2 ul.menu {
         display: none;
         flex-direction: column;
         position: fixed;
@@ -173,12 +176,12 @@ main {
         /* Adjust this value based on your header height */
         left: 0;
         width: 100%;
-        background: #86a595;
+        background: w;
         padding: 20px;
 
     }
 
-    .menu-open .menu {
+    header.header2.menu-open .menu {
         display: flex;
     }
 

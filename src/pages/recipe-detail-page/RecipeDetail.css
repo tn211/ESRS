@@ -23,7 +23,26 @@
 }
 
 .recipe-page {
-    margin-left: 400px;
-    margin-top: -150px;
+    background-color: white;
+    opacity: 0.95;
+    margin-top: -160px;
     width: 100%;
+    padding: 50px;
+    border-radius: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+    .recipe-page {
+        background-color: white;
+        opacity: 0.95;
+        margin-top: -160px;
+        width: 100%;
+        padding: 30px;
+        border-radius: 50px;
+    }
+
+    .rsc {
+        width: 100%;
+    }
+
 }

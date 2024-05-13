@@ -5,7 +5,8 @@
 }
 
 form {
-    background: white;
+    background: #F5F5F5;
+    opacity: 0.95;
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -36,9 +37,10 @@ select {
     padding: 8px;
     margin-top: 5px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 4px;
-    background-color: #d9d9d9;
+    /* background-color: #d9d9d9; */
+    background-color: white;
     color: black;
 }
 
@@ -80,4 +82,10 @@ textarea {
 .error {
     color: red;
     font-size: 0.8em;
+}
+
+@media only screen and (max-width: 768px) {
+    form {
+        width: 100%;
+    }
 }

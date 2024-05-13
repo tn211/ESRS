@@ -82,8 +82,8 @@ export default function Account({ session }) {
   }
 
   return (
-    <Layout3>
-      <form onSubmit={updateProfile} className="form-widget">
+    <Layout2>
+      <form onSubmit={updateProfile} className="form-widgettt">
         <Avatar
           url={avatar_url}
           size={150}

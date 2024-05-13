@@ -1,4 +1,20 @@
-.favourites-page {}
+.favourites-page ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* Removes default margin */
+}
+
+.favourites-page li {
+    flex: 1 0 50%;
+    /* Ensure each item takes up 50% of the container's width */
+    box-sizing: border-box;
+    padding: 10px;
+    /* Provides spacing between items */
+}
+
 
 .favourites-page .img-wrapper {
     width: 200px;
@@ -25,8 +41,24 @@
 }
 
 .favourites-page {
-    margin-left: 700px;
+    opacity: 0.95;
+    background-color: #F5F5F5;
     margin-top: -150px;
-    width: 50%;
-    padding: 20px;
+    width: 100%;
+    padding: 50px;
+    padding-right: 80px;
+    border-radius: 70px;
+}
+
+@media only screen and (max-width: 768px) {
+    .favourites-page {
+        opacity: 0.95;
+        background-color: white;
+        margin-top: -150px;
+        width: 100%;
+        padding: 50px;
+        padding-right: 50px;
+        border-radius: 70px;
+    }
+
 }
