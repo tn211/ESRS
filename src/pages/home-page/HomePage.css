@@ -2,81 +2,39 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     overflow: hidden;
-
-
-}
-
-
-.image-grid {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 100px;
-
-
-    justify-content: center;
-    gap: 10px;
-    gap: 10px;
-    /* Adjust the gap as needed */
-}
-
-.image-item {
-    text-align: center;
-    width: calc(33.33% - 100px);
-}
-
-.image-item img {
-    width: 150%;
-    /* Adjust this line */
-    height: auto;
-    /* Maintain aspect ratio */
-}
-
-@media only screen and (max-width: 2000px) {
-    body {
-        overflow: scroll;
-        /* padding-top: 200px; */
-        /* padding-top: 200px; */
-        width: 100%;
-    }
-
-}
-
-
-.card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    /* Adjust the gap as needed */
-}
-
-
-.recipe-card {
-    max-width: 350px;
-}
-
-
-.card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    /* Adjust the gap as needed */
-}
-
-
-.recipe-card {
-    max-width: 350px;
 }
 
 .welcome-message {
     position: absolute;
-    top: 50%;  /* Center vertically */
-    left: 50%; /* Center horizontally */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 6vw; /* Responsive font size based on viewport width */
-    font-weight: bold; /* Make the text bold */
-    text-align: center; /* Ensure the text is centered */
-    color: #000000; /* Optional: Change the text color if needed */
+    font-size: 6vw;
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+}
+
+/* Carrusel de imágenes */
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    align-items: center;
+}
+
+.carousel-item {
+    min-width: 100%;
+    transition: transform 0.5s ease;
+}
+
+/* Ajustes responsivos */
+@media only screen and (max-width: 2000px) {
+    body {
+        overflow: scroll;
+        width: 100%;
+    }
+}
+
 }
