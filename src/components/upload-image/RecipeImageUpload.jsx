@@ -1,7 +1,11 @@
-import { useEffect, useState } from 'react';
-import { supabase } from '../../supabaseClient';
+import { useEffect, useState } from "react";
+import { supabase } from "../../supabaseClient";
 
-export default function RecipeImageUploader({ url, size, onUpload = (filePath) => console.log("Uploaded file path:", filePath) }) {
+export default function RecipeImageUploader({
+  url,
+  size,
+  onUpload = (filePath) => console.log("Uploaded file path:", filePath),
+}) {
   const [recipeImageUrl, setRecipeImageUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -11,14 +15,16 @@ export default function RecipeImageUploader({ url, size, onUpload = (filePath) =
 
   async function downloadRecipeImage(path) {
     try {
-      const { data, error } = await supabase.storage.from('recipe-images').download(path);
+      const { data, error } = await supabase.storage
+        .from("recipe-images")
+        .download(path);
       if (error) {
         throw error;
       }
       const url = URL.createObjectURL(data);
       setRecipeImageUrl(url);
     } catch (error) {
-      console.log('Error downloading recipe image: ', error.message);
+      console.log("Error downloading recipe image: ", error.message);
     }
   }
 
@@ -27,18 +33,20 @@ export default function RecipeImageUploader({ url, size, onUpload = (filePath) =
       setUploading(true);
 
       if (!event.target.files || event.target.files.length === 0) {
-        throw new Error('You must select an image to upload.');
+        throw new Error("You must select an image to upload.");
       }
 
       const file = event.target.files[0];
-      const fileExt = file.name.split('.').pop();
+      const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      console.log('Uploading file:', file);
-      console.log('File path:', filePath);
+      console.log("Uploading file:", file);
+      console.log("File path:", filePath);
 
-      const { error: uploadError } = await supabase.storage.from('recipe-images').upload(filePath, file);
+      const { error: uploadError } = await supabase.storage
+        .from("recipe-images")
+        .upload(filePath, file);
 
       if (uploadError) {
         throw uploadError;
@@ -46,7 +54,7 @@ export default function RecipeImageUploader({ url, size, onUpload = (filePath) =
 
       onUpload(filePath);
     } catch (error) {
-      console.error('Error uploading recipe image:', error);
+      console.error("Error uploading recipe image:", error);
     } finally {
       setUploading(false); // Ensure setUploading is set to false in both success and error cases
     }
@@ -57,21 +65,24 @@ export default function RecipeImageUploader({ url, size, onUpload = (filePath) =
       {recipeImageUrl ? (
         <img
           src={recipeImageUrl}
-          alt="Recipe Image"
+          alt="Recipe"
           className="recipe-image"
           style={{ height: size, width: size }}
         />
       ) : (
-        <div className="recipe-image no-image" style={{ height: size, width: size }} />
+        <div
+          className="recipe-image no-image"
+          style={{ height: size, width: size }}
+        />
       )}
       <div style={{ width: size }}>
         <label className="button primary block" htmlFor="single">
-          {uploading ? 'Uploading ...' : 'Upload Image'}
+          {uploading ? "Uploading ..." : "Upload Image"}
         </label>
         <input
           style={{
-            visibility: 'hidden',
-            position: 'absolute',
+            visibility: "hidden",
+            position: "absolute",
           }}
           type="file"
           id="single"

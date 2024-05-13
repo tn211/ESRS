@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { supabase } from '../../supabaseClient';
-import Layout2 from '../../components/layout-components/Layout2';
-import './FollowingPage.css';
-import profileplaceholder from '../../assets/profile-placeholder.png'; 
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
+import Layout2 from "../../components/layout-components/Layout2";
+import "./FollowingPage.css";
+import profileplaceholder from "../../assets/profile-placeholder.png";
 
 // define component to display followed users
 const FollowingPage = ({ session }) => {
@@ -24,13 +24,13 @@ const FollowingPage = ({ session }) => {
       // fetch ids of followed users
       const profileId = session.user.id;
       const { data: followsData, error: followsError } = await supabase
-        .from('follows')
-        .select('follow_target_id')
-        .eq('follower_id', profileId);
+        .from("follows")
+        .select("follow_target_id")
+        .eq("follower_id", profileId);
 
       // handle possible errors during fetching
       if (followsError) {
-        console.error('Error fetching following data:', followsError);
+        console.error("Error fetching following data:", followsError);
         setLoading(false);
         return;
       }
@@ -42,17 +42,19 @@ const FollowingPage = ({ session }) => {
       }
 
       // extract ids of followed profiles
-      const followTargetIds = followsData.map(follow => follow.follow_target_id);
+      const followTargetIds = followsData.map(
+        (follow) => follow.follow_target_id,
+      );
 
       // fetch full profile details of followed users
       const { data: profilesData, error: profilesError } = await supabase
-        .from('profiles')
-        .select('*')
-        .in('id', followTargetIds);
+        .from("profiles")
+        .select("*")
+        .in("id", followTargetIds);
 
       // handle possible errors during profile fetching
       if (profilesError) {
-        console.error('Error fetching profiles:', profilesError);
+        console.error("Error fetching profiles:", profilesError);
         setLoading(false);
         return;
       }
@@ -67,32 +69,36 @@ const FollowingPage = ({ session }) => {
 
   // function to construct full image URL
   const getFullImageUrl = (imagePath) => {
-    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars';
+    const baseUrl =
+      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars";
     return imagePath ? `${baseUrl}/${imagePath}` : profileplaceholder;
   };
 
   // render the component with conditionally displayed content
   return (
     <Layout2>
-      <div className='following-page'>
+      <div className="following-page">
         <h1>Following</h1>
         {loading ? (
           <p>Loading profiles...</p>
+        ) : followingProfiles.length > 0 ? (
+          <ul>
+            {followingProfiles.map((profile) => (
+              <li key={profile.id}>
+                <Link to={`/chefs/${profile.id}`}>
+                  <div className="following-img-wrapper">
+                    <img
+                      src={getFullImageUrl(profile.avatar_url)}
+                      alt={`${profile.username}'s profile`}
+                    />
+                  </div>
+                  <span>{profile.username}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         ) : (
-          followingProfiles.length > 0 ? (
-            <ul>
-              {followingProfiles.map((profile) => (
-                <li key={profile.id}>
-                  <Link to={`/chefs/${profile.id}`}>
-                    <div className='following-img-wrapper'><img src={getFullImageUrl(profile.avatar_url)} alt={`${profile.username}'s profile`} /></div>
-                    <span>{profile.username}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>You are not following anyone.</p>
-          )
+          <p>You are not following anyone.</p>
         )}
       </div>
     </Layout2>

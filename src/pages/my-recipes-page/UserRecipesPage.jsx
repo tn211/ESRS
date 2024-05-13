@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { supabase } from '../../supabaseClient';
-import RecipeList from '../../components/recipe-list/RecipeList';
-import Layout2 from '../../components/layout-components/Layout2';
-import './UserRecipesPage.css';
+import React, { useEffect, useState } from "react";
+import { supabase } from "../../supabaseClient";
+import RecipeList from "../../components/recipe-list/RecipeList";
+import Layout2 from "../../components/layout-components/Layout2";
+import "./UserRecipesPage.css";
 
 const UserRecipesPage = ({ session }) => {
   const [recipes, setRecipes] = useState([]);
@@ -23,8 +23,9 @@ const UserRecipesPage = ({ session }) => {
       console.log(`Fetching recipes for user ID: ${session.user.id}`);
 
       const { data, error } = await supabase
-        .from('recipes')
-        .select(`
+        .from("recipes")
+        .select(
+          `
           *,
           ingredients (
             ingredient_id,
@@ -32,11 +33,12 @@ const UserRecipesPage = ({ session }) => {
             quantity,
             recipe_id
           )
-        `)
-        .eq('profile_id', session.user.id);
+        `,
+        )
+        .eq("profile_id", session.user.id);
 
       if (error) {
-        console.error('Error fetching recipes:', error);
+        console.error("Error fetching recipes:", error);
         setLoading(false);
         return;
       }
@@ -49,11 +51,13 @@ const UserRecipesPage = ({ session }) => {
     fetchRecipes();
   }, [session]); // Re-run useEffect when the session changes
 
-  console.log(`Rendering UserRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`);
+  console.log(
+    `Rendering UserRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`,
+  );
 
   return (
     <Layout2>
-      <div className='user-recipes-page'>
+      <div className="user-recipes-page">
         <h1>My Recipes</h1>
         {session && supabase ? ( // Check that session and supabase are not null
           <div className="card1">
@@ -62,7 +66,7 @@ const UserRecipesPage = ({ session }) => {
         ) : (
           <p>Loading or not authenticated...</p> // Fallback message
         )}
-        </div>
+      </div>
     </Layout2>
   );
 };

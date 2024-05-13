@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { supabase } from '../../supabaseClient';
-import Layout2 from '../../components/layout-components/Layout2';
-import { Link } from 'react-router-dom';
-import './RecentRecipesPage.css';
-import foodplaceholder from '../../assets/placeholder.png'; 
+import React, { useEffect, useState } from "react";
+import { supabase } from "../../supabaseClient";
+import Layout2 from "../../components/layout-components/Layout2";
+import { Link } from "react-router-dom";
+import "./RecentRecipesPage.css";
+import foodplaceholder from "../../assets/placeholder.png";
 
 const RecentRecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -16,8 +16,9 @@ const RecentRecipesPage = () => {
       console.log("Fetching 10 most recent recipes");
 
       const { data, error } = await supabase
-        .from('recipes')
-        .select(`
+        .from("recipes")
+        .select(
+          `
           *,
           image_url,
           ingredients (
@@ -26,12 +27,13 @@ const RecentRecipesPage = () => {
             quantity,
             recipe_id
           )
-        `)
-        .order('created_at', { ascending: false }) // Order by created_at in descending order
+        `,
+        )
+        .order("created_at", { ascending: false }) // Order by created_at in descending order
         .limit(10); // Limit to 10 results
 
       if (error) {
-        console.error('Error fetching recent recipes:', error);
+        console.error("Error fetching recent recipes:", error);
         setLoading(false);
         return;
       }
@@ -46,15 +48,18 @@ const RecentRecipesPage = () => {
 
   // function to construct full image URL
   const getFullImageUrl = (imagePath) => {
-    const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
+    const baseUrl =
+      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
     return `${baseUrl}/${imagePath}`;
   };
 
-  console.log(`Rendering RecentRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`);
+  console.log(
+    `Rendering RecentRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`,
+  );
 
   return (
     <Layout2>
-      <div className='recent-recipe-page'>
+      <div className="recent-recipe-page">
         <h1>Community</h1>
         {loading ? (
           <p>Loading...</p>
@@ -63,8 +68,15 @@ const RecentRecipesPage = () => {
             {recipes.map((recipe, index) => (
               <div key={`${recipe.recipe_id}-${index}`} className="cardrrp">
                 <Link to={`/recipes/${recipe.recipe_id}`}>
-                  <div className='img-wrapperrrp'>
-                    <img src={recipe.image_url ? getFullImageUrl(recipe.image_url) : foodplaceholder} alt={recipe.title} />
+                  <div className="img-wrapperrrp">
+                    <img
+                      src={
+                        recipe.image_url
+                          ? getFullImageUrl(recipe.image_url)
+                          : foodplaceholder
+                      }
+                      alt={recipe.title}
+                    />
                   </div>
                   <h2>{recipe.title}</h2>
                   <p>{recipe.description}</p>
@@ -74,7 +86,7 @@ const RecentRecipesPage = () => {
           </div>
         )}
         {/* Link back to home */}
-        <div style={{ marginTop: '20px' }}>
+        <div style={{ marginTop: "20px" }}>
           <Link to="/">Back to Home</Link>
         </div>
       </div>

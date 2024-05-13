@@ -1,42 +1,68 @@
 .search-page-results {
-
-    margin-top: -160px;
+  margin-top: -160px;
+  background: #f5f5f5;
+  border: 2px solid #ccc;
+  opacity: 0.95;
+  border-radius: 25px;
 }
 
-.search-page-results>div {
-    flex-wrap: wrap;
-    justify-content: space-around;
-    /* Adjusts the alignment of items */
-    padding: 20px;
-    gap: 30px;
-    /* Increases spacing between cards */
+.search-page-results > div {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* Adjusts the alignment of items */
+  padding: 20px;
+  gap: 30px;
+  /* Increases spacing between cards */
+}
+
+.search-res {
+  display: flex;
 }
 
 .search-results-img-wrapper {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 15px;
+  /* width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 15px; */
+  width: 100%;
+  /* Keep the width flexible to the container's size */
+  height: 0;
+  /* Set height to 0 initially */
+  padding-top: 100%;
+  /* Equal to the width of the container, creates a square */
+  position: relative;
+  /* Necessary for absolute positioning of the image inside */
+  overflow: hidden;
+  border-radius: 15px;
+  /* Maintain rounded corners */
 }
 
 .search-results-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+  /* width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center; */
+  position: absolute;
+  /* Absolute positioning relative to its parent */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .search-results-card {
-    flex: 1 1 calc(50% - 40px);
-    /* Adjusting width for wider cards and increased space between them */
-    background: #fff;
-    opacity: 0.95;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    /* Space below each card */
+  flex: 0 1 calc(50% - 40px);
+  /* Adjusting width for wider cards and increased space between them */
+  background: #f5f5f5;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  /* Space below each card */
 }
 
 .ssss {
-    color: black;
+  color: black;
 }

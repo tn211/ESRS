@@ -1,48 +1,52 @@
 .recipe-page .img-wrapper {
-    width: 300px;
-    /* fixed width */
-    height: 300px;
-    /* fixed height to maintain uniformity */
-    position: relative;
-    overflow: hidden;
-    /* ensures excess parts of the image are not visible */
-    margin: auto;
-    border-radius: 15px;
-    /* subtle rounded corners */
+  width: 300px;
+  /* fixed width */
+  height: 300px;
+  /* fixed height to maintain uniformity */
+  position: relative;
+  overflow: hidden;
+  /* ensures excess parts of the image are not visible */
+  margin: auto;
+  border-radius: 15px;
+  /* subtle rounded corners */
 }
 
 .recipe-page .img-wrapper img {
-    width: 100%;
-    /* ensures the image at least fills the width */
-    height: 100%;
-    /* ensures the image at least fills the height */
-    object-fit: cover;
-    /* covers the area, maintaining aspect ratio, cropping as necessary */
-    object-position: center;
-    /* centers the image in the container */
+  width: 100%;
+  /* ensures the image at least fills the width */
+  height: 100%;
+  /* ensures the image at least fills the height */
+  object-fit: cover;
+  /* covers the area, maintaining aspect ratio, cropping as necessary */
+  object-position: center;
+  /* centers the image in the container */
 }
 
 .recipe-page {
+  background-color: #f5f5f5;
+  opacity: 0.95;
+  margin-top: -160px;
+  width: 100%;
+  padding: 50px;
+  border-radius: 50px;
+  border: 2px solid #ccc;
+}
+
+.rec-ingredients-list {
+  list-style: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .recipe-page {
     background-color: white;
     opacity: 0.95;
     margin-top: -160px;
     width: 100%;
-    padding: 50px;
+    padding: 30px;
     border-radius: 50px;
-}
+  }
 
-@media only screen and (max-width: 768px) {
-    .recipe-page {
-        background-color: white;
-        opacity: 0.95;
-        margin-top: -160px;
-        width: 100%;
-        padding: 30px;
-        border-radius: 50px;
-    }
-
-    .rsc {
-        width: 100%;
-    }
-
+  .rsc {
+    width: 100%;
+  }
 }
