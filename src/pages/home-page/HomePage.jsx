@@ -3,9 +3,9 @@ import './HomePage.css';
 import Layout2 from "../../components/layout-components/Layout2";
 
 const images = [
-    "food1.jpg",  // Asegúrate de cambiar estas URL por las reales de tus imágenes
-    "food2.jpg",
-    "food3.jpg"
+    "src/pages/home-page/food1.jpg",  // update path
+    "src/pages/home-page/food2.jpg",
+    "src/pages/home-page/food3.jpg"
 ];
 
 const Carousel = () => {
@@ -39,7 +39,7 @@ const HomePage = () => {
     <Layout2>
       <div className="welcome-message">
         Welcome Eaters!
-        Find the perfect recipe for you
+        
       </div>
       <Carousel />
     </Layout2>
