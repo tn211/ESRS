@@ -3,9 +3,9 @@ import './HomePage.css';
 import Layout2 from "../../components/layout-components/Layout2";
 
 const images = [
-    "url-to-image1.jpg",  // Asegúrate de cambiar estas URL por las reales de tus imágenes
-    "url-to-image2.jpg",
-    "url-to-image3.jpg"
+    "food1.jpg",  // Asegúrate de cambiar estas URL por las reales de tus imágenes
+    "food2.jpg",
+    "food3.jpg"
 ];
 
 const Carousel = () => {
