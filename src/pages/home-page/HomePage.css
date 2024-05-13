@@ -69,3 +69,14 @@ body {
 .recipe-card {
     max-width: 350px;
 }
+
+.welcome-message {
+    position: absolute;
+    top: 50%;  /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    font-size: 6vw; /* Responsive font size based on viewport width */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Ensure the text is centered */
+    color: #000000; /* Optional: Change the text color if needed */
+}
