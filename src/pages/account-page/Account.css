@@ -320,6 +320,12 @@ button.primary,
   gap: 20px;
 }
 
+.av-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .form-widgettt > .button {
   display: flex;
   align-items: center;

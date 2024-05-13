@@ -84,6 +84,7 @@ export default function Account({ session }) {
   return (
     <Layout2>
       <form onSubmit={updateProfile} className="form-widgettt">
+        <div className="av-div">
         <Avatar
           url={avatar_url}
           size={150}
@@ -91,6 +92,8 @@ export default function Account({ session }) {
             updateProfile(event, url);
           }}
         />
+        </div>
+
         <div>
           <label htmlFor="email">Email</label>
           <input id="email" type="text" value={session.user.email} disabled />
