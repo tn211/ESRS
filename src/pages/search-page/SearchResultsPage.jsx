@@ -45,23 +45,23 @@ const SearchResultsPage = () => {
       <div className="search-page-results">
         <h1>Search Results</h1>
         <div className="search-res">
-        {results.length > 0
-          ? results.map((recipe) => (
-              <div key={recipe.recipe_id} className="search-results-card">
-                <Link to={`/recipes/${recipe.recipe_id}`}>
-                  <div className="search-results-img-wrapper">
-                    <img
-                      src={getFullImageUrl(recipe.image_url)}
-                      alt={recipe.title}
-                    />
-                  </div>
-                  <h3>{recipe.title}</h3>
-                </Link>
-                <p>{recipe.description}</p>
-              </div>
-            ))
-          : query && <p>No results found for "{query}"</p>}
-          </div>
+          {results.length > 0
+            ? results.map((recipe) => (
+                <div key={recipe.recipe_id} className="search-results-card">
+                  <Link to={`/recipes/${recipe.recipe_id}`}>
+                    <div className="search-results-img-wrapper">
+                      <img
+                        src={getFullImageUrl(recipe.image_url)}
+                        alt={recipe.title}
+                      />
+                    </div>
+                    <h3>{recipe.title}</h3>
+                  </Link>
+                  <p>{recipe.description}</p>
+                </div>
+              ))
+            : query && <p>No results found for "{query}"</p>}
+        </div>
         <Link to={"/search"} className="ssss">
           Back to Search
         </Link>
