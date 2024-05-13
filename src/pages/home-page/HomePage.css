@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    overflow: hidden;
+    /* overflow: hidden; Consider commenting this out to see if it affects the carousel display */
 }
 
 .welcome-message {
@@ -15,7 +15,7 @@ body {
     color: #000000;
 }
 
-/* Carrusel de imágenes */
+
 .carousel {
     display: flex;
     overflow: hidden;
@@ -24,9 +24,10 @@ body {
     align-items: center;
 }
 
-.carousel-item {
-    min-width: 100%;
-    transition: transform 0.5s ease;
+.carousel-item img {
+  width: 100%;  /* Ensures that image spans the full width of the carousel item */
+  height: auto; /* Maintains aspect ratio */
+  display: block; /* Removes bottom margin/gap */
 }
 
 /* Ajustes responsivos */
