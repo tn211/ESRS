@@ -5,12 +5,8 @@ const Comments = ({ recipeId, session }) => {
   const [comments, setComments] = useState([]);
   const [newCommentBody, setNewCommentBody] = useState("");
 
-  useEffect(() => {
-    fetchComments();
-}, [fetchComments]);
-
-const fetchComments = useCallback(async () => {
-  const { data: commentsData, error } = await supabase
+  const fetchComments = useCallback(async () => {
+    const { data: commentsData, error } = await supabase
       .from("comments")
       .select(
         `
@@ -26,7 +22,11 @@ const fetchComments = useCallback(async () => {
     }
 
     setComments(commentsData);
-}, [recipeId]);
+  }, [recipeId]); // Dependencies of fetchComments, include all variables it depends on
+
+  useEffect(() => {
+    fetchComments();
+  }, [fetchComments]); // Include fetchComments in the dependency array
 
   const handleCommentChange = (e) => {
     setNewCommentBody(e.target.value);
