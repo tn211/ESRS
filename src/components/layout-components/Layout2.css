@@ -185,7 +185,7 @@ main {
     display: block;
     position: absolute;
     top: 35px;
-    right: 50px;
+    right: 100px;
     z-index: 9999;
   }
 
@@ -194,7 +194,7 @@ main {
   }
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 590px) {
   .logo2 {
     display: none;
   }
