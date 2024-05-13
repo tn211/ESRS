@@ -1,45 +1,49 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import './HomePage.css';
-import { HiUserCircle } from "react-icons/hi2";
-import Layout from '../../components/layout-components/Layout';
-import RecipeCard from "../../components/recipe-card/RecipeCard";
-import Dropdown from '../../components/dropdown/Dropdown';
 import Layout2 from "../../components/layout-components/Layout2";
 
+const images = [
+    "url-to-image1.jpg",  // Asegúrate de cambiar estas URL por las reales de tus imágenes
+    "url-to-image2.jpg",
+    "url-to-image3.jpg"
+];
 
+const Carousel = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentIndex((currentIndex + 1) % images.length);
+        }, 3000); // Cambia imagen cada 3 segundos
+
+        return () => clearInterval(intervalId);
+    }, [currentIndex]);
+
+    return (
+        <div className="carousel">
+            {images.map((image, index) => (
+                <div
+                    key={index}
+                    className="carousel-item"
+                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                    <img src={image} alt={`Slide ${index}`} />
+                </div>
+            ))}
+        </div>
+    );
+};
 
 const HomePage = () => {
   return (
     <Layout2>
-    
-      < div className="welcome-message">
+      <div className="welcome-message">
         Welcome Eaters!
         Find the perfect recipe for you
-
       </div>
-
+      <Carousel />
     </Layout2>
   );
-
-
-
 };
 
 export default HomePage;
-
-/* <div className="card-grid">
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     <Link to="/recipe"><RecipeCard className="recipe-card"/></Link>
-     </div>
-     <Link to="/recipe-image-upload">Image Upload</Link>*/
