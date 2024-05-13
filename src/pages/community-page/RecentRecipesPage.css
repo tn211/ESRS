@@ -21,6 +21,7 @@ html {
   opacity: 0.95;
   border-radius: 50px;
   padding-top: 5px;
+  border: 2px solid #ccc;
 }
 
 .recent-recipe-page > div {

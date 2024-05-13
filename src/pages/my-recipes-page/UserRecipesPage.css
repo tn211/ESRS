@@ -5,6 +5,7 @@
   opacity: 0.95;
   padding: 50px;
   border-radius: 50px;
+  border: 2px solid #ccc;
 }
 
 .card1 {
