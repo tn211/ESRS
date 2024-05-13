@@ -1,8 +1,13 @@
+// Importing CSS file for styling
 import "./App.css";
+// Importing necessary hooks and components from React and React Router
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// Importing Supabase client
 import { supabase } from "./supabaseClient";
+// Importing authentication component
 import Auth from "./Auth";
+// Importing page components
 import Account from "./pages/account-page/Account";
 import RecipeEntryPage from "./pages/recipe-entry-page/RecipeEntryPage";
 import UserRecipesPage from "./pages/my-recipes-page/UserRecipesPage";
@@ -15,20 +20,22 @@ import PublicProfilePage from "./pages/public-profile-page/PublicProfilePage";
 import FollowingPage from "./pages/following-page/FollowingPage";
 
 function App() {
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState(null); // State to hold user session
 
   useEffect(() => {
+    // Fetching user session when component mounts
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
     });
-
+    // Listening for auth state changes
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
-  }, []);
+  }, []); // Empty dependency array to run the effect only once
 
   return (
     <div className="container" style={{ padding: "50px 0 100px 0" }}>
+      {/* Rendering authentication component if no session */}
       {!session ? (
         <Auth />
       ) : (
@@ -52,5 +59,5 @@ function App() {
     </div>
   );
 }
-
+// Exporting App component
 export default App;
