@@ -15,6 +15,7 @@ import PublicProfilePage from "./pages/public-profile-page/PublicProfilePage";
 import FollowingPage from "./pages/following-page/FollowingPage";
 import HomePage from "./pages/home-page/HomePage";
 import SearchResultsPage from "./pages/search-page/SearchResultsPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [session, setSession] = useState(null);

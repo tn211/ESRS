@@ -1,0 +1,16 @@
+.bg-body-tertiary .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .bg-body-tertiary .navbar-brand {
+    flex-shrink: 0;
+  }
+  
+  .bg-body-tertiary .navbar-collapse {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  

@@ -5,20 +5,19 @@ import { HiUserCircle } from "react-icons/hi2";
 import Layout3 from '../../components/layout-components/Layout3';
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import Dropdown from '../../components/dropdown/Dropdown';
-import Layout2 from "../../components/layout-components/Layout2";
 
 
 
 const HomePage = () => {
   return (
-    <Layout2>
+    <Layout3>
       <div>
 
 
 
       </div>
 
-    </Layout2>
+    </Layout3>
   );
 
 
