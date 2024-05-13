@@ -15,7 +15,7 @@ const HomePage = () => {
     
       < div className="welcome-message">
         Welcome Eaters!
-        Find the perfect recipe for you
+        
 
       </div>
 
