@@ -58,7 +58,9 @@ const SearchPage = () => {
     <>
       <Layout2>
         <div className="search-page">
+          <div className="search-header-background">
           <h1 className="resh">Search Recipes </h1>
+          </div>
           <input
             type="text"
             placeholder="Search recipes..."
