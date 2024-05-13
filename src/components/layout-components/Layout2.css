@@ -12,14 +12,10 @@ main {
   align-items: center;
   justify-content: center;
   width: 99.16%;
-  /* Take up the full width of the viewport */
   padding: 50px;
-  /* height: 100px; */
   color: #fff;
   background-color: #f5f5f5;
   z-index: 1000;
-  /* opacity: 0.95; */
-  /* ensure header is above other content */
 }
 
 .footer2 {
