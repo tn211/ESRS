@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./RecipePage.css";
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import IngredientsCard from "../../components/ingredients-card/IngredientsCard";

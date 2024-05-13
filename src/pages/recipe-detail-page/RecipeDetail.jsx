@@ -73,7 +73,7 @@ const RecipeDetail = ({ session }) => {
         .eq("slug", recipeId);
 
       if (commentsError) throw commentsError;
-      setComments(commentsData);
+      // setComments(commentsData);
     } catch (error) {
       console.error("Error fetching data:", error.message);
     } finally {
@@ -105,10 +105,11 @@ const RecipeDetail = ({ session }) => {
 
     if (ratingsError) {
       console.error("Error fetching ratings:", ratingsError);
-    } else {
-      setRatings(ratingsData);
-      updateAverageRating(ratingsData);
     }
+    // } else {
+    //   setRatings(ratingsData);
+    //   updateAverageRating(ratingsData);
+    // }
   };
 
   const getFullImageUrl = (imagePath) => {

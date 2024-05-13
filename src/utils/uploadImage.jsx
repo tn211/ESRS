@@ -59,7 +59,7 @@ const RecipeImage = ({ url, size, onUpload }) => {
       {recipeImageUrl ? (
         <img
           src={recipeImageUrl}
-          alt="Recipe Image"
+          alt="Recipe"
           className="recipe-image"
           style={{ height: size, width: size, borderRadius: "50%" }}
         />

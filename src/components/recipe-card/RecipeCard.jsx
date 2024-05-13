@@ -8,7 +8,7 @@ function RecipeCard() {
       <div className="recipe-card">
         <div>
           <div className="img-wrapper">
-            <img alt="recipe picture" src={FOOD}></img>
+            <img alt="recipe" src={FOOD}></img>
           </div>
           <h2 className="recipe-name">{dummyData.recipeDataObject.name}</h2>
         </div>
