@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Add paths to all your template files here
+    "./src/**/*.{js,jsx,ts,tsx}", 
   ],
   theme: {
     extend: {},
   },
   plugins: [],
 };
+
+export default config;

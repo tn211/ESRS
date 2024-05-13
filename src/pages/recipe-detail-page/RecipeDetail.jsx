@@ -14,7 +14,7 @@ const RecipeDetail = ({ session }) => {
   const [recipe, setRecipe] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [averageRating, setAverageRating] = useState("Not yet rated");
+  // const [averageRating, setAverageRating] = useState("Not yet rated");
   const [submitter, setSubmitter] = useState("Unknown");
   const [submitterId, setSubmitterId] = useState(null);
 

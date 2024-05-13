@@ -219,7 +219,7 @@ const RecipeEntryPage = ({ session }) => {
                     validate: {
                       isFloat: (value) =>
                         !isNaN(value) &&
-                        Number(value) == value &&
+                        Number(value) === value &&
                         (!/\.\d{3,}/.test(value) ||
                           "Please limit to 2 decimal places"),
                     },
