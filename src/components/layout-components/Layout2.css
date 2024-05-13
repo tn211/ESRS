@@ -81,8 +81,8 @@ main {
 }
 
 .nav2 li {
-  margin-left: 40px;
-  margin-right: 40px;
+  /* margin-left: 40px;
+  margin-right: 40px; */
   justify-content: center;
   /* Adjust spacing between menu items */
 }
@@ -150,7 +150,8 @@ main {
   margin-left: 20px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1250px) {
+  
   .icon-container {
     position: absolute;
     top: 10px;
@@ -166,7 +167,7 @@ main {
     flex-direction: column;
     position: fixed;
     top: 60px;
-    left: 0;
+    right: 0;
     width: 100%;
     background: w;
     padding: 20px;
@@ -176,17 +177,23 @@ main {
     display: flex;
     background-color: #f5f5f5;
     margin-top: 15px;
+    border-radius: 15px;
+    width: 50%;
   }
 
   .menu-toggle {
     display: block;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 35px;
+    right: 50px;
     z-index: 9999;
   }
 
   .header.menu-open {
     padding-bottom: 50px;
   }
+}
+
+@media only screen and (max-width: 1250px) {
+  
 }
