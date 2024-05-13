@@ -1,11 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient";
 
 const Comments = ({ recipeId, session }) => {
   const [comments, setComments] = useState([]);
   const [newCommentBody, setNewCommentBody] = useState("");
 
-  const fetchComments = useCallback(async () => {
+  useEffect(() => {
+    fetchComments();
+  }, [recipeId]);
+
+  const fetchComments = async () => {
     const { data: commentsData, error } = await supabase
       .from("comments")
       .select(
@@ -22,11 +26,7 @@ const Comments = ({ recipeId, session }) => {
     }
 
     setComments(commentsData);
-  }, [recipeId]); // Dependencies of fetchComments, include all variables it depends on
-
-  useEffect(() => {
-    fetchComments();
-  }, [fetchComments]); // Include fetchComments in the dependency array
+  };
 
   const handleCommentChange = (e) => {
     setNewCommentBody(e.target.value);
