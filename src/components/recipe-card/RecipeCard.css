@@ -1,14 +1,15 @@
+/* Styling for recipe card container */
 .recipe-card {
-    border: 5px solid #86a595;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1); 
-    margin: 10px;
-    text-align: center;
-    width: 80%;
-    display: inline-block;
-    background: #86a595;
-    font-family: 'Arial', sans-serif;
-    height: auto;
+    border: 5px solid #86a595; /* Adding border */
+    border-radius: 10px; /* Adding border radius */
+    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);  /* Adding box shadow */
+    margin: 10px; /* Adding margin */
+    text-align: center; /* Aligning text to the center */
+    width: 80%; /* Setting width */
+    display: inline-block; /* Displaying as inline-block */
+    background: #86a595; /* Setting background color */
+    font-family: 'Arial', sans-serif; /* Setting font family */
+    height: auto; /* Setting height to auto */
   }
 
 .recipe-card .img-wrapper {
@@ -27,20 +28,20 @@
     height: 50%; /* Adjust this to set the maximum height you want */
     object-fit: cover; /* This will cover the area, cropping the image if necessary */
 }
-
+/* Styling for recipe name */
 .recipe-card .recipe-name {
-    color: black;
-    background-color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 0;
-    border-top: solid 1px black;
+    color: black; /* Setting text color */
+    background-color: white; /* Setting background color */
+    padding-top: 10px; /* Adding padding at the top */
+    padding-bottom: 10px; /* Adding padding at the bottom */
+    margin: 0; /* Resetting margin */
+    border-top: solid 1px black; /* Adding border at the top */
 }
 
-
+/* Styling for card bits (cooking time, prep time, servings, rating, likes) */
 .recipe-card  .card-bits {
-    font-weight: bold;
-    border-top: solid 1px black;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-weight: bold; /* Setting font weight to bold */
+    border-top: solid 1px black; /* Adding border at the top */
+    margin: 0; /* Resetting margin */
+    font-family: 'Arial', sans-serif; /* Setting font family */
 }

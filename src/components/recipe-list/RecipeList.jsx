@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
-import './RecipeList.css'; 
-
+import React, { useEffect, useState } from "react"; // Importing React and necessary hooks
+import { Link } from 'react-router-dom'; // Importing Link from react-router-dom for navigation
+import './RecipeList.css'; // Importing CSS file for styling
+// RecipesList component
 const RecipesList = ({ supabase, userId }) => {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]); // State to store recipes
 
   useEffect(() => {
     console.log(`Fetching recipes for userId: ${userId}`);
@@ -17,13 +17,13 @@ const RecipesList = ({ supabase, userId }) => {
         console.error("Error fetching recipes", error);
       } else {
         console.log("Fetched recipes data:", data);
-        setRecipes(data);
+        setRecipes(data); // Update recipes state with fetched data
       }
     };
 
-    fetchRecipes();
+    fetchRecipes(); // Fetch recipes when component mounts or userId changes
   }, [supabase, userId]);
-
+// Function to get full image URL
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
     return `${baseUrl}/${imagePath}`;
@@ -53,4 +53,4 @@ const RecipesList = ({ supabase, userId }) => {
   );
 };
 
-export default RecipesList;
+export default RecipesList; // Export RecipesList component
