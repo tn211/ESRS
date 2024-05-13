@@ -11,10 +11,8 @@ const HomePage = () => {
   return (
     <Layout2>
     
-      < div className="welcome-message">
+      <div className="welcome-message">
         Welcome Eaters!
-        
-
       </div>
 
     </Layout2>
