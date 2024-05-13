@@ -166,14 +166,14 @@ const RecipeDetail = ({ session }) => {
             />
           </div>
           <h3>Instructions:</h3>
-          <ol>
+          <ol className="rec-instructions-list">
             {recipe.steps &&
               recipe.steps
                 .sort((a, b) => a.step_number - b.step_number)
                 .map((step) => <li key={step.step_id}>{step.instruction}</li>)}
           </ol>
           <h3>Ingredients:</h3>
-          <ul>
+          <ul className="rec-ingredients-list">
             {recipe.ingredients.map((ingredient) => (
               <li key={ingredient.ingredient_id}>
                 {ingredient.quantity}{" "}
