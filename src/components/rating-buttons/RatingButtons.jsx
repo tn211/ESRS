@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from '../../supabaseClient';
-import './RatingButtons.css'
+import React, { useState, useEffect } from 'react'; // Importing React and necessary hooks
+import { supabase } from '../../supabaseClient'; // Importing supabase client
+import './RatingButtons.css' // Importing CSS file for styling
 
+// RatingButtons component
 const RatingButtons = ({ recipeId, session }) => {
-    const [ratings, setRatings] = useState([]);
-    const [averageRating, setAverageRating] = useState('Not yet rated');
-    const [userRating, setUserRating] = useState(null);
-
+    const [ratings, setRatings] = useState([]); // State to store ratings data
+    const [averageRating, setAverageRating] = useState('Not yet rated'); // State to store average rating
+    const [userRating, setUserRating] = useState(null); // State to store user's rating for the recipe
+// Fetch ratings data when recipeId changes or component mounts
     useEffect(() => {
         fetchRatings();
     }, [recipeId]);
-
+// Function to fetch ratings data from the database
     const fetchRatings = async () => {
         const { data, error } = await supabase
             .from('ratings')
@@ -22,11 +23,11 @@ const RatingButtons = ({ recipeId, session }) => {
             return;
         }
 
-        setRatings(data);
-        updateAverageRating(data);
-        updateUserRating(data);
+        setRatings(data); // Update ratings state with fetched data
+        updateAverageRating(data); // Update average rating based on fetched data
+        updateUserRating(data); // Update user's rating based on fetched data
     };
-
+// Function to update user's rating for the recipe
     const updateUserRating = (data) => {
         const ratingFromUser = data.find(r => r.profile_id === session.user.id);
         if (ratingFromUser) {
@@ -35,7 +36,7 @@ const RatingButtons = ({ recipeId, session }) => {
             setUserRating(null);
         }
     };
-
+// Function to handle rating submission
     const handleRating = async (rating) => {
         if (!session || !session.user) {
             alert("You must be logged in to rate recipes.");
@@ -62,9 +63,9 @@ const RatingButtons = ({ recipeId, session }) => {
             return;
         }
 
-        fetchRatings();
+        fetchRatings(); // Fetch ratings data after rating is updated
     };
-
+// Function to calculate and update average rating
     const updateAverageRating = (ratings) => {
         if (ratings.length === 0) {
             setAverageRating("No ratings yet!");
@@ -75,7 +76,7 @@ const RatingButtons = ({ recipeId, session }) => {
         const average = total / ratings.length;
         setAverageRating(average.toFixed(1));
     };
-
+// Render rating buttons and current average rating
     return (
         <div>
             <h3>Rate:</h3>
@@ -93,7 +94,7 @@ const RatingButtons = ({ recipeId, session }) => {
     );
 };
 
-export default RatingButtons;
+export default RatingButtons; // Export RatingButtons component
 
 
 
