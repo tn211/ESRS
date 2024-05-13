@@ -1,3 +1,5 @@
+// Import React and necessary components from React Router
+// Import component modules from the components directory
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './RecipePage.css';
@@ -8,9 +10,9 @@ import MethodCard from '../../components/method-card/MethodCard';
 import TipsCard from '../../components/tips-card/TipsCard';
 import Layout from '../../components/layout-components/Layout';
 
-
+// RecipePage functional component
 function RecipePage() {
-
+    // Render method for the RecipePage component
     return (
         <>
             <Layout>
@@ -42,7 +44,7 @@ function RecipePage() {
         </>
     );
 }
-
+// Export RecipePage component for use in other parts of the application
 export default RecipePage;
 
 

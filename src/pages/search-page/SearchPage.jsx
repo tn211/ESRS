@@ -1,52 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { supabase } from '../../supabaseClient';
-import Layout from '../../components/layout-components/Layout';
-import './SearchPage.css'
+import { useLocation, useNavigate, Link } from 'react-router-dom'; // Importing necessary hooks and components
+import { supabase } from '../../supabaseClient'; // Importing supabase client
+import Layout from '../../components/layout-components/Layout'; // Importing layout component
+import './SearchPage.css' // Importing CSS for SearchPage styling
 
+// Custom hook to get query parameters from URL
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
 const SearchPage = () => {
-  const [results, setResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const query = useQuery().get('query');
-  const navigate = useNavigate();
-
+  const [results, setResults] = useState([]); // State to hold search results
+  const [searchTerm, setSearchTerm] = useState(''); // State to hold search term
+  const query = useQuery().get('query'); // Getting 'query' parameter from URL
+  const navigate = useNavigate(); // Hook for navigation
+// Effect to fetch data when query changes
   useEffect(() => {
     const fetchData = async () => {
-      if (!query) return;
-      const { data, error } = await supabase
+      if (!query) return; // If no query, return
+      const { data, error } = await supabase // Fetching data from Supabase
         .from('recipes')
         .select('recipe_id, title, description, image_url')
         .ilike('title', `%${query}%`);
 
       if (error) {
-        console.error('Error fetching recipes:', error);
+        console.error('Error fetching recipes:', error); // Logging error if any
         return;
       }
 
-      setResults(data);
+      setResults(data); // Setting fetched data to results state
     };
 
-    fetchData();
-  }, [query]);
-
+    fetchData(); // Calling fetchData function
+  }, [query]); // Dependency array with query
+// Handler for input change
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value); // Updating searchTerm state with input value
   };
-
+// Handler for key press event
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      executeSearch();
+      executeSearch(); // If Enter key pressed, execute search
     }
   };
-
+// Function to execute search
   const executeSearch = () => {
-    navigate(`?query=${searchTerm}`);
+    navigate(`?query=${searchTerm}`); // Navigate to URL with new search query
   };
-
+// Function to get full image URL
   const getFullImageUrl = (imagePath) => {
     const baseUrl = 'https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images';
     return imagePath ? `${baseUrl}/${imagePath}` : "/src/assets/placeholder.png";
@@ -70,7 +71,7 @@ const SearchPage = () => {
               <div key={recipe.recipe_id}>
                 <Link to={`/recipes/${recipe.recipe_id}`}>
                   <div className='search-img-wrapper'>
-                    <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title}/>
+                    <img src={getFullImageUrl(recipe.image_url)} alt={recipe.title}/> {/* Rendering recipe image */}
                   </div>
                   <h3>{recipe.title}</h3>
                 </Link>
@@ -85,7 +86,7 @@ const SearchPage = () => {
     </>
   );
 };
-
+// Exporting SearchPage component
 export default SearchPage;
 
 

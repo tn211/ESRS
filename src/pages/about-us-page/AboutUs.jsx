@@ -1,9 +1,11 @@
 import React from "react";
 import './AboutUs.css';
 import Layout2 from "../../components/layout-components/Layout2";
-
+// Declaring the Aboutus functional component
 const AboutUs = () => {
+    // The component returns JSX to be rendered
     return (
+        // Using the Layout2 component to wrap the content of the AbousUs page.
         <Layout2>
         
             <div className="sora1">
@@ -35,5 +37,5 @@ const AboutUs = () => {
         </Layout2>
     );
 };
-
+// Exporting the AboutUs component for use in other parts of the application.
 export default AboutUs;

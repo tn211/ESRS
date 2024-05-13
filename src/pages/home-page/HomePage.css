@@ -72,3 +72,8 @@ body{
 .recipe-card {
     max-width: 350px;
 }
+.carousel-item img {
+    height: 500px; /* Set a fixed height or use vh for responsive height */
+    object-fit: cover; /* Cover ensures the images resize properly */
+  }
+  

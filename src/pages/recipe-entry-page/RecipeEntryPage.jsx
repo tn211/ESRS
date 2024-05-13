@@ -1,35 +1,46 @@
+// Import necessary modules and components
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../../supabaseClient';
 import Layout from '../../components/layout-components/Layout';
 import { useNavigate } from 'react-router-dom';
 
+// Component for entering and submitting a new recipe
 const RecipeEntryPage = ({ session }) => {
+  // Using react-hook-form for form handling
   const { register, handleSubmit, formState: { errors } } = useForm();
+  // State for managing form submission status
   const [submitting, setSubmitting] = useState(false);
+  // State for dynamically handling multiple ingredient inputs
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
+  // State for dynamically handling multiple step inputs
   const [steps, setSteps] = useState([{ instruction: '' }]);
+  // State for handling the image URL after upload
   const [imageUrl, setImageUrl] = useState(null);
+  // State for storing preparation time
   const [prepTime, setPrepTime] = useState({ hours: 0, minutes: 0 });
+  // State for storing cooking time
   const [cookTime, setCookTime] = useState({ hours: 0, minutes: 0 });
+  // Hook for programmatically navigating to other routes
   const navigate = useNavigate();
 
+  // Function to add an ingredient input field
   const addIngredientField = () => {
     setIngredients([...ingredients, { name: '', quantity: '', unit: '' }]);
   };
-
+// Function to remove an ingredient input field
   const removeIngredientField = (index) => {
     setIngredients(ingredients.filter((_, i) => i !== index));
   };
-
+// Function to add a step input field
   const addStepField = () => {
     setSteps([...steps, { instruction: '' }]);
   };
-
+// Function to remove a step input field
   const removeStepField = (index) => {
     setSteps(steps.filter((_, i) => i !== index));
   };
-
+// Function to handle image file input changes
   const handleImageChange = event => {
     if (event.target.files.length > 0) {
       const fileReader = new FileReader();
@@ -39,10 +50,10 @@ const RecipeEntryPage = ({ session }) => {
       fileReader.readAsDataURL(event.target.files[0]);
     }
   };
-
+// Function to handle form submission
   const onSubmit = async (data) => {
     setSubmitting(true);
-
+    // Convert prep and cook time to minutes
     const totalPrepTime = parseInt(prepTime.hours) * 60 + parseInt(prepTime.minutes);
     const totalCookTime = parseInt(cookTime.hours) * 60 + parseInt(cookTime.minutes);
 
@@ -123,7 +134,7 @@ const RecipeEntryPage = ({ session }) => {
     }
   };
 
-  
+  // Rendering the form for recipe entry
   return (
     <>
     <Layout>

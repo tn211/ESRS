@@ -5,25 +5,26 @@ import './Account.css';
 import Layout from '../../components/layout-components/Layout';
 import Avatar from '../../components/avatar/Avatar';
 
-export default function Account({ session }) {
+// Define the functional component named Account with a proper 'session' to handle the user's session //
+export default function Account({ session }) { // State variables to manage user data and loading state //
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)
   const [avatar_url, setAvatarUrl] = useState(null)
-  const navigate = useNavigate(); 
-
+  const navigate = useNavigate(); // Initialise the navigate function from useNavigate hook //
+// useEffect to load the user profile from the database when the component mounts //
   useEffect(() => {
     async function getProfile() {
       setLoading(true)
-      const { user } = session
+      const { user } = session // Destructure user from session //
 
-      let { data, error } = await supabase
+      let { data, error } = await supabase // Query the 'profiles' table in Supabase to get user data //
         .from('profiles')
         .select(`username, website, avatar_url`)
         .eq('id', user.id)
         .single()
 
-      if (error) {
+      if (error) { // Error handling and updating state with fetched data //
         console.warn(error)
       } else if (data) {
         setUsername(data.username)
@@ -31,11 +32,11 @@ export default function Account({ session }) {
         setAvatarUrl(data.avatar_url)
       }
 
-      setLoading(false)
+      setLoading(false) // Set loading state to false after data is loaded //
     }
 
     getProfile()
-  }, [session])
+  }, [session]) // Effect depends on session
 
   async function updateProfile(event, avatarUrl) {
     event.preventDefault()
@@ -62,7 +63,7 @@ export default function Account({ session }) {
       setLoading(false)
       return
     }
-  
+  // Prepare the updated user profile data // 
     const updates = {
       id: user.id,
       username,
@@ -80,7 +81,7 @@ export default function Account({ session }) {
     }
     setLoading(false)
   }
-
+// JSX for rendering the account management form //
   return (
     <Layout>
       <form onSubmit={updateProfile} className="form-widget">

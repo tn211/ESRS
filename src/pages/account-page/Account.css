@@ -1,53 +1,56 @@
+/* Base Styles */
 html,
 body {
+  /* CSS customer properties (variables) for consistency across the site */
   --custom-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  --custom-bg-color: #101010;
-  --custom-panel-color: #222;
-  --custom-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.8);
-  --custom-color: #fff;
-  --custom-color-brand: #24b47e;
-  --custom-color-secondary: #666;
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; /* Default font stack*/
+  --custom-bg-color: #101010; /* Dark background colour */
+  --custom-panel-color: #222; /* Dark panel colours */
+  --custom-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.8); /* Box shadow for panels */
+  --custom-color: #fff; /* Primary text colur, White text colour */
+  --custom-color-brand: #24b47e; /* Brand colour for highlights, Green brand colour */
+  --custom-color-secondary: #666; /* Grey text colour */
   --custom-border: 1px solid #333;
-  --custom-border-radius: 5px;
-  --custom-spacing: 5px;
+  --custom-border-radius: 5px; /* Standard border radius for rounded elements */
+  --custom-spacing: 5px; /* Standard spacing for padding and margins */
 
-  padding: 0;
-  margin: 0;
-  font-family: var(--custom-font-family);
-  background-color: var(--custom-bg-color);
+  padding: 0; /* Reset padding */
+  margin: 0; /* Reset margin */
+  font-family: var(--custom-font-family); /* Apply custom font family */
+  background-color: var(--custom-bg-color); /* Apply custom background colour */
 }
 
 * {
-  color: var(--custom-color);
-  font-family: var(--custom-font-family);
-  box-sizing: border-box;
+  color: var(--custom-color); /* Apply primary colour to all elements */
+  font-family: var(--custom-font-family); /* Ensure custom font is applied throughout the site */
+  box-sizing: border-box; /* Ensure padding and border are included in element width */
 }
 
 html,
 body,
 #__next {
-  height: 100vh;
-  width: 100vw;
-  overflow-x: hidden;
+  height: 100vh; /* Full height containers */
+  width: 100vw; /* Full width containers */
+  overflow-x: hidden; /* Hide horizontal overflow */
 }
 
-/* Grid */
+/* Grid system */
 
 .container {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 90%; /* Container width */
+  margin-left: auto; /* Center container */
+  margin-right: auto; /* Center container */
 }
 .row {
-  position: relative;
-  width: 100%;
+  position: relative; /* Positioning context  for children */
+  width: 100%; /* Full width */
 }
 .row [class^='col'] {
-  float: left;
-  margin: 0.5rem 2%;
-  min-height: 0.125rem;
+  float: left; /* Align columns to the left */
+  margin: 0.5rem 2%; /* Spacing between columns */
+  min-height: 0.125rem; /* Minimum column height */
 }
+/* Column sizing for responsive design */
 .col-1,
 .col-2,
 .col-3,
@@ -99,12 +102,12 @@ body,
   width: 96%;
 }
 .row::after {
-  content: '';
-  display: table;
-  clear: both;
+  content: ''; /* Clearfix */
+  display: table; /* Part of the clearfix */
+  clear: both; /* Clear the floats */
 }
 .hidden-sm {
-  display: none;
+  display: none; /* Hide on small devices */
 }
 
 @media only screen and (min-width: 33.75em) {
@@ -161,7 +164,7 @@ body,
   /* 960px */
   .container {
     width: 75%;
-    max-width: 60rem;
+    max-width: 60rem; /* Maximum width to prevent overly wide layouts */
   }
 }
 
@@ -170,9 +173,9 @@ body,
 label {
   display: block;
   margin: 5px 0;
-  color: var(--custom-color-secondary);
+  color: var(--custom-color-secondary); /* Secondary colour for less emphasis */
   font-size: 0.8rem;
-  text-transform: uppercase;
+  text-transform: uppercase; /*Stylistic choice for labels */
 }
 
 input {
@@ -190,7 +193,7 @@ input[disabled] {
 }
 
 /* Utils */
-
+/* Utility classes for layout and alignment */
 .block {
   display: block;
   width: 100%;
@@ -235,7 +238,7 @@ input[disabled] {
 }
 
 /* Button */
-
+/* Button styles with primary modifier for emphasis */
 button,
 .button {
   color: var(--custom-color);
@@ -258,7 +261,7 @@ button.primary,
 }
 
 /* Widgets */
-
+/* Widgets like card and avatars with specific styles for different types of content */
 .card {
   width: 100%;
   display: block;
@@ -280,7 +283,7 @@ button.primary,
   border: 1px solid rgb(200, 200, 200);
   border-radius: 5px;
 }
-
+/* Footer styling for positioning and alignment within a flexible container */
 .footer {
   position: absolute;
   max-width: 100%;
@@ -308,7 +311,7 @@ button.primary,
 .footer > div:nth-child(2) {
   justify-content: left;
 }
-
+/* Media queries for footer adjustments at larger screens */
 @media only screen and (min-width: 60em) {
   /* 960px */
   .footer > div:first-child {
@@ -318,7 +321,7 @@ button.primary,
     justify-content: center;
   }
 }
-
+/* Keyframes for animation, used here for a loading spinner effect */
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -327,7 +330,7 @@ button.primary,
     transform: rotate(360deg);
   }
 }
-
+/* Additional utility classes and form widget styles for specific UI components */
 .mainHeader {
   width: 100%;
   font-size: 1.3rem;
@@ -370,7 +373,7 @@ button.primary,
   animation: spin 1s linear infinite;
   filter: invert(1);
 }
-
+/* Utility class for accessibility, hiding elements visually but keeping the accessible */
 .visually-hidden:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

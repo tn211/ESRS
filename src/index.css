@@ -1,43 +1,46 @@
+/* Global styles */
 :root {
+  /* Font settings */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+  /* Color scheme */
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: rgba(255, 255, 255, 0.87); /* Text color */
+  background-color: #242424; /* Background color */
+  /* Text rendering settings */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/* Body styles */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    overflow: hidden;
-    padding-top: 160px;
-    background-image: url('./assets/pexels-photo-1660030.jpeg');
-    background-repeat: no-repeat;
-    height: 100vh;
-    background-size: 100% auto;   
-     /*background-color: #d9d9d9; */
+    overflow: hidden; /* Hide horizontal overflow */
+    padding-top: 160px; /* Top padding */
+    background-image: url('./assets/pexels-photo-1660030.jpeg'); /* Background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    height: 100vh; /* Full viewport height */
+    background-size: 100% auto; /* Background image size */
+     /*background-color: #d9d9d9; */ /* Background color */
 }
 
 
-
+/* HTML and body styles */
 html, body {
-  overflow: auto;
+  overflow: auto; /* Allow scrolling */
 }
-
+/* Link styles */
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: #646cff; /* Link color */
+  text-decoration: inherit; /* Inherit text decoration */
 }
 a:hover {
-  color: #535bf2;
+  color: #535bf2; /* Hover color */
 }
 
 body {
@@ -52,35 +55,35 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
+/* Button styles */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  border-radius: 8px; /* Border radius */
+  border: 1px solid transparent; /* Border */
+  padding: 0.6em 1.2em; /* Padding */
+  font-size: 1em; /* Font size */
+  font-weight: 500; /* Font weight */
+  font-family: inherit; /* Inherit font family */
+  background-color: #1a1a1a; /* Background color */
+  cursor: pointer; /* Cursor */
+  transition: border-color 0.25s; /* Transition */
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #646cff; /* Border color on hover */
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto -webkit-focus-ring-color; /* Focus outline */
 }
-
+/* Media query for light color scheme */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #213547; /* Text color */
+    background-color: #ffffff; /* Background color */
   }
   a:hover {
-    color: #747bff;
+    color: #747bff; /* Hover color */
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Button background color */
   }
 }

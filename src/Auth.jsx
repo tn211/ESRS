@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { supabase } from "./supabaseClient";
+import { supabase } from "./supabaseClient"; // Importing Supabase client
 
 export default function Auth() {
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false); // State to manage loading state
+  const [email, setEmail] = useState(""); // State to manage email input value
 
+  // Function to handle login
   const handleLogin = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Preventing default form submission behavior
 
-    setLoading(true);
-    const { error } = await supabase.auth.signInWithOtp({ email });
+    setLoading(true); // Setting loading state to true
+    const { error } = await supabase.auth.signInWithOtp({ email }); // Signing in with OTP
 
     if (error) {
-      alert(error.error_description || error.message);
+      alert(error.error_description || error.message); // Alerting error message if any
     } else {
-      alert("Check your email for the login link!");
+      alert("Check your email for the login link!"); // Alerting success message
     }
-    setLoading(false);
+    setLoading(false); // Setting loading state to false
   };
 
   return (
