@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi2";
 import "./Layout2.css";
 import logo3 from "../../assets/DishConnectLogo3.png";
+import minilogo from "../../assets/minilogo.png";
 
 const Layout2 = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,6 +18,7 @@ const Layout2 = ({ children }) => {
         <div className="logo-container2">
           <a href="/">
             <img src={logo3} alt="Logo" className="logo2" />
+            <img src={minilogo} alt="Mini logo" className="minilogo" />
           </a>
         </div>
         <nav className="nav2">

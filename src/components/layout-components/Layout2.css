@@ -58,6 +58,10 @@ main {
   height: auto;
 }
 
+.minilogo {
+  display: none;
+}
+
 .logo-container2 {
   position: fixed;
   top: 10px;
@@ -195,5 +199,11 @@ main {
 }
 
 @media only screen and (max-width: 1250px) {
-  
+  .logo2 {
+    display: none;
+  }
+
+  .minilogo {
+    display: block;
+  }
 }
