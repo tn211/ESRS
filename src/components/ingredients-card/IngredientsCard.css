@@ -1,32 +1,33 @@
+/* Styling for h1 elements */
 h1 { 
-    color: red;
+    color: red; /* Set text color to red */
 }
-
+/* Styling for elements with class 'ingredients-header' */
 .ingredients-header {
-    text-align: left; 
-    text-indent: 40px;
-    border-bottom: solid black 1px;
-    padding-bottom: 5px;
-    margin-top: 5px;
-    font-family: 'Arial', sans-serif;
-    background-color: white;
-    color: black;
+    text-align: left; /* Align text to the left */
+    text-indent: 40px; /* Add indentation to the text */
+    border-bottom: solid black 1px; /* Add a solid black bottom border with 1px width */
+    padding-bottom: 5px; /* Add padding at the bottom */
+    margin-top: 5px; /* Add margin at the top */
+    font-family: 'Arial', sans-serif; /* Set font family */
+    background-color: white; /* Set background color to white */
+    color: black; /* Set text color to black */
 }
 
-
+/* Styling for elements with class 'ingredients-card' */
 .ingredients-card {
-    border: 5px solid #86a595;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1); 
-    margin: 10px;
-    text-align: center;
-    width: 30%;
-    display: inline-block;
-    background: white;
-    font-family: 'Arial', sans-serif;
+    border: 5px solid #86a595; /* Add a solid border with specified color */
+    border-radius: 10px; /* Add border radius to create rounded corners */
+    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);  /* Add box shadow with specified values */
+    margin: 10px; /* Add margin */
+    text-align: center; /* Align text to the center */
+    width: 30%; /* Set width to 30% of its containing block */
+    display: inline-block; /* Display as an inline block element */
+    background: white; /* Set background color to white */
+    font-family: 'Arial', sans-serif; /* Set font family */
   }
-
+/* Styling for li elements inside elements with class 'ingredients-card' */
 .ingredients-card li {
-    text-align: left;
-    font-weight: bold;
+    text-align: left; /* Align text to the left */
+    font-weight: bold; /* Set font weight to bold */
 }
