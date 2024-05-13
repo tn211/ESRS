@@ -39,16 +39,14 @@ const Comments = ({ recipeId, session }) => {
       return;
     }
 
-    const { error } = await supabase
-      .from("comments")
-      .insert([
-        {
-          slug: recipeId,
-          body: newCommentBody,
-          user_id: session.user.id,
-          created_at: new Date().toISOString(),
-        },
-      ]);
+    const { error } = await supabase.from("comments").insert([
+      {
+        slug: recipeId,
+        body: newCommentBody,
+        user_id: session.user.id,
+        created_at: new Date().toISOString(),
+      },
+    ]);
 
     if (error) {
       console.error("Error posting comment:", error);
