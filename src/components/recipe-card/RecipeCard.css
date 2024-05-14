@@ -22,10 +22,10 @@
 }
 
 .recipe-card .img-wrapper img {
-  width: 100%; /* Limits the image to not exceed the wrapper's width */
+  width: 100%; /* Limits the image to not exceed the wrapper width */
   height: auto; /* Maintain aspect ratio */
-  height: 50%; /* Adjust this to set the maximum height you want */
-  object-fit: cover; /* This will cover the area, cropping the image if necessary */
+  height: 50%; /* Adjust  to set the maximum height */
+  object-fit: cover; /* will cover the area, cropping the image if necessary */
 }
 
 .recipe-card .recipe-name {

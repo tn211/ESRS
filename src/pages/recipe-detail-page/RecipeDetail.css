@@ -8,7 +8,7 @@
   /* ensures excess parts of the image are not visible */
   margin: auto;
   border-radius: 15px;
-  /* subtle rounded corners */
+  /*  rounded corners */
 }
 
 .recipe-page .img-wrapper img {

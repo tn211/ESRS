@@ -46,7 +46,7 @@ html {
 
 .img-wrapperrrp {
   width: 100%;
-  /* Keep the width flexible to the container's size */
+  /* Keep the width flexible to the container size */
   height: 0;
   /* Set height to 0 initially */
   padding-top: 100%;
@@ -55,7 +55,7 @@ html {
   /* Necessary for absolute positioning of the image inside */
   overflow: hidden;
   border-radius: 15px;
-  /* Maintain rounded corners */
+  /* rounded corners */
 }
 
 .img-wrapperrrp img {
@@ -94,7 +94,7 @@ html {
 
 @media only screen and (max-width: 768px) {
   .recent-recipe-page > div {
-    /* Assuming this is the direct parent div of .card elements */
+    /* direct parent div of .card elements */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

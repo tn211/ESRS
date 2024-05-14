@@ -42,7 +42,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  /* Adjust the gap as needed */
+  /* Adjust the gap  */
 }
 
 .recipe-card {
@@ -54,7 +54,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  /* Adjust the gap as needed */
+  /* Adjust the gap  */
 }
 
 .recipe-card {
@@ -67,7 +67,7 @@ body {
   left: 50%; /* Centre horizontally */
   transform: translate(-50%, -50%);
   font-size: 6vw; /* Responsive font size based on viewport width */
-  font-weight: bold; /* Make the text bold */
-  text-align: center; /* Ensure the text is centered */
-  color: #000000; /* Optional: Change the text color if needed */
+  font-weight: bold; /* text bold */
+  text-align: center; /* text is centered */
+  color: #000000; /*  text color  */
 }

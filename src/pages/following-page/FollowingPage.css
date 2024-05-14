@@ -25,7 +25,7 @@
   /* ensures excess parts of the image are not visible */
   margin: auto;
   border-radius: 50%;
-  /* subtle rounded corners */
+  /*  rounded corners */
 }
 
 .following-page .following-img-wrapper img {

@@ -156,7 +156,7 @@ main {
     flex-direction: column;
     position: fixed;
     top: 60px;
-    /* Adjust this value based on your header height */
+    /* Adjust based on header height */
     left: 0;
     width: 100%;
     background: white;

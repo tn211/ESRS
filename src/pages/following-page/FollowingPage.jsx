@@ -78,7 +78,7 @@ const FollowingPage = ({ session }) => {
       : profileplaceholder;
   };
 
-  // render the component with conditionally displayed content
+  // render the component
   return (
     <Layout2>
       <div className="following-page">
