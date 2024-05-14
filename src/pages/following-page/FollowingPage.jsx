@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../../supabaseClient";
+import { supabase, BASE_URL, avatarBucketPath } from "../../supabaseClient";
 import Layout2 from "../../components/layout-components/Layout2";
 import "./FollowingPage.css";
 import profileplaceholder from "../../assets/profile-placeholder.png";
+// import { BASE_URL } from '../../supabaseClient';
 
 // define component to display followed users
 const FollowingPage = ({ session }) => {
@@ -69,9 +70,13 @@ const FollowingPage = ({ session }) => {
 
   // function to construct full image URL
   const getFullImageUrl = (imagePath) => {
-    const baseUrl =
-      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars";
-    return imagePath ? `${baseUrl}/${imagePath}` : profileplaceholder;
+    // const baseUrl =
+    //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars";
+    // return imagePath ? `${baseUrl}/${imagePath}` : profileplaceholder;
+    // const imgBucket = "/storage/v1/object/public/avatars"
+    return imagePath
+      ? `${BASE_URL}/${avatarBucketPath}/${imagePath}`
+      : profileplaceholder;
   };
 
   // render the component with conditionally displayed content

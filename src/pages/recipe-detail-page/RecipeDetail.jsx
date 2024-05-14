@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Layout2 from "../../components/layout-components/Layout2";
-import { supabase } from "../../supabaseClient";
+import { supabase, BASE_URL, recipeBucketPath } from "../../supabaseClient";
 import "./RecipeDetail.css";
 import FavoriteButton from "../../components/favorite-button/FavoriteButton";
 import RatingButtons from "../../components/rating-buttons/RatingButtons";
@@ -113,9 +113,10 @@ const RecipeDetail = ({ session }) => {
   };
 
   const getFullImageUrl = (imagePath) => {
-    const baseUrl =
-      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
-    return `${baseUrl}/${imagePath}`;
+    // const baseUrl =
+    //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
+    // return `${baseUrl}/${imagePath}`;
+    return `${BASE_URL}/${recipeBucketPath}/${imagePath}`;
   };
 
   const formatTime = (totalMinutes) => {
