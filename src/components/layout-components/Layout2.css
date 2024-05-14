@@ -41,7 +41,6 @@ main {
 .nav2 {
   position: fixed;
   /* top: 30px; */
-  /* Adjust the top position as needed */
   left: 500px;
   /* Adjust the left position to position the menu to the right of the logo */
   display: flex;
@@ -62,16 +61,12 @@ main {
 .logo-container2 {
   position: fixed;
   top: 10px;
-  /* Adjust the top position as needed */
   left: 10px;
-  /* Adjust the left position as needed */
 }
 
 .logo2 img {
   width: 100%;
-  /* Adjust logo width as needed */
   height: auto;
-  /* Adjust logo height as needed */
 }
 
 .nav2 ul {
@@ -85,7 +80,6 @@ main {
   /* margin-left: 40px;
   margin-right: 40px; */
   justify-content: center;
-  /* Adjust spacing between menu items */
 }
 
 .nav2 li:active {
@@ -116,7 +110,6 @@ main {
 
 .icon {
   width: 30px;
-  /* Adjust the width and height as needed */
   height: 30px;
   color: white;
 }
