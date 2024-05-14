@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../../supabaseClient";
+import { supabase, BASE_URL, recipeBucketPath } from "../../supabaseClient";
 import Layout2 from "../../components/layout-components/Layout2";
 import "./UserFavourites.css";
 import foodplaceholder from "../../assets/placeholder.png";
-import { BASE_URL } from '../../supabaseClient';
+// import { BASE_URL, recipeBucketPath } from '../../supabaseClient';
 
 const UserFavouritesPage = ({ session }) => {
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
@@ -59,8 +59,8 @@ const UserFavouritesPage = ({ session }) => {
     // const baseUrl =
     //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
     // return imagePath ? `${baseUrl}/${imagePath}` : foodplaceholder;
-    const imgBucket = "/storage/v1/object/public/recipe-images"
-    return imagePath ?  `${BASE_URL}/${imgBucket}/${imagePath}` : foodplaceholder;
+    // const imgBucket = "/storage/v1/object/public/recipe-images"
+    return imagePath ?  `${BASE_URL}/${recipeBucketPath}/${imagePath}` : foodplaceholder;
   };
 
   return (
