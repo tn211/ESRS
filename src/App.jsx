@@ -13,7 +13,7 @@ import SearchPage from "./pages/search-page/SearchPage";
 import UserFavouritesPage from "./pages/favorites-page/UserFavourites";
 import PublicProfilePage from "./pages/public-profile-page/PublicProfilePage";
 import FollowingPage from "./pages/following-page/FollowingPage";
-// import HomePage from "./pages/home-page/HomePage";
+import HomePage from "./pages/home-page/HomePage";
 import SearchResultsPage from "./pages/search-page/SearchResultsPage";
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
             <Route
               path="/"
               element={
-                <SearchPage
+                <HomePage
                   key={session.user.id}
                   session={session}
                   supabase={supabase}
