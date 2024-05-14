@@ -74,7 +74,9 @@ const FollowingPage = ({ session }) => {
     //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars";
     // return imagePath ? `${baseUrl}/${imagePath}` : profileplaceholder;
     // const imgBucket = "/storage/v1/object/public/avatars"
-    return imagePath ?  `${BASE_URL}/${avatarBucketPath}/${imagePath}` : profileplaceholder;
+    return imagePath
+      ? `${BASE_URL}/${avatarBucketPath}/${imagePath}`
+      : profileplaceholder;
   };
 
   // render the component with conditionally displayed content

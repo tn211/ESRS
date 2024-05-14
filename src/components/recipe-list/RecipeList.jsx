@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./RecipeList.css";
 import foodplaceholder from "../../assets/placeholder.png";
-import { BASE_URL, recipeBucketPath } from '../../supabaseClient';
-
+import { BASE_URL, recipeBucketPath } from "../../supabaseClient";
 
 const RecipesList = ({ supabase, userId }) => {
   const [recipes, setRecipes] = useState([]);
@@ -28,10 +27,10 @@ const RecipesList = ({ supabase, userId }) => {
   }, [supabase, userId]);
 
   const getFullImageUrl = (imagePath) => {
-      //const baseUrl =
-      // "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
-      // return `${baseUrl}/${imagePath}`;
-      // const imgBucket = "/storage/v1/object/public/recipe-images"
+    //const baseUrl =
+    // "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
+    // return `${baseUrl}/${imagePath}`;
+    // const imgBucket = "/storage/v1/object/public/recipe-images"
     return `${BASE_URL}/${recipeBucketPath}/${imagePath}`;
   };
 

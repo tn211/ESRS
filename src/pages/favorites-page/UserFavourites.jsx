@@ -60,7 +60,9 @@ const UserFavouritesPage = ({ session }) => {
     //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
     // return imagePath ? `${baseUrl}/${imagePath}` : foodplaceholder;
     // const imgBucket = "/storage/v1/object/public/recipe-images"
-    return imagePath ?  `${BASE_URL}/${recipeBucketPath}/${imagePath}` : foodplaceholder;
+    return imagePath
+      ? `${BASE_URL}/${recipeBucketPath}/${imagePath}`
+      : foodplaceholder;
   };
 
   return (

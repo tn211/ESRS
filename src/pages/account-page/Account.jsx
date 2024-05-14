@@ -85,13 +85,13 @@ export default function Account({ session }) {
     <Layout2>
       <form onSubmit={updateProfile} className="form-widgettt">
         <div className="av-div">
-        <Avatar
-          url={avatar_url}
-          size={150}
-          onUpload={(event, url) => {
-            updateProfile(event, url);
-          }}
-        />
+          <Avatar
+            url={avatar_url}
+            size={150}
+            onUpload={(event, url) => {
+              updateProfile(event, url);
+            }}
+          />
         </div>
 
         <div>

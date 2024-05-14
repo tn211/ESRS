@@ -54,7 +54,7 @@ const RecentRecipesPage = () => {
     // return `${baseUrl}/${imagePath}`;
     // const imgBucket = "/storage/v1/object/public/recipe-images"
     return `${BASE_URL}/${recipeBucketPath}/${imagePath}`;
-};
+  };
 
   console.log(
     `Rendering RecentRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`,
