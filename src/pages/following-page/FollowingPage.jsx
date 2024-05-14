@@ -4,7 +4,6 @@ import { supabase, BASE_URL, avatarBucketPath } from "../../supabaseClient";
 import Layout2 from "../../components/layout-components/Layout2";
 import "./FollowingPage.css";
 import profileplaceholder from "../../assets/profile-placeholder.png";
-// import { BASE_URL } from '../../supabaseClient';
 
 // define component to display followed users
 const FollowingPage = ({ session }) => {
