@@ -49,10 +49,6 @@ const RecentRecipesPage = () => {
 
   // function to construct full image URL
   const getFullImageUrl = (imagePath) => {
-    //const baseUrl =
-    // "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
-    // return `${baseUrl}/${imagePath}`;
-    // const imgBucket = "/storage/v1/object/public/recipe-images"
     return `${BASE_URL}/${recipeBucketPath}/${imagePath}`;
   };
 
