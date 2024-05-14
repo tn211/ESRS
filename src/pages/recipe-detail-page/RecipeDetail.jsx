@@ -113,9 +113,6 @@ const RecipeDetail = ({ session }) => {
   };
 
   const getFullImageUrl = (imagePath) => {
-    // const baseUrl =
-    //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
-    // return `${baseUrl}/${imagePath}`;
     return `${BASE_URL}/${recipeBucketPath}/${imagePath}`;
   };
 
