@@ -4,6 +4,7 @@ import Layout2 from "../../components/layout-components/Layout2";
 import { Link } from "react-router-dom";
 import "./RecentRecipesPage.css";
 import foodplaceholder from "../../assets/placeholder.png";
+import { BASE_URL } from '../../supabaseClient';
 
 const RecentRecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -48,10 +49,12 @@ const RecentRecipesPage = () => {
 
   // function to construct full image URL
   const getFullImageUrl = (imagePath) => {
-    const baseUrl =
-      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
-    return `${baseUrl}/${imagePath}`;
-  };
+    //const baseUrl =
+    // "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
+    // return `${baseUrl}/${imagePath}`;
+    const imgBucket = "/storage/v1/object/public/recipe-images"
+    return `${BASE_URL}/${imgBucket}/${imagePath}`;
+};
 
   console.log(
     `Rendering RecentRecipesPage, Recipes Count: ${recipes.length}, Loading: ${loading}`,
