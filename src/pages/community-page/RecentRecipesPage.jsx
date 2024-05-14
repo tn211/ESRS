@@ -4,7 +4,7 @@ import Layout2 from "../../components/layout-components/Layout2";
 import { Link } from "react-router-dom";
 import "./RecentRecipesPage.css";
 import foodplaceholder from "../../assets/placeholder.png";
-// import { BASE_URL, recipeBucketPath } from '../../supabaseClient';
+
 
 const RecentRecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
