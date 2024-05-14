@@ -5,7 +5,6 @@ import Layout2 from "../../components/layout-components/Layout2";
 import "./UserFavourites.css";
 import foodplaceholder from "../../assets/placeholder.png";
 
-
 const UserFavouritesPage = ({ session }) => {
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
   const [loading, setLoading] = useState(true);

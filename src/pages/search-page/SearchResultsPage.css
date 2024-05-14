@@ -6,7 +6,7 @@
   border-radius: 25px;
 }
 
-.search-page-results>div {
+.search-page-results > div {
   flex-wrap: wrap;
   justify-content: space-around;
   /* Adjusts the alignment of items */
