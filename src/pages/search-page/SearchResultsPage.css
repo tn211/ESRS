@@ -6,7 +6,7 @@
   border-radius: 25px;
 }
 
-.search-page-results > div {
+.search-page-results>div {
   flex-wrap: wrap;
   justify-content: space-around;
   /* Adjusts the alignment of items */
@@ -65,4 +65,17 @@
 
 .ssss {
   color: black;
+}
+
+@media only screen and (max-width: 768px) {
+  .search-results-card {
+    flex: 1 1 calc(50% - 10px);
+    /* Adjusting width for wider cards and increased space between them */
+    background: #f5f5f5;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    /* Space below each card */
+  }
 }
