@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import { supabase } from "../../supabaseClient";
+import { supabase, BASE_URL, recipeBucketPath } from "../../supabaseClient";
 import Layout2 from "../../components/layout-components/Layout2";
 import "./SearchPage.css";
 import foodplaceholder from "../../assets/placeholder.png";
@@ -49,9 +49,9 @@ const SearchPage = () => {
   };
 
   const getFullImageUrl = (imagePath) => {
-    const baseUrl =
-      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
-    return imagePath ? `${baseUrl}/${imagePath}` : foodplaceholder;
+    // const baseUrl =
+    //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
+    return imagePath ?  `${BASE_URL}/${recipeBucketPath}/${imagePath}` : foodplaceholder;
   };
 
   return (

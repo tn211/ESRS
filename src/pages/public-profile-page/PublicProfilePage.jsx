@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { supabase } from "../../supabaseClient";
+import { supabase, BASE_URL, avatarBucketPath } from "../../supabaseClient";
 import Layout2 from "../../components/layout-components/Layout2";
 import "./PublicProfilePage.css";
 import RecipesList from "../../components/recipe-list/RecipeList";
@@ -76,9 +76,10 @@ const PublicProfilePage = ({ session }) => {
   };
 
   const getFullImageUrl = (imagePath) => {
-    const baseUrl =
-      "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars";
-    return `${baseUrl}/${imagePath}`;
+    // const baseUrl =
+    //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/avatars";
+    // return `${baseUrl}/${imagePath}`;
+    return `${BASE_URL}/${avatarBucketPath}/${imagePath}`;
   };
 
   return (
