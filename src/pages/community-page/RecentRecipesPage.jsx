@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "./RecentRecipesPage.css";
 import foodplaceholder from "../../assets/placeholder.png";
 
-
 const RecentRecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
