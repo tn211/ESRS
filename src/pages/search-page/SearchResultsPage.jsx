@@ -35,9 +35,6 @@ const SearchResultsPage = () => {
   }, [query]);
 
   const getFullImageUrl = (imagePath) => {
-    // const baseUrl =
-    //   "https://nwooccvnjqofbuqftrep.supabase.co/storage/v1/object/public/recipe-images";
-    // return imagePath ? `${baseUrl}/${imagePath}` : foodplaceholder;
     return imagePath
       ? `${BASE_URL}/${recipeBucketPath}/${imagePath}`
       : foodplaceholder;
